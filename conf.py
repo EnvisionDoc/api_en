@@ -77,7 +77,7 @@ release = '1'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'en_us'
+language = 'zh_CN'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -119,7 +119,7 @@ html_theme = 'sphinx_enos_theme'
 # documentation.
 #
 html_theme_options = {
-    'copyright_en': '© 2019 Envision Digital. All Rights Reserved.',
+    'copyright_zh': '© 2019 Envision Digital. All Rights Reserved.',
 
 }
 
@@ -196,7 +196,7 @@ latex_elements = {
         %\fancyhead[RO]{\small \nouppercase{\rightmark}}
         %\fancyhead[LE]{\small \nouppercase{\leftmark}}
 
-        \fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{{\tiny EnOS API} }{\href{https://www.envisioniot.com}{\tiny Envision digital}}}
+        \fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{{\tiny EnOS 设备管理} }{\href{https://www.envisioniot.com}{\tiny Envision digital}}}
 
         %%% page number
         \fancyfoot[CO, CE]{\thepage}
@@ -221,6 +221,20 @@ latex_elements = {
         \newcommand{\chapterquote}[2]{\epigraphhead[60]{\epigraph{\textit{#1}}{\textbf {\textit{--#2}}}}}
         %%%%%%%%%%% Quote for all places except Chapter
         \newcommand{\sectionquote}[2]{{\quote{\textit{``#1''}}{\textbf {\textit{--#2}}}}}
+        \hypersetup{unicode=true}
+        \usepackage{CJKutf8}
+        \DeclareUnicodeCharacter{00A0}{\nobreakspace}
+        \DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}
+        \DeclareUnicodeCharacter{2200}{\ensuremath{\forall}}
+        \DeclareUnicodeCharacter{2286}{\ensuremath{\subseteq}}
+        \DeclareUnicodeCharacter{2713}{x}
+        \DeclareUnicodeCharacter{27FA}{\ensuremath{\Longleftrightarrow}}
+        \DeclareUnicodeCharacter{221A}{\ensuremath{\sqrt{}}}
+        \DeclareUnicodeCharacter{221B}{\ensuremath{\sqrt[3]{}}}
+        \DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}
+        \DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}
+        \begin{CJK}{UTF8}{gbsn}
+        \AtEndDocument{\end{CJK}}}
     ''',
 
 
@@ -235,16 +249,20 @@ latex_elements = {
 
             \vspace{5mm}
 
-            \fontsize{40pt}{\baselineskip}\selectfont \textbf{API}
+            \fontsize{40pt}{\baselineskip}\selectfont \textbf{设备管理}
 
             \vspace{5mm}
 
-            \huge \textmd{Version}\textbf{ latest}
+            \huge \textmd{版本}\textbf{ latest}
             %% \vfill adds at the bottom
             \vfill
-            \centerline{\fontsize{16pt}{\baselineskip}\selectfont \textbf{Envision Digital}}
-            \vspace{3mm}
-            \centerline{\fontsize{16pt}{\baselineskip}\selectfont \textmd{\today}}
+                       \centering
+                       \fontsize{16pt}{\baselineskip}\selectfont \textbf{远景智能}
+
+                       \vspace{3mm}
+
+                       \renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+                       \today\\
         \end{titlepage}
 
         \clearpage
@@ -273,9 +291,11 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, u'EnOSDocumentationCenter.tex', u'EnOS API',
-     u'Envision Digital', 'book', 'true'),
+    (master_doc, u'EnOSDocumentationCenter.tex', u'API',
+     u'远景智能', 'book', 'true'),
 ]
+
+latex_show_urls = 'footnote'
 
 
 # -- Options for manual page output ---------------------------------------
@@ -296,6 +316,30 @@ man_pages = [
 texinfo_documents = [
     (master_doc, 'EnOSDocumentationCenter', 'EnOS API',
      author, 'EnOSDocumentationCenter', 'One line description of project.',
+     'Miscellaneous'),
+]
+
+
+
+
+# -- Options for manual page output ---------------------------------------
+
+# One entry per manual page. List of tuples
+# (source start file, name, description, authors, manual section).
+man_pages = [
+    (master_doc, u'enosdocumentationcenter', u'EnOS API',
+     [author], 1)
+]
+
+
+# -- Options for Texinfo output -------------------------------------------
+
+# Grouping the document tree into Texinfo files. List of tuples
+# (source start file, target name, title, author,
+#  dir menu entry, description, category)
+texinfo_documents = [
+    (master_doc, 'EnOSDocumentationCenter', 'EnOS API',
+     author, 'EnOSDocumentationCenter', 'Product documentation about EnOS API.',
      'Miscellaneous'),
 ]
 

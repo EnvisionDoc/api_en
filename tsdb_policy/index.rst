@@ -1,5 +1,5 @@
-TSDB policy
-============
+TSDB策略服务
+==========
 
 .. toctree::
    :maxdepth: 1
@@ -7,3 +7,5 @@ TSDB policy
 
    overview
    get_points_tsdb_meta_data
+
+

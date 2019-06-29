@@ -1,10 +1,12 @@
-# Asset overview
+# 资产服务概述
 
-模型是对物理世界中的实体对象的抽象与数字化。你可以通过模型服务搜索与获取模型。
+*Note: This documentation is in the progress of translation. Thanks for your visit!*
 
-有关模型的详细信息，参见[物模型](https://www.envisioniot.com/docs/device-connection/zh_CN/latest/howto/model/model_overview.html)。
+资产是模型的实例。资产可以是一个设备，如电表。也可以是一组设备的物理或逻辑组合，如光伏电站，或某区域（该区域内有多个资产）。你可以通过资产服务更新与获取资产信息。
+
+## API列表
 
 | 操作名称     | 描述                |
-|:-------------|:--------------------|
-| Search Model | 根据组织id搜索模型  |
-| Get Model    | 根据modelId获取模型 |
+|--------------|---------------------|
+| [Update Asset](update_asset) | 全量或部分更新资产信息  |
+| [Get Asset](get_asset)    | 根据资产id获取资产数据 |

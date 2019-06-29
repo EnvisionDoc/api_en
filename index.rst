@@ -12,11 +12,12 @@ EnOS API
    :caption: Get Started
 
    gettingstarted
-
+   
 .. toctree::
    :maxdepth: 1
    :caption: Reference
 
+   connect/index
    model/index
    asset/index
    event/index
