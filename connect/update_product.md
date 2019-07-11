@@ -1,54 +1,54 @@
 # Update Product
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-更新产品。
+Update products.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=update
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 | productKey         | Query            | true     | String    | Product Key |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称         | 是否必须 | 数据类型 | 描述      |
+| Name            | Required or Not | Data Type | Description |
 |-------------------|----------|-----------|--------------|
-| productDesc       | False     | String       | 产品的描述                                                         |
-| biDirectionalAuth | True      | Boolean      | 是否支持双向认证                                                   |
-| dynamicActivateEnabled           | False      | String      | 是否支持动态激活|
-| productName        | False      | String      | 数据类型。枚举，Custom代表用户自定义数据类型，Json代表json数据类型。|
-| productName       | True      | StringI18n | 产品名称，见[国际化名称结构体](/docs/api/en/latest/api_faqs.html#id3)                                                           |
+| productDesc       | False     | String       | Product Description                                                         |
+| biDirectionalAuth | True      | Boolean      | Dual-way authentication supported or not                                                  |
+| dynamicActivateEnabled           | False      | String      | Dynamic activation supported or not|
+| productName        | False      | String      | Data type. Enumeration; Custom represents the user-defined data type, while Json represents the json data type. |
+| productName       | True      | StringI18n | Product name; see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)                                                           |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|---------------|------------|
-| data | String                           | 更新的产品的key               |
+| data | String                           | Key of the updated product               |
 
 
-## 错误码
+## Error codes
 
-| 代码| 数据类型 | 描述         |
+| Code| Data Type | Description |
 |-------------|--------------|-------------|
-| 11651 |                       | Productkey不存在              |
+| 11651 |                       | Productkey does not exist              |
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
-POST: /connect-service/v2.1/products?action=update&orgId=xxx&productKey=xxx
+POST:  /connect-service/v2.1/products?action=update&orgId=xxx&productKey=xxx
 {
 	"productDesc":"test_sdk_update",
 	"biDirectionalAuth":true,
@@ -60,7 +60,7 @@ POST: /connect-service/v2.1/products?action=update&orgId=xxx&productKey=xxx
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

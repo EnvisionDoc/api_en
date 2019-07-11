@@ -1,57 +1,57 @@
 # Get Event
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-通`eventId`获取Event的详细信息。
+Get the details of the Event via `eventId`.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/events?action=get
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| eventId        | Query| True         | String    |事件ID |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| eventId        | Query| True         | String    |Event ID |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Event结构体      |Event的具体信息，见[Event结构体](/docs/api/en/latest/connect/get_event.html#id3) |
+| data | Event structure | Event-specific information; see [Event Structure] (/docs/api/en/latest/connect/get_event.html#id3) |
 
 
-### Event结构体
+### Event structure
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| orgId         | String    | 资产所属的组织ID。|
-| eventId         | String    |事件ID |
+| orgId         | String    | Organization ID which the asset belongs to. |
+| eventId         | String    |Event ID |
 | productKey   | String         | productKey              |
 | deviceKey    | String         | deviceKey               |
-| assetId     | String         | 资产id                  |
-| tslEventKey  | String         | TSL模型中的事件Key      |
-| tslEventType | String         | TSL模型中定义的事件类型 |
-| output      | String         | 事件的输出              |
-| timestamp   | Long           | 事件发生时间戳          |
-| localtime   | String         | 事件发生本地时间        |
+| assetId     | String         | Asset ID                  |
+| tslEventKey  | String         | Event key in TSL model      |
+| tslEventType | String         | Event tupe defined in TSL model |
+| output      | String         | Event output              |
+| timestamp   | Long           | Event timestamp          |
+| localtime   | String         | Local time when event occurs       |
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/events/get?action=get&id=20190506587247156ca85be5e3422d30e2642dd1&orgId=1c499110e8800000
 GET
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

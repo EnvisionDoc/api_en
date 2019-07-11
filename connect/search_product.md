@@ -2,42 +2,42 @@
 
 *Note: This documentation is in the progress of translation. Thanks for your visit!*
 
-搜索满足条件的产品。
+ Search for products that meet the criteria.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=search
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 | productKey        | Query            | true    | String    | Product Key|
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称         | 是否必须 | 数据类型 | 描述      |
+| Name            | Required or Not | Data Type | Description |
 |-------------------|----------|-----------|--------------|
-| expression         | false    | String   | 查询表达式，查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)|
-| pagination     | false     | String   | 分页参数，如果不填，默认每页10条。目前，不支持排序（忽略排序字段）。见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| pagination     | false     | String   | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Product结构体                           | 查询得到的产品列表，见[Product结构体](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
+| data| Product structure                           | List of products gotten from query; see [Product Structure](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 POST: /connect-service/v2.1/products?action=search&orgId=abc 
@@ -50,7 +50,7 @@ POST: /connect-service/v2.1/products?action=search&orgId=abc
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

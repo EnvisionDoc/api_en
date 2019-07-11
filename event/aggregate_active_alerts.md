@@ -1,42 +1,42 @@
 # Aggregate Active Alerts
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-对实时告警进行统计。
+ Perform statistics on active alerts.
 
-## 请求格式
+## Request format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |---------------|--------|----------|-----------|
-| orgId         | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
                                                                  
 
-## 请求参数（Body）
-| 名称 | 是否必须 | 数据类型 | 描述 |
+## Request parameters (Body)
+| Name            | Required or Not | Data Type | Description |
 |----------------|----------|--------------------|----|
-| expression     | false    | String| 查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1) |
-| groupByField   | true     | String             | 分组字段：`contentId`，`assetId`，`modelId`，`measurepointId`，`severityId`，`typeId`，`subTypeId` |
-| startOccurTime | false    | String| 告警触发时间的起始时间，见[API在使用的时间参数](/docs/api/en/latest/api_faqs.html#id5)    |
-| endOccurTime   | false    | String| 告警触发时间的结束时间，见[API在使用的时间参数](/docs/api/en/latest/api_faqs.html#id5) |
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| groupByField   | true     | String             | Grouping fields: `contentId`, `assetId`, `modelId`, `measurepointId`, `severityId`, `typeId`, `subTypeId` |
+| startOccurTime | false    | String| Start time for triggering alert. See [Time Parameter Used by API] (/docs/api/en/latest/api_faqs.html#id5)    |
+| endOccurTime   | false    | String| End time for triggering alert. See [Time Parameter Used by API] (/docs/api/en/latest/api_faqs.html#id5) |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | Map（Key为String，Value为Integer） | Key为分组字段的取值，value为对应对象在指定时间段内对象发生告警的数量|
+| data | Map (Key is of String type, and the value is of Integer type) | The Key is the value of the grouping field, and the value is the number of alerts that the object has generated within the specified time range.|
 
 
-## 输入输出示例
+## Input/output samples
 
-### 请求示例
+### Request sample
 
 ```json
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate&orgId=1c499110e8800000
@@ -47,7 +47,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate&o
 
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -68,7 +68,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate&o
 
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public void testAggregateActiveAlert(){  

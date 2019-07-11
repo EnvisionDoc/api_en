@@ -1,50 +1,50 @@
 # Search Alert Severity
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-分页查询告警级别。
+Query alert level by page.
 
-## 请求格式
+## Request format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/alert-severities?action=search
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
                                                                  
 
-## 请求参数（Body）
-| 名称 | 是否必须 | 数据类型 | 描述 |
+## Request parameters (Body)
+| Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| expression         | false    | String   | 查询表达式，查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)|
-| pagination     | false     | Pagination请求结构体| 分页的参数。如果不填，默认每页10条。按照`updateTime`降序排序。用户可以指定`AlertSeverity`结构体中的字段作为排序字段。见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)    |
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime`. User can specify a field in the `AlertSeverity` structure as the sorting criterion. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertSeverity结构体 | 告警级别，见[AlertSeverity结构体](/docs/api/en/latest/event/search_alert_severity.html#id4)|
+| data | AlertSeverity structure | Alert level. See [AlertSeverity structure](/docs/api/en/latest/event/search_alert_severity.html#id4)|
 
-### AlertSeverity结构体
+### AlertSeverity structure
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
-| severityId        | String                | 告警级别编号|
-| orgId          | String                | 资产所属的组织ID|
-| severityDesc   | StringI18n            | 告警级别描述 |
-| tags        | Tag结构体          | 标签|
-| updatePerson        | String                | 更新人|
-| updateTime    | Long                | 更新的UTC时间
+| severityId        | String                | Alert level ID|
+| orgId          | String                |  Organization ID which the asset belongs to|
+| severityDesc   | StringI18n            | Alert level description |
+| tags        | Tag structure           | Tags|
+| updatePerson        | String                | Updater|
+| updateTime    | Long                | Update time (UTC)
 
 
 
-## 输入输出示例
+## Input/output samples
 
-### 请求示例
+### Request sample
 
 ```json
 POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&orgId=1c499110e8800000
@@ -60,7 +60,7 @@ POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -81,8 +81,8 @@ POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&
 		"orgId": "1c499110e8800000",
 		"severityDesc": {
 			"i18nValue": {
-				"en_US": "Serious！！！",
-				"zh_CN": "严重！！！"
+				"en_US": "Serious！！！" ,
+				"zh_CN": "Serious！！！"
 			}
 		},
 		"tags": {
@@ -94,7 +94,7 @@ POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public void testSearchAlertSeverity() {  

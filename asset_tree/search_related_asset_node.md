@@ -1,56 +1,56 @@
 # Search Related Asset Node
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-查询指定资产树上的资产，指定相对于某个已知资产的关系作为查询条件。
+Query assets on the specified asset tree, and specify the relationship with a known asset as the query criterion.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchRelatedAsset
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| treeId        | Query            | true    | String    | 需要获取的资产树ID。[如何获取资产树信息ID](/docs/api/en/latest/api_faqs#id)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get asset tree ID](/docs/api/en/latest/api_faqs#id)        |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| filter| false         |   Filter结构体       | 资产的查询条件<br>所有的条件都是可选的<br>所有指定的条件之间都是“与”关系，即待查询的资产必须同时满足所有指定的条件<br>4个关系查询条件至多提供一个，见[Filter结构体](/docs/api/en/latest/asset_tree/search_related_asset_node.html#filter-filterstruc)   |
-| pagination| false         | Pagination请求结构体  | 用于在接口请求中描述分页要求。默认第一页，分页大小100，见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)                               |
-| projection| false         | Projection结构体          | 用于在接口请求中描述待返回的对象projection。详见[projection参数如何对结果集做裁剪](/docs/api/en/latest/api_faqs.html#projection)|
+| filter| false         |   Filter structure       | Asset query criteria. <br>All criteria are optional. <br>All the specified criteria are related with each other under the "and" relationship, that is, the assets to be queried must satisfy all the specified criteria at the same time. <br>At most one out of the 4 relational query criteria is allowed. See [Filter Structure](/docs/api/en/latest/asset_tree/search_related_asset_node.html#filter-filterstruc)   |
+| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Structure](/docs/api/en/latest/overview.html?highlight=pagination#pagination)                               |
+| projection| false         | Projection structure          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-### Filter结构体<filterstruc>
+### Filter structure <filterstruc>
 
-| 名称      | 是否必须  | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |-----------|---------|--------|-----------------------|
-| assetIds                   | String Array   | false    | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)|
-| modelIds            | String Array   | false    | 资产所属模型ID。[如何获取modelId信息](/docs/api/en/latest/api_faqs.html#modeid-modeid) |
-| rootModelIds         | String Array   | False    | 资产所属的根模型ID。如果想查询多个根模型，就提供多个根模型ID              |
-| isParentOfAssetId     | String         | false    | 待查询的资产是指定资产的直接父节点  值为指定资产的资产ID<br>[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)  |
-| isChildOfAssetId      | String         | false    | 待查询的资产是指定资产的直接子节点  值为指定资产的资产ID<br>[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)  |
-| isAncestorOfAssetId   | String         | false    | 待查询的资产是指定资产的祖先节点  值为指定资产的资产ID<br>[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)   |
-| isDescendantOfAssetId| String         | false    | 待查询的资产是指定资产的子孙节点  值为指定资产的资产ID<br>[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)   |
+| assetIds                   | String Array   | false    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
+| modelIds            | String Array   | false    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| rootModelIds         | String Array   | False    | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models |
+| isParentOfAssetId     | String         | false    | The asset to be queried is the immediate parent node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
+| isChildOfAssetId     | String         | false    | The asset to be queried is the immediate child node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
+| isAncestorOfAssetId     | String         | false    | The asset to be queried is the immediate ancestor node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
+| isDescendantOfAssetId | String         | false    | The asset to be queried is the immediate descendant node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
 
 
-## 响应参数
+## Response parameters
 
-| 名称 |数据类型  | 描述 |
+| Name | Data Type | Description |
 |-----------|------------------|------------------|
-| data      | Asset结构体 |  asset的列表    |
+| data      | Asset structure|  asset list    |
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=k6wweMTP&action=searchRelatedAsset&orgId=o15517683199241
@@ -62,7 +62,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=k6wweMTP&acti
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

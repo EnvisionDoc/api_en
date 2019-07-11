@@ -1,48 +1,48 @@
 # Enable Device
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-启用设备。
+Enable devices.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=enable
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-注：以下字段必须提供`assetId`或者`(productKey, deviceKey)`。
+Note: In the following non-mandatory fields, you must provide a combination of `assetId` or `productKey` and `deviceKey` to specify the device.
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| assetId  | Query            | String   | False         | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid) |
-| productKey | Query            | String  | False          | Product Key      |
-| deviceKey | Query            | String   | False         | 设备key          |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| assetId  | Query          | False      | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| productKey | Query         | False      | String         | Product Key      |
+| deviceKey | Query         | False     | String          | Device key          |
     
 
 
-## 错误码
+## Error codes
 
-| 代码| 数据类型 | 描述         |
+| Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11794 |                | 要启用的设备已处于激活状态             |
+| 11794 |                | The device to be enabled has been activated             |
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=enable&orgId=o15475450989191&assetId=9HhK0YxX
-method: POST
+method:  POST
 ```
 
-### 返回示例
+### Return sample
 
 ```json
-responseBody: {
+responseBody:  {
 	"code": 0,
 	"msg": "OK",
 	"requestId": "06dd8ea3-cb9e-4628-8f93-d36c416bcd3a",

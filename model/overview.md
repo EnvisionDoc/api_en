@@ -1,12 +1,12 @@
-# 模型服务概述
+# Model Service Overview
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-模型是对物理世界中的实体对象的抽象与数字化。你可以通过模型服务搜索与获取模型。
+A model is the abstraction and digitization of an entity object in the physical world. You can search and get models through model services.
 
-有关模型的详细信息，参见[物模型](https://www.envisioniot.com/docs/device-connection/en/latest/howto/model/model_overview.html)。
+For details about models, see [Physical Models] (https://www.envisioniot.com/docs/device-connection/en/latest/howto/model/model_overview.html).
 
-| 操作名称     | 描述                |
+| Operation Name     | Description                |
 |--------------|---------------------|
-| [Get Model](getmodel)    | 根据modelId获取模型 |
-| [Search Thing Model](searchmodel) | 根据组织id搜索模型  |
+| [Get Model](getmodel)    | Get models by modelId |
+| [Search Thing Model](searchmodel) | Search models by organizationid  |

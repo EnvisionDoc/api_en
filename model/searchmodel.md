@@ -1,73 +1,73 @@
 # Search Thing Model
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-根据组织id搜索物模型。
+Search thing models by organizationid.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/model-service/v2.1/thing-models?action=search
 ```
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |:-----------|:-----------------|:---------|:----------|:-----------------------------------------------------------------------------------------|
-| orgId      | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)|
-| scope      | Query            | False    | Integer   | 查询范围。 0：只从指定orgId查寻找； 1：从指定orgId和公共orgId查寻。默认为1               |
-| expression | Query            | False    | String    | 查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1) |
-| projection | Query            | False    | String Array     | 对结果进行projection，对于符合条件的搜索仅返回符合条件的字段，不设置则默认返回全部fields。详见[projection参数如何对结果集做裁剪](/docs/api/en/latest/api_faqs.html#projection)|
-| pagination | Query            | False    | Pagination请求结构体       | 随机分页，默认就是按照occurTime倒序排列，用户不能指定排序字段。默认分页大小是10。见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)|
+| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)|
+| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the specified orgId; 1 - Search from the specified orgId and public orgId. It is set as 1 by default               |
+| expression | Query            | False    | String    | expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
+| pagination | Query            | False    | Pagination request structure       | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    ThingModel结构体  |物模型列表。<br>物模型定义请见[ThingModel结构体](/docs/api/en/latest/model/searchmodel.html#id4) |
+| data |    ThingModel structure  |Thing model list. <br>For the definition of thing models, see [ThingModel Structure](/docs/api/en/latest/model/searchmodel.html#id4) |
 
-### ThingModel结构体
+### ThingModel structure
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| modelId       | String| 资产所属模型ID|
-| modelIdPath   | String| 模型继承路径|
-| orgId         | String| 资产所属的组织ID|
-| name          | StringI18n | 模型名字|
-| desc          | String| 模型描述|
-| tags          | Map (Key为String，Value为String)| 用户自定义标签|
-| attributes    | Map (Key为String，Value为`ThingAttribute`结构体)| 静态属性定义的map类型值，key为静态属性id，value为属性定义|
-| measurepoints | Map (Key为String，Value为`ThingMeasurepoint`结构体)| 静态属性定义的map类型值，key为测点id，value为测点定义|
-| services      | Map (Key为String，Value为`ThingService`结构体)     | 服务定义的map类型值，key为服务id，value为服务定义|
-| events        | Map (Key为String，Value为`ThingEvent`结构体)       | 事件定义的map类型值，key为事件id，value为事件定义|
+| modelId        | String                | Model ID which the asset belongs to|
+| modelIdPath   | String| Model inheritance path|
+| orgId         | String| Organization ID which the asset belongs to|
+| name          | StringI18n | Model name|
+| desc          | String| Model description|
+| tags          | Map (Key is of String type, and the value is of String type) | User-customized tags  |
+| attributes    | Map (Key is of String type and the Value is the `ThingAttribute` structure)| Map-typed value defined by the static attributes. The key is the static attribute id and the value is the attribute definition|
+| measurepoints   | Map (Key is of String type and the Value is the `ThingMeasurepoint` structure)| Map-typed value defined by the static attributes. The key is the measurepoint id and the value is the measurepoint definition|
+| services      | Map (Key is of String type and the Value is the `ThingService` structure)    | Map-typed value defined by the service. The key is the service id, and the value is the service definition.|
+| events        | Map (Key is of String type and the Value is the `ThingEvent` structure)    | Map-typed value defined by the event. The key is the event id, and the value is the event definition.|
 
 
-### ThingAttribute结构体
+### ThingAttribute structure
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| identifier | String| 属性id|
-| dataType   | String| 数据类型。比如：ARRAY，BOOL，DATE，ENUM，INT，FLOAT，DOUBLE，STRUCT，STRING，TIMESTAMP，FILE|
-| isRequired | Boolean| 是否是必须的属性。如果为true，则要求资产在实例化的时候必须设置该属性的值，否则资产在创建的时候会返回校验失败的错误|
-| name       | StringI18n| 支持国际化的资产名称|
-| desc       | String| 模型描述|
-| tags       | Map (Key为String，Value为String)| 用户自定义标签|
-| unit       | Unit结构体| 单位。见[Unit结构体](/docs/api/en/latest/model/searchmodel.html#id6)|
+| identifier | String| Attribute id|
+| dataType   | String| Data Type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE|
+| isRequired | Boolean| Required or not. If true, the value of this attribute when the asset is instantiated; otherwise the asset will return a validation failure error when it is created.
+| name       | StringI18n| Internationalized asset names are supported|
+| desc       | String| Model description|
+| tags       | Map (Key is of String type, and the value is of String type) | User-customized tags  |
+| unit       | Unit structure| Unit. See [Unit Structure](/docs/api/en/latest/model/searchmodel.html#id6)|
 
 
-### Unit结构体
+### Unit structure
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| unitId | String| 单位的标识符|
-| multiplier   | String| 单位的乘数。参见[multiplier](/docs/api/en/latest/model/searchmodel.html#id7)|
+| unitId | String| Unit identifier|
+| multiplier   | String| Multiplier of unit. See [Multiplier](/docs/api/en/latest/model/searchmodel.html#id7)|
 
 
 ### Multiplier
 
-单位的乘数有如下取值：
+The multiplier of unit can take the following values:
 
 ```
 YOTTA ,//Y     10^24
@@ -93,14 +93,14 @@ ZEPTO ,//z     10^-21
 YOCTO ,//y     10^-24
 ```
 
-## 错误码
+## Error codes
 
-见[公共返回码（接入服务）](/docs/api/en/latest/overview.html#id8)
+See [Public Return Code (Access Services)](/docs/api/en/latest/overview.html#id8)
 
 
-## 示例
+## Sample
 
-### 请求示例
+### Request sample
 
 ```json
 POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
@@ -117,7 +117,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
 ```
 
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -130,7 +130,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
                 "modelIdPath": "/planet",
                 "orgId": "1c499110e8800000",
                 "name": {
-                    "defaultValue": "行星",
+                    "defaultValue": "planet",
                     "i18nValue": {
                         "en_US": "planet"
                     }
@@ -141,7 +141,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
                     "starsystem": {
                         "identifier": "starsystem",
                         "name": {
-                            "defaultValue": "星系",
+                            "defaultValue": "star system",
                             "i18nValue": {
                                 "en_US": "star system"
                             }
@@ -260,7 +260,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
                         "en_US": "Noise Sensor"
                     }
                 },
-                "desc": "噪声传感器",
+                "desc": "Noise Sensor",
                 "tags": {},
                 "attributes": {},
                 "measurepoints": {},
@@ -276,7 +276,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public class SearchThingModel {

@@ -1,35 +1,35 @@
 # Get Asset Latest Data
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-获取指定设备所有测点的最新数据。
+Get the latest data of all measurepoints of a specified device.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/tsdb-service/v2.0/latest?orgId={}&assetIds={}&measurepoints={}&timeWindow={}&accessKey={}
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                                                                                                                                                                                                                            |
-| assetIds      | Query            | true     | String    | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs#assetid-assetid)                                                                                                                                                                                |
-| measurepoints | Query            | true     | String    | 资产测点，支持多测点查询，各个测点间用逗号隔开；支持查询的（设备数*测点数）上限为3000。[如何获取测点（pointId）信息](/docs/api/en/latest/api_faqs#pointid-pointid)                                                                                                                                                                           |
-| timeWindow | Query            | false     | Integer    | 返回数据时间窗口设定，单位是分钟，最小值为0，不传则不约束。                                                                                                                                                                           |
-| accessKey     | Query            | true     | String    | 应用的服务账号，应用以`accessKey`进行鉴权以获得其被授权访问的数据。[如何获取accessKey信息](/docs/api/en/latest/api_faqs#accesskey-accesskey)                                                                     
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                                                                                                                                                                                                                            |
+| assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)                                                                                                                                                                                |
+| measurepoints | Query            | true     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId information](/docs/api/en/latest/api_faqs#how-to-get-the-measurepoint-pointid-information-pointid)                                                                                                                                                                           |
+| timeWindow | Query            | false     | Integer    | Returns the data schedule setting. Its unit is minute and its minimum value is 0; no constrain is applied in case of no transfer.                                                                                                                                                                            |
+| accessKey     | Query            | true     | String    |Service account of the application. The application authenticates with `accessKey` to obtain the data that it is authorized to access. [How to get accessKey information](/docs/api/en/latest/api_faqs.html#how-to-get-accesskey-information-accesskey)|                                                                     
 
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| **items** | `List<Object>` | 资产数据列表。单设备单点的返回数据按时间升序排列。其中的Object结构体中存储着参数，详见[items](/docs/api/en/latest/tsdb_service/get_asset_latest_data.html#id3)。
+| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object structure. See [Items](/docs/api/en/latest/tsdb_service/get_asset_latest_data.html#id3).
 
 ### items
 
-例子：
+Sample:
 ```json
 {
         "assetId": "4DXYH7nS",  			       
@@ -38,24 +38,24 @@ https://{apigw-address}/tsdb-service/v2.0/latest?orgId={}&assetIds={}&measurepoi
 }
 ```
 
-| 名称        | 数据类型 | 描述                           |
+| Name | Data Type | Description |
 |---------------|-----------|--------------------------------------|
-| assetId       | Object    | 资产ID。                                             |
-| pointId | Object    | 此参数是变量，表示测点的标识符与数据。                                    |
-| timestamp     | Object    | 数据时间戳，UNIX时间，精确到秒。                                    |
+| assetId       | Object    | Asset ID.                                              |
+| pointId | Object    |This parameter is a variable, indicating the identifier and data for the measurepoint.                                     |
+| timestamp     | Object    | Data timestamp (UNIX time, accurate to second).                                     |
 
-## 错误码
-有关错误码的描述，参见[通用错误码](overview#errorcode)。
+## Error codes
+For description of error codes, see [Common Error Codes] (overview#errorcode).
 
-## 示例 1
+## Sample 1
 
-### 请求示例
-Local时间格式：
+### Request sample
+Local time format:
 ```
 https://{apigw-address}/tsdb-service/v2.0/latest?orgId=o15528761854851&assetIds=4DXYH7nS&measurepoints=opentsdb_pi_point_xxx&timeWindow=&accessKey=accessKey
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -75,7 +75,7 @@ https://{apigw-address}/tsdb-service/v2.0/latest?orgId=o15528761854851&assetIds=
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 private static class Request extends PoseidonRequest{

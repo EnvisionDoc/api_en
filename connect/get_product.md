@@ -1,69 +1,69 @@
 # Get Product
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-通过`productKey`获取product的详细信息。
+Get product details via `productKey`.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=get
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 | productKey        | Query            | true    | String    | Product Key|
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Product结构体                           | Product的具体信息，见[Product结构体](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
+| data | Product structure | Product-specific information; see [Product Structure] (/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
 
 
-### Product结构体<productstruc>
+### Product structure <productstruc>
 
-| 名称  |  数据类型      | 描述               |
+| Name | Data Type | Description |
 |-------|-------|---------------------------|
-| orgId |  String | 资产所属的组织ID |
-| productKey          | String| 产品名称                                             |
-| productName         | StringI18n |  产品名称。结构请见[国际化名称结构体](/docs/api/en/latest/api_faqs.html#id3)
+| orgId |  String | Organization ID which the asset belongs to |
+| productKey          | String| Product name                                            |
+| productName         | StringI18n |  Product name. For the structure, see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)
                                             |
-| productSecret       | String                          | 产品私钥                                             |
-| productDesc         | String                          | 产品描述                                             |
-| productType         | Sting                           | 产品类型，Device代表普通类型，Gateway代表网关类型    |
-| dataFormat         | String                          | 数据类型，Custom代表用户自定义类型，Json代表json类型 |
-| productTags         | Map（key为String，value为String） | 产品标签                                             |
-| modelId             | String                          | 资产所属模型ID|
-| dynamicActiveEnable | Boolean                         | 是否支持动态激活                                     |
-| biDirectionalAuth   | Boolean                         | 是否支持双向认证                                     |
-| createTime      | Long                            | 创建时间                                             |
-| createBy        | String                          | 创建人                                               |
-| updateTime       | Long                            | 更新时间                                             |
-| updateBy       | String                          | 更新人                                               |
+| productSecret       | String                          | Product private key                                             |
+| productDesc         | String                          | Product Description                                             |
+| productType         | Sting                           | Product type; Device stands for common product types, while Gateway stands for gateway types.   |
+| dataFormat         | String                          | Data type; Custom represents the user-defined data type, while Json represents the json data type. |
+| productTags         | Map (Key is of String type and the value is of String type) | Product tags                                             |
+| modelId             | String                          | Model ID which the asset belongs to|
+| dynamicActiveEnable | Boolean                         | Dynamic activation supported or not                                     |
+| biDirectionalAuth   | Boolean                         | Dual-way authentication supported or not                                     |
+| createTime      | Long                            | Creation time                                             |
+| createBy        | String                          | Creator                                               |
+| updateTime       | Long                            | Update time                                             |
+| updateBy       | String                          | Updater                                               |
 
-## 错误码
+## Error codes
 
-| 代码  | 数据类型 | 描述 |
+| Code| Data Type | Description |
 |------------|----------------|-------------------|
-| 11611 |                | `productKey`不存在 |
+| 11611 |                | `productKey` does not exist
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
-GET: /connect-service/v2.1/products?action=get&orgId=abc&productKey=def
+GET:  /connect-service/v2.1/products?action=get&orgId=abc&productKey=def
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

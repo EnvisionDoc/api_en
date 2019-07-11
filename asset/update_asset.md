@@ -1,52 +1,52 @@
 # Update Asset
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-全量或部分更新资产信息。
+Fully or partially update asset information.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-service/v2.1/assets?action=update
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| isPatchUpdate       | Query            | false    | Boolean    | 是否是局部更新，默认为true               |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| isPatchUpdate       | Query            | false    | Boolean    | Whether to perform partial update. Set as true by default               |
                                                                   
 
-## 请求参数（Body）
-| 名称 | 是否必须 | 数据类型 | 描述 |
+## Request parameters (Body)
+| Name            | Required or Not | Data Type | Description |
 |------|------------------|----------|-----------|-------------|
-| asset     | true  |`AssetUpdate`结构体          | 用于资产更新，结构请见[AssetUpdate结构体](/docs/api/en/latest/asset/update_asset.html#id2)。<br>在`isPatchUpdate`为true时，只更新`asset`参数中指定的字段；在`isPatchUpdate`为false时，将完全覆盖`asset`各字段值，即未指定值的字段将被置空       |
+| asset     | true  |`AssetUpdate` structure          | Used for asset update. For details about the structure, see [AssetUpdate Structure](/docs/api/en/latest/asset/update_asset.html#id2). <br>When `isPatchUpdate` is true, only the fields specified in the `asset` parameter are updated; when `isPatchUpdate` is false, the field value of `asset` will be completely covered, i.e. the fields with an unspecified value will be left blank.
 
 
-### AssetUpdate结构体
+### AssetUpdate structure
 
-| 名称  | 是否必须| 数据类型      | 描述               |
+| Name            | Required or Not | Data Type | Description |
 |-------|--------|--------|---------------------------|
-| assetId |   true   | String | 资产ID。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)|
-| name | false| StringI18n |该资产的各语言名称。结构请见[国际化名称结构体](/docs/api/en/latest/api_faqs.html#id3) |
-| description | false     | String | 资产描述|
-|attributes  | false<br>(如果`isPatchUpdate`为false，`attributes`必填) |Map  |资产所属的模型属性。<br>`Key`为属性id，String类型。Value的类型取决于模型中这个属性的定义。详情请见 [attributes的表示方法](/docs/api/en/latest/api_faqs.html#attributes) |
-|timezone  |  false    |String  |时区。详情请见[时区表示方法](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id4) |
-|tags|false|Map<br>（Key为String, Value为String）|用户自定义标签，详情请见[标签的作用与表示方法](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id6) |
+| assetId |   true   | String | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
+| name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)
+| description | false     | String | Asset description|
+|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute id, which is of String type. The value type depends on the definition of this attribute in the model. For details, see [Attributes Representation](/docs/api/en/latest/api_faqs.html#attributes) |
+|timezone  |  false    |String  |Timezone. For details, see [Timezone Representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id4) |
+|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [Role and Representation of Tags](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id6) |
 
 
-## 错误码
+## Error codes
 
-| 代码  | 描述               |
+| Code | Description    |
 |-----------------|--------------|
-| 11958  | 由于资产属性校验失败导致更新失败     |
+| 11958  | Update failed due to asset attribute verification failure     |
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```json
 POST https://{apigw-address}/asset-service/v2.1/assets?action=update&orgId=o15475450989191
@@ -72,7 +72,7 @@ POST https://{apigw-address}/asset-service/v2.1/assets?action=update&orgId=o1547
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -84,7 +84,7 @@ POST https://{apigw-address}/asset-service/v2.1/assets?action=update&orgId=o1547
 ```
 
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public class UpdateAsset {

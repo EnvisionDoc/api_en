@@ -1,57 +1,57 @@
 # Associate Asset
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-将指定已有资产节点关联到资产树上。待关联的资产可以是一个设备资产，也可以是一个逻辑资产。如果待关联的资产节点是一个设备资产，可使用设备资产的`ProductKey`、`DeviceKey`来描述，如果待关联的资产节点是一个逻辑资产，可使用逻辑资产的ID来描述。
+Associate a specified existing asset node to the asset tree. The asset to be associated can be a device asset or a logical asset. If the asset node to be associated is a device asset, it can be described by using `ProductKey` and `DeviceKey` of the device asset. If the asset node to be associated is a logical asset, it can be described by the ID of the logical asset.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=associateAsset
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| treeId        | Query            | true    | String    | 需要获取的资产树ID。[如何获取资产树信息ID](/docs/api/en/latest/api_faqs#id)        |
-| parentAssetId | Query            | true    | String    | 待关联资产的父资产ID。 |
-| assetId  | Query            | false    | String    | 待关联的资产ID，当存在`assetId`时，以`assetId`为准，当`assetId`不存在时，则看`productKey`，`deviceKey`。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)  |
-| productKey  | Query            | false    | String    | 待关联的设备ProductKey。 |
-| deviceKey  | Query            | false    | String    | 待关联的设备DeviceKey。 |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get asset tree ID](/docs/api/en/latest/api_faqs#id)        |
+| parentAssetId | Query            | true    | String    | Parent asset ID of the asset to be associated.  |
+| assetId  | Query            | false    | String    | Asset ID to be associated; when there is an 'assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)  |
+| productKey  | Query            | false    | String    | ProductKey of the device to be associated.  |
+| deviceKey  | Query            | false    | String    | DeviceKey of the device to be associated.  |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| String                            | 关联成功的资产ID              |
+| data| String                            | AssetId associated successfully              |
 
 
-##错误码
+## Error codes
 
-| 代码 | 描述    |
+| Code | Description    |
 |-----------|-----------------------------|
-| 17751 | Tree ID 不存在              |
-| 17752| 父资产不存在该树上          |
-| 17758 | 资产已存在该树上            |
-| 17760 | 欲创建的资产名称不合法      |
-| 17770| 该树超过最高层数限制（7层） |
+| 17751 | Tree ID does not exist              |
+| 17752| The parent asset does not exist in this tree          |
+| 17758 | The asset already exists on the tree            |
+| 17760 | The name of the asset to be created is illegal      |
+| 17770| The tree exceeds the maximum number of layers (7 layers) |
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset- 
 nodes?action=associateAsset&orgId=o15589291276361&treeId=KRAceqRA&parentAssetId=LGRCJVDc&productKey=UwXL9jmm&deviceKey=eacdsz9IGJ
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 { 

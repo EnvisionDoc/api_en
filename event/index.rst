@@ -1,8 +1,8 @@
-告警服务
+Alert Service
 ===============
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth:  1
 
    overview
    search_active_alerts

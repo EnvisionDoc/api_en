@@ -1,56 +1,56 @@
 # Search Event
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-按条件分页搜索事件。
+Search for events by page based on criteria.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/events?action=search
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |------------------|---------------|----------|---|
 | productKey  | False         | String| productKey|
 | deviceKey   | False         | String| deviceKey|
-| assetId  | False  | String | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)|
-| tslEventKey | False         | String| 事件key|
-| tslEventType | False         | String| 事件类型|
-| startTime   | False         | String | 开始时间，针对事件的发生时间而言，格式yyyy-MM-dd HH:mm:ss代表查询本地时间,yyyy-MM-ddTHH:mm:ssZ代表utc时间，如果不填，默认最近一周的数据|
-| endTime  | False         | String    | 结束时间，针对事件的发生时间而言，格式yyyy-MM-dd HH:mm:ss代表查询本地时间,yyyy-MM-ddTHH:mm:ssZ代表UTC时间，如果不填，默认最近一周的数据|
-| expression  | False         | String| 查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1) |
-| pagination  | False  |Pagination请求结构体 | 随机分页，默认就是按照occurTime倒序排列，用户不能指定排序字段。默认分页大小是10。参见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
+| assetId  | False  | String | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
+| tslEventKey | False         | String| Event key|
+| tslEventType | False         | String| Event type|
+| startTime   | False         | String | Start time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched|
+| endTime  | False         | String    | End time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched|
+| expression         | False    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| pagination  | False  |Pagination request structure | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Event结构体      |查询得到的事件列表，见[Event结构体](/docs/api/en/latest/connect/get_event.html#id3) |
+| data |  Event structure      |List of events gotten from query; see [Event Structure](/docs/api/en/latest/connect/get_event.html#id3) |
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/events/search?action=search&orgId=1c499110e8800000
-method: POST
-requestBody: {"pagination":{"pageNo":1,"pageSize":2},"action":"search"}
+method:  POST
+requestBody:  {"pagination":{"pageNo":1,"pageSize":2},"action":"search"}
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

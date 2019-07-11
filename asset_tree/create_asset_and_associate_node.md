@@ -1,66 +1,66 @@
 # Create Asset and Associate Node
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-创建一个逻辑资产，并关联到资产树上。
+Create a logical asset and associate it with the asset tree.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| treeId        | Query            | true    | String    | 需要获取的资产树ID。[如何获取资产树信息ID](/docs/api/en/latest/api_faqs#id)        |
-| parentAssetId | Query            | true    | String    | 待关联资产的父节点的资产ID。 |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get asset tree ID](/docs/api/en/latest/api_faqs#id)        |
+| parentAssetId | Query            | true    | String    | Asset ID of the parent node of the asset to be associated.  |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |------------|---------------|----------------|--------------------------------|
-| asset| true          | Asset结构体    | 创建资产时需要提供的资产详情，见[Asset结构体](/docs/api/en/latest/asset_tree/create_asset_and_associate_node.html#asset-assetstruc)   |
+| asset| true          | Asset structure    | Asset details to be provided when creating an asset. See [Asset Structure](/docs/api/en/latest/asset_tree/create_asset_and_associate_node.html#asset-assetstruc)   |
 
 
-### Asset结构体<assetstruc>
+### Asset structure <assetstruc>
 
-| 名称  | 是否必须  |  数据类型      | 描述    |
+| Name | Required or Not | Data Type | Description |
 |-------|-------|-------------|--------------|
-|modelId|true|String|资产所属模型ID。[如何获取modelId信息](/docs/api/en/latest/api_faqs.html#modeid-modeid)|
-| name |true| StringI18n |支持国际化的资产名称。结构请见[国际化名称结构体](/docs/api/en/latest/api_faqs.html#id3) |
-|timezone  |true|  String  |资产所属时区。<br>使用+08:00格式表示不支持夏令时的时区。<br>使用Asia/Shanghai格式表示支持夏令时的时区。<br>详情请见[时区表示方法](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id4) |
-|description |false|String|资产描述 |
-|attributes  |false  |Map（Key为String，Value为Object）  |资产所属的模型属性。详情请见 [attributes的表示方法](/docs/api/en/latest/api_faqs.html#attributes) |
-|tags |false|Tag结构体|用户自定义标签，详情请见[标签的作用与表示方法](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id6)|
+| modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| name |true| StringI18n |Internationalized asset names are supported. For the structure, see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)
+|timezone  |true|  String  |Timezone where the asset is located. <br> If +08:00 format is used, it indicates that the timezone for summer time is not supported. <br> If Asia/Shanghai format is used, it indicates that the timezone for summer time is supported. <br>For details, see [Timezone Representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id4) |
+|description |false|String|Asset description |
+|attributes  |false  |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to. For details, see [Attributes Representation](/docs/api/en/latest/api_faqs.html#attributes) |
+|tags |false|Tag structure|User-customized tags. For details, see [Role and Representation of Tags](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id6)|
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| String                            | 创建的资产ID                   |
+| data| String                            | Created asset ID                   |
 
 
-## 错误码
+## Error codes
 
-| 代码 | 描述    |
+| Code | Description    |
 |-----------|-----------------------------|
-| 17751 | Tree ID 不存在              |
-| 17752| 父资产不存在该树上          |
-| 17758 | 资产已存在该树上            |
-| 17760 | 欲创建的资产名称不合法      |
-| 17770| 该树超过最高层数限制（7层） |
+| 17751 | Tree ID does not exist              |
+| 17752| The parent asset does not exist in this tree          |
+| 17758 | The asset already exists on the tree            |
+| 17760 | The name of the asset to be created is illegal      |
+| 17770| The tree exceeds the maximum number of layers (7 layers) |
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=lMAXwaLX&action=createAsset&parentAssetId=fy4hxezF&orgId=1c499110e8800000
@@ -68,7 +68,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=lMAXwaLX&acti
     "asset": { 
         "modelId": "STRING-INVERTER-MODEL", 
         "name": { 
-            "defaultValue": "逆变器 #1", 
+            "defaultValue": "inverter #1", 
             "i18nValue": { 
                 "en_US": "Inverter #1" 
             } 
@@ -87,7 +87,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=lMAXwaLX&acti
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 { 

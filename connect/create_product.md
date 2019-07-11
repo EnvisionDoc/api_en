@@ -1,54 +1,54 @@
 # Create Product
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-创建产品。
+Create products.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=create
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| productDesc       | False     | String       | 产品的描述                                                         |
-| biDirectionalAuth | True      | Boolean      | 是否支持双向认证                                                   |
-| modelId           | True      | String      | 资产所属模型ID。[如何获取modelId信息](/docs/api/en/latest/api_faqs#modeid-modeid)   |
-| dataFormat        | True      | String      | 数据类型。枚举，Custom代表用户自定义数据类型，Json代表json数据类型。|
-| productName       | True      | StringI18n | 产品名称                                                           |
-| productType       | True      | String      | 产品类型。枚举，Device代表普通产品类型，Gateway代表网关类型。|
+| productDesc       | False     | String       | Product Description                                                         |
+| biDirectionalAuth | True      | Boolean      | Dual-way authentication supported or not                                                  |
+| modelId           | True      | String      | Model ID which the asset belongs to. [How to get modelId information] (/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)   |
+| dataFormat        | True      | String      | Data Type. Enumeration; Custom represents the user-defined data type, while Json represents the json data type. |
+| productName       | True      | StringI18n | Product Name                                                           |
+| productType       | True      | String      | Product Type. Enumeration; Device stands for common product types, while Gateway stands for gateway types. |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| String                           | 创建的产品的key               |
+| data| String                           | Key of the created product               |
 
 
-## 错误码
+## Error codes
 
-| 代码| 数据类型 | 描述         |
+| Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11699|                       |ModelId不存在              |
+| 11699|                       |ModelId does not exist              |
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
-POST: /connect-service/v2.1/products?action=create&orgId=xxx
+POST:  /connect-service/v2.1/products?action=create&orgId=xxx
 {
 	"productDesc":"openapi_sdk_create_test",
 	"biDirectionalAuth":false,
@@ -63,7 +63,7 @@ POST: /connect-service/v2.1/products?action=create&orgId=xxx
 
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

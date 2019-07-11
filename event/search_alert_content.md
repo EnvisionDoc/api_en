@@ -1,57 +1,57 @@
 # Search Alert Content
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-分页查询告警内容。
+Query alert content by page.
 
-## 请求格式
+## Request format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c499110e8800000 
 {}
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
                                                                  
 
-## 请求参数（Body）
-| 名称 | 是否必须 | 数据类型 | 描述 |
+## Request parameters (Body)
+| Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | 资产所属模型ID。[如何获取modelId信息](/docs/api/en/latest/api_faqs#modeid-modeid)  |
-| alertTypeId  | false    | String               | 告警类型ID   |
-| subAlertTypeId    | false    | String   | 告警子类型ID  |                       
-| expression         | false    | String   | 查询表达式，查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)|
-| pagination     | false     | Pagination请求结构体    | 分页的参数。如果不填，默认每页10条。默认按照`updateTime`降序排序，支持用户指定以下字段排序：`contentId`，`modelId`，`updatePerson`，`updateTime`。见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)|
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
+| alertTypeId  | false    | String               | Alert type ID   |
+| subAlertTypeId    | false    | String   | Alert sub-type ID  |                       
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertContent结构体 | 告警内容，见[AlertContent结构体](/docs/api/en/latest/event/search_alert_content.html#id4)|
+| data | AlertContent structure | Alert content. See [AlertContent Structure](/docs/api/en/latest/event/search_alert_content.html#id4)|
 
-### AlertContent结构体
+### AlertContent structure
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
-| contentId| String           | 内容ID                 |
-| contentDesc | StringI18n | 告警内容描述  |
-| modelId| String           | 模型ID                 |
-| orgId          | String| 资产所属的组织ID|
-| alertType  | AlertType结构体  | 告警类型               |
-| subAlertType| AlertType结构体  | 子告警类型             |
-| tags| Tag结构体        | 用户自定义告警内容标签 |
-| updatePerson| String           | 更新人员名称           |
-| updateTime| Long             | 最后一次更新时间       |
+| contentId| String           | Content ID                 |
+| contentDesc | StringI18n | Alert content description         |
+| modelId| String           | Model ID                 |
+| orgId          | String| Organization ID which the asset belongs to|
+| alertType  | AlertType structure  | Alert type              |
+| subAlertType| AlertType structure  | Sub-alert type             |
+| tags| Tag structure        | User-customized alert content tags |
+| updatePerson| String           | Update personnel name           |
+| updateTime| Long             | Last update time       |
 
 
 
-## 输入输出示例
+## Input/output samples
 
-### 请求示例
+### Request sample
 
 ```json
 https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c499110e8800000 
@@ -67,7 +67,7 @@ https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -125,7 +125,7 @@ https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public void testSearchAlertContent() {  

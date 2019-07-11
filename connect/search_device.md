@@ -1,73 +1,73 @@
 # Search Device
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-查询设备信息。
+Query the device information.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=search
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
-| expression| False         | String               | 查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1) |
-| pagination| False         | pagination请求结构体 | 随机分页，默认就是按照occurTime倒序排列，用户不能指定排序字段。默认分页大小是10。[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)|
-| projection| False         | Projection结构体    |用于在接口请求中描述待返回的对象projection。详见[projection参数如何对结果集做裁剪](/docs/api/en/latest/api_faqs.html#projection)  |
+| expression| False         | String               | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| pagination  | False  |Pagination request structure | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| projection| False         | Projection structure          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    Device结构体        | 网关下指定分页的一组子设备信息，见[Device结构体](/docs/api/en/latest/connect/search_device.html#id4) |
+| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure] (/docs/api/en/latest/connect/search_device.html#id4) |
 
 
-### Device结构体
+### Device structure
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
-| orgId |  String | 资产所属的组织ID |
-| assetId  | String         | 资产ID|
-| modelId             | String                          | 资产所属模型ID|
-| modelIdPath      | String                            | 模型ID的路径                                                               |
+| orgId |  String | Organization ID which the asset belongs to |
+| assetId  | String         |Asset ID|
+| modelId             | String                          | Model ID which the asset belongs to|
+| modelIdPath      | String                            | Model ID path                                                               |
 | productKey       | String                            | Product Key                                                                |
-| productName      | StringI18n                        | product名称                                                                |
-| productType      | String                            | 产品类型                                                                   |
-| dataFormat       | String                            | 数据格式。Custom表示支持用户自定义数据格式，Json表示只支持EnOS设备协议格式 |
-| deviceKey        | String                            | 设备key                                                                    |
-| deviceName       | StringI18n                        | 设备名称                                                                   |
-| deviceSecret     | String                            | 设备的连接秘钥                                                             |
-| deviceDesc       | String                            | 设备描述                                                                   |
-| timezone         | String                            | 设备所在时区                                                               |
-| deviceAttributes | Map（Key为String，Value为String） | 设备的属性                                                                 |
-| deviceTags       | Map（Key为String，Value为String） | 设备的标志                                                                 |
-| createTime       | Long                              | 设备的创建时间                                                             |
-| status           | String                            | 设备的状态（online、offline、inactive或disable）                         |
-| activeTime       | Long                              | 设备的激活时间                                                             |
-| lastOnlineTime   | Long                              | 设备最后一次上线时间                                                       |
-| lastOfflineTime  | Long                              | 设备最后一次离线时间                                                       |
+| productName      | StringI18n                        | Product name                                                                |
+| productType      | String                            | Product type                                                                  |
+| dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
+| deviceKey        | String                            | Device key                                                                    |
+| deviceName       | StringI18n                        | Device name                                                                   |
+| deviceSecret     | String                            | Device connection key                                                             |
+| deviceDesc       | String                            | Device description                                                                   |
+| timezone         | String                            | Timezone where the device is located                                                               |
+| deviceAttributes | Map (Key is of String type and the value is of String type) | Device attributes                                                                 |
+| deviceTags       | Map (Key is of String type and the value is of String type) | Device marks                                                                 |
+| createTime       | Long                              | Device creation time                                                             |
+| status           | String                            | Device status (online, offline, inactive or disable)                         |
+| activeTime       | Long                              | Device activation time                                                             |
+| lastOnlineTime   | Long                              | Last online time of device                                                       |
+| lastOnlineTime   | Long                              | Last offline time of device                                                       |
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=search&orgId=o15475450989191
-method: POST
-requestBody: {
+method:  POST
+requestBody:  {
 	"pagination": {
 		"pageNo": 2,
 		"pageSize": 5
@@ -75,10 +75,10 @@ requestBody: {
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
-responseBody: {
+responseBody:  {
 	"code": 0,
 	"msg": "OK",
 	"requestId": "59ecd409-7baa-4726-ba10-c0bde35ffb09",

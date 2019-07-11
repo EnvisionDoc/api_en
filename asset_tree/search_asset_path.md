@@ -1,71 +1,71 @@
 # Search Asset Path
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-查询资产树上符合条件的路径，路径是从一个上级资产节点到一个下级资产节点的完整路径，可以包含中间经过的资产节点。
+Query the eligible path on the asset tree. A path is a complete path from a superior asset node to a subordinate asset node, and can contain intermediate asset nodes.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-
 paths?action=search
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)  |
-| treeId          | Query            | true     | String    | 资产树ID |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| treeId          | Query            | true     | String    | Asset tree ID |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| pagination| false         |Pagination请求结构体  | 用于在接口请求中描述分页要求。默认第一页，分页大小为100条记录，见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)   |
-| from | false         | From-to结构体       | 表示资产路径的起始点条件。如果不提供，则表示资产树的根节点。[参见From-to结构体](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc)。                        |
-| to            | false         | From-to结构体         | 表示资产路径的终止点条件。如果不提供，则表示资产树的叶子节点。[参见From-to结构体](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc) |
-| projection| false         | String Array         | 用于在接口请求中描述待返回的对象projection。对于符合条件的搜索仅返回符合条件的字段，不设置则默认返回全部fields。详见[projection参数如何对结果集做裁剪](/docs/api/en/latest/api_faqs.html#projection)|
-| pathProjection| false         | String                | 可填COMPLETE、END_NODE_ONLY。COMPLETE表示返回路径上的每个资产节点，默认为COMPLETE；END_NODE_ONLY表示只返回路径的起始点和终结点  |
+| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Structure](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
+| from | false         | From-to structure       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Structure](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc).                         |
+| to            | false         | From-to structure           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Structure](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc) |
+| projection| false         | String Array         | Used to describe the object projection to be returned in the interface request. Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
+| pathProjection| false         | String                | It may be COMPLETE or END_NODE_ONLY. COMPLETE represents each asset node on the return path, which is set as COMPLETE by default; END_NODE_ONLY means only the start and end points of the path are returned  |
 
 
-### From-to结构体<from_to_struc>
+### From-to structure <from_to_struc>
 
-| 名称       | 是否必须  | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|-----------------------|
-| rootModelIds| false   | String Array         | 根模型id，如果希望查询多个根模型就提供多个根模型id  |
-| modelIds   | false   | String Array         | 资产所属模型ID。如果想查询多个模型，就提供多个模型ID组成的List。[如何获取modelId信息](/docs/api/en/latest/api_faqs.html#modeid-modeid)  |
-| assetIds    | false          | Array          | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid) |
+| rootModelIds| false   | String Array         | Root model id. You should provide multiple root model IDs if you want to query multiple root models  |
+| modelIds   | false   | String Array         | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| assetIds        | false     | Array        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to Get assetId Information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称 |数据类型  | 描述 |
+| Name | Data Type | Description |
 |-----------|------------------|------------------|
-| assets     | Map（Key为String，Value为Asset） | 路径上的资产数据  |
-| assetPaths | String Array Array             | 当`pathProjection`参数为COMPLETE时，其中每一个String Array为路径上起始到终止节点的每个资产Id，长度大于等于2。 当`pathProjection`参数为END_NODE_ONLY时，其中每一个String Array为路径的起始与终止节点的资产Id，长度固定为2。 |
+| assets     | Map  (Key is of String type, and the Value is of Asset type)| Asset data on the path  |
+| assetPaths | String Array Array             | When the `pathProjection` parameter is COMPLETE, each of the String Arrays is the ID of each asset from the start node to the end node on the path, and the length is greater than or equal to 2.  When the `pathProjection` parameter is END_NODE_ONLY, each of the String Arrays is the asset IDs of the start node and the end node of the path, and the length is fixed at 2.  |
 
 
-### Asset结构体
+### Asset structure
 
-| 名称 |数据类型  | 描述 |
+| Name | Data Type | Description |
 |------------------|-------------------|----------------------------------------|
-| assetId     | String            | 资产ID               |
-| name        | StringI18n  | 该资产的各语言名称 |
-| description | String            | 资产描述                               |
-| attributes  | Map               | 资产所属的模型属性                  |
-| timezone   | String            | 时区                                   |
-| modelId    | String            | 资产所属模型ID |
-| modelIdPath | String            | 模型id路径                             |
-| tags        | Tag结构体         | 用户自定义标签                         |
+| assetId     | String            | Asset ID               |
+| name        | StringI18n  | Name of each language for this asset |
+| description | String | Asset description|
+| attributes  | Map               | Attributes of the model which the asset belongs to                  |
+| timezone   | String            | Timezone                                   |
+| modelId    | String            | Model ID which the asset belongs to |
+| modelIdPath | String            | Model ID path                             |
+| tags        | Tag structure         | User-customized tags                         |
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 POST
@@ -82,7 +82,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 } 
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -134,9 +134,9 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 }
 ```
 
-## 示例 2
+## Sample 2
 
-### 请求示例
+### Request sample
 
 ```
 POST
@@ -159,7 +159,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 }
 ```
 
-### 返回示例 
+### Return sample 
 
 ```json
 {

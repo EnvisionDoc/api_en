@@ -1,72 +1,72 @@
 # Search Active Alerts
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-查询实时告警。
+Query the active alerts.
 
-## 请求格式
+## Request format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
                                                                  
 
-## 请求参数（Body）
-| 名称 | 是否必须 | 数据类型 | 描述 |
+## Request parameters (Body)
+| Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | 资产所属模型ID。[如何获取modelId信息](/docs/api/en/latest/api_faqs#modeid-modeid)  |
-| assetIds        | false     | String    | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs#assetid-assetid)    |
-| measurepointsId     | false     | String    | 资产测点，支持多测点查询，各个测点间用逗号隔开；支持查询的（设备数*测点数）上限为3000。[如何获取测点（pointId）信息](/docs/api/en/latest/api_faqs#pointid-pointid) |
-| startOccurTime        | false     | String  | 告警触发时间的起始时间，见[API在使用的时间参数](/docs/api/en/latest/api_faqs.html#id5)  |
-| endOccurTime        | false     | String     | 告警触发时间的结束时间，见[API在使用的时间参数](/docs/api/en/latest/api_faqs.html#id5)   |
-| expression         | false    | String   | 查询表达式，查询表达式，支持类sql的查询。目前支持查询的字段是`modelId`，`assetId`，`measurepointId`，`hitRuleId`，`severityId`，`typeId`，`subTypeId`，`contentId`，`eventType`，`eventId`，`tag`。支持的算术运算符是=，in，逻辑运算符是and。[如何使用查询表达式](/docs/api/en/latest/api_faqs.html#id1)|
-| pagination     | false     |  Pagination请求结构体   | 随机分页，默认就是按照`occurTime`倒序排列，用户不能指定排序字段。默认分页大小是10。见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)|
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
+| assetIds        | false     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| measurepointsId     | false     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId information](/docs/api/en/latest/api_faqs#how-to-get-the-measurepoint-pointid-information-pointid)                                                                                                                                                                           |
+| startOccurTime | false    | String| Start time for triggering alert. See [Time Parameter Used by API] (/docs/api/en/latest/api_faqs.html#id5)    |
+| endOccurTime   | false    | String| End time for triggering alert. See [Time Parameter Used by API] (/docs/api/en/latest/api_faqs.html#id5) |
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| pagination  | false  |Pagination request structure | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | ActiveAlert结构体 | 实时告警列表。详见[ActiveAlert结构体](/docs/api/en/latest/event/search_active_alerts#id5)|
+| data | ActiveAlert structure | List of active alerts. For details, see [ActiveAlert Structure](/docs/api/en/latest/event/search_active_alerts#id5)|
 
-### ActiveAlert结构体
+### ActiveAlert structure
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
-| eventId        | String                | 告警id                                                                          |
-| orgId          | String                | 资产所属的组织ID。|
-| assetId        | String                | 资产ID。|
-| modelId        | String                | 资产所属模型ID。|
-| modelIdPath    | String                | 模型ID路径|
-| measurepointId | String| 资产测点|
-| hitRuleId      | String                | 匹配的规则编号|
-| value          | Integer/Double/Object | 测点值|
-| occurTime      | Long| 告警发生时间UTC时间|
-| localOccur     | String| 告警发生时间，本地时间|
-| createTime     | Long| 入库UTC时间|
-| updateTime     | Long| 更新UTC时间|
-| severityId     | String| 告警级别编号|
-| severityDesc   | StringI18n            | 告警级别描述|
-| typeId         | String                | 告警类别编号|
-| typeDesc       | StringI18n            | 告警类型的具体描述|
-| subTypeId      | String                | 告警子类型|
-| subTypeDesc    | StringI18n            | 告警子类型描述|
-| contentId      | String                | 告警内容编号|
-| contentDesc    | StringI18n            | 告警描述|
-| eventType      | Integer               | 事件类型:0：系统恢复的告警；1：系统触发的告警；2：手动恢复的告警；3：手动插入的告警 |
-| tag            | Tag结构体             | 告警标签|
-| ruleDesc       | StringI18n            | 规则描述|
+| eventId        | String                | Alert id                                                                          |
+| orgId          | String                | Organization ID which the asset belongs to. |
+| assetId        | String                | Asset ID. |
+| modelId        | String                | Model ID which the asset belongs to. |
+| modelIdPath    | String                | Model ID path|
+| measurepointId | String| Asset measurepoint|
+| hitRuleId      | String                | Matched rule ID|
+| value          | Integer/Double/Object | Measurepoint value|
+| occurTime      | Long| UTC time when the alert occurs|
+| localOccur     | String| Local time when the alert occurs|
+| createTime     | Long| UTC creation time|
+| updateTime     | Long| UTC time for update|
+| severityId     | String| Alert level ID|
+| severityDesc   | StringI18n            | Alert level description|
+| typeId        | String                | Alert type ID|
+| typeDesc       | StringI18n            | Alert type description|
+| subTypeId      | String                | Alert sub-type|
+| subTypeDesc    | StringI18n            | Alert sub-type description|
+| contentId      | String                | Alert content ID|
+| contentDesc    | StringI18n            | Alert description|
+| eventType      | Integer               | Event type: 0 - system recovery alert; 1 - system-triggered alert; 2 - manual recovery alert; 3 - manually-inserted alarm |
+| tag            | Tag structure            | Alert tags|
+| ruleDesc       | StringI18n            | Rule description|
 
 
 
-## 输入输出示例
+## Input/output samples
 
-### 请求示例
+### Request sample
 
 ```json
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &orgId=1c499110e8800000 
@@ -80,7 +80,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -115,8 +115,8 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 		"severityId": "alert_001",
 		"severityDesc": {
 			"i18nValue": {
-				"en_US": "警告",
-				"zh_CN": "警告"
+				"en_US": "alert",
+				"zh_CN": "alert"
 			             }
 		                },
 		"typeId": "errorType",
@@ -141,7 +141,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public void testSearchActiveAlerts(){  

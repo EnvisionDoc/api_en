@@ -1,30 +1,30 @@
-# EnOS API 快速入门
+﻿# Get Started EnOS API
 
 *Note: This documentation is in the progress of translation. Thanks for your visit!*
 
-该教程通过一个例子带着你完成你的第一个EnOS API调用任务。
+This tutorial is intended to guide you through an example of completing your first EnOS API invocation task.
 
-## 前提条件
+## Prerequisites
 
-调用EnOS API需完成以下准备：
+The following preparations are required to invoke the EnOS API:
 
-**获取服务账号**
+**Get the service account**
 
-已获取用于调用API时，用于身份授权的服务账号。详细步骤，参考[API鉴权](overview#authentication)。
+You have gotten the service account that can be used for identity authorization when invoking the API. For detailed steps, see [API Authentication] (overview#authentication).
 
-**获取资源权限**
+**Get resource permissions**
 
-服务账号已取得系统中相关资源的访问权限。详细信息，参考[管理服务账号](/docs/iam/en/latest/howto/service_account/managing_service_account.html)。
+The service account has the permissions to access to related resources in the system. For details, see [Managing Service Accounts] (/docs/iam/en/latest/howto/service_account/managing_service_account.html).
 
-**准备开发环境**
+**Prepare the development environment**
 
-安装EnOS提供的SDK，准备调用API的基础环境。参考以下详细介绍：
+Install the SDK provided by EnOS and prepare the basic environment for API invocation. Refer to the following details:
 
-### 使用Java调用SDK
-使用Java调用SDK，需要安装Java core SDK（Poseidon）。Poseidon支持Java 7及以上版本。
+### Invoking SDK with Java
+To invoke the SDK using Java, you need to install the Java core SDK (Poseidon). Poseidon supports Java 7 and above.
 
-#### 安装方法
-访问[Maven仓库](https://mvnrepository.com/artifact/com.envisioniot/apim-poseidon/0.1.7)，下载Poseidon Jar安装包，在应用中引入Jar安装包。如果应用使用`pom`工程，则在`pom.xml`文件中加入以下依赖：
+#### Installation method
+Visit [Maven Warehouse](https://mvnrepository.com/artifact/com.envisioniot/apim-poseidon/0.1.7), and download Poseidon Jar installation package into your application. If the application uses the `pom` project, add the following dependencies to the `pom.xml` file:
 
 ```xml
 <dependency>
@@ -33,11 +33,11 @@
   <version>0.1.7</version>
 </dependency>
 ```
-#### 使用方法
+#### How to use
 
-**同步请求**
+**Synchronous request**
 
-1. API无校验，示例代码如下：
+1. No verification for API. The sample codes are given as follows:
 
    ```
    Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret))
@@ -46,7 +46,7 @@
            .sync();
    ```
 
-2. 开启API日志，示例代码如下：
+2. Enable the API log. The sample codes are given as follows:
 
    ```
    Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
@@ -55,7 +55,7 @@
            .sync();
    ```
 
-3. Post请求，示例代码如下：
+3. Post request. The sample codes are given as follows:
 
    ```
    Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
@@ -68,9 +68,9 @@
                .sync();
    ```
 
-**异步请求**
+**Asynchronous request**
 
-示例代码如下：
+The sample codes are given as follows:
 
 ```java
 Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret))
@@ -88,9 +88,9 @@ Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret))
             });
 ```
 
-**支持Request和Response**
+**Request and Response supported**
 
-示例代码如下：
+The sample codes are given as follows:
 
 ```java
 UserRequest userRequest = new UserRequest();
@@ -102,20 +102,20 @@ UserResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(
             .url("https://{apigw-address}")
             .getResponse(userRequest, UserResponse.class);
 ```
-.. note:: Request内置支持Header，Query，RequestBody，Path参数；异常情况需捕获PoseidonException异常查看具体问题。
+.. note:: Request provides the built-in support for the Header, Query, RequestBody and Path parameters; In case of an exception, it is required to capture the PoseidonException exception to view specific issues.
 
-### 使用Python调用SDK
-使用Python调用SDK，需要安装Python core SDK（Athena）。
+### Invoke SDK with Python
+To invoke the SDK using Python, you need to install the Python core SDK (Athena).
 
-#### 安装方法
+#### Installation method
 
-通过以下pip命令安装：
+Install it using the following pip command:
 
 ```
 pip install aphrodite
 ```
 
-#### 使用方法
+#### How to use
 
 **Query** 
 
@@ -164,13 +164,13 @@ print(req)
 
 ```
 
-## 调用EnOS API
+## Invoking EnOS API
 
-开发环境准备完成后，参考各API接口文档中的参数说明和调用示例，调用API。
+After the development environment is ready, refer to the parameter descriptions and invocation examples in the API interface documentation to invoke the API.
 
-### 示例
+### Sample
 
-以下示例为使用Java SDK调用*Get Asset* API获取资产详细信息：
+The following sample show how to get the asset details using the Java SDK to invoke *Get Asset* API:
 
 ```java
 import com.envision.apim.poseidon.config.PConfig;
@@ -191,7 +191,7 @@ public class demo {
     }
 ```
 
-以上示例代码运行完成后，返回数据示例为：
+After the above-mentioned sample codes are executed, the sample of returned data is given as follows:
 
 ```
 {

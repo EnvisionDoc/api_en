@@ -1,48 +1,48 @@
 # Delete Product
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-删除产品。
+Delete products.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=delete
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 | productKey         | Query            | true     | String    | Product Key |
 
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|---------------------------|-----------------------------|
-| data | String                           | 删除的产品的key               |
+| data | String                           | Key of the deleted product               |
 
 
-## 错误码
+## Error codes
 
-| 代码| 数据类型 | 描述         |
+| Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11651|                       |Productkey不存在              |
-| 11619|                       |删除的product下存在设备             |
+| 11651|                       |Productkey does not exist              |
+| 11619|                       |There are devices under the deleted product             |
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
-POST: /connect-service/v2.1/products?action=delete&orgId=xxx&productKey=xxx
+POST:  /connect-service/v2.1/products?action=delete&orgId=xxx&productKey=xxx
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

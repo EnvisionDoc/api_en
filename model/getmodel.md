@@ -1,48 +1,48 @@
 # Get Thing Model
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-根据模型标识符（`modelId`）获取模型。
+Get the model based on the model identifier (`modelId`).
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/model-service/v2.1/thing-models?action=get
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |-------|-------------|-----|------|----------|
-| orgId   | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid) |
-| scope   | Query            | False    | Integer   | 查询范围。0：只从`orgId`指定的OU查找，1：从`orgId`指定的OU与公有模型所在的OU查找。默认值为1 |
-| modelId | Query            | True     | String    | 资产所属模型ID。[如何获取modelId信息](/docs/api/en/latest/api_faqs.html#modeid-modeid)|
+| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid) |
+| scope   | Query            | False    | Integer   | Query scope. 0: Search only from the OU specified by `orgId`, 1: Search from the OU specified by `orgId` and the OU where the public model is located. It is set as 1 by default|
+| modelId | Query            | True     | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
 
 
 
-## 响应参数
+## Response parameters
 
-|名称|数据类型|描述|
+| Name | Data Type | Description |
 |-----------|-----------|----------|
-|data|Object|物模型|
+|data|Object|Thing Model|
 
 
 
-## 错误码
+## Error codes
 
-见[公共返回码（接入服务）](/docs/api/en/latest/overview.html#id8)
+See [Public Return Code (Access Services)](/docs/api/en/latest/overview.html#id8)
 
 
 
-## 示例
+## Sample
 
-### 请求示例
+### Request sample
 
 ```
 GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c499110e8800000&modelId=planet
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -54,7 +54,7 @@ GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c4
                 "modelIdPath": "/planet",
                 "orgId": "1c499110e8800000",
                 "name": {
-                    "defaultValue": "行星",
+                    "defaultValue": "planet",
                     "i18nValue": {
                         "en_US": "planet"
                     }
@@ -65,7 +65,7 @@ GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c4
                     "starsystem": {
                         "identifier": "starsystem",
                         "name": {
-                            "defaultValue": "星系",
+                            "defaultValue": "star system",
                             "i18nValue": {
                                 "en_US": "star system"
                             }
@@ -178,7 +178,7 @@ GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c4
 ```
 
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public class GetThingModel {

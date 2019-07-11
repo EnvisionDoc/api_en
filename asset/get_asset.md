@@ -1,54 +1,54 @@
 # Get Asset
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-根据资产id获取资产数据。
+Get asset data by asset id.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-service/v2.1/assets?action=get
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| assetId       | Query            | true    | String    | 资产ID。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| assetId       | Query            | true    | String    | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
 
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型 | 描述 |
+| Name | Data Type | Description |
 |------|------------|-----------|-------------|
-| data    |asset结构体 | 资产。见[asset结构体](/docs/api/en/latest/asset/get_asset.html#id3)。    |
+| data    |asset structure | Asset. See [Asset Structure](/docs/api/en/latest/asset/get_asset.html#id3).     |
 
 
-### asset结构体
+### Asset Structure
 
-| 名称  |  数据类型      | 描述               |
+| Name | Data Type | Description |
 |-------|---------|---------------------------|
-| assetId |  String | 资产ID|
-| orgId      | String    | 资产所属的组织ID|
-| name | StringI18n |该资产的各语言名称|
-| description   | String | 资产描述|
-|attributes   |Map  |资产所属的模型属性。<br>`Key`为属性id，String类型。Value的类型取决于模型中这个属性的定义|
-|timezone  |  String  |时区|
-|modelId|String|资产所属模型ID|
-|modelIdPath|String|模型继承路径。<br>例如：/Turbine/Double_Feed_Turbine|
-|tags|Map<br>（Key为String, Value为String）|用户自定义标签|
+| assetId |  String | Asset ID|
+| orgId      | String    | Organization ID which the asset belongs to|
+| name | StringI18n |Name of each language for this asset|
+| description   | String | Asset description|
+|attributes   |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute id, which is of String type. The value type depends on the definition of this attribute in the model|
+|timezone  |  String  |Timezone|
+|modelId|String|Model ID which the asset belongs to|
+|modelIdPath|String|Model inheritance path. <br>E.g.: /Turbine/Double_Feed_Turbine|
+|tags|Map<br>(Key is of String type, and the value is of String type)|User-customized tags|
 
 
-## 错误码
+## Error codes
 
-见[公共返回码](/docs/api/en/latest/overview.html#id8)。
+See [Public Return Code](/docs/api/en/latest/overview.html#id8).
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 GET
@@ -56,7 +56,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
 
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -86,7 +86,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
 ```
 
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public class GetAsset {

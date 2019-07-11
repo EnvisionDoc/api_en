@@ -1,48 +1,48 @@
 # Get Asset Trees
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-根据一组`assetId`搜索资产所在的资产树，若`assetId`不在树上，则`data`中无该key。
+Search assets tree as per a group of `assetId`. If `assetId` is not in the tree, then there is no such key in `data`.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| assetIds         | Query            | true     | String Array   | 一组资产ID （assetId），最多100个。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)   |
-| projection         | Query            | false    | String Array   | 用于在接口请求中描述待返回的对象projection。详见[projection参数如何对结果集做裁剪](/docs/api/en/latest/api_faqs.html#projection) |
+| assetIds         | Query            | true     | String Array   | A group of asset ID (assetId), where at most 100 Ids are supported. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)   |
+| projection         | Query            | false    | String Array   |Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Map（Key为assetId，Value为AssetTree结构体Array）   | 资产和其所在的资产树列表，见[AssetTree结构体](/docs/api/en/latest/asset_tree/get_asset_trees.html#id3) |
+| data| Map (the Key is assetId and the Value is the AssetTree structure Array)   | List of assets and their asset trees. See [AssetTree structure](/docs/api/en/latest/asset_tree/get_asset_trees.html#id3) |
 
 
-### AssetTree结构体
+### AssetTree structure
 
-| 名称  |  数据类型      | 描述               |
+| Name | Data Type | Description |
 |-------|-------|---------------------------|
-| treeId  |  String | 资产树ID |
-|tags|Map<String, String>|资产树上的根资产|
+| treeId  |  String | Asset tree ID |
+|tags|Map<String, String>|Root asset on the asset tree|
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action= getAssetTree&orgId=o15541858646501
@@ -51,7 +51,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action= getAssetTree
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 { 

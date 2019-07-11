@@ -1,17 +1,17 @@
-# 告警服务概述
+# Alert Service Overview
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-通过告警服务，你可以定义组织内资产的告警内容，类型，严重级别，及触发条件，并可接收资产告警上报和处理，以实现对资产的实时状态监控和故障分析等业务需求。有关告警管理的详细信息，参见[资产告警](/docs/device-connection/en/latest/howto/alert/alert_overview.html)。
+Through the alert service, you can define the alert content, type, severity level, and trigger conditions for the assets in the organization, and receive asset alert reporting and processing to achieve real-time status monitoring and fault analysis of assets. For details on alert management, see [Asset Alert] (/docs/device-connection/en/latest/howto/alert/alert_overview.html).
 
-| 操作名称     | 描述                |
+| Operation Name     | Description                |
 |--------------|---------------------|
-| [Search Active Alerts](search_active_alerts) | 查询实时告警  |
-| [Aggregate Active Alerts](aggregate_active_alerts)    | 对实时告警进行统计 |
-|[Update Active Alert Tags](update_active_alert_tags)|更新实时告警的tag|
-|[Search History Alerts](search_history_alerts)|查历史告警|
-|[Update History Alert Tags](update_history_alert_tags)|更新历史告警的tag|
-|[Search Alert Severity](search_alert_severity)|分页查询告警级别|
-|[Search Alert Type](search_alert_type)|分页查询告警类型|
-|[Search Alert Content](search_alert_content)|查询告警内容分页|
-|[Get Alert Content](get_alert_content)|根据组织ID和内容ID获取告警内容|
+| [Search Active Alerts](search_active_alerts) | Query active alerts |
+| [Aggregate Active Alerts](aggregate_active_alerts) | Perform statistics on active alerts |
+|[Update Active Alert Tags](update_active_alert_tags)|Update active alert tags|
+|[Search History Alerts](search_history_alerts)|Query history alarts|
+|[Update History Alert Tags](update_history_alert_tags)|Update the history alert tag|
+|[Search Alert Severity](search_alert_severity)|Query alert level by page|
+|[Search Alert Type](search_alert_type)|Query alert type by page|
+|[Search Alert Content](search_alert_content)|Query alert content pagination|
+|[Get Alert Content](get_alert_content)|Get alert content based on organization ID and content ID|

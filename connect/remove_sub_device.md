@@ -1,69 +1,69 @@
 # Remove Sub-Device
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-将子设备从网关下移除（解除拓扑关系）。
+Remove the sub-device from the gateway (remove the topological relationship).
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/device-topos?action=removeSubDevice
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier结构体  | 需要添加子设备的网关信息，见[DeviceIdentfier结构体](/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
-| subDevices           | True      | DeviceIdentfier结构体  | 需要添加到指定网关的子设备列表信息，见[DeviceIdentfier结构体](/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
+| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure] (/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
+| subDevices           | True      | DeviceIdentfier structure | Information of the list of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Structure](/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
 
 
-### DeviceIdentifier结构体
+### DeviceIdentifier structure
 
-注：以下字段必须提供`assetId`或者`(productKey, deviceKey)`。
+Note: The `assetId` or `(productKey, deviceKey)` must be provided for the following fields.
 
-| 名称      | 数据类型 |描述|
+| Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String         | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)|
+| assetId  | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
 | productKey | String         | Product Key      |
-| deviceKey | String         | 设备key          |
+| deviceKey | String         | Device key          |
 
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | String                           | （空）               |
+| data | String                           | (null)               |
 
 
-## 错误码
+## Error codes
 
-| 代码| 数据类型 | 描述         |
+| Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11738 |                | 参数gateway不是网关设备                |
-| 11795 |                | 提供的子设备存在已有拓扑或为网关      |
+| 11738 |                | The parameter gateway is not a gateway device                |
+| 11795 |                | The provided sub-device has an existing topology or is used as a gateway.      |
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/device-topos?action=remove&orgId=o15475450989191
- method: POST
-requestBody: {"subDevices":[{"assetId":"gVRwKQ3C"}],"gateway":{"assetId":"J1Rqyaqz"}}
+ method:  POST
+requestBody:  {"subDevices":[{"assetId":"gVRwKQ3C"}],"gateway":{"assetId":"J1Rqyaqz"}}
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 responseBody:{"code":0,"msg":"OK","requestId":"ea6608bb-b8cb-46f3-a836-ee24ea9a028c","data":null}

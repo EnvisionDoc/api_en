@@ -1,40 +1,40 @@
 # Update Active Alert Tags
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-更新实时告警的tag。
+Update active alert tags.
 
-## 请求格式
+## Request format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |---------------|--------|----------|-----------|
-| orgId         | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
                                                                  
 
-## 请求参数（Body）
-| 名称 | 位置（Path/Query） | 是否必须 | 数据类型 | 描述 |
+## Request parameters (Body)
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |------|----------|--------------------|----|------|
-| eventId       | Query            | true     | String     | 告警id  |
-| tags          | Query            | true     | Tags结构体 | 想要修改的tag map|
-| isPatchUpdate | Query            | true     | Boolean    | 是否全量更新，false为全量修改，true为非全量修改。 |
+| eventId       | Query            | true     | String     | Alert id  |
+| tags          | Query            | true     | Tag structure | Tag map you want to modify |
+| isPatchUpdate | Query            | true     | Boolean    | Whether to update in full; false stands for full modification, while true stands for partial modification.  |
 
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|------------------|
-| data | Integer | 更新的条数|
+| data | Integer | Number of updated entries|
 
 
-## 输入输出示例
+## Input/output samples
 
-### 请求示例
+### Request sample
 
 ```json
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags&orgId=1c499110e8800000
@@ -47,7 +47,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags&
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -58,7 +58,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags&
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 public void testUpdateActiveAlertTags(){  

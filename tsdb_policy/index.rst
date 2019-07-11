@@ -1,8 +1,8 @@
-TSDB策略服务
+TSDB Policy Service
 ==========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth:  1
 
 
    overview

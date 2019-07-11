@@ -1,72 +1,72 @@
 # Create Device
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-创建设备。
+Create devices.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=create
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
 |productKey    | True          | String       | Product Key      |
-|timezone | True          | String         | 设备所在时区     |
-| deviceName | True          | StringI18n | 设备名称         |
-| deviceAttributes | False         | Map       | 设备属性         |
-| deviceKey   | False         | String    | 设备key          |
-| deviceDesc  | False         | String    | 设备描述信息     |
+|timezone | True          | String         | Timezone where the device is located     |
+| deviceName | True          | StringI18n | Device name         |
+| deviceAttributes | False         | Map       | Device attributes         |
+| deviceKey   | False         | String    | Device key          |
+| deviceDesc  | False         | String    | Device description     |
 
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    DeviceCreateResult结构体        | 设备创建返回结果，见[DeviceCreateResult结构体](/docs/api/en/latest/connect/create_device.html#id3) |
+| data |    DeviceCreateResult structure        | Returned results for device creation. See [DeviceCreateResult Structure](/docs/api/en/latest/connect/create_device.html#id3) |
 
 
-### DeviceCreateResult结构体
+### DeviceCreateResult structure
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
 | productKey       | String                            | Product Key                                                                |
-| deviceName       | StringI18n                        | 设备名称                                                                   |
-| deviceSecret     | String                            | 设备的连接秘钥                                                             |
-| assetId  | String         | 资产ID|
+| deviceName       | StringI18n                        | Device name                                                                   |
+| deviceSecret     | String                            | Device connection key                                                             |
+| assetId  | String         |Asset ID|
 
 
-## 错误码
+## Error codes
 
-| 代码| 数据类型 | 描述    |
+| Code| Data Type | Description |
 |-----------|----------------|----------------------|
-| 11702 |                | deviceKey在数据库中已存在（deviceKey提供的情况下）        |
-| 11714 |                | 暂时无法分配设备的key（deviceKey未提供的情况下），请重试 |
-| 11739 |                | 该操作将导致超过产品下限定的设备数量                      |
+| 11702 |                | deviceKey already exists in the database (if deviceKey is provided)        |
+| 11714 |                | The key of the device cannot be assigned temporarily (if the deviceKey is not provided). Please try again. |
+| 11739 |                | This operation will cause that the defined number of devices under the product is exceeded                    |
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=create&orgId=o15475450989191
-method: POST
-requestBody: {
+method:  POST
+requestBody:  {
     "deviceTags":{
         "test":"test for tags"
     },
@@ -86,10 +86,10 @@ requestBody: {
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
-responseBody: {
+responseBody:  {
     "code":0,
     "msg":"OK",
     "requestId":"fd79d0f5-69c5-4fa8-add4-69f5ca1b635f",

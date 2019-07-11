@@ -77,7 +77,7 @@ release = '1'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'zh_CN'
+language = 'en_us'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -119,8 +119,8 @@ html_theme = 'sphinx_enos_theme'
 # documentation.
 #
 html_theme_options = {
-    'copyright_zh': '© 2019 Envision Digital. All Rights Reserved.',
-
+    'copyright_en': '© 2019 Envision Digital. All Rights Reserved.',
+    'display_header': False,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

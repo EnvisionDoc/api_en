@@ -1,43 +1,43 @@
-# Get Points TSDB Meta Data
+﻿# Get Points TSDB Meta Data
 
 *Note: This documentation is in the progress of translation. Thanks for your visit!*
 
-获取模型测点对应的TSDB存储策略，一个测点根据其数据类型及用途可有多条存储策略，该API返回指定测点在当前OU内的所有TSDB存储策略元数据。
+Get the TSDB storage policy corresponding to the model measurepoint. A measurepoint may have multiple storage policies, depending on its data type and usage. This API returns all the TSDB storage policy metadata in the current OU for the specified measurepoint.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/tsdb-service/v2.0/policies?orgId={}&modelIds={}&assetIds={}&measurepoints={}&startTime={}&endTime={}&pageSize={}&accessKey={}
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)|
-| modelIds       | Query            | false    | String    | 资产所属模型ID。支持多model查询，多个modelId之间用英文逗号隔开。[如何获取modelId信息](/docs/api/en/latest/api_faqs#modeid-modeid)|
-| measurepoints | Query            | true     | String    | 资产测点，支持多测点查询，各个测点间用逗号隔开；支持查询的（设备数*测点数）上限为3000。[如何获取测点（pointId）信息](/docs/api/en/latest/api_faqs#pointid-pointid)                                                                                                                                                                           |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)|
+| modelIds       | Query            | false    | String    |Model ID which the asset belongs to. Multi-model query is supported, and multiple modelIds are separated by commas. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
+| measurepoints | Query            | true     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId information](/docs/api/en/latest/api_faqs#how-to-get-the-measurepoint-pointid-information-pointid)                                                                                                                                                                           |
                                               
 
 
-## 响应参数
+## Response parameters
 
-| 名称  | 数据类型      | 描述               |
+| Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | `List<Object>` | 资产数据列表。单设备单点的返回数据按时间升序排列。其中的Object结构体中存储着参数，详见[items](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id3)。|
+| data | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object structure. See [Items](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id3). |
 
 
 ### items
 
 
-| 名称        | 数据类型 | 描述                           |
+| Name | Data Type | Description |
 |---------------|-----------|--------------------------------------|
-| modelId     | String    | 模型ID |
-| tsdb_metadata   |  `List<Object>`    | 模型测点存储策略集合，详见[policy](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id4)。 |
+| modelId     | String    | Model ID|
+| tsdb_metadata   |  `List<Object>`    | Set of model measurepoint storage policies. For details, see [Policy](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id4)。  |
 
 ### policy
 
-以下示例展示了一个测点opentsdb_ai_point_xxx具有AI_RAW（AI原始数据）与AI_NORMALIZED（AI分钟级归一化数据）的存储策略：
+The following sample shows that the measurepoint opentsdb_ai_point_xxx has the storage policies AI_RAW (AI raw data) and AI_NORMALIZED (AI minute-level normalized data):
 
 ```
 "opentsdb_ai_point_xxx": [                        				
@@ -45,22 +45,22 @@ https://{apigw-address}/tsdb-service/v2.0/policies?orgId={}&modelIds={}&assetIds
           "AI_NORMALIZED"
         ]
 ```
-| 名称        | 数据类型 | 描述                           |
+| Name | Data Type | Description |
 |---------------|-----------|--------------------------------------|
-| pointId     | Object    | 测点存储策略，一个测点可以有多个存储策略，策略用数组存储 |
+| pointId     | Object    | Measurepoint storage policy. One measurepoint can have multiple policies, and the policies are stored in arrays |
 
-## 错误码
-有关错误码的描述，参见[通用错误码](overview#errorcode)。
+## Error codes
+For description of error codes, see [Common Error Codes] (overview#errorcode).
 
-## 示例 1
+## Sample 1
 
-### 请求示例
-不指定测点：
+### Request sample
+Measurepoint not specified:
 ```
 https://{apigw-address}/tsdb-policy/v2.0/policies?orgId=o15504722874071&modelIds=opentsdb_model_xxx&measurepoints=
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -92,15 +92,15 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId=o15504722874071&modelIds
 ```
 
 
-## 示例 2
+## Sample 2
 
-### 请求示例
-指定测点：
+### Request sample
+Measurepoint specified:
 ```
 https://{apigw-address}/tsdb-policy/v2.0/policies?orgId=o15504722874071&modelIds=opentsdb_model_xxx&measurepoints=opentsdb_di_point_xxx
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {
@@ -121,7 +121,7 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId=o15504722874071&modelIds
 }
 ```
 
-## Java SDK调用示例
+## Java SDK invocation sample
 
 ```java
 private static class Request extends PoseidonRequest{

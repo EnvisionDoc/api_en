@@ -1,30 +1,30 @@
-# 接入服务概述
+# Access Service Overview
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-提供对产品、设备、命令的管理操作。
+Provide management operations for products, devices, and commands.
 
-| 操作名称     | 描述                |
+| Operation Name     | Description                |
 |--------------|---------------------|
-| [Get Product](get_product) | 获取product的详细信息 |
-| [Search Product](search_product)    | 搜索满足条件的产品 |
-|[Create Product](create_product) |创建产品|
-|[Update Product](update_product)  |更新产品|
-|[Delete Product](delete_product) |删除产品|
-|[Add Sub-Device](add_sub_device) |给网关设备添加新的子设备|
-|[Remove Sub-Device](remove_sub_device) |将子设备从网关下移除|
-|[Get Gateway](get_gateway)  |获取子设备对应的网关信息|
-|[Search Sub-Device](search_sub_device) |搜索网关下的子设备信息|
-|[Disable Device](disable_device)|禁用设备|
-|[Enable Device](enable_device)|启用设备|
-|[Get Device](get_device)|获取设备信息|
-|[Search Device](search_device)|查询设备信息|
-|[Delete Device](delete_device)|删除设备|
-|[Create Device](create_device)|创建设备|
-|[Update Device](update_device)|更新设备|
-|[Get Command](get_command)|获取单个命令信息|
-|[Cancel Command](cancel_command)|取消缓存命令的接口|
-|[Invoke Service](invoke_service)|向设备下发服务调用接口|
-|[Set Measurepoint](set_measurepoint)|测点设置接口|
-|[Get Event](get_event)|通eventId获取Event的详细信息|
-|[Search Event](search_event)|按条件分页搜索事件|
+| [Get Product](get_product) | Get product details |
+| [Search Product](search_product) | Search for products that meet the criteria |
+|[Create Product](create_product) |Create products|
+|[Update Product](update_product)  |Update products|
+|[Delete Product](delete_product) |Delete products|
+|[Add Sub-Device](add_sub_device) |Add a new sub-device to the gateway device|
+|[Remove Sub-Device](remove_sub_device) |Remove sub-devices from the gateway|
+|[Get Gateway](get_gateway) |Get the gateway information corresponding to the sub-device|
+|[Search Sub-Device](search_sub_device) |Search the sub-device information under the gateway|
+|[Disable Device](disable_device)|Disable devices|
+|[Enable Device](enable_device)|Enable devices|
+|[Get Device](get_device)|Get device information|
+|[Search Device](search_device)|Query device information|
+|[Delete Device](delete_device)|Delete devices|
+|[Create Device](create_device)|Create devices|
+|[Update Device](update_device)|Update devices|
+|[Get Command](get_command)|Get a single command information|
+|[Cancel Command](cancel_command)|Cancel the interface to cached commands|
+|[Invoke Service](invoke_service)|Release a service invocation interface to the device|
+|[Set Measurepoint](set_measurepoint)|Measurepoint setting interface|
+|[Get Event](get_event)|Get the details of the Event via `eventId`|
+|[Search Event](search_event)|Search for events by page based on criteria|

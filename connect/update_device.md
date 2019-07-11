@@ -1,58 +1,58 @@
 # Update Device
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-更新设备。更新模式采用`IsPathcUpdate`为true，`assetId`（或`productKey`和`deviceKey`）为请求字段，其他字段为更新字段。
+Update devices. The `IsPathcUpdate` is taken as true in the update mode. The `assetId` (or `productKey` and `deviceKey`) is the request field, and other fields are update fields.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=update
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-注：以下字段必须提供`assetId`或者`(productKey, deviceKey)`。
+Note: In the following non-mandatory fields, you must provide a combination of `assetId` or `productKey` and `deviceKey` to specify the device.
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| assetId  | Query            | String   | False         | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid) |
-| productKey | Query            | String  | False          | Product Key      |
-| deviceKey | Query            | String   | False         | 设备key          |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| assetId  | Query          | False      | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| productKey | Query         | False      | String         | Product Key      |
+| deviceKey | Query         | False     | String          | Device key          |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
-|timezone | True          | String         | 欲更新的设备所在时区     |
-| deviceName | True          | StringI18n | 欲更新的设备名称         |
-| deviceAttributes | False         | Map       | 欲更新的设备属性         |
-| deviceTags   | False         | Map（key为String，value为String）    | 欲更新的设备tags |
-| deviceDesc  | False         | String    | 欲更新的设备描述信息     |
+|timezone | True          | String         | Timezone where the device to be updated is located     |
+| deviceName | True          | StringI18n | Name of the device to be updated         |
+| deviceAttributes | False         | Map       | Attributes of the device to be updated         |
+| deviceTags   | False         | Map (Key is of String type and the value is of String type)    | Tags of the device to be updated |
+| deviceDesc  | False         | String    | Description of the device to be updated     |
 
 
 
 
-## 响应参数
+## Response parameters
 
-| 名称 | 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    String        | （空） |
+| data |    String        | (Null) |
 
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=update&orgId=o15475450989191&assetId=9HhK0YxX
-method: POST
-requestBody: {
+method:  POST
+requestBody:  {
 	"deviceTags": {
 		"test": "test for tags"
 	},
@@ -67,10 +67,10 @@ requestBody: {
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
-responseBody: {
+responseBody:  {
 	"code": 0,
 	"msg": "OK",
 	"requestId": "0d61752e-0633-4846-abb1-b6fb39801a5f",

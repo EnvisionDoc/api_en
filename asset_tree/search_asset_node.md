@@ -1,64 +1,64 @@
 # Search Asset Node
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-查询OU下满足条件的资产。
+Query the assets that meet the conditions under the OU.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)  |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
 
 
-## 请求参数（Body）
+## Request parameters (Body)
 
-| 名称          | 是否必须 | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| filter| false         |   Filter结构体        | 资产的查询条件，见[Filter结构体](/docs/api/en/latest/asset_tree/search_asset_node.html#filter-filterstruc) |
-| pagination| false         | Pagination请求结构体  | 用于在接口请求中描述分页要求，见[Pagination请求结构体](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
-| projection| false         | String Array          | 用于在接口请求中描述待返回的对象projection，见[projection参数如何对结果集做裁剪](/docs/api/en/latest/api_faqs.html#projection)|
+| filter| false         |   Filter structure        | Asset query criterion. See [Filter Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#filter-filterstruc) |
+| pagination| false         | Pagination request structure  | Used to describe the pagination requirements in the interface request. See [Pagination Request Structure](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
+| projection| false         | String Array          | Used to describe the object projection to be returned in the interface request. See [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-### Filter结构体<filterstruc>
+### Filter structure <filterstruc>
 
-| 名称      | 是否必须  | 数据类型 | 描述      |
+| Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|--------------|
-| assetIds| False | String Array | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)|
-| modelIds | False | String Array | 资产所属模型ID。如果想查询多个模型，就提供多个模型ID组成的List。[如何获取modelId信息](/docs/api/en/latest/api_faqs.html#modeid-modeid) |
-| rootModelIds | False | String Array | 资产所属的根模型ID。如果想查询多个根模型，就提供多个根模型ID。|
-| nameLike | False | nameLike结构体 | 用于描述对国际化名称的查询条件，见[nameLike结构体](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
-| attributes  | False|Map |资产所属的模型属性。详情请见 [attributes的表示方法](/docs/api/en/latest/api_faqs.html#attributes) |
-| tags | False | Tag结构体 | 用户自定义的一组标签 |
-| treeId | False | String | 资产关联的资产树ID |
+| assetIds| False  | String Array  | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
+| modelIds | False | String Array | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| rootModelIds | False | String Array | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models. |
+| nameLike | False | nameLike structure | Used to describe the query criterion for internationalized names. See [nameLike Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
+| attributes  | False|Map |Attributes of the model which the asset belongs to. For details, see [Attributes Representation](/docs/api/en/latest/api_faqs.html#attributes) |
+| tags | False | Tag structure | A group of user-customized tags |
+| treeId | False | String | ID of the asset tree associated to the asset |
 
 
-### nameLike结构体<namelikestruc>
+### nameLike structure <namelikestruc>
 
-| 名称        | 数据类型 | 描述      |
+| Name | Data Type | Description |
 |-----------|---------------------|-----------------------|
-| value        | String     | 待查询的名称或名称片段|
-| locale         | String     | 指定的locale，如zh_CN|
+| value        | String     | Name or name fragment to be queried|
+| locale         | String     | Specified locale, such as zh_CN|
 
 
-## 响应参数
+## Response parameters
 
-| 名称 |数据类型  | 描述 |
+| Name | Data Type | Description |
 |-----------|------------------|------------------|
-| data      | Asset结构体Array |  asset的列表    |
+| data      | Asset Structure Array |  Asset list    |
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset&orgId=1c499110e8800000
@@ -72,7 +72,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset&o
 }
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

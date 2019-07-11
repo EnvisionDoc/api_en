@@ -1,44 +1,44 @@
 # Cancel Command
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-取消缓存命令的接口。如果有`commandId`，则取消单个命令，如果无`commandId`，则取消该设备的所有缓存命令。
+Cancel the interface to cached commands. If there is a `commandId`, the single command will be canceled, and if there is no `commandId`, all the cached commands for the device will be canceled.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=cancel
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| assetId  | Query            | False   | String         | 资产ID，支持查询多个资产，多个资产ID之间用英文逗号隔开。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
-| deviceKey | Query           | False      | String       | 设备key          |
-| commandId | Query            | False    | String        | 命令key          |
+| deviceKey | Query           | False      | String       | Device key          |
+| deviceKey | Query         | False     | String          | Command key          |
 
 
-## 响应参数
+## Response parameters
 
-| 名称| 数据类型 | 描述         |
+| Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    getCommand结构体        | 被取消的命令列表。参见[getCommand结构体](/docs/api/en/latest/connect/get_command.html#id3) |
+| data |    getCommand Structure        | List of cancelled commands. See [getCommand Structure](/docs/api/en/latest/connect/get_command.html#id3) |
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=cancel&deviceKey=mqtt_01&productKey=bXuuAiku&orgId=o15541858646501
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 {

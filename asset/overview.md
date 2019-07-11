@@ -1,12 +1,12 @@
-# 资产服务概述
+# Asset Service Overview
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-资产是模型的实例。资产可以是一个设备，如电表。也可以是一组设备的物理或逻辑组合，如光伏电站，或某区域（该区域内有多个资产）。你可以通过资产服务更新与获取资产信息。
+An asset is an instance of a model. An asset can be a device, such as a meter. It can also be a physical or logical combination of a group of devices, such as a photovoltaic power plant, or an area where there are multiple assets. You can update and get asset information through asset services.
 
-## API列表
+## API list
 
-| 操作名称     | 描述                |
+| Operation Name     | Description                |
 |--------------|---------------------|
-| [Update Asset](update_asset) | 全量或部分更新资产信息  |
-| [Get Asset](get_asset)    | 根据资产id获取资产数据 |
+| [Update Asset](update_asset) | Fully or partially update asset information  |
+| [Get Asset](get_asset)    | Get asset data by asset id |

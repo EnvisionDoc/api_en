@@ -1,49 +1,49 @@
 # Delete Asset Node
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+*Note:  This documentation is in the progress of translation. Thanks for your visit!*
 
-从资产树上移除一个资产节点。待移除的资产可以是一个设备资产，也可以是一个逻辑资产。如果待移除的资产节点是一个设备资产，可使用设备资产的`ProductKey`、`DeviceKey`来描述。如果待移除的资产节点是一个逻辑资产，可使用逻辑资产的ID来描述。
+Remove an asset node from the asset tree. The asset to be removed can be a device asset or a logical asset. If the asset node to be removed is a device asset, it can be described by using `ProductKey` and `DeviceKey` of the device asset. If the asset node to be removed is a logical asset, it can be described by the ID of the logical asset.
 
-## 请求格式
+## Request format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=delete
 
 ```
 
-## 请求参数（URI）
+## Request parameters (URI)
 
-| 名称          | 位置（Path/Query） | 是否必须 | 数据类型 | 描述      |
+| Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | 资产所属的组织ID。[如何获取orgId信息](/docs/api/en/latest/api_faqs#orgid-orgid)                |
-| treeId        | Query            | true    | String    | 需要获取的资产树ID。[如何获取资产树信息ID](/docs/api/en/latest/api_faqs#id)        |
-| assetId  | Query            | false    | String    | 待移除的资产ID（用于识别逻辑资产）。当存在`assetId`时，以`assetId`为准，当`assetId`不存在时，则看`productKey`，`deviceKey`。[如何获取assetId信息](/docs/api/en/latest/api_faqs.html#assetid-assetid)  |
-| productKey  | Query            | false    | String    | 待移除的设备ProductKey（用于识别设备资产）。 |
-| deviceKey  | Query            | false    | String    | 待移除的设备DeviceKey（用于识别设备资产）。 |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get asset tree ID](/docs/api/en/latest/api_faqs#id)        |
+| assetId  | Query            | false    | String    | ID of the asset to be removed (used to identify the logical asset). When there is an 'assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)  |
+| productKey  | Query            | false    | String    | ProductKey of the asset to be removed (used to identify the device asset).  |
+| deviceKey  | Query            | false    | String    | DeviceKey of the asset to be removed (used to identify the device asset).  |
 
 
-##错误码
+## Error codes
 
-| 代码 | 描述    |
+| Code | Description    |
 |-----------|-----------------------------|
-| 17751| Tree ID 不存在                                                 |
-| 17756| 资产不存在该树上                                               |
-| 17764| 根节点不能被删除                                               |
-| 17766| 非叶子节点不能被删除                                           |
-| 17762| 一次只允许一个用户修改资产树，暂时不能操作该资产树，请再次请求 |
+| 17751| Tree ID does not exist                                                 |
+| 17756| This tree does not exist for this asset                                               |
+| 17764| The root node cannot be deleted                                               |
+| 17766| Any non-leaf node cannot be deleted                                               |
+| 17762| Only one user can modify the asset tree at a time, and the asset tree cannot be operated temporarily. Please request again. |
 
 
 
 
-## 示例 1
+## Sample 1
 
-### 请求示例
+### Request sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=BRIt3ee3&assetId=AdqP8rZ0&action=delete&orgId=o15541858646501
 ```
 
-### 返回示例
+### Return sample
 
 ```json
 { 
