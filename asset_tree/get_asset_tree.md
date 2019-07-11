@@ -33,7 +33,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 | assetId |  String | Asset ID|
 |modelId|String|Model ID which the asset belongs to|
 |modelIdPath|String|Model ID path. |
-| name | StringI18n |Internationalized asset names are supported|
+| name | StringI18n |Asset name that supports internationalization|
 |timezone  |  String  |Timezone where the asset is located
 | description | String | Asset description|
 | label  | String | Asset type: "0" - device assets; "1" - logical assets|

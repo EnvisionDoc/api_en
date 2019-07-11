@@ -31,7 +31,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 | Name | Required or Not | Data Type | Description |
 |-------|-------|-------------|--------------|
 | modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
-| name |true| StringI18n |Internationalized asset names are supported. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
+| name |true| StringI18n |Asset name that supports internationalization. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
 |timezone  |true|  String  |Timezone where the asset is located. <br> If +08:00 format is used, it indicates that the timezone for summer time is not supported. <br> If Asia/Shanghai format is used, it indicates that the timezone for summer time is supported. <br>For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
 |description |false|String|Asset description |
 |attributes  |false  |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |

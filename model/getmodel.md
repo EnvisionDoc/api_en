@@ -24,13 +24,13 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=get
 
 | Name | Data Type | Description |
 |-----------|-----------|----------|
-|data|Object|Thing Model|
+|data|Object|Thing model. See [ThingModel Structure](/docs/api/en/latest/model/searchmodel.html#id1)|
 
 
 
 ## Error codes
 
-See [Public Return Code (Access Services)](/docs/api/en/latest/overview.html#id8)
+See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overview.html#public-return-codes-connection-service-etc)
 
 
 
