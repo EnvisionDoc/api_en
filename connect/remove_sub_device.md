@@ -1,6 +1,6 @@
 # Remove Sub-Device
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Remove the sub-device from the gateway (remove the topological relationship).
 

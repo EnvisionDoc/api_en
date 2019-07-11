@@ -1,6 +1,6 @@
 # Invoke Service
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 
 Release a service invocation interface to the device.

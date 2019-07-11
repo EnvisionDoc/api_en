@@ -1,6 +1,6 @@
 # TSDB Data Service Overview
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 TSDB-based asset data service. The asset refers to the object after the model is instantiated, and the asset data refers to the data sent by the measurepoint of the asset. Currently, EnOS's TSDB database can store the following asset data:
 - Original data of AI measurepoints

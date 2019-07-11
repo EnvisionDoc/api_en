@@ -1,6 +1,6 @@
 # Get Gateway
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the gateway information corresponding to the sub-device.
 

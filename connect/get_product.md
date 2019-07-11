@@ -1,6 +1,6 @@
 # Get Product
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get product details via `productKey`.
 
@@ -31,7 +31,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 |-------|-------|---------------------------|
 | orgId |  String | Organization ID which the asset belongs to |
 | productKey          | String| Product name                                            |
-| productName         | StringI18n |  Product name. For the structure, see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)
+| productName         | StringI18n |  Product name. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
                                             |
 | productSecret       | String                          | Product private key                                             |
 | productDesc         | String                          | Product Description                                             |

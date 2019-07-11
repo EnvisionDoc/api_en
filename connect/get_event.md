@@ -1,6 +1,6 @@
 # Get Event
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the details of the Event via `eventId`.
 

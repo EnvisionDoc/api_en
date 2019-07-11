@@ -1,6 +1,6 @@
 # Get Thing Model
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the model based on the model identifier (`modelId`).
 

@@ -143,7 +143,7 @@ Sample:
 ```json
 {
 	"defaultValue": "Turbine",
-    "i18nValue": {"zh_CN": "Turbine", "en_US": "Turbine"}
+  "i18nValue": {"zh_CN": "Turbine", "en_US": "Turbine"}
 }
 ```
 

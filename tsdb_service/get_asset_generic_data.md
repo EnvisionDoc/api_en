@@ -1,6 +1,6 @@
 # Get Asset Generic Data
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the common data of a specified measurepoint of a specified device within a certain period.
 

@@ -1,6 +1,6 @@
 # Update Product
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Update products.
 
@@ -26,7 +26,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 | biDirectionalAuth | True      | Boolean      | Dual-way authentication supported or not                                                  |
 | dynamicActivateEnabled           | False      | String      | Dynamic activation supported or not|
 | productName        | False      | String      | Data type. Enumeration; Custom represents the user-defined data type, while Json represents the json data type. |
-| productName       | True      | StringI18n | Product name; see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)                                                           |
+| productName       | True      | StringI18n | Product name; see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)                                                           |
 
 
 

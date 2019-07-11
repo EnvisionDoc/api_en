@@ -1,6 +1,6 @@
 # Search Asset Node
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query the assets that meet the conditions under the OU.
 
@@ -34,7 +34,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 | modelIds | False | String Array | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
 | rootModelIds | False | String Array | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models. |
 | nameLike | False | nameLike structure | Used to describe the query criterion for internationalized names. See [nameLike Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
-| attributes  | False|Map |Attributes of the model which the asset belongs to. For details, see [Attributes Representation](/docs/api/en/latest/api_faqs.html#attributes) |
+| attributes  | False|Map |Attributes of the model which the asset belongs to. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
 | tags | False | Tag structure | A group of user-customized tags |
 | treeId | False | String | ID of the asset tree associated to the asset |
 

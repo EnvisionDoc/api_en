@@ -1,6 +1,6 @@
 # About EnOS API
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 EnOS open the REST API interfaces that cover the core business processes of the system. Based on these interfaces, developers can access resources within the system to develop applications.
 

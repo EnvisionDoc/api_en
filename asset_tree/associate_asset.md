@@ -1,6 +1,6 @@
 # Associate Asset
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Associate a specified existing asset node to the asset tree. The asset to be associated can be a device asset or a logical asset. If the asset node to be associated is a device asset, it can be described by using `ProductKey` and `DeviceKey` of the device asset. If the asset node to be associated is a logical asset, it can be described by the ID of the logical asset.
 

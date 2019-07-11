@@ -1,13 +1,13 @@
 ﻿# Get Points TSDB Meta Data
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the TSDB storage policy corresponding to the model measurepoint. A measurepoint may have multiple storage policies, depending on its data type and usage. This API returns all the TSDB storage policy metadata in the current OU for the specified measurepoint.
 
 ## Request format
 
 ```
-https://{apigw-address}/tsdb-service/v2.0/policies?orgId={}&modelIds={}&assetIds={}&measurepoints={}&startTime={}&endTime={}&pageSize={}&accessKey={}
+https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&assetIds={}&measurepoints={}&startTime={}&endTime={}&pageSize={}&accessKey={}
 ```
 
 ## Request parameters (URI)

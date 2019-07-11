@@ -1,6 +1,6 @@
 # Update Active Alert Tags
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Update active alert tags.
 

@@ -1,6 +1,6 @@
 ﻿# Get Asset Electric Power Data
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the power consumption data of a specified device within a certain period.
 

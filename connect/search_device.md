@@ -1,6 +1,6 @@
 # Search Device
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query the device information.
 
@@ -21,7 +21,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 | Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
-| expression| False         | String               | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| expression| False         | String               | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | pagination  | False  |Pagination request structure | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 | projection| False         | Projection structure          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 

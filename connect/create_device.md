@@ -1,6 +1,6 @@
 # Create Device
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Create devices.
 

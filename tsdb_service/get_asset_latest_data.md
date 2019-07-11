@@ -1,6 +1,6 @@
 # Get Asset Latest Data
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the latest data of all measurepoints of a specified device.
 

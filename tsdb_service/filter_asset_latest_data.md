@@ -1,6 +1,6 @@
 # Filter Asset Latest Data
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Filter and query the latest data of a single measurepoint for multiple devices Numeric and String supported as the data types for query.
 

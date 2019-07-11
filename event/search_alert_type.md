@@ -1,6 +1,6 @@
 # Search Alert Type
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query alert types by page.
 
@@ -20,7 +20,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 ## Request parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` structure for sorting purpose. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
 ## Response parameters

@@ -1,6 +1,6 @@
 # Delete Product
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Delete products.
 

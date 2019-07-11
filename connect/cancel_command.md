@@ -1,6 +1,6 @@
 # Cancel Command
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Cancel the interface to cached commands. If there is a `commandId`, the single command will be canceled, and if there is no `commandId`, all the cached commands for the device will be canceled.
 

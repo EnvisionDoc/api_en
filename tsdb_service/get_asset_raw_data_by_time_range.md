@@ -1,6 +1,6 @@
 # Get Asset Raw Data by Time Range
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the original data of a specified measurepoint of a specified device within a certain period (covering AI, DI and common data types) and perform application development.
 

@@ -1,6 +1,6 @@
 # Set Measurepoint
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Measurepoint setting interface.
 
@@ -19,7 +19,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
 | deviceKey | Query           | False      | String       | Device key          |
 | measurepointId      | Query| True | String    | Asset measurepoint. [How to get pointId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |

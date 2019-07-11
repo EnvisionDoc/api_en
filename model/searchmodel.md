@@ -1,6 +1,6 @@
 # Search Thing Model
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Search thing models by organizationid.
 
@@ -16,7 +16,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 |:-----------|:-----------------|:---------|:----------|:-----------------------------------------------------------------------------------------|
 | orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)|
 | scope   | Query            | False    | Integer   | Query scope.  0- Only search from the specified orgId; 1 - Search from the specified orgId and public orgId. It is set as 1 by default               |
-| expression | Query            | False    | String    | expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| expression | Query            | False    | String    | expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 | pagination | Query            | False    | Pagination request structure       | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 

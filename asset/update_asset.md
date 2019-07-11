@@ -1,6 +1,6 @@
 # Update Asset
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Fully or partially update asset information.
 
@@ -29,11 +29,11 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
 | Name            | Required or Not | Data Type | Description |
 |-------|--------|--------|---------------------------|
 | assetId |   true   | String | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
-| name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized Name Structure](/docs/api/en/latest/api_faqs.html#id3)
+| name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
 | description | false     | String | Asset description|
-|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute id, which is of String type. The value type depends on the definition of this attribute in the model. For details, see [Attributes Representation](/docs/api/en/latest/api_faqs.html#attributes) |
-|timezone  |  false    |String  |Timezone. For details, see [Timezone Representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id4) |
-|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [Role and Representation of Tags](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#id6) |
+|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute id, which is of String type. The value type depends on the definition of this attribute in the model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
+|timezone  |  false    |String  |Timezone. For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
+|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
 
 
 ## Error codes

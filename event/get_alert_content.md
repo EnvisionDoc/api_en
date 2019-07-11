@@ -1,6 +1,6 @@
 # Get Alert Content
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get alert content based on organization ID and content ID.
 

@@ -1,6 +1,6 @@
 # Search Alert Content
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query alert content by page.
 
@@ -24,7 +24,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&org
 | modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
 | alertTypeId  | false    | String               | Alert type ID   |
 | subAlertTypeId    | false    | String   | Alert sub-type ID  |                       
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
 ## Response parameters

@@ -1,6 +1,6 @@
 # Delete Asset Node
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Remove an asset node from the asset tree. The asset to be removed can be a device asset or a logical asset. If the asset node to be removed is a device asset, it can be described by using `ProductKey` and `DeviceKey` of the device asset. If the asset node to be removed is a logical asset, it can be described by the ID of the logical asset.
 

@@ -1,6 +1,6 @@
 # Search Asset Tree
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Search for eligible asset trees based on tags.
 

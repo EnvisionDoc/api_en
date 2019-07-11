@@ -1,6 +1,6 @@
 # Search Related Asset Node
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query assets on the specified asset tree, and specify the relationship with a known asset as the query criterion.
 
@@ -34,10 +34,10 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchRelated
 | assetIds                   | String Array   | false    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
 | modelIds            | String Array   | false    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
 | rootModelIds         | String Array   | False    | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models |
-| isParentOfAssetId     | String         | false    | The asset to be queried is the immediate parent node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
-| isChildOfAssetId     | String         | false    | The asset to be queried is the immediate child node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
-| isAncestorOfAssetId     | String         | false    | The asset to be queried is the immediate ancestor node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
-| isDescendantOfAssetId | String         | false    | The asset to be queried is the immediate descendant node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#id1)  |
+| isParentOfAssetId     | String         | false    | The asset to be queried is the immediate parent node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
+| isChildOfAssetId     | String         | false    | The asset to be queried is the immediate child node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
+| isAncestorOfAssetId     | String         | false    | The asset to be queried is the immediate ancestor node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
+| isDescendantOfAssetId | String         | false    | The asset to be queried is the immediate descendant node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
 
 
 ## Response parameters

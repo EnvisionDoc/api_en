@@ -1,4 +1,4 @@
-Access Service
+Connection Service
 ===============
 
 .. toctree::

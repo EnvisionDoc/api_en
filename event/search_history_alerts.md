@@ -1,6 +1,6 @@
 # Search History Alerts
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query historical alerts.
 
@@ -26,11 +26,11 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
 | assetIds        | false     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
 | measurepointsId     | false     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId information](/docs/api/en/latest/api_faqs#how-to-get-the-measurepoint-pointid-information-pointid)                                                                                                                                                                           |
-| startOccurTime        | false     | String. See [Time Parameter Used by API](/docs/api/en/latest/api_faqs.html#id5)   | Start time for triggering alert.  |
-| endOccurTime        | false     | String. See [Time Parameter Used by API](/docs/api/en/latest/api_faqs.html#id5)       |  End time for triggering alert.  |
-| recoverStartTime        | false     | String. See [Time Parameter Used by API](/docs/api/en/latest/api_faqs.html#id5)       | Start time of alert recovery. If left blank, the data within the last week will be searched.  |
-| recoverEndTime        | false     | String. See [Time Parameter Used by API](/docs/api/en/latest/api_faqs.html#id5)       | End time of alert recovery. If left blank, the data within the last week will be searched.
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| startOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)   | Start time for triggering alert.  |
+| endOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       |  End time for triggering alert.  |
+| recoverStartTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | Start time of alert recovery. If left blank, the data within the last week will be searched.  |
+| recoverEndTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | End time of alert recovery. If left blank, the data within the last week will be searched.
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | pagination  | false  |Pagination request structure | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
 
 

@@ -1,6 +1,6 @@
 # Get Asset Tree
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get an asset tree under the specified OU.
 

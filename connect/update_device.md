@@ -1,6 +1,6 @@
 # Update Device
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Update devices. The `IsPathcUpdate` is taken as true in the update mode. The `assetId` (or `productKey` and `deviceKey`) is the request field, and other fields are update fields.
 

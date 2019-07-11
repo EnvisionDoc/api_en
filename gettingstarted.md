@@ -1,6 +1,6 @@
 ﻿# Get Started EnOS API
 
-*Note: This documentation is in the progress of translation. Thanks for your visit!*
+
 
 This tutorial is intended to guide you through an example of completing your first EnOS API invocation task.
 

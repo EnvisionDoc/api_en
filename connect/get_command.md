@@ -1,6 +1,6 @@
 # Get Command
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get a single command information.
 

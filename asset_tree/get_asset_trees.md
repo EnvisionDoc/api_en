@@ -1,6 +1,6 @@
 # Get Asset Trees
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Search assets tree as per a group of `assetId`. If `assetId` is not in the tree, then there is no such key in `data`.
 

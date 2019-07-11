@@ -1,6 +1,6 @@
-# Access Service Overview
+# Connection Service Overview
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Provide management operations for products, devices, and commands.
 

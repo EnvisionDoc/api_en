@@ -1,6 +1,6 @@
 # TSDB Policy Service Overview
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 ## API list
 

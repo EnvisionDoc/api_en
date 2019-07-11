@@ -1,6 +1,6 @@
 # Get Asset Current Day Electric Power
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get the accumulated power consumption data of a specified device from 00:00 (local time) to current time.
 

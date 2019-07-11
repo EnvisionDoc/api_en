@@ -1,6 +1,6 @@
 # Aggregate Active Alerts
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
  Perform statistics on active alerts.
 
@@ -20,10 +20,10 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate
 ## Request parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |----------------|----------|--------------------|----|
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#id1)|
+| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | groupByField   | true     | String             | Grouping fields: `contentId`, `assetId`, `modelId`, `measurepointId`, `severityId`, `typeId`, `subTypeId` |
-| startOccurTime | false    | String| Start time for triggering alert. See [Time Parameter Used by API] (/docs/api/en/latest/api_faqs.html#id5)    |
-| endOccurTime   | false    | String| End time for triggering alert. See [Time Parameter Used by API] (/docs/api/en/latest/api_faqs.html#id5) |
+| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
+| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
 
 
 

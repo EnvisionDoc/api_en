@@ -1,6 +1,6 @@
 # Search Sub-Device
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Search the sub-device information under the gateway.
 

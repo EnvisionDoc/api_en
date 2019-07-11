@@ -1,6 +1,6 @@
 # Alert Service Overview
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Through the alert service, you can define the alert content, type, severity level, and trigger conditions for the assets in the organization, and receive asset alert reporting and processing to achieve real-time status monitoring and fault analysis of assets. For details on alert management, see [Asset Alert] (/docs/device-connection/en/latest/howto/alert/alert_overview.html).
 

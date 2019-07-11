@@ -1,6 +1,6 @@
 # Asset Tree Service Overview
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Provide the management operations for asset trees, asset nodes, and asset paths.
 

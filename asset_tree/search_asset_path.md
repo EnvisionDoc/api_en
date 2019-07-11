@@ -1,6 +1,6 @@
 # Search Asset Path
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Query the eligible path on the asset tree. A path is a complete path from a superior asset node to a subordinate asset node, and can contain intermediate asset nodes.
 

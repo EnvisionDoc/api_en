@@ -1,6 +1,6 @@
 # Get Asset
 
-*Note:  This documentation is in the progress of translation. Thanks for your visit!*
+
 
 Get asset data by asset id.
 
