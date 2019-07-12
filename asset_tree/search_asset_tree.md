@@ -4,24 +4,24 @@
 
 Search for eligible asset trees based on tags.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
-## Request parameters (body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
 | filter| false         | Filter structure          | The criterion that the asset tree needs to meet. The search for tags is supported." filter": {  "tags": { "foo": "bar", "hello": "world" }  }  By default, all the asset trees under the OU are returned. See [Filter Structure] (/docs/api/en/latest/asset_tree/search_asset_tree.html#filter-filterstruc)   |
-| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 | projection| false         | String Array          | For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
@@ -32,7 +32,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search
 | tags| Map (Key is of String type, and the value is of String type) | A group of user-customized tags  |
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -44,7 +44,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search&orgId=o15541858646501
@@ -61,7 +61,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search&orgId=
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {

@@ -4,30 +4,30 @@
 
 Query alert content by page.
 
-## Request format
+## Request Format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c499110e8800000 
 {}
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
-## Request parameters (Body)
+## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
 | alertTypeId  | false    | String               | Alert type ID   |
 | subAlertTypeId    | false    | String   | Alert sub-type ID  |                       
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `contentId`, `modelId`, and `alertTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
@@ -51,7 +51,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&org
 
 ## Input/output samples
 
-### Request sample
+### Request Sample
 
 ```json
 https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c499110e8800000 
@@ -67,7 +67,7 @@ https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -92,7 +92,7 @@ https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c
 			}
 		},
 		"modelId": "ssss",
-		"orgId": "1c499110e8800000",
+		"orgId": "yourOrgId",
 		"updatePerson": "yj_test_customer",
 		"updateTime": 1546612131000,
 		"alertType": {
@@ -125,7 +125,7 @@ https://{apigw-address}/event-service/v2.1/alert-contents?action=search&orgId=1c
 }
 ```
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public void testSearchAlertContent() {  
@@ -140,7 +140,7 @@ public void testSearchAlertContent() {
 	        pagination.setSorters(sorterList);  
 	        request.setPagination(pagination);  
 	        try {  
-	            SearchAlertContentResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())  
+	            SearchAlertContentResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
 	                    .url("https://{apigw-address}")  
 	                    .getResponse(request, SearchAlertContentResponse.class);  
 	            Gson gson = new Gson();  

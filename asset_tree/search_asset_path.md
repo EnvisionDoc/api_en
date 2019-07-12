@@ -4,26 +4,26 @@
 
 Query the eligible path on the asset tree. A path is a complete path from a superior asset node to a subordinate asset node, and can contain intermediate asset nodes.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-
 paths?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | treeId          | Query            | true     | String    | Asset tree ID |
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Structure](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
+| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
 | from | false         | From-to structure       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Structure](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc).                         |
 | to            | false         | From-to structure           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Structure](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc) |
 | projection| false         | String Array         | Used to describe the object projection to be returned in the interface request. Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
@@ -35,12 +35,12 @@ paths?action=search
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|-----------------------|
 | rootModelIds| false   | String Array         | Root model id. You should provide multiple root model IDs if you want to query multiple root models  |
-| modelIds   | false   | String Array         | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
-| assetIds        | false     | Array        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to Get assetId Information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| modelIds   | false   | String Array         | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| assetIds        | false     | Array        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-----------|------------------|------------------|
@@ -65,7 +65,7 @@ paths?action=search
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 POST
@@ -82,7 +82,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 } 
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -136,7 +136,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 
 ## Sample 2
 
-### Request sample
+### Request Sample
 
 ```
 POST
@@ -159,7 +159,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 }
 ```
 
-### Return sample 
+### Return Sample 
 
 ```json
 {

@@ -4,30 +4,67 @@
 
 Query the device information.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
-## Request parameters (Body)
-
-| Name | Required or Not | Data Type | Description |
-|----------------|---------------|--------------------------|---|
-| expression| False         | String               | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination  | False  |Pagination request structure | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
-| projection| False         | Projection structure          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
+## Request Parameters (Body)
 
 
 
-## Response parameters
+<table>
+            <tr align="left">
+                <th>Name</th>
+                <th>Required or Not</th>
+                <th>Data Tyoe</th>
+				<th>Description</th>
+            </tr>
+            <tr>
+                <td>expression</td>
+                <td>False</td>
+                <td>String</td>
+				<td>Query expression. The fields that are supported for query include:<code>productKey</code>, <code>deviceKey</code>, <code>assetId</code>, <code>productType</code>, <code>deviceName</code>, and <code>status</code>
+				<ul>
+				<li><code>productKey</code>, <code>deviceKey</code>, and <code>assetId</code>: support arithmetic operators "=" and "in";</li>
+            	<li><code>productType</code>: supports arithmetic operator "=", valid values are: "Device" and "Gateway";</li>
+            	<li><code>deviceName</code>: supports fuzzy inquiry of specified language：
+					<ul>
+						<li><code>deviceName like ‘xxx’</code>: fuzzy inquiry of default name, Chinese name, and English name;</li>
+						<li><code>deviceName.default like ‘xxx’</code>: fuzzy inquiry of default name;</li>
+						<li><code>deviceName.zh_CN like ‘xxx’</code>: fuzzy inquiry of Chinese name, if no Chinese name, fuzzy inquiry of default name;</li>
+						<li><code>deviceName.en_US like ‘xxx’</code>: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name</li>
+					</ul>
+				</li>
+				<li><code>status</code>: upports arithmetic operator "=", valid values are: "inactive", "online", "offline", and "disable"</li>
+				</ul>
+<a href="/docs/api/en/latest/api_faqs.html#how-to-use-expression">How to use expression</a></td>
+            </tr>
+            <tr>
+                <td>pagination</td>
+                <td>False</td>
+                <td>pagination request structure</td>
+				<td>Random pagination. The default is to sort in descending order by <code>occurTime</code>, and the user can not specify the sorting field. The default pagination size is 10 pages. <a href="/docs/api/zh_CN/latest/overview.html#pagination-request-structure">Pagination Request Structure</a></td>
+            </tr>
+            <tr>
+                <td>projection</td>
+                <td>False</td>
+                <td>Projection structure</td>
+				<td>Describe the object projection to be returned in the interface request. For details, see <a href="/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set">How does projection crop the result set?</a></td>
+            </tr>
+
+</table>
+
+
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -62,7 +99,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=search&orgId=o15475450989191
@@ -75,7 +112,7 @@ requestBody:  {
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 responseBody:  {
@@ -83,23 +120,23 @@ responseBody:  {
 	"msg": "OK",
 	"requestId": "59ecd409-7baa-4726-ba10-c0bde35ffb09",
 	"data": [{
-		"orgId": "o15475450989191",
+		"orgId": "yourOrgId",
 		"assetId": "7u4bfyO0",
 		"modelId": "lxctimelooker",
 		"modelIdPath": "/lxctimelooker",
-		"productKey": "vzzG0GFg",
+		"productKey": "yourProductKey",
 		"productName": {
 			"defaultValue": "lxcpro",
 			"i18nValue": {}
 		},
 		"productType": "Device",
 		"dataFormat": "Json",
-		"deviceKey": "TeyRhjOnfh",
+		"deviceKey": "yourDeviceKey",
 		"deviceName": {
 			"defaultValue": "time2dev11",
 			"i18nValue": {}
 		},
-		"deviceSecret": "iCp1wixMv843ABrYnD3I",
+		"deviceSecret": "yourDeviceSecret",
 		"deviceDesc": null,
 		"timezone": "+09:00",
 		"deviceAttributes": {},
@@ -110,23 +147,23 @@ responseBody:  {
 		"lastOnlineTime": 1560743915454,
 		"lastOfflineTime": 1560744095454
 	}, {
-		"orgId": "o15475450989191",
+		"orgId": "yourOrgId",
 		"assetId": "Fi0HQ8FO",
 		"modelId": "AlterTest0615",
 		"modelIdPath": "/AlterTest0615",
-		"productKey": "gHuxgR8s",
+		"productKey": "yourProductKey",
 		"productName": {
 			"defaultValue": "AlterTest0615_Product",
 			"i18nValue": {}
 		},
 		"productType": "Device",
 		"dataFormat": "Json",
-		"deviceKey": "325132545",
+		"deviceKey": "yourDeviceKey",
 		"deviceName": {
 			"defaultValue": "AlterTest0615",
 			"i18nValue": {}
 		},
-		"deviceSecret": "V2Ny4NTlt40NZDaF3xj5",
+		"deviceSecret": "yourDeviceSecret",
 		"deviceDesc": null,
 		"timezone": "+08:00",
 		"deviceAttributes": {},
@@ -137,23 +174,23 @@ responseBody:  {
 		"lastOnlineTime": 1560743931247,
 		"lastOfflineTime": 1560743931712
 	}, {
-		"orgId": "o15475450989191",
+		"orgId": "yourOrgId",
 		"assetId": "6FytqleL",
 		"modelId": "AlterTest0614",
 		"modelIdPath": "/AlterTest0614",
-		"productKey": "zpFCD7pd",
+		"productKey": "yourProductKey",
 		"productName": {
 			"defaultValue": "AlterTest0614_Product",
 			"i18nValue": {}
 		},
 		"productType": "Device",
 		"dataFormat": "Json",
-		"deviceKey": "324314123431",
+		"deviceKey": "yourDeviceKey",
 		"deviceName": {
 			"defaultValue": "AlterTest0614",
 			"i18nValue": {}
 		},
-		"deviceSecret": "R6wPIKHaMrcwnpzOSZYe",
+		"deviceSecret": "yourDeviceSecret",
 		"deviceDesc": null,
 		"timezone": "+08:00",
 		"deviceAttributes": {
@@ -167,23 +204,23 @@ responseBody:  {
 		"lastOnlineTime": 1560743930253,
 		"lastOfflineTime": 1560743930346
 	}, {
-		"orgId": "o15475450989191",
+		"orgId": "yourOrgId",
 		"assetId": "V4TjS0n4",
 		"modelId": "AlertTest0613",
 		"modelIdPath": "/AAA100/AlertTest0613",
-		"productKey": "gTsWB8mX",
+		"productKey": "yourProductKey",
 		"productName": {
 			"defaultValue": "AlertTest0613_Product",
 			"i18nValue": {}
 		},
 		"productType": "Device",
 		"dataFormat": "Json",
-		"deviceKey": "324132514331",
+		"deviceKey": "yourDeviceKey",
 		"deviceName": {
 			"defaultValue": "AlertTest0613",
 			"i18nValue": {}
 		},
-		"deviceSecret": "0u06LivvksMGxtJoSBT5",
+		"deviceSecret": "yourDeviceSecret",
 		"deviceDesc": null,
 		"timezone": "+08:00",
 		"deviceAttributes": {
@@ -197,23 +234,23 @@ responseBody:  {
 		"lastOnlineTime": 1560743916848,
 		"lastOfflineTime": 1560743929003
 	}, {
-		"orgId": "o15475450989191",
+		"orgId": "yourOrgId",
 		"assetId": "wjIXsqTQ",
 		"modelId": "zcmx---1",
 		"modelIdPath": "/zcmx---1",
-		"productKey": "J5GKPipa",
+		"productKey": "yourProductKey",
 		"productName": {
 			"defaultValue": "zccp-----1",
 			"i18nValue": {}
 		},
 		"productType": "Device",
 		"dataFormat": "Json",
-		"deviceKey": "krL0iNa4as",
+		"deviceKey": "yourDeviceKey",
 		"deviceName": {
 			"defaultValue": "zccp-----222",
 			"i18nValue": {}
 		},
-		"deviceSecret": "KUiw16CE4A4QTabkt0QN",
+		"deviceSecret": "yourDeviceSecret",
 		"deviceDesc": null,
 		"timezone": "+08:00",
 		"deviceAttributes": {

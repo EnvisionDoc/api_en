@@ -4,20 +4,20 @@
 
 Add a new sub-device to the gateway device (creating topological relationship).
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/device-topos?action=addSubDevice
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
@@ -31,21 +31,21 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| assetId  | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | String         | Product Key      |
 | deviceKey | String         | Device key          |
 
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|--------------------|----------------|
 | data | String | (null)               |
 
 
-## Error codes
+## Error Codes
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -56,7 +56,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/device-topos?action=addSubDevice&orgId=o15475450989191
@@ -64,7 +64,7 @@ method:  POST
 {"subDevices":[{"assetId":"mAEsF3sm"}],"gateway":{"assetId":"J1Rqyaqz"}}
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {"code":0,"msg":"OK","requestId":"5246f91c-f9ce-485c-a9f2-4cd8b7e1f0df","data":null}

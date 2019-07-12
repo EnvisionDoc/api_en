@@ -1,32 +1,32 @@
 # API FAQs
 
 
-## How to get `orgId` information <orgid>
+## How to get Organization ID (`orgId`)  <orgid>
 
-In the left navigation bar of the EnOS Console, click **Identity & Authorization > Organization Information** . The Organization ID is the orgld.
+In the left navigation bar of the EnOS Console, click **IAM > Organization Profile** . The **Organization ID** is the `orgld`.
 
-## How to get `modeId` information <modeid>
+## How to get model ID (`modelId`) <modelid>
 
-1. In the left navigation bar of the EnOS Console, click Asset Tree, select the target asset tree, and search for the device name you want to query.
+1. In the left navigation bar of the EnOS Console, click **Asset Tree**, select the target asset tree, and search for the device name you want to query.
 2. Select the device and click "View" after the model name in the summary information on the right. The model identifier is `modelId`.
 
 
-## How to get `assetId` information <assetid>
+## How to get Asset ID (`assetId`)  <assetid>
 
-1. In the left navigation bar of the EnOS Console, click Asset Tree, select the target asset tree, and search for the device name you want to query.
-2. Click on the device and the "Asset ID" in the summary information on the right is `assetId`.
+1. In the left navigation bar of the EnOS Console, click **Asset Tree**, select the target asset tree, and search for the device name you want to query.
+2. Click the device and the **Asset ID** in the **Basic Information** is `assetId`.
 
 
-## How to get the measurepoint (`pointId`) information <pointid>
+## How to get the measuremet point (`pointId`) <pointid>
 
-1. In the left navigation bar of the EnOS Console, click Asset Tree, select the target asset tree, and search for the device name you want to query.
-2. Click on the device and the identifier corresponding to the name of the measurepoint in the measurepoint column on the right is `pointId`.
+1. In the left navigation bar of the EnOS Console, click **Asset Tree**, select the target asset tree, and search for the device name you want to query.
+2. Click on the device and the identifier in the **Measurement Points** is `pointId`.
 
-## How to get `accessKey` information <accesskey>
+## How to get Access Key (`accessKey`) <accesskey>
 
 `accessKey` is the service account that EnOS assigns to the application for authentication purpose. `accessKey` can be gotten by application registration. To get the information, perform the following steps:
 1. Click **Application Registration** in the left navigation bar of the EnOS Console.
-2. Select the application that needs to invoke the API and view the "AccessKey" in the basic information.
+2. Select the application that needs to invoke the API and view the **Access Key** in the basic information.
 
 ## How does `projection` crop the result set?
 
@@ -228,4 +228,4 @@ In the request parameters of the API, three parameters are generally provided fo
 
 ## How to get the ID of an asset tree
 
-Each asset tree has an asset tree ID. Users can view the ID of each asset tree in the asset tree management page under Devices and Assets in the console. Users can also get all asset trees under the OU through the Search Asset Tree interface. For details about asset trees, see [Asset Trees](/docs/device-connection/en/latest/howto/asset_tree/assettree_overview.html)。
+Each asset tree has a Tree ID. Users can view the ID of each asset tree in the **Asset Tree** page under **Device and Asset** in the console. Users can also get all asset trees under the OU through the Search Asset Tree interface. For details about asset trees, see [Asset Trees](/docs/device-connection/en/latest/howto/asset_tree/assettree_overview.html)。

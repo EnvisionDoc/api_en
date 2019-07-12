@@ -4,27 +4,27 @@
 
 Search assets tree as per a group of `assetId`. If `assetId` is not in the tree, then there is no such key in `data`.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| assetIds         | Query            | true     | String Array   | A group of asset ID (assetId), where at most 100 Ids are supported. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)   |
+| assetIds         | Query            | true     | String Array   | A group of asset ID (assetId), where at most 100 Ids are supported. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)   |
 | projection         | Query            | false    | String Array   |Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -42,7 +42,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action= getAssetTree&orgId=o15541858646501
@@ -51,7 +51,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action= getAssetTree
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 { 

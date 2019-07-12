@@ -4,22 +4,22 @@
 
 Create a logical asset and associate it with the asset tree.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get asset tree ID](/docs/api/en/latest/api_faqs#id)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
 | parentAssetId | Query            | true    | String    | Asset ID of the parent node of the asset to be associated.  |
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |------------|---------------|----------------|--------------------------------|
@@ -30,7 +30,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 
 | Name | Required or Not | Data Type | Description |
 |-------|-------|-------------|--------------|
-| modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
 | name |true| StringI18n |Asset name that supports internationalization. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
 |timezone  |true|  String  |Timezone where the asset is located. <br> If +08:00 format is used, it indicates that the timezone for summer time is not supported. <br> If Asia/Shanghai format is used, it indicates that the timezone for summer time is supported. <br>For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
 |description |false|String|Asset description |
@@ -39,14 +39,14 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
 | data| String                            | Created asset ID                   |
 
 
-## Error codes
+## Error Codes
 
 | Code | Description    |
 |-----------|-----------------------------|
@@ -60,7 +60,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=lMAXwaLX&action=createAsset&parentAssetId=fy4hxezF&orgId=1c499110e8800000
@@ -87,7 +87,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=lMAXwaLX&acti
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 { 

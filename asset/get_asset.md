@@ -4,21 +4,21 @@
 
 Get asset data by asset id.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-service/v2.1/assets?action=get
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| assetId       | Query            | true    | String    | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId       | Query            | true    | String    | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |------|------------|-----------|-------------|
@@ -40,7 +40,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get
 |tags|Map<br>(Key is of String type, and the value is of String type)|User-customized tags|
 
 
-## Error codes
+## Error Codes
 
 See [Public Return Code](/docs/api/en/latest/overview.html#id8).
 
@@ -48,7 +48,7 @@ See [Public Return Code](/docs/api/en/latest/overview.html#id8).
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 GET
@@ -56,7 +56,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
 
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -86,12 +86,12 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
 ```
 
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public class GetAsset {
-    private static String appKey = "4ced4f38-1ced-476e0a446215-a602-4307";
-    private static String appSecret = "0a446215-a602-4307-9ff2-3feed3e983ce";
+    private static String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";
+    private static String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";
     private static String orgId = "1c499110e8800000";
     private static String url = "https://{apigw-address}";
 
@@ -100,8 +100,8 @@ public class GetAsset {
         request.setOrgId(orgId);
         request.setAssetId("XBOBqC1O");
 
-        GetAssetResponse response = Poseidon.config(PConfig.init().appKey(appKey)
-                .appSecret(appSecret).debug())
+        GetAssetResponse response = Poseidon.config(PConfig.init().appKey(accessKey)
+                .appSecret(secretKey).debug())
                 .url(url)
                 .getResponse(request, request.getResponseClass());
         System.out.println(response.getCode());

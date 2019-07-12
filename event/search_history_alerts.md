@@ -4,37 +4,36 @@
 
 Query historical alerts.
 
-## Request format
+## Request Format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Required or Not | Data Type | Description |
 |---------------|--------|----------|-----------|
-| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|------|----------|--------------------|----|------|
+
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs#how-to-get-modeid-information-modeid)|
-| assetIds        | false     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
-| measurepointsId     | false     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId information](/docs/api/en/latest/api_faqs#how-to-get-the-measurepoint-pointid-information-pointid)                                                                                                                                                                           |
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
+| assetId        | false     | String    | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| measurepointsId     | false     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
 | startOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)   | Start time for triggering alert.  |
 | endOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       |  End time for triggering alert.  |
 | recoverStartTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | Start time of alert recovery. If left blank, the data within the last week will be searched.  |
 | recoverEndTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | End time of alert recovery. If left blank, the data within the last week will be searched.
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination  | false  |Pagination request structure | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination  | false  |Pagination request structure | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
@@ -75,7 +74,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 
 ## Input/output samples
 
-### Request sample
+### Request Sample
 
 ```json
 POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search&orgId=1c499110e8800000 
@@ -91,7 +90,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search&org
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -116,7 +115,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search&org
 		"recoverLocaltime": "2019-06-13 07:36:00",
 		"recoverReason": "rule-recover",
 		"eventId": "20190612cf89cd96b0be4cafcc342d0dc2ac75a4",
-		"orgId": "1c499110e8800000",
+		"orgId": "yourOrgId",
 		"assetId": "rQN8IRs4",
 		"modelId": "lemo2",
 		"modelIdPath": "/lemo2",
@@ -156,12 +155,12 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search&org
 }
 ```
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public void testSearchHistoryAlerts(){  
-        String appKey = "4ced4f38-1ced-476e0a446215-a602-4307";  
-        String appSecret = "0a446215-a602-4307-9ff2-3feed3e983ce";  
+        String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";  
+        String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";  
         SearchHistoryAlertRequest request = new SearchHistoryAlertRequest();  
         request.setOrgId("1c499110e8800000");  
         request.setStartOccurTime("2019-05-20T00:00:00Z");  
@@ -173,7 +172,7 @@ public void testSearchHistoryAlerts(){
 	        request.setExpression("eventId='20190612cf89cd96b0be4cafcc342d0dc2ac75a4' ");  
 	        request.headerParams().put("apim-accesskey","4ced4f38-1ced-476e0a446215-a602-4307");  
 	        try {  
-	            SearchHistoryAlertResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())  
+	            SearchHistoryAlertResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
 	                    .url("https://{apigw-address}")  
 	                    .getResponse(request, SearchHistoryAlertResponse.class);  
 	            Gson gson = new Gson();  

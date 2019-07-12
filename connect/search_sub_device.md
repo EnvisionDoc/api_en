@@ -4,25 +4,25 @@
 
 Search the sub-device information under the gateway.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevice
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
 | gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure] (/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier) |
-| pagination  | False      | Pagination request structure  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| pagination  | False      | Pagination request structure  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
 ### DeviceIdentifier structure
@@ -31,14 +31,14 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| assetId  | String        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | String         | Product Key      |
 | deviceKey | String         | Device key          |
 
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -72,7 +72,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 
 
-## Error codes
+## Error Codes
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -81,7 +81,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevices&orgId=o15475450989191
@@ -89,7 +89,7 @@ method:  POST
 requestBody:  {"gateway":{"assetId":"J1Rqyaqz"}}
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 responseBody:  {
@@ -97,23 +97,23 @@ responseBody:  {
 		"msg": "OK",
 		"requestId": "498d1c5b-7c4f-401a-a9ff-9072931bec2e",
 		"data": [{
-			"orgId": "o15475450989191",
+			"orgId": "yourOrgId",
 			"assetId": "mAEsF3sm",
 			"modelId": "AlterTest0617",
 			"modelIdPath": "/AlterTest0617",
-			"productKey": "Vu82Agp3",
+			"productKey": "yourProductKey",
 			"productName": {
 				"defaultValue": "AlterTest0617_Product",
 				"i18nValue": {}
 			},
 			"productType": "Device",
 			"dataFormat": "Json",
-			"deviceKey": "96Z711wx5d",
+			"deviceKey": "yourDeviceKey",
 			"deviceName": {
 				"defaultValue": "testforCreatedevice",
 				"i18nValue": {}
 			},
-			"deviceSecret": "SlqmFerDkPHvnQW5y8wK",
+			"deviceSecret": "yourDeviceSecret",
 			"deviceDesc": "test for createdevice",
 			"timezone": "+08:00",
 			"deviceAttributes": {
@@ -126,23 +126,23 @@ responseBody:  {
 			"lastOnlineTime": 0,
 			"lastOfflineTime": 0
 		}, {
-			"orgId": "o15475450989191",
+			"orgId": "yourOrgId",
 			"assetId": "gVRwKQ3C",
 			"modelId": "AlterTest0617",
 			"modelIdPath": "/AlterTest0617",
-			"productKey": "Vu82Agp3",
+			"productKey": "yourProductKey",
 			"productName": {
 				"defaultValue": "AlterTest0617_Product",
 				"i18nValue": {}
 			},
 			"productType": "Device",
 			"dataFormat": "Json",
-			"deviceKey": "32412434314",
+			"deviceKey": "yourDeviceKey",
 			"deviceName": {
 				"defaultValue": "AlterTest0617_Product",
 				"i18nValue": {}
 			},
-			"deviceSecret": "65hjmU4MwiFiCFjWv588",
+			"deviceSecret": "yourDeviceSecret",
 			"deviceDesc": null,
 			"timezone": "+10:00",
 			"deviceAttributes": {},

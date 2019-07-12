@@ -2,14 +2,14 @@
 
 
 
-## API list
+## API List
 
 |Operation Name                                                       | Description |
 |---------------------------------------------------------------|------|
 | [Get Points TSDB Meta Data](get_points_tsdb_meta_data)   |Get the TSDB storage policy corresponding to the model measurepoint. A measurepoint may have multiple storage policies, depending on its data type and usage. This API returns all the TSDB storage policy metadata in the current OU for the specified measurepoint.|
 
 
-## Common error codes <errorcode>
+## Common Error Codes <errorcode>
 
 | Code | Error Information                      | Description                       |
 |------|---------------------------------|-----------------------------------|

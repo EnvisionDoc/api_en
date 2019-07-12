@@ -9,25 +9,25 @@ This interface can execute cached commands or instant commands. When an instant 
 
 In case of a cached command, it will be returned to the user directly after being cached.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
 | deviceKey | Query           | False      | String       | Device key          |
 | serviceId      | Query| True | String    | Id of the service invoked|
 | pendingTtl     | Query| False| Integer    | Cache storage time. Its unit is second and its range is [0 - 172800 (i.e. 48 hours)], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.  |
 | timeout        | Query| False         | Integer    | Service execution timeout time in seconds. Its range is [1-60], which is set as 30 seconds by default|
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|-------------------|----------|
@@ -36,7 +36,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -50,7 +50,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 | commandId  | String| Command ID|
 | outputData | Map (Key is of String type and the Value is of String, Number, Array or Object type) | If the request's pendingTtl is 0 (i.e. the requested commands are executed immediately), the device service invocation results are returned, which should conform to the definition of `ThingModel`. If the request's `pendingTtl` is not 0 (i.e. the requested commands are cached for execution later), this parameter will not be returned.  |
 
-## Error codes
+## Error Codes
 
 | Code | Description    |
 |-------|------------------------------------------------------------------|
@@ -64,7 +64,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=invokeService&deviceKey=zBAofs6D4s&pendingTtl=1000&productKey=6Bt59ySj&serviceId=identifier&orgId=o15535059999891&timeout=30
@@ -73,7 +73,7 @@ requestBody:
 {"inputData":{"canshu2":22.2,"canshu1":11}}
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {

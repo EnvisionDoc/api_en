@@ -4,23 +4,23 @@
 
 Get a single command information.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=get
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
 | deviceKey | Query           | False      | String       | Device key          |
 | deviceKey | Query         | False     | String          | Command key          |
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -51,13 +51,13 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=WRJ2c1yMa5&productKey=doxkidR0&commandId= 2242591201245044736&orgId=o15541858646501
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -67,9 +67,9 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=WRJ2c
     "requestId": "7d863d517eae4f18a2776452eb1305bb",
     "data": {
         "commandId": "2242591201245044736",
-        "orgId": "sysenos2018",
-        "productKey": "doxkidR0",
-        "deviceKey": "WRJ2c1yMa5",
+        "orgId": "yourOrgId",
+        "productKey": "yourProductKey",
+        "deviceKey": "yourDeviceKey",
         "assetId": "KmItYUh4",
         "createTime": 1556172678510,
         "createLocalTime": 1556172678510,

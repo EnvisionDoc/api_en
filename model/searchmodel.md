@@ -14,11 +14,11 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |:-----------|:-----------------|:---------|:----------|:-----------------------------------------------------------------------------------------|
-| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)|
+| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)|
 | scope   | Query            | False    | Integer   | Query scope.  0- Only search from the specified orgId; 1 - Search from the specified orgId and public orgId. It is set as 1 by default               |
-| expression | Query            | False    | String    | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "=") and `tags` (supports arithmetic operator "in"). The supported logical operator is "and", "or", and "not". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| expression | Query            | False    | String    | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "=") and `tags` (supports arithmetic operator "in"). The supported logical operator is "and", "or", and "not". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
-| pagination | Query            | False    | Pagination request structure       | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| pagination | Query            | False    | Pagination request structure       | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
 
@@ -166,7 +166,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
     "pageNo": 1,
 "pageSize": 10
   },
-  "orgId": "1ad3889266800000"
+  "orgId": "yourOrgId"
 }
 
 ```
@@ -183,7 +183,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
             {
                 "modelId": "planet",
                 "modelIdPath": "/planet",
-                "orgId": "1c499110e8800000",
+                "orgId": "yourOrgId",
                 "name": {
                     "defaultValue": "planet",
                     "i18nValue": {
@@ -308,7 +308,7 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
 {
                 "modelId": "noiseSensor",
                 "modelIdPath": "/noiseSensor",
-                "orgId": "sysenos2018",
+                "orgId": "yourOrgId",
                 "name": {
                     "defaultValue": "Noise Sensor",
                     "i18nValue": {
@@ -335,8 +335,8 @@ POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
 
 ```java
 public class SearchThingModel {
-    private static String appKey = "4ced4f38-1ced-476e0a446215-a602-4307";
-    private static String appSecret = "0a446215-a602-4307-9ff2-3feed3e983ce";
+    private static String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";
+    private static String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";
     private static String orgId = "1c499110e8800000";
     private static String url = "https://{apigw-address}";
     public static void main(String[] args) {
@@ -347,7 +347,7 @@ public class SearchThingModel {
         projection.add("modelId");
         projection.add("name.defaultValue");
         request.setProjection(projection);
-        SearchThingModelResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+        SearchThingModelResponse response = Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey).debug())
                 .url(url)
                 .getResponse(request, request.getResponseClass());
         System.out.println(response.getData());

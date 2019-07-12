@@ -4,22 +4,22 @@
 
 Get the details of the Event via `eventId`.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/events?action=get
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | eventId        | Query| True         | String    |Event ID |
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -44,14 +44,14 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/events/get?action=get&id=20190506587247156ca85be5e3422d30e2642dd1&orgId=1c499110e8800000
 GET
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -60,9 +60,9 @@ GET
     "requestId":"0c45090a-f7c0-476c-8d47-33947d7a57f6",
     "data":{
         "id":"20190506587247156ca85be5e3422d30e2642dd1",
-        "orgId":"1c499110e8800000",
-        "productKey":"CRJ0mNO1",
-        "deviceKey":"99ji8WwMCr",
+        "orgId":"yourOrgId",
+        "productKey":"yourProductKey",
+        "deviceKey":"yourDeviceKey",
         "assetId":"wNzx7q3S",
         "tslEventKey":"guzang01",
         "tslEventType":"INFO",

@@ -4,30 +4,30 @@
 
 Delete products.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=delete
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | productKey         | Query            | true     | String    | Product Key |
 
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|---------------------------|-----------------------------|
 | data | String                           | Key of the deleted product               |
 
 
-## Error codes
+## Error Codes
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -36,13 +36,13 @@ https://{apigw-address}/connect-service/v2.1/products?action=delete
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 POST:  /connect-service/v2.1/products?action=delete&orgId=xxx&productKey=xxx
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {

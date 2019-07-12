@@ -4,20 +4,20 @@
 
 Create devices.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=create
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
@@ -31,7 +31,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -48,7 +48,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 | assetId  | String         |Asset ID|
 
 
-## Error codes
+## Error Codes
 
 | Code| Data Type | Description |
 |-----------|----------------|----------------------|
@@ -61,7 +61,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=create&orgId=o15475450989191
@@ -72,7 +72,7 @@ requestBody:  {
     },
     "timezone":"+08:00",
     "source":0,
-    "productKey":"Vu82Agp3",
+    "productKey":"yourProductKey",
     "deviceAttributes":{
         "testatt":111111
     },
@@ -86,7 +86,7 @@ requestBody:  {
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 responseBody:  {
@@ -95,8 +95,8 @@ responseBody:  {
     "requestId":"fd79d0f5-69c5-4fa8-add4-69f5ca1b635f",
     "data":{
         "assetId":"Uvmm5AXU",
-        "productKey":"Vu82Agp3",
-        "deviceKey":"1115pswxk7",
+        "productKey":"yourProductKey",
+        "deviceKey":"yourDeviceKey",
         "deviceSecrete":"Z5YtZaQpK5IWocakV7zQ"
     }
 }

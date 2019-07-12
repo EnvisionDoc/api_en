@@ -8,7 +8,7 @@ EnOS open the REST API interfaces that cover the core business processes of the 
 
 EnOS provides the following API services:
 
-- [Access Service](/docs/api/en/latest/connect/overview.html): The EnOS system's business capabilities in device connectivity and device management, including product and device creation and management, are opened.
+- [Connection Service](/docs/api/en/latest/connect/overview.html): The EnOS system's business capabilities in device connectivity and device management, including product and device creation and management, are opened.
 - [Model Service](/docs/api/en/latest/model/overview.html): It is supported to search and get the details of the model in an organization.
 - [Asset Service](/docs/api/en/latest/asset/overview.html): Provide services such as creation, management, and update of assets within an organization.
 - [Alert Service](/docs/api/en/latest/event/overview.html): Provide query and management services for asset alerts. 
@@ -69,7 +69,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update&orgId=1234&isPat
 }
 ```
 
-## API Response structure
+## API Response Structure
 
 EnOS API returns the JSON structure in the following format:
 
@@ -85,17 +85,17 @@ EnOS API returns the JSON structure in the following format:
 
 The return parameters are described in details as follows:
 
-| Name     | Data Type        | Required or Not | Description                                                         |
+| Name     | Data Type        | Required or Not | Description|
 | :-------- | --------------- | :------- | ------------------------------------------------------------ |
 | code      | Integer         | true     | API request status code, where 0 stands for successful request. For the meanings of other status codes, refer to the public return codes and the descriptions of error codes in the API document.  |
-| msg       | String          | true     | Explanation of the status codes. "OK" indicates successful request.
- If the API request fails, the specific error information will be returned.  |
+| msg       | String          | true     | Explanation of the status codes. "OK" indicates successful request. If the API request fails, the specific error information will be returned.  |
 | requestId | String          | true     | ID gotten from each request, which is used to uniquely identify an API request.                   |
-| data      | Array 或 Object | false    | API response return result set, which includes: basic data types, complex types or arrays.  |
+| data      | Array or Object | false    | API response return result set, which includes: basic data types, complex types or arrays.  |
+
 
 ## Public Parameter Descriptions
 
-The public parameters for each API service are described as follows:
+The public parameters for each API service are described as follows. For how to get and use other common parameters, see [API FAQs](/docs/api/en/latest/api_faqs.html) 
 
 ### Public Request Parameters (Connection Service, etc.)
 

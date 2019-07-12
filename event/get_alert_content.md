@@ -4,21 +4,21 @@
 
 Get alert content based on organization ID and content ID.
 
-## Request format
+## Request Format
 
 ```
 GET https://{apigw-address}/event-service/v2.1/alert-contents action=get&orgId=1c499110e8800000
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | contentId         | Query            | true     | String    | Alert content ID.                 |
                                                                  
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
@@ -42,13 +42,13 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents action=get&orgId=1
 
 ## Input/output samples
 
-### Request sample
+### Request Sample
 
 ```json
 GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get &contentId=doubleContentuid&orgId=1c499110e8800000
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -64,7 +64,7 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get &conten
 			}
 		},
 		"modelId": "ssss",
-		"orgId": "1c499110e8800000",
+		"orgId": "yourOrgId",
 		"updatePerson": "yj_test_customer",
 		"updateTime": 1546612131000,
 		"alertType": {
@@ -96,7 +96,7 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get &conten
 }
 ```
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public void testGetAlertContent() {  
@@ -105,7 +105,7 @@ public void testGetAlertContent() {
         request.setOrgId(orgId);  
         request.setContentId(contentId);  
         try {  
-            GetAlertContentResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())  
+            GetAlertContentResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
                     .url("https://{apigw-address}")  
 	                    .getResponse(request, GetAlertContentResponse.class);  
 	            Gson gson = new Gson();  

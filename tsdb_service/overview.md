@@ -12,7 +12,7 @@ TSDB-based asset data service. The asset refers to the object after the model is
 For more information about TSDB storage, see Timing Data Management.
 For the above data types, the TSDB service provides the following interfaces for developers to invoke for data and application development.
 
-## API list
+## API List
 
 |Operation Name                                                       | Description |
 |---------------------------------------------------------------|------|
@@ -26,7 +26,7 @@ For the above data types, the TSDB service provides the following interfaces for
 | [Get Asset Current Day Electric Power](get_asset_current_day_electric_power) |Get the accumulated power consumption data of a specified device from 00:00 (local time) to current time|
 | [Get Asset Electric Power Data](get_asset_electric_power_data)  |Get the status (DI) data of a specified device within a certain period      |
 
-## Common error codes <errorcode>
+## Common Error Codes <errorcode>
 
 | Code | Data Type | Error Information                                                                                              | Description                                        |
 |------|-----------|---------------------------------------------------------------------------------------------------------|----------------------------------------------------|

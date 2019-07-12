@@ -4,29 +4,29 @@
 
  Search for products that meet the criteria.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | productKey        | Query            | true    | String    | Product Key|
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name            | Required or Not | Data Type | Description |
 |-------------------|----------|-----------|--------------|
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `productKey` and `modelId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | String   | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey` and `modelId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | String   | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -37,7 +37,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=search
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 POST: /connect-service/v2.1/products?action=search&orgId=abc 
@@ -50,7 +50,7 @@ POST: /connect-service/v2.1/products?action=search&orgId=abc
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -59,13 +59,13 @@ POST: /connect-service/v2.1/products?action=search&orgId=abc
 	"requestId":"a82752bb-9eb0-4cd5-b0c6-0c1aeb35f6d2",
 	"data":[
 		{
-			"orgId":"o15475450989191",
-			"productKey":"atC41UIe",
+			"orgId":"yourOrgId",
+			"productKey":"yourProductKey",
 			"productName":{
 				"defaultValue":"openapi_sdk_8",
 				"i18nValue":{}
 			},
-			"productSecret":"1uhl4Gwx9X8",
+			"productSecret":"yourProductSecret",
 			"productDesc":"test_sdk_update",
 			"productType":"Device",
 			"dataFormat":"Custom",
@@ -75,13 +75,13 @@ POST: /connect-service/v2.1/products?action=search&orgId=abc
 			"biDirectionalAuth":true
 		},
 		{
-			"orgId":"o15475450989191",
-			"productKey":"gHuxgR8s",
+			"orgId":"yourOrgId",
+			"productKey":"yourProductKey",
 			"productName":{
 				"defaultValue":"AlterTest0615_Product",
 				"i18nValue":{}
 			},
-			"productSecret":"4ucumSU0dWV",
+			"productSecret":"yourProductSecret",
 			"productDesc":"",
 			"productType":"Device",
 			"dataFormat":"Json",

@@ -4,25 +4,25 @@
 
 Query the assets that meet the conditions under the OU.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
 | filter| false         |   Filter structure        | Asset query criterion. See [Filter Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#filter-filterstruc) |
-| pagination| false         | Pagination request structure  | Used to describe the pagination requirements in the interface request. See [Pagination Request Structure](/docs/api/en/latest/overview.html?highlight=pagination#pagination)  |
+| pagination| false         | Pagination request structure  | Used to describe the pagination requirements in the interface request. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
 | projection| false         | String Array          | Used to describe the object projection to be returned in the interface request. See [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
@@ -30,8 +30,8 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|--------------|
-| assetIds| False  | String Array  | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)|
-| modelIds | False | String Array | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| assetIds| False  | String Array  | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
+| modelIds | False | String Array | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
 | rootModelIds | False | String Array | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models. |
 | nameLike | False | nameLike structure | Used to describe the query criterion for internationalized names. See [nameLike Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
 | attributes  | False|Map |Attributes of the model which the asset belongs to. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
@@ -47,7 +47,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 | locale         | String     | Specified locale, such as zh_CN|
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-----------|------------------|------------------|
@@ -58,7 +58,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset&orgId=1c499110e8800000
@@ -72,7 +72,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset&o
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {

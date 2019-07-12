@@ -4,25 +4,25 @@
 
 Get the device information.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/devices?action=get
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 Note: In the following non-mandatory fields, you must provide a combination of `assetId` or `productKey` and `deviceKey` to specify the device.
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
 | deviceKey | Query           | False      | String       | Device key          |
     
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -57,7 +57,7 @@ Note: In the following non-mandatory fields, you must provide a combination of `
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 url:https://{apigw-address}/connect-service/v2.1/devices?action=get&orgId=o15475450989191&assetId=9HhK0YxX
@@ -66,7 +66,7 @@ headers:  {}
 requestBody:  null
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 responseBody:  {
@@ -74,23 +74,23 @@ responseBody:  {
 	"msg": "OK",
 	"requestId": "835a5cc4-4487-4bf2-961a-55bc0ee77d02",
 	"data": {
-		"orgId": "o15475450989191",
+		"orgId": "yourOrgId",
 		"assetId": "9HhK0YxX",
 		"modelId": "abc-test",
 		"modelIdPath": "/abc-test",
-		"productKey": "mJo2gO5u",
+		"productKey": "yourProductKey",
 		"productName": {
 			"defaultValue": "abc-pk",
 			"i18nValue": {}
 		},
 		"productType": "Device",
 		"dataFormat": "Json",
-		"deviceKey": "VcwTHRvYFb",
+		"deviceKey": "yourDeviceKey",
 		"deviceName": {
 			"defaultValue": "testforname",
 			"i18nValue": {}
 		},
-		"deviceSecret": "hOiv7SJAYuyVJp3CXJWJ",
+		"deviceSecret": "yourDeviceSecret",
 		"deviceDesc": "test for undatedevice",
 		"timezone": "+08:00",
 		"deviceAttributes": {

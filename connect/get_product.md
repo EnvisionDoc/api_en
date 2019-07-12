@@ -4,21 +4,21 @@
 
 Get product details via `productKey`.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/products?action=get
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | productKey        | Query            | true    | String    | Product Key|
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
@@ -46,7 +46,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | updateTime       | Long                            | Update time                                             |
 | updateBy       | String                          | Updater                                               |
 
-## Error codes
+## Error Codes
 
 | Code| Data Type | Description |
 |------------|----------------|-------------------|
@@ -57,13 +57,13 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 GET:  /connect-service/v2.1/products?action=get&orgId=abc&productKey=def
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -71,13 +71,13 @@ GET:  /connect-service/v2.1/products?action=get&orgId=abc&productKey=def
 	"msg":"OK",
 	"requestId":"345e68bc-e98a-45b1-a931-d255a6336847",
 	"data" :{
-		"orgId":"o15475450989191",
-		"productKey":"atC41UIe",
+		"orgId":"yourOrgId",
+		"productKey":"yourProductKey",
 		"productName":{
 			"defaultValue":"openapi_sdk_8",
 			"i18nValue":{}
 		},
-		"productSecret":"1uhl4Gwx9X8",
+		"productSecret":"yourProductSecret",
 		"productDesc":"test_sdk_update",
 		"productType":"Device",
 		"dataFormat":"Custom",

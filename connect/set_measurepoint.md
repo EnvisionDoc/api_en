@@ -8,25 +8,25 @@ This interface is used to execute cached commands or instant commands. When an i
 
 In case of a cached command, it will be returned to the user directly after being cached.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
 | deviceKey | Query           | False      | String       | Device key          |
-| measurepointId      | Query| True | String    | Asset measurepoint. [How to get pointId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid) |
+| measurepointId      | Query| True | String    | Asset measurepoint. [How to get pointId](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
 | pendingTtl     | Query| False| Integer    | Cache storage time. Its unit is second and its range is [0 - 172800 (i.e. 48 hours)], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.  |
 | timeout        | Query| False         | Integer    | Service execution timeout time in seconds. Its range is [1-60], which is set as 30 seconds by default|
 
-## Request parameters (Body)
+## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|-------------------|----------|
@@ -35,7 +35,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -48,7 +48,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 |-------------|-------------------|-----------------------------|
 | commandId  | String| Command ID|
 
-## Error codes
+## Error Codes
 
 | Code | Description    |
 |-------|------------------------------------------------------------------|
@@ -62,7 +62,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?measurepointId=measurepoint1&action=setMeasurepoint&deviceKey=zBAofs6D4s&pendingTtl=1000&productKey=6Bt59ySj&orgId=o15535059999891&timeout=30
@@ -70,7 +70,7 @@ https://{apigw-address}/connect-service/v2.1/commands?measurepointId=measurepoin
 {"value":1.0}
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {

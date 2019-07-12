@@ -40,7 +40,7 @@ Visit [Maven Warehouse](https://mvnrepository.com/artifact/com.envisioniot/apim-
 1. No verification for API. The sample codes are given as follows:
 
    ```
-   Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret))
+   Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey))
            .url("https://{apigw-address}/fire/1.0.0/getNews?page=1&count=10")
            .method("GET")
            .sync();
@@ -49,7 +49,7 @@ Visit [Maven Warehouse](https://mvnrepository.com/artifact/com.envisioniot/apim-
 2. Enable the API log. The sample codes are given as follows:
 
    ```
-   Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+   Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey).debug())
            .url("https://{apigw-address}/fire/1.0.0/getNews?page=1&count=10")
            .method("GET")
            .sync();
@@ -58,7 +58,7 @@ Visit [Maven Warehouse](https://mvnrepository.com/artifact/com.envisioniot/apim-
 3. Post request. The sample codes are given as follows:
 
    ```
-   Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+   Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey).debug())
                .url("https://{apigw-address}/lily/0.0.1/getPublic")
                .method("POST")
                .header("Content-Type", "application/json")
@@ -73,7 +73,7 @@ Visit [Maven Warehouse](https://mvnrepository.com/artifact/com.envisioniot/apim-
 The sample codes are given as follows:
 
 ```java
-Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret))
+Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey))
         .url("https://{apigw-address}/fire/1.0.0/getNews?page=1&count=10")
         .method("GET").async( new PoseidonListener() {
               @Override
@@ -98,7 +98,7 @@ userRequest.setAge("12");
 userRequest.setQueryPath("1234");
 userRequest.setX_custom_header("ni hao shanghai");
 
-UserResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+UserResponse response = Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey).debug())
             .url("https://{apigw-address}")
             .getResponse(userRequest, UserResponse.class);
 ```
@@ -122,12 +122,12 @@ pip install aphrodite
 ```python
 from poseidon import poseidon
 
-appkey = 'appKey'
-appsecret = 'appSecret'
+accessKey = 'accessKey'
+secretKey = 'secretKey'
 
 url = 'https://{apigw-address}/tttttttt/v1/tyy?sid=28654780'
 
-req = poseidon.urlopen(appkey, appsecret, url)
+req = poseidon.urlopen(accessKey, secretKey, url)
 print(req)
 ```
 **Header**
@@ -135,14 +135,14 @@ print(req)
 ```python
 from poseidon import poseidon
 
-appkey = 'appKey'
-appsecret = 'appSecret'
+accessKey = 'accessKey'
+secretKey = 'secretKey'
 
 url = 'https://{apigw-address}/tttttttt/v1/tyy?sid=28654780'
 
 header={}
 
-req = poseidon.urlopen(appkey, appsecret, url, None, header)
+req = poseidon.urlopen(accessKey, secretKey, url, None, header)
 print(req)
 
 ```
@@ -152,14 +152,14 @@ print(req)
 ```python
 from poseidon import poseidon
 
-appkey = 'appKey'
-appsecret = 'appSecret'
+accessKey = 'accessKey'
+secretKey = 'secretKey'
 
 url = 'https://{apigw-address}/tttttttt/v1/tyy?sid=28654780'
 
 data = {"username": "11111", "password": "11111"}
 
-req = poseidon.urlopen(appkey, appsecret, url, data)
+req = poseidon.urlopen(accessKey, secretKey, url, data)
 print(req)
 
 ```
@@ -179,10 +179,10 @@ import com.envision.apim.poseidon.core.Poseidon;
 public class demo {
     public static void main(String[] args) {
 
-        String appKey = "app_Key";
-        String appSecret = "app_Secret";
+        String accessKey = "app_Key";
+        String secretKey = "app_Secret";
 
-        String response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret))
+        String response = Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey))
                 .url("https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId={org_id}&assetId={asset_id}")
                 .method("GET")
                 .sync();

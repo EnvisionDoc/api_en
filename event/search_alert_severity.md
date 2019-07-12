@@ -4,26 +4,26 @@
 
 Query alert level by page.
 
-## Request format
+## Request Format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/alert-severities?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
-## Request parameters (Body)
+## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime`. User can specify a field in the `AlertSeverity` structure as the sorting criterion. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `severityId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime`. User can specify a field in the `AlertSeverity` structure as the sorting criterion. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
@@ -44,7 +44,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-severities?action=search
 
 ## Input/output samples
 
-### Request sample
+### Request Sample
 
 ```json
 POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&orgId=1c499110e8800000
@@ -60,7 +60,7 @@ POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -78,7 +78,7 @@ POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&
 	"requestId": "bd591868-0eb1-46dc-a989-c1de33cc671e",
 	"data": [{
 		"severityId": "001",
-		"orgId": "1c499110e8800000",
+		"orgId": "yourOrgId",
 		"severityDesc": {
 			"i18nValue": {
 				"en_US": "Serious！！！" ,
@@ -94,7 +94,7 @@ POST  https://{apigw-address}/event-service/v2.1/alert-severities?action=search&
 }
 ```
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public void testSearchAlertSeverity() {  
@@ -110,7 +110,7 @@ public void testSearchAlertSeverity() {
 	    request.setPagination(pagination);  
 	    request.headerParams().put("apim-accesskey", "4ced4f38-1ced-476e0a446215-a602-4307");  
 	    try {  
-	        SearchAlertSeverityResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())  
+	        SearchAlertSeverityResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
 	                .url("https://{apigw-address}")  
 	                .getResponse(request, SearchAlertSeverityResponse.class);  
 	        Gson gson = new Gson();  

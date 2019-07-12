@@ -4,23 +4,23 @@
 
 Get the model based on the model identifier (`modelId`).
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/model-service/v2.1/thing-models?action=get
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |-------|-------------|-----|------|----------|
-| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid) |
+| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
 | scope   | Query            | False    | Integer   | Query scope. 0: Search only from the OU specified by `orgId`, 1: Search from the OU specified by `orgId` and the OU where the public model is located. It is set as 1 by default|
-| modelId | Query            | True     | String    | Model ID which the asset belongs to. [How to get modelId information](/docs/api/en/latest/api_faqs.html#how-to-get-modeid-information-modeid)|
+| modelId | Query            | True     | String    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
 
 
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type | Description |
 |-----------|-----------|----------|
@@ -28,7 +28,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=get
 
 
 
-## Error codes
+## Error Codes
 
 See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overview.html#public-return-codes-connection-service-etc)
 
@@ -36,13 +36,13 @@ See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overvie
 
 ## Sample
 
-### Request sample
+### Request Sample
 
 ```
 GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c499110e8800000&modelId=planet
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -52,7 +52,7 @@ GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c4
     "data": {
                 "modelId": "planet",
                 "modelIdPath": "/planet",
-                "orgId": "1c499110e8800000",
+                "orgId": "yourOrgId",
                 "name": {
                     "defaultValue": "planet",
                     "i18nValue": {
@@ -178,12 +178,12 @@ GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c4
 ```
 
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public class GetThingModel {
-    private static String appKey = "4ced4f38-1ced-476e0a446215-a602-4307";
-    private static String appSecret = "0a446215-a602-4307-9ff2-3feed3e983ce";
+    private static String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";
+    private static String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";
     private static String orgId = "1c499110e8800000";
     private static String url = "https://{apigw-address}";
     public static void main(String[] args) {
@@ -191,7 +191,7 @@ public class GetThingModel {
         request.setOrgId(orgId);
         request.setModelId("planet");
         request.setScope(1);
-        GetThingModelResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+        GetThingModelResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
                 .url(url)
                 .getResponse(request, request.getResponseClass());
         System.out.println(response.getData());

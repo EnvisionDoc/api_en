@@ -4,25 +4,25 @@
 
 Remove an asset node from the asset tree. The asset to be removed can be a device asset or a logical asset. If the asset node to be removed is a device asset, it can be described by using `ProductKey` and `DeviceKey` of the device asset. If the asset node to be removed is a logical asset, it can be described by the ID of the logical asset.
 
-## Request format
+## Request Format
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=delete
 
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get asset tree ID](/docs/api/en/latest/api_faqs#id)        |
-| assetId  | Query            | false    | String    | ID of the asset to be removed (used to identify the logical asset). When there is an 'assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId information](/docs/api/en/latest/api_faqs.html#how-to-get-assetid-information-assetid)  |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
+| assetId  | Query            | false    | String    | ID of the asset to be removed (used to identify the logical asset). When there is an 'assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
 | productKey  | Query            | false    | String    | ProductKey of the asset to be removed (used to identify the device asset).  |
 | deviceKey  | Query            | false    | String    | DeviceKey of the asset to be removed (used to identify the device asset).  |
 
 
-## Error codes
+## Error Codes
 
 | Code | Description    |
 |-----------|-----------------------------|
@@ -37,13 +37,13 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=delete
 
 ## Sample 1
 
-### Request sample
+### Request Sample
 
 ```
 https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=BRIt3ee3&assetId=AdqP8rZ0&action=delete&orgId=o15541858646501
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 { 

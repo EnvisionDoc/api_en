@@ -4,26 +4,26 @@
 
 Query alert types by page.
 
-## Request format
+## Request Format
 
 ```
 POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 ```
 
-## Request parameters (URI)
+## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId information](/docs/api/en/latest/api_faqs#how-to-get-orgid-information-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
-## Request parameters (Body)
+## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| expression         | false    | String   | Query expressions, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` structure for sorting purpose. See [Pagination Request Structure] (/docs/api/en/latest/overview.html?highlight=pagination#pagination) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `typeId` and `parentTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` structure for sorting purpose. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
-## Response parameters
+## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
@@ -45,7 +45,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 
 ## Input/output samples
 
-### Request sample
+### Request Sample
 
 ```json
 POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search&orgId=1c499110e8800000
@@ -61,7 +61,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 }
 ```
 
-### Return sample
+### Return Sample
 
 ```json
 {
@@ -79,7 +79,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 	"requestId": "c1be09d8-a6f2-4647-92e1-3c545fa1b3dd",
 	"data": [{
 		"typeId": "dateType",
-		"orgId": "1c499110e8800000",
+		"orgId": "yourOrgId",
 		"typeDesc": {
 			"i18nValue": {
 				"en_US": "dateType desc",
@@ -94,7 +94,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 }
 ```
 
-## Java SDK invocation sample
+## Java SDK Sample
 
 ```java
 public void testSearchAlertType() {  
@@ -108,7 +108,7 @@ public void testSearchAlertType() {
         pagination.setSorters(sorterList);  
 	        request.setPagination(pagination);  
 	        try {  
-	            SearchAlertTypeResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())  
+	            SearchAlertTypeResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
 	                    .url("https://{apigw-address}")  
 	                    .getResponse(request, SearchAlertTypeResponse.class);  
 	            Gson gson = new Gson();  
