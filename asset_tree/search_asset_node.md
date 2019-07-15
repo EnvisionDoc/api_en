@@ -30,11 +30,11 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|--------------|
-| assetIds| False  | String Array  | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
-| modelIds | False | String Array | Model ID which the asset belongs to. You should provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| rootModelIds | False | String Array | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models. |
+| assetIds| False  | String Array  | Asset ID. Provide the list of multiple asset IDs if you want to query multiple assets. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
+| modelIds | False | String Array | Model ID which the asset belongs to. Provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| rootModelIds | False | String Array | Model ID which the asset belongs to. Provide multiple root model IDs if you want to query multiple root models. |
 | nameLike | False | nameLike structure | Used to describe the query criterion for internationalized names. See [nameLike Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
-| attributes  | False|Map |Attributes of the model which the asset belongs to. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
+| attributes  | False|Map |A group of attribute values. The key is the attribute name, String type. The value is the attribute value, and the type is defined by the specific model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
 | tags | False | Tag structure | A group of user-customized tags |
 | treeId | False | String | ID of the asset tree associated to the asset |
 
