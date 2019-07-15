@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | Product structure | Product-specific information; see [Product Structure] (/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
+| data | Product structure | Product-specific information; see [Product Structure](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
 
 
 ### Product structure <productstruc>

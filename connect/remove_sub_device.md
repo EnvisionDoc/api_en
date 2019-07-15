@@ -21,7 +21,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=removeSubDevice
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure] (/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
+| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
 | subDevices           | True      | DeviceIdentfier structure | Information of the list of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Structure](/docs/api/en/latest/connect/remove_sub_device.html#deviceidentifier) |
 
 

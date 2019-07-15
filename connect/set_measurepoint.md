@@ -1,10 +1,10 @@
-# Set Measurepoint
+# Set Measurement Point
 
 
 
 Measurepoint setting interface.
 
-This interface is used to execute cached commands or instant commands. When an instant command is executed, the interface response data is returned after the device returns the measurepoint setting results. If the device does not return the measurepoint setting results within the specified measurepoint setting timeout period, the EnOS measurepoint setting will wait for the timeout period and then return the interface timeout response data.
+This interface is used to execute cached commands or instant commands. When an instant command is executed, the interface response data is returned after the device returns the measurement point setting results. If the device does not return the measurement point setting results within the specified measurement point setting timeout period, the EnOS measurement point setting will wait for the timeout period and then return the interface timeout response data.
 
 In case of a cached command, it will be returned to the user directly after being cached.
 
@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key      |
 | deviceKey | Query           | False      | String       | Device key          |
-| measurepointId      | Query| True | String    | Asset measurepoint. [How to get pointId](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
+| measurepointId      | Query| True | String    | Asset measurement point. [How to get pointId](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
 | pendingTtl     | Query| False| Integer    | Cache storage time. Its unit is second and its range is [0 - 172800 (i.e. 48 hours)], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.  |
 | timeout        | Query| False         | Integer    | Service execution timeout time in seconds. Its range is [1-60], which is set as 30 seconds by default|
 
@@ -30,7 +30,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|-------------------|----------|
-| value | True| String, Number, Array or Object | Parameter value for measurepoint setting, which needs to conform to the definition of `ThingModel`.  |
+| value | True| String, Number, Array or Object | Parameter value for measurement point setting, which needs to conform to the definition of `ThingModel`.  |
 
 
 
@@ -39,10 +39,10 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Measurepoint setting return structure      | Measurepoint setting results. See [Measurepoint Setting Return Structure](/docs/api/en/latest/connect/set_measurepoint.html#id4) |
+| data |  Measurement point setting return structure      | Measurement point setting results. See [Measurepoint Setting Return Structure](/docs/api/en/latest/connect/set_measurepoint.html#id4) |
 
 
-### Measurepoint setting return structure
+### Measurement point setting return structure
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|

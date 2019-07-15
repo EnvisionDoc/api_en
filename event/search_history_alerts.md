@@ -24,7 +24,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 |------|-----------------|-----------|-------------|
 | modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
 | assetId        | false     | String    | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepointsId     | false     | String    | Asset measurepoint. It is supported to query multiple measurepoints, and all the measurepoints are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurepoints). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
+| measurepointsId     | false     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
 | startOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)   | Start time for triggering alert.  |
 | endOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       |  End time for triggering alert.  |
 | recoverStartTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | Start time of alert recovery. If left blank, the data within the last week will be searched.  |
@@ -48,9 +48,9 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | assetId        | String                | Asset ID|
 | modelId        | String                | Model ID which the asset belongs to|
 | modelIdPath    | String                | Model ID path|
-| measurepointId | String                | Asset measurepoint|
+| measurepointId | String                | Asset measurement point|
 | hitRuleId      | String                | Matched rule ID|
-| value          | Integer/Double/Object | Measurepoint value|
+| value          | Integer/Double/Object | Measurement point value|
 | occurTime      | Long| UTC time when the alert occurs|
 | localOccur     | String                | Local time when the alert occurs|
 | recoverTime     | Long                | Alert recovery time|

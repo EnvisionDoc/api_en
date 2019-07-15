@@ -25,6 +25,6 @@ Provide management operations for products, devices, and commands.
 |[Get Command](get_command)|Get a single command information|
 |[Cancel Command](cancel_command)|Cancel the interface to cached commands|
 |[Invoke Service](invoke_service)|Release a service invocation interface to the device|
-|[Set Measurepoint](set_measurepoint)|Measurepoint setting interface|
+|[Set Measurement Point](set_measurepoint)|Measurepoint setting interface|
 |[Get Event](get_event)|Get the details of the Event via `eventId`|
 |[Search Event](search_event)|Search for events by page based on criteria|

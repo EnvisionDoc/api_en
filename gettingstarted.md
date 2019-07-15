@@ -10,11 +10,11 @@ The following preparations are required to invoke the EnOS API:
 
 **Get the service account**
 
-You have gotten the service account that can be used for identity authorization when invoking the API. For detailed steps, see [API Authentication] (overview#authentication).
+You have gotten the service account that can be used for identity authorization when invoking the API. For detailed steps, see [API Authentication](overview#authentication).
 
 **Get resource permissions**
 
-The service account has the permissions to access to related resources in the system. For details, see [Managing Service Accounts] (/docs/iam/en/latest/howto/service_account/managing_service_account.html).
+The service account has the permissions to access to related resources in the system. For details, see [Managing Service Accounts](/docs/iam/en/latest/howto/service_account/managing_service_account.html).
 
 **Prepare the development environment**
 

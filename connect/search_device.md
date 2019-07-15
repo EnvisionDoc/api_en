@@ -68,7 +68,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure] (/docs/api/en/latest/connect/search_device.html#id4) |
+| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure](/docs/api/en/latest/connect/search_device.html#id4) |
 
 
 ### Device structure

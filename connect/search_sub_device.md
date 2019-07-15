@@ -21,7 +21,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevice
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure] (/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier) |
+| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier) |
 | pagination  | False      | Pagination request structure  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
@@ -42,7 +42,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure] (/docs/api/en/latest/connect/search_sub_device.html#id3)    |
+| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure](/docs/api/en/latest/connect/search_sub_device.html#id3)    |
 
 
 ### Device structure

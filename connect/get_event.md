@@ -23,7 +23,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Event structure | Event-specific information; see [Event Structure] (/docs/api/en/latest/connect/get_event.html#id3) |
+| data | Event structure | Event-specific information; see [Event Structure](/docs/api/en/latest/connect/get_event.html#id3) |
 
 
 ### Event structure

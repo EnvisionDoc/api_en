@@ -39,7 +39,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | desc          | String| Model description|
 | tags          | Map (Key is of String type, and the value is of String type) | User-customized tags  |
 | attributes    | Map (Key is of String type and the Value is the `ThingAttribute` structure)| Map-typed value defined by the static attributes. The key is the static attribute id and the value is the attribute definition. See [ThingAttribute Structure](/docs/api/en/latest/model/searchmodel.html#id2)|
-| measurepoints   | Map (Key is of String type and the Value is the `ThingMeasurepoint` structure)| Map-typed value defined by the static attributes. The key is the measurepoint id and the value is the measurepoint definition. See [ThingMeasurepoint Structure](/docs/api/en/latest/model/searchmodel.html#id3)|
+| measurement points   | Map (Key is of String type and the Value is the `ThingMeasurepoint` structure)| Map-typed value defined by the static attributes. The key is the measurement point id and the value is the measurement point definition. See [ThingMeasurepoint Structure](/docs/api/en/latest/model/searchmodel.html#id3)|
 | services      | Map (Key is of String type and the Value is the `ThingService` structure)    | Map-typed value defined by the service. The key is the service id, and the value is the service definition. See [ThingService Structure](/docs/api/en/latest/model/searchmodel.html#id5)|
 | events        | Map (Key is of String type and the Value is the `ThingEvent` structure)    | Map-typed value defined by the event. The key is the event id, and the value is the event definition. See [ThingEvent Structure](/docs/api/en/latest/model/searchmodel.html#id7)|
 

@@ -33,7 +33,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchRelated
 |-----------|---------|--------|-----------------------|
 | assetIds                   | String Array   | false    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
 | modelIds            | String Array   | false    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| rootModelIds         | String Array   | False    | Model ID which the asset belongs to. You should provide multiple root model IDs if you want to query multiple root models |
+| rootModelIds         | String Array   | False    | Model ID which the asset belongs to. Provide multiple root model IDs if you want to query multiple root models |
 | isParentOfAssetId     | String         | false    | The asset to be queried is the immediate parent node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
 | isChildOfAssetId     | String         | false    | The asset to be queried is the immediate child node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
 | isAncestorOfAssetId     | String         | false    | The asset to be queried is the immediate ancestor node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |

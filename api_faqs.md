@@ -8,7 +8,7 @@ In the left navigation bar of the EnOS Console, click **IAM > Organization Profi
 ## How to get model ID (`modelId`) <modelid>
 
 1. In the left navigation bar of the EnOS Console, click **Asset Tree**, select the target asset tree, and search for the device name you want to query.
-2. Select the device and click "View" after the model name in the summary information on the right. The model identifier is `modelId`.
+2. Select the device and click **View** after the model name in the summary information on the right. The model identifier is `modelId`.
 
 
 ## How to get Asset ID (`assetId`)  <assetid>
@@ -56,7 +56,7 @@ Taking the following result set for example:
       "system": "Solar System"
     },
     "modelIdPath": "/planet",
-    "orgId": "o15444172373271",
+    "orgId": "yourOrgId",
     "desc": null,
     "tags": {}
   },
@@ -75,7 +75,7 @@ Taking the following result set for example:
       "system": "Solar System"
     },
     "modelIdPath": "/planet",
-    "orgId": "o15444172373271",
+    "orgId": "yourOrgId",
     "desc": null,
     "tags": {}
   }]

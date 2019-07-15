@@ -77,7 +77,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
       "system": "Solar System"
                   },
     "modelIdPath": "/planet",
-    "orgId": "o15444172373271",
+    "orgId": "yourOrgId",
     "desc": null,
     "tags": {}
            },

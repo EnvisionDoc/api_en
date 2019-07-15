@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=getGateway
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| subDevices           | True      | DeviceIdentfier structure | Information used to identify sub-devices. See [DeviceIdentfier structure] (/docs/api/en/latest/connect/get_gateway.html#deviceidentifier) |
+| subDevices           | True      | DeviceIdentfier structure | Information used to identify sub-devices. See [DeviceIdentfier structure](/docs/api/en/latest/connect/get_gateway.html#deviceidentifier) |
 
 
 ### DeviceIdentifier structure

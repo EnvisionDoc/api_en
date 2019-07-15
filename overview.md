@@ -230,11 +230,11 @@ The public return code for the TSDB data service API are:
 | 702  | xxx cannot be null or negative  | The parameter xxx cannot be null or negative         |
 | 702  | xxx is empty                                                 | The parameter xxx cannot be null or negative                                           |
 | 702  | only one xxx is allowed                                      | At most one parameter xxx is allowed                                               |
-| 702  | assetIds size * measurepoints size * pageSize is too large to query, result size may exceed RPC limit | The result set of a single query is too large. The calculation result by using the formula "Number of Devices\*Number of Measurepoints\*pageSize" can not be greater than 640000                                          |
+| 702  | assetIds size * measurement points size * pageSize is too large to query, result size may exceed RPC limit | The result set of a single query is too large. The calculation result by using the formula "Number of Devices\*Number of Measurepoints\*pageSize" can not be greater than 640000                                          |
 | 702  | param xxx is invalid                                         | The parameter xxx is invalid                                                  |
 | 702  | endTime should not be later than   startTime                 | The query end time should be later than the start time                                   |
 | 702  | is not a valid integer                                       | The parameter is not a valid integer                                   |
-| 702  | assetIds or measurepoint does not   match the model          | Device or measurepoint does not match with the model                                       |
+| 702  | assetIds or measurement point does not   match the model          | Device or measurement point does not match with the model                                       |
 | 702  | Please config/check storage group for   org[] and model[]    |  The storage policy is not configured or the `modelId` is incorrect                                  |
 
 ## API Authentication
@@ -274,7 +274,7 @@ Before authorizing a service account, you need to create a corresponding permiss
 | DeleteAssetNode                | Asset Tree Management | Full-Access  |
 | CreateAssetNode                | Asset Tree Management | Full-Access  |
 | Cancel Command                 | Device Management     | Full-Access  |
-| Set Measurepoint               | Asset                 | Control      |
+| Set Measurement point               | Asset                 | Control      |
 | Invoke Service                 | Asset                 | Control      |
 | Create Product                 | Device Management     | Full-Access  |
 | Update Product                 | Device Management     | Full-Access  |

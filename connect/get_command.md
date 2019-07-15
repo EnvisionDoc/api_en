@@ -37,14 +37,14 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 | assetId  | String         |Asset ID|
 | createTime      | Long                            | Creation time                                             |
 | createLocaltime | String| Local creation time|
-| commandType     | Integer| Command type. 1.  Measurepoint setting  2. Service invocation|
-| commandName     | StringI18n| Command name. Refers to the measurepoint name in case of measurepoint setting. Refers to the service name in case of service invocation. |
+| commandType     | Integer| Command type. 1.  Measurement point setting  2. Service invocation|
+| commandName     | StringI18n| Command name. Refers to the measurement point name in case of measurement point setting. Refers to the service name in case of service invocation. |
 | timeout         | Integer| Command timeout duration. Its unit is second and its range is [1-60], which is 30 by default|
 | pendingTtl      | Long| Command cache duration. Its unit is second and its range is [ 0 - 48 * 60 * 60 ], which is 0 by default, indicating instant commands|
 | state           | Integer| Command status, which is represented by an integer from 1-7.  1 -  Created; 2 - Canceled; 3 - Expired; 4 - Released; 5 - Send successfully; 6 - Failed; 7 - Response timed out. |
-| tslIdentifier   | String| Corresponding identifier in the thing model. Refers to the measurepoint identifier in case of measurepoint setting. Refers to the service identifier in case of service invocation. |
-| inputData       | Map (Key is of String type and the Value is of String, Number, Array or Object type) | Input data. In case of measurepoint setting commands, the key is the measurepoint identifier and the value is the measurepoint value to be set. In case of service invocation commands, it is the service input parameter. The value data type should conform to the definition of thing model |
-| outputData      | Map (Key is of String type and the Value is of String, Number, Array or Object type) | Output data. No return is provided for this field in case of measurepoint setting commands. This field indicates the service output results in case of service invocation commands. The value data type should conform to the definition of thing model. |
+| tslIdentifier   | String| Corresponding identifier in the thing model. Refers to the measurement point identifier in case of measurement point setting. Refers to the service identifier in case of service invocation. |
+| inputData       | Map (Key is of String type and the Value is of String, Number, Array or Object type) | Input data. In case of measurement point setting commands, the key is the measurement point identifier and the value is the measurement point value to be set. In case of service invocation commands, it is the service input parameter. The value data type should conform to the definition of thing model |
+| outputData      | Map (Key is of String type and the Value is of String, Number, Array or Object type) | Output data. No return is provided for this field in case of measurement point setting commands. This field indicates the service output results in case of service invocation commands. The value data type should conform to the definition of thing model. |
 
 
 

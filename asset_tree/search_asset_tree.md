@@ -20,7 +20,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| filter| false         | Filter structure          | The criterion that the asset tree needs to meet. The search for tags is supported." filter": {  "tags": { "foo": "bar", "hello": "world" }  }  By default, all the asset trees under the OU are returned. See [Filter Structure] (/docs/api/en/latest/asset_tree/search_asset_tree.html#filter-filterstruc)   |
+| filter| false         | Filter structure          | The criterion that the asset tree needs to meet. The search for tags is supported." filter": {  "tags": { "foo": "bar", "hello": "world" }  }  By default, all the asset trees under the OU are returned. See [Filter Structure](/docs/api/en/latest/asset_tree/search_asset_tree.html#filter-filterstruc)   |
 | pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 | projection| false         | String Array          | For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
