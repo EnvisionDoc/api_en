@@ -2,7 +2,7 @@
 
 
 
-Search assets tree as per a group of `assetId`. If `assetId` is not in the tree, then there is no such key in `data`.
+Search asset tree by a group of `assetId`. If `assetId` is not in the tree, then there is no such key in `data`.
 
 ## Request Format
 
@@ -20,7 +20,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| assetIds         | Query            | true     | String Array   | A group of asset ID (assetId), where at most 100 Ids are supported. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)   |
+| assetIds         | Query            | true     | String Array   | A group of asset ID, where at most 100 Ids are supported. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)   |
 | projection         | Query            | false    | String Array   |Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
@@ -31,12 +31,13 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 | data| Map (the Key is assetId and the Value is the AssetTree structure Array)   | List of assets and their asset trees. See [AssetTree structure](/docs/api/en/latest/asset_tree/get_asset_trees.html#id3) |
 
 
-### AssetTree structure
+### AssetTree Structure
 
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
 | treeId  |  String | Asset tree ID |
-|tags|Map<String, String>|Root asset on the asset tree|
+|tags|Map<String, String>|A group of user-customized tags of asset tree|
+|asset|AssetTree structure|Root asset on the asset tree|
 
 
 

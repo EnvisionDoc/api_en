@@ -7,7 +7,7 @@ Get the TSDB storage policy corresponding to the model measurement point. A meas
 ## Request Format
 
 ```
-https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepoints={}&accessKey={}
+https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepoints={}
 ```
 
 ## Request Parameters (URI)
@@ -15,8 +15,8 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepo
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)|
-| modelIds       | Query            | false    | String    |Model ID which the asset belongs to. Multi-model query is supported, and multiple modelIds are separated by commas. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
-| measurepoints | Query            | true     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
+| modelIds       | Query            | true    | String    |Model ID which the asset belongs to. Multi-model query is supported, and multiple modelIds are separated by commas. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
+| measurepoints | Query            | false     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
                                               
 
 
@@ -24,7 +24,7 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepo
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| items | `List<Object>` | List of asset data. The data returned for a single point of a single device, sorting by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id3). |
+| data | `List<Object>` | List of asset data. The data returned for a single point of a single device, sorting by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id3). |
 
 
 ### items
@@ -40,8 +40,8 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepo
 The following sample shows that the measurement point opentsdb_ai_point_xxx has the storage policies AI_RAW (AI raw data) and AI_NORMALIZED (AI minute-level normalized data):
 
 ```json
-"opentsdb_ai_point_xxx": [       //Measurement point		
-          "AI_RAW", 						 //Storage policy		
+"opentsdb_ai_point_xxx": [       	
+          "AI_RAW", 						 
           "AI_NORMALIZED"
         ]
 ```
@@ -152,8 +152,7 @@ private static class Request extends PoseidonRequest{
   @Test
   public void getPointsTSDBMetaDataTest(){
       
-      //1. Click Application Registration in the left navigation of the EnOS Console.
-      //2. Click the application that needs to call the API, and click Basic Information. accessKey and secretKey correspond to AccessKey and SecretKey in EnOS.
+      //accessKey and secretKey correspond to AccessKey and SecretKey in EnOS.
       String accessKey = "29b8d283-dddd-4c31f0e3a356-0f80-4fdf";
       String secretKey = "f0e3a856-0fc0-4fdf-b1e5-b34da152879c";
 

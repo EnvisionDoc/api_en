@@ -7,7 +7,7 @@ Filter and query the latest data of a single measurement point for multiple devi
 ## Request Format
 
 ```
-https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId={}modelId={}assetIds={}measurepoints={}timeWindow={}operator={}valueFilter={}accessKey={}
+https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId={}modelId={}assetIds={}measurepoint={}timeWindow={}operator={}valueFilter={}accessKey={}
 ```
 
 ## Request Parameters (URI)
@@ -15,9 +15,9 @@ https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId={}modelId={}assetI
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                                                                                                                                                                                                                            |
-| modelId       | Query            | false    | String    |Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)                                                                                                                                                                                                                            |
+| modelId       | Query            | true    | String    |Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)                                                                                                                                                                                                                            |
 | assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)                                                                                                                                                                                |
-| measurepoints | Query            | true     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
+| measurepoint | Query            | true     | String    | Asset measurement point. [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
 | timeWindow     | Query            | false     | Integer  | Returns the data schedule setting. Its unit is minute and its minimum value is 0; no filtering is applied if it is not in the request |
 | operator       | Query            | false     | String    | Operator. It supports: eq: equal to; nq: not equal; gt: greater than; lt: less than; ge: greater than or equal; le: less than or equal; between: interval of 2 values; in: one of multiple values.                                                                                                                                      |
 | valueFilter      | Query            | false    | String   |Range value. It must be used along with the operator. The operators "eq", "nq", "gt", "ge", "lt", and "le" correspond to a single value; "between" corresponds to 2 values; "in" corresponds to multiple values. Multiple values must be separated by commas, and the data types must be consistent with those of the measurement points. For example: "operator=betwteen&valueFilter=a, b" refers to filtering out the values between a and b|
@@ -119,7 +119,7 @@ public void filterAssetsLatestDataTest(){
     request.setQueryParam("modelId", "model_xxx");
     request.setQueryParam("valueFilter", 666.6);
     request.setQueryParam("assetIds","4DXYH7nS");
-    request.setQueryParam("measurepoints", "opentsdb_pi_point_xxx");
+    request.setQueryParam("measurepoint", "opentsdb_pi_point_xxx");
     request.setQueryParam("accessKey", accessKey);
     
     request.setMethod("GET");

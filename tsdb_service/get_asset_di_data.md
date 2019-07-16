@@ -59,7 +59,7 @@ Sample:
 {
         "assetId": "4DXYH7nS",  		//asset ID	      
         "timestamp": 1560249312446,		//data timestamp	  
-        "opentsdb_ai_point_xxx": "1.1236", 	//measurement point identifier and the data
+        "opentsdb_ai_point_xxx": "1", 	//measurement point identifier and the data
         "localtime": "6/11/2019 6:35:12 PM"	 //local time mark of data
 }
 ```

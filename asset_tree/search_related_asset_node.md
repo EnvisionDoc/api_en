@@ -2,7 +2,7 @@
 
 
 
-Query assets on the specified asset tree, and specify the relationship with a known asset as the query criterion.
+Query assets on the specified asset tree by specifying the relationship with a known asset.
 
 ## Request Format
 
@@ -27,17 +27,17 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchRelated
 | projection| false         | Projection structure          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-### Filter structure <filterstruc>
+### Filter Structure <filterstruc>
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------|--------|-----------------------|
 | assetIds                   | String Array   | false    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
-| modelIds            | String Array   | false    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| rootModelIds         | String Array   | False    | Model ID which the asset belongs to. Provide multiple root model IDs if you want to query multiple root models |
+| modelIds            | String Array   | false    | Model ID which the asset belongs to. Provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| rootModelIds         | String Array   | False    | Root model ID which the asset belongs to. Provide multiple root model IDs if you want to query multiple root models |
 | isParentOfAssetId     | String         | false    | The asset to be queried is the immediate parent node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
 | isChildOfAssetId     | String         | false    | The asset to be queried is the immediate child node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
-| isAncestorOfAssetId     | String         | false    | The asset to be queried is the immediate ancestor node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
-| isDescendantOfAssetId | String         | false    | The asset to be queried is the immediate descendant node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
+| isAncestorOfAssetId     | String         | false    | The asset to be queried is the ancestor node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
+| isDescendantOfAssetId | String         | false    | The asset to be queried is the descendant node of the specified asset, and its value is the asset ID of the specified asset. <br>[How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)  |
 
 
 ## Response Parameters
@@ -108,7 +108,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=k6wweMTP&acti
    },
    "attributes": {}
   }],
-    “pagination” : {
+    "pagination" : {
       "pageNo": 1,
       "pageSize": 10，
       "totalSzie": 10,

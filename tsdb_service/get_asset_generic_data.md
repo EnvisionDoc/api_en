@@ -164,7 +164,7 @@ public void getAssetsGenericDataTest(){
     request.setQueryParam("orgId", "yourOrgId");
     request.setQueryParam("modelId", "opentsdb_model_xxx");
     request.setQueryParam("assetIds","4DXYH7nS");
-    request.setQueryParam("measurepoints", "opentsdb_generic_point_xxx"); //sum() is an aggregate function
+    request.setQueryParam("measurepoints", "opentsdb_generic_point_xxx"); 
     request.setQueryParam("startTime", "2019-06-01 00:00:00"); //or in UTC format：2019-06-01T00:00:00%2B08:00
     request.setQueryParam("endTime", "2019-06-11 23:00:00");  //or in UTC format：2019-06-11T00:00:00%2B08:00
     request.setQueryParam("accessKey", accessKey);

@@ -2,7 +2,7 @@
 
 
 
-Query the assets that meet the conditions under the OU.
+Query the assets that meet the conditions under the organization.
 
 ## Request Format
 
@@ -26,25 +26,25 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 | projection| false         | String Array          | Used to describe the object projection to be returned in the interface request. See [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-### Filter structure <filterstruc>
+### Filter Structure <filterstruc>
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|--------------|
 | assetIds| False  | String Array  | Asset ID. Provide the list of multiple asset IDs if you want to query multiple assets. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
 | modelIds | False | String Array | Model ID which the asset belongs to. Provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| rootModelIds | False | String Array | Model ID which the asset belongs to. Provide multiple root model IDs if you want to query multiple root models. |
+| rootModelIds | False | String Array | Root model ID which the asset belongs to. Provide multiple root model IDs list if you want to query multiple root models. |
 | nameLike | False | nameLike structure | Used to describe the query criterion for internationalized names. See [nameLike Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
 | attributes  | False|Map |A group of attribute values. The key is the attribute name, String type. The value is the attribute value, and the type is defined by the specific model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
 | tags | False | Tag structure | A group of user-customized tags |
 | treeId | False | String | ID of the asset tree associated to the asset |
 
 
-### nameLike structure <namelikestruc>
+### nameLike Structure <namelikestruc>
 
 | Name | Data Type | Description |
 |-----------|---------------------|-----------------------|
 | value        | String     | Name or name fragment to be queried|
-| locale         | String     | Specified locale, such as zh_CN|
+| locale         | String     | Specified locale, such as "zh_CN"|
 
 
 ## Response Parameters

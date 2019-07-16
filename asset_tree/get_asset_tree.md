@@ -26,7 +26,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 | tags| Map (Key is of String type, and the value is of String type) | A group of user-customized asset tree tags  |
 | asset| asset structure                   | Root asset of asset tree ; see [asset Structure](/docs/api/en/latest/asset_tree/get_asset_tree.html#asset-assetstruc)              |
 
-### Asset structure <assetstruc>
+### Asset Structure <assetstruc>
 
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
@@ -34,7 +34,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 |modelId|String|Model ID which the asset belongs to|
 |modelIdPath|String|Model ID path. |
 | name | StringI18n |Asset name that supports internationalization|
-|timezone  |  String  |Timezone where the asset is located
+|timezone  |  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time|
 | description | String | Asset description|
 | label  | String | Asset type: "0" - device assets; "1" - logical assets|
 | inValid  | Boolean | true stands for invalid nodes while false stands for valid nodes|
