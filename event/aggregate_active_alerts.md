@@ -34,7 +34,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate
 | data | Map (Key is of String type, and the value is of Integer type) | The Key is the value of the grouping field, and the value is the number of alerts that the object has generated within the specified time range.|
 
 
-## Input/output samples
+## Input/Output Samples
 
 ### Request Sample
 

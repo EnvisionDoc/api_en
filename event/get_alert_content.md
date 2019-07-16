@@ -7,7 +7,7 @@ Get alert content based on organization ID and content ID.
 ## Request Format
 
 ```
-GET https://{apigw-address}/event-service/v2.1/alert-contents action=get&orgId=1c499110e8800000
+GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1c499110e8800000
 ```
 
 ## Request Parameters (URI)
@@ -24,7 +24,7 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents action=get&orgId=1
 |-------|----------------|---------------------------|
 | data | AlertContent structure | Alert content. See [AlertContent Structure](/docs/api/en/latest/event/get_alert_content.html#id3)|
 
-### AlertContent structure
+### AlertContent Structure
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
@@ -40,12 +40,12 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents action=get&orgId=1
 
 
 
-## Input/output samples
+## Input/Output Samples
 
 ### Request Sample
 
 ```json
-GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get &contentId=doubleContentuid&orgId=1c499110e8800000
+GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&contentId=doubleContentuid&orgId=1c499110e8800000
 ```
 
 ### Return Sample

@@ -20,9 +20,9 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags
 ## Request Parameters (Body)
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |------|----------|--------------------|----|------|
-| eventId       | Query            | true     | String     | Alert id  |
+| eventId       | Query            | true     | String     | Alert ID  |
 | tags          | Query            | true     | Tag structure | Tag map you want to modify |
-| isPatchUpdate | Query            | true     | Boolean    | Whether to update in full; false stands for full modification, while true stands for partial modification.  |
+| isPatchUpdate | Query            | true     | Boolean    | Whether to update in full; false stands for full modification, true stands for partial modification.  |
 
 
 ## Response Parameters
@@ -32,7 +32,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags
 | data | Integer | Number of updated entries|
 
 
-## Input/output samples
+## Input/Output Samples
 
 ### Request Sample
 

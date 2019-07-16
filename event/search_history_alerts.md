@@ -24,7 +24,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 |------|-----------------|-----------|-------------|
 | modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
 | assetId        | false     | String    | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepointsId     | false     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
+| measurepointsId     | false     | String    | Asset measurement point. [How to get pointId](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
 | startOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)   | Start time for triggering alert.  |
 | endOccurTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       |  End time for triggering alert.  |
 | recoverStartTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | Start time of alert recovery. If left blank, the data within the last week will be searched.  |
@@ -39,7 +39,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 |-------|----------------|---------------------------|
 | data | HistoryAlert structure| History alert information array, including recovery time, event ID, and reason for recovery. See [HistoryAlert Structure](/docs/api/en/latest/event/search_history_alerts.html#id7)|
 
-### HistoryAlert structure
+### HistoryAlert Structure
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
@@ -58,8 +58,8 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | recoverReason     | String                | Recovery reason|
 | createTime     | Long| UTC creation time|
 | updateTime     | Long| UTC time for update|
-| severityId     | String| Alert level ID|
-| severityDesc   | StringI18n            | Alert level description|
+| severityId     | String| Alert severity ID|
+| severityDesc   | StringI18n            | Alert severity description|
 | typeId        | String                | Alert type ID|
 | typeDesc       | StringI18n            | Alert type description|
 | subTypeId      | String                | Alert sub-type|
@@ -72,7 +72,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 
 
 
-## Input/output samples
+## Input/Output Samples
 
 ### Request Sample
 
