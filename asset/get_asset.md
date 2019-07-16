@@ -2,7 +2,7 @@
 
 
 
-Get asset data by asset id.
+Get asset data by asset ID.
 
 ## Request Format
 
@@ -33,9 +33,9 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get
 | orgId      | String    | Organization ID which the asset belongs to|
 | name | StringI18n |Name of each language for this asset|
 | description   | String | Asset description|
-|attributes   |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute id, which is of String type. The value type depends on the definition of this attribute in the model|
+|attributes   |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model|
 |timezone  |  String  |Timezone|
-|modelId|String|Model ID which the asset belongs to|
+|modelId|String|Model ID|
 |modelIdPath|String|Model inheritance path. <br>E.g.: /Turbine/Double_Feed_Turbine|
 |tags|Map<br>(Key is of String type, and the value is of String type)|User-customized tags|
 

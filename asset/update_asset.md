@@ -24,15 +24,16 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
 | asset     | true  |`AssetUpdate` structure          | Used for asset update. For details about the structure, see [AssetUpdate Structure](/docs/api/en/latest/asset/update_asset.html#id2). <br>When `isPatchUpdate` is true, only the fields specified in the `asset` parameter are updated; when `isPatchUpdate` is false, the field value of `asset` will be completely covered, i.e. the fields with an unspecified value will be left blank.
 
 
-### AssetUpdate structure
+### AssetUpdate Structure
 
 | Name            | Required or Not | Data Type | Description |
 |-------|--------|--------|---------------------------|
 | assetId |   true   | String | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
 | name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
 | description | false     | String | Asset description|
-|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute id, which is of String type. The value type depends on the definition of this attribute in the model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
+|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
 |timezone  |  false    |String  |Timezone. For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
+|modelId|false (if `isPatchUpdate` is false, `modelId` is required)|String|Model ID|
 |tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
 
 

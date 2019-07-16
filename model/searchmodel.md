@@ -15,10 +15,10 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |:-----------|:-----------------|:---------|:----------|:-----------------------------------------------------------------------------------------|
 | orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)|
-| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the specified orgId; 1 - Search from the specified orgId and public orgId. It is set as 1 by default               |
+| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default               |
 | expression | Query            | False    | String    | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "=") and `tags` (supports arithmetic operator "in"). The supported logical operator is "and", "or", and "not". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
-| pagination | Query            | False    | Pagination request structure       | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
+| pagination | Query            | False    | Pagination request structure       | Random pagination. Sorting field cannot be specified. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
 
@@ -38,10 +38,10 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name          | StringI18n | Model name|
 | desc          | String| Model description|
 | tags          | Map (Key is of String type, and the value is of String type) | User-customized tags  |
-| attributes    | Map (Key is of String type and the Value is the `ThingAttribute` structure)| Map-typed value defined by the static attributes. The key is the static attribute id and the value is the attribute definition. See [ThingAttribute Structure](/docs/api/en/latest/model/searchmodel.html#id2)|
-| measurement points   | Map (Key is of String type and the Value is the `ThingMeasurepoint` structure)| Map-typed value defined by the static attributes. The key is the measurement point id and the value is the measurement point definition. See [ThingMeasurepoint Structure](/docs/api/en/latest/model/searchmodel.html#id3)|
-| services      | Map (Key is of String type and the Value is the `ThingService` structure)    | Map-typed value defined by the service. The key is the service id, and the value is the service definition. See [ThingService Structure](/docs/api/en/latest/model/searchmodel.html#id5)|
-| events        | Map (Key is of String type and the Value is the `ThingEvent` structure)    | Map-typed value defined by the event. The key is the event id, and the value is the event definition. See [ThingEvent Structure](/docs/api/en/latest/model/searchmodel.html#id7)|
+| attributes    | Map (Key is of String type and the Value is the `ThingAttribute` structure)| Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See [ThingAttribute Structure](/docs/api/en/latest/model/searchmodel.html#id2)|
+| measurement points   | Map (Key is of String type and the Value is the `ThingMeasurepoint` structure)| Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See [ThingMeasurepoint Structure](/docs/api/en/latest/model/searchmodel.html#id3)|
+| services      | Map (Key is of String type and the Value is the `ThingService` structure)    | Map-typed services definition. The key is the service ID, and the value is the service definition. See [ThingService Structure](/docs/api/en/latest/model/searchmodel.html#id5)|
+| events        | Map (Key is of String type and the Value is the `ThingEvent` structure)    | Map-typed events definition. The key is the event ID, and the value is the event definition. See [ThingEvent Structure](/docs/api/en/latest/model/searchmodel.html#id7)|
 
 
 ### ThingAttribute Structure
@@ -50,7 +50,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 |-------------|-------------------|-----------------------------|
 | identifier | String| Attribute ID|
 | dataType   | String| Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE|
-| isRequired | Boolean| Required or not. If true, the value of this attribute when the asset is instantiated; otherwise the asset will return a validation failure error when it is created.
+| isRequired | Boolean| Required or not. If true, the value of this attribute must be set when the asset is instantiated; otherwise the asset will return a validation failure error when it is created.
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type) | User-customized tags  |
@@ -62,7 +62,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| identifier | String| ID of measure point|
+| identifier | String| ID of the measurement point|
 | dataType   | String| Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE|
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
@@ -105,8 +105,6 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-|hasQuality|Boolean|Whether it has the quality indicator|
-|signalType|String|Signal type. E.g.: Generic, AI, PI, DI|
 | unit       | Unit structure| Unit. See [Unit Structure](/docs/api/en/latest/model/searchmodel.html#id11)|
 
 
