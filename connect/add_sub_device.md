@@ -21,8 +21,8 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=addSubDevice
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier) |
-| subDevices           | True      | DeviceIdentfier structure | Information of the list of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Structure](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier)  |
+| gateway | True      |DeviceIdentfier structure | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier) |
+| subDevices           | True      | DeviceIdentfier structure | List information of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Structure](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier)  |
 
 
 ### DeviceIdentifier structure
@@ -32,8 +32,8 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
 | assetId  | String        | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | String         | Product Key      |
-| deviceKey | String         | Device key          |
+| productKey | String         | Product Key identifier      |
+| deviceKey | String         | Device Key identifier       |
 
 
 
@@ -49,7 +49,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11738 |                | The parameter gateway is not a gateway device                |
+| 11738 |                | The device specified by `gateway` is not a gateway|
 | 11739 |                |This operation will cause the number of sub-devices of the gateway to exceed the limit. |
 | 11795 |                | The provided sub-device has an existing topology or is used as a gateway.      |
 

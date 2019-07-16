@@ -15,7 +15,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| productKey         | Query            | true     | String    | Product Key |
+| productKey         | Query            | true     | String    | Product Key identifier|
 
 
 ## Request Parameters (Body)
@@ -23,7 +23,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 | Name            | Required or Not | Data Type | Description |
 |-------------------|----------|-----------|--------------|
 | productDesc       | False     | String       | Product Description                                                         |
-| biDirectionalAuth | True      | Boolean      | Dual-way authentication supported or not                                                  |
+| biDirectionalAuth | True      | Boolean      | Two-way authentication supported or not                                                  |
 | dynamicActivateEnabled           | False      | String      | Dynamic activation supported or not|
 | productName       | True      | StringI18n | Product name; see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)                                                           |
 
@@ -40,7 +40,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 
 | Code| Data Type | Description |
 |-------------|--------------|-------------|
-| 11651 |                       | Productkey does not exist              |
+| 11651 |                       | `productkey` does not exist              |
 
 ## Sample 1
 

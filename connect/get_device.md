@@ -12,14 +12,14 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 
 ## Request Parameters (URI)
 
-Note: In the following non-mandatory fields, you must provide a combination of `assetId` or `productKey` and `deviceKey` to specify the device.
+.. note:: In the following non-required fields, you must provide `assetId` or a combination of `productKey` and `deviceKey` to specify the device.
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key      |
-| deviceKey | Query           | False      | String       | Device key          |
+| productKey | Query          | False       | String       | Product Key identifier     |
+| deviceKey | Query           | False      | String       | Device Key identifier         |
     
 
 ## Response Parameters
@@ -37,11 +37,11 @@ Note: In the following non-mandatory fields, you must provide a combination of `
 | assetId  | String         |Asset ID|
 | modelId             | String                          | Model ID which the asset belongs to|
 | modelIdPath      | String                            | Model ID path                                                               |
-| productKey       | String                            | Product Key                                                                |
+| productKey       | String                            | Product Key identifier                                                               |
 | productName      | StringI18n                        | Product name                                                                |
 | productType      | String                            | Product type                                                                  |
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
-| deviceKey        | String                            | Device key                                                                    |
+| deviceKey        | String                            | Device Key identifier                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
 | deviceSecret     | String                            | Device connection key                                                             |
 | deviceDesc       | String                            | Device description                                                                   |

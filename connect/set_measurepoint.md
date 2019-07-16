@@ -2,11 +2,11 @@
 
 
 
-Measurepoint setting interface.
+Measurement point setting interface.
 
-This interface is used to execute cached commands or instant commands. When an instant command is executed, the interface response data is returned after the device returns the measurement point setting results. If the device does not return the measurement point setting results within the specified measurement point setting timeout period, the EnOS measurement point setting will wait for the timeout period and then return the interface timeout response data.
+This interface can execute cached commands or instant commands. When executing instant commands, the interface response data is returned after the device returns the measurement point setting results. If the device does not return the service invocation results within the specified measurement point setting timeout period, the EnOS service invocation will wait for the timeout and then return the interface timeout response.
 
-In case of a cached command, it will be returned to the user directly after being cached.
+When executing cached commands, it will be returned directly after being cached.
 
 ## Request Format
 
@@ -20,17 +20,17 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key      |
-| deviceKey | Query           | False      | String       | Device key          |
+| productKey | Query          | False       | String       | Product Key identifier     |
+| deviceKey | Query           | False      | String       | Device Key identifier         |
 | measurepointId      | Query| True | String    | Asset measurement point. [How to get pointId](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
 | pendingTtl     | Query| False| Integer    | Cache storage time. Its unit is second and its range is [0 - 172800 (i.e. 48 hours)], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.  |
-| timeout        | Query| False         | Integer    | Service execution timeout time in seconds. Its range is [1-60], which is set as 30 seconds by default|
+| timeout        | Query| False         | Integer    | Timeout period of service execution in seconds. Its range is [1-60], which is set as 30 seconds by default|
 
 ## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|-------------------|----------|
-| value | True| String, Number, Array or Object | Parameter value for measurement point setting, which needs to conform to the definition of `ThingModel`.  |
+| value | True| String, Number, Array or Object | Parameter value for measurement point setting, which must conform to the definition of `ThingModel`.  |
 
 
 

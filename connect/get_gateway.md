@@ -32,8 +32,8 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
 | assetId  | String        | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | String         | Product Key      |
-| deviceKey | String         | Device key          |
+| productKey | String         | Product Key identifier     |
+| deviceKey | String         | Device Key identifier         |
 
 
 ## Response Parameters
@@ -51,11 +51,11 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | assetId  | String         |Asset ID|
 | modelId             | String                          | Model ID which the asset belongs to|
 | modelIdPath      | String                            | Model ID path                                                               |
-| productKey       | String                            | Product Key                                                                |
+| productKey       | String                            | Product Key identifier                                                               |
 | productName      | StringI18n                        | Product name                                                                |
 | productType      | String                            | Product type                                                                  |
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
-| deviceKey        | String                            | Device key                                                                    |
+| deviceKey        | String                            | Device Key identifier                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
 | deviceSecret     | String                            | Device connection key                                                             |
 | deviceDesc       | String                            | Device description                                                                   |

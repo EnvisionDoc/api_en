@@ -2,7 +2,7 @@
 
 
 
-Cancel the interface to cached commands. If there is a `commandId`, the single command will be canceled, and if there is no `commandId`, all the cached commands for the device will be canceled.
+Cancel the cached commands. If there is a `commandId`, cancel the single command, and if there is no `commandId`, cancel all the cached commands for the device.
 
 ## Request Format
 
@@ -16,9 +16,9 @@ https://{apigw-address}/connect-service/v2.1/commands?action=cancel
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key      |
-| deviceKey | Query           | False      | String       | Device key          |
-| deviceKey | Query         | False     | String          | Command key          |
+| productKey | Query          | False       | String       | Product Key identifier     |
+| deviceKey | Query           | False      | String       | Device Key identifier         |
+| commandId | Query         | False     | String          | Command ID          |
 
 
 ## Response Parameters

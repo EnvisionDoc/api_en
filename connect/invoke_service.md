@@ -5,9 +5,9 @@
 
 Release a service invocation interface to the device.
 
-This interface can execute cached commands or instant commands. When an instant command is executed, the interface response data is returned after the device returns the service invocation results. If the device does not return the service invocation results within the specified service execution timeout period, the EnOS service invocation will wait for the timeout period and then return the interface timeout response data.
+This interface can execute cached commands or instant commands. When executing instant commands, the interface response data is returned after the device returns the service invocation results. If the device does not return the service invocation results within the specified service execution timeout period, the EnOS service invocation will wait for the timeout and then return the interface timeout response.
 
-In case of a cached command, it will be returned to the user directly after being cached.
+When executing cached commands, it will be returned directly after being cached.
 
 ## Request Format
 
@@ -21,17 +21,17 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key      |
-| deviceKey | Query           | False      | String       | Device key          |
-| serviceId      | Query| True | String    | Id of the service invoked|
+| productKey | Query          | False       | String       | Product Key identifier     |
+| deviceKey | Query           | False      | String       | Device Key identifier         |
+| serviceId      | Query| True | String    | ID of the invoked service |
 | pendingTtl     | Query| False| Integer    | Cache storage time. Its unit is second and its range is [0 - 172800 (i.e. 48 hours)], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.  |
-| timeout        | Query| False         | Integer    | Service execution timeout time in seconds. Its range is [1-60], which is set as 30 seconds by default|
+| timeout        | Query| False         | Integer    | Timeout period of service execution in seconds. Its range is [1-60], which is set as 30 seconds by default|
 
 ## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|-------------------|----------|
-| inputData | True| Map (Key is of String type and the Value is of String, Number, Array or Object type) | Input parameter for service invocation. The key is the parameter identifier, and the value type needs to conform to the definition of `ThingModel`.  |
+| inputData | True| Map (Key is of String type and the Value is of String, Number, Array or Object type) | Input parameter for service invocation. The key is the parameter identifier, and the value type must conform to the definition of `ThingModel`  |
 
 
 
@@ -48,7 +48,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
 | commandId  | String| Command ID|
-| outputData | Map (Key is of String type and the Value is of String, Number, Array or Object type) | If the request's pendingTtl is 0 (i.e. the requested commands are executed immediately), the device service invocation results are returned, which should conform to the definition of `ThingModel`. If the request's `pendingTtl` is not 0 (i.e. the requested commands are cached for execution later), this parameter will not be returned.  |
+| outputData | Map (Key is of String type and the Value is of String, Number, Array or Object type) | If the request's pendingTtl is 0 (i.e. the requested commands are executed immediately), the device service invocation results are returned, which must conform to the definition of `ThingModel`. If the request's `pendingTtl` is not 0 (i.e. the requested commands are cached for execution later), this parameter will not be returned.  |
 
 ## Error Codes
 

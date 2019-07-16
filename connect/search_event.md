@@ -21,8 +21,8 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 
 | Name | Required or Not | Data Type | Description |
 |------------------|---------------|----------|---|
-| productKey  | False         | String| productKey|
-| deviceKey   | False         | String| deviceKey|
+| productKey  | False         | String| Product Key identifier|
+| deviceKey   | False         | String| Device Key identifier|
 | assetId  | False  | String | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
 | tslEventKey | False         | String| Event key|
 | tslEventType | False         | String| Event type|
@@ -37,7 +37,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Event structure      |List of events gotten from query; see [Event Structure](/docs/api/en/latest/connect/get_event.html#id3) |
+| data |  Event structure      |List of events from query; see [Event Structure](/docs/api/en/latest/connect/get_event.html#id3) |
 
 
 ## Sample 1

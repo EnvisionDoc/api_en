@@ -32,8 +32,8 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 |-------------|-------------------|-----------------------------|
 | orgId         | String    | Organization ID which the asset belongs to. |
 | eventId         | String    |Event ID |
-| productKey   | String         | productKey              |
-| deviceKey    | String         | deviceKey               |
+| productKey   | String         | Product Key identifier             |
+| deviceKey    | String         | Device Key identifier              |
 | assetId     | String         | Asset ID                  |
 | tslEventKey  | String         | Event key in TSL model      |
 | tslEventType | String         | Event tupe defined in TSL model |

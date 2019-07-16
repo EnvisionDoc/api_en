@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=create
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
 | productDesc       | False     | String       | Product Description                                                         |
-| biDirectionalAuth | True      | Boolean      | Dual-way authentication supported or not                                                  |
+| biDirectionalAuth | True      | Boolean      | Two-way authentication supported or not                                                  |
 | modelId           | True      | String      | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)   |
 | dataFormat        | True      | String      | Data Type. Enumeration; Custom represents the user-defined data type, while Json represents the json data type. |
 | productName       | True      | StringI18n | Product Name                                                           |
@@ -41,7 +41,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=create
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11699|                       |ModelId does not exist              |
+| 11699|                       |`modelId` does not exist              |
 
 ## Sample 1
 

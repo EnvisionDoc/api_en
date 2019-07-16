@@ -15,7 +15,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=search
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| productKey        | Query            | true    | String    | Product Key|
+| productKey        | Query            | true    | String    | Product Key identifier|
 
 
 ## Request Parameters (Body)
@@ -30,7 +30,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=search
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Product structure                           | List of products gotten from query; see [Product Structure](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
+| data| Product structure                           | Product list from query; see [Product Structure](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
 
 
 

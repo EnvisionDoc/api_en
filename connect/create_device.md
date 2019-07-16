@@ -21,11 +21,11 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
-|productKey    | True          | String       | Product Key      |
+|productKey    | True          | String       | Product Key identifier     |
 |timezone | True          | String         | Timezone where the device is located     |
 | deviceName | True          | StringI18n | Device name         |
 | deviceAttributes | False         | Map       | Device attributes         |
-| deviceKey   | False         | String    | Device key          |
+| deviceKey   | False         | String    | Device Key identifier         |
 | deviceDesc  | False         | String    | Device description     |
 
 
@@ -42,7 +42,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
-| productKey       | String                            | Product Key                                                                |
+| productKey       | String                            | Product Key identifier                                                               |
 | deviceName       | StringI18n                        | Device name                                                                   |
 | deviceSecret     | String                            | Device connection key                                                             |
 | assetId  | String         |Asset ID|
@@ -52,9 +52,9 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Code| Data Type | Description |
 |-----------|----------------|----------------------|
-| 11702 |                | deviceKey already exists in the database (if deviceKey is provided)        |
-| 11714 |                | The key of the device cannot be assigned temporarily (if the deviceKey is not provided). Please try again. |
-| 11739 |                | This operation will cause that the defined number of devices under the product is exceeded                    |
+| 11702 |                | `deviceKey` already exists in the database (when `deviceKey` is provided)        |
+| 11714 |                | The key of the device cannot be assigned temporarily (when the `deviceKey` is not provided). Try again. |
+| 11739 |                | This operation will cause that the defined number of devices under the product exceeds the limit |
 
 
 

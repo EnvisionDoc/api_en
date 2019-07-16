@@ -16,9 +16,9 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key      |
-| deviceKey | Query           | False      | String       | Device key          |
-| deviceKey | Query         | False     | String          | Command key          |
+| productKey | Query          | False       | String       | Product Key identifier     |
+| deviceKey | Query           | False      | String       | Device Key identifier         |
+| commandId | Query         | False     | String          | Command ID          |
 
 ## Response Parameters
 
@@ -32,8 +32,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 |-----------------|---------------------------|----------------|
 | commandId  | String| Command ID|
 | orgId          | String    | Organization ID which the asset belongs to  |
-| productKey | String          | Product Key      |
-| deviceKey | String         | Device key          |
+| productKey | String          | Product Key identifier     |
+| deviceKey | String         | Device Key identifier         |
 | assetId  | String         |Asset ID|
 | createTime      | Long                            | Creation time                                             |
 | createLocaltime | String| Local creation time|

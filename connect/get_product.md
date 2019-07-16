@@ -15,7 +15,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| productKey        | Query            | true    | String    | Product Key|
+| productKey        | Query            | true    | String    | Product Key identifier|
 
 
 ## Response Parameters
@@ -30,9 +30,8 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
 | orgId |  String | Organization ID which the asset belongs to |
-| productKey          | String| Product name                                            |
-| productName         | StringI18n |  Product name. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)
-                                            |
+| productKey          | String| Product Key identifier                                            |
+| productName         | StringI18n |  Product name. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)  |
 | productSecret       | String                          | Product private key                                             |
 | productDesc         | String                          | Product Description                                             |
 | productType         | Sting                           | Product type; Device stands for common product types, while Gateway stands for gateway types.   |
@@ -40,7 +39,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | productTags         | Map (Key is of String type and the value is of String type) | Product tags                                             |
 | modelId             | String                          | Model ID which the asset belongs to|
 | dynamicActiveEnable | Boolean                         | Dynamic activation supported or not                                     |
-| biDirectionalAuth   | Boolean                         | Dual-way authentication supported or not                                     |
+| biDirectionalAuth   | Boolean                         | Two-way authentication supported or not                                     |
 | createTime      | Long                            | Creation time                                             |
 | createBy        | String                          | Creator                                               |
 | updateTime       | Long                            | Update time                                             |

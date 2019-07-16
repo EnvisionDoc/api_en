@@ -21,7 +21,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevice
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier structure | Gateway information that needs to add sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier) |
+| gateway | True      |DeviceIdentfier structure | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier) |
 | pagination  | False      | Pagination request structure  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
 
@@ -32,8 +32,8 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
 | assetId  | String        | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | String         | Product Key      |
-| deviceKey | String         | Device key          |
+| productKey | String         | Product Key identifier     |
+| deviceKey | String         | Device Key identifier         |
 
 
 
@@ -53,11 +53,11 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | assetId  | String         |Asset ID|
 | modelId             | String                          | Model ID which the asset belongs to|
 | modelIdPath      | String                            | Model ID path                                                               |
-| productKey       | String                            | Product Key                                                                |
+| productKey       | String                            | Product Key identifier                                                               |
 | productName      | StringI18n                        | Product name                                                                |
 | productType      | String                            | Product type                                                                  |
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
-| deviceKey        | String                            | Device key                                                                    |
+| deviceKey        | String                            | Device Key identifier                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
 | deviceSecret     | String                            | Device connection key                                                             |
 | deviceDesc       | String                            | Device description                                                                   |
@@ -76,7 +76,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11738 |                | The parameter gateway is not a gateway device                |
+| 11738 |                | The device specified by `gateway` is not a gateway               |
 
 
 ## Sample 1
