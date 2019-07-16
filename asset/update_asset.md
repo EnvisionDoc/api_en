@@ -33,7 +33,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
 | description | false     | String | Asset description|
 |attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
 |timezone  |  false    |String  |Timezone. For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
-|modelId|false (if `isPatchUpdate` is false, `modelId` is required)|String|Model ID|
+|modelId|false (if `isPatchUpdate` is false, the `modelId` is mandatory)|String|Model ID|
 |tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
 
 
