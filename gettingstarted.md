@@ -110,7 +110,7 @@ Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey))
 
 **Request and Response supported**
 
-Request provides the built-in support for the Header, Query, RequestBody and Path parameters. For how to use Request and Response, see [Sample 3 - Using Request and Response](gettingstarted.html#sample-3-using-request-and-Response).
+Request provides the built-in support for the Header, Query, RequestBody and Path parameters. For how to use Request and Response, see [Sample 3 - Using Request and Response](gettingstarted.html#id4).
 
 **Exception handling**
 
