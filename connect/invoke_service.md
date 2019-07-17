@@ -68,7 +68,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=invokeService&deviceKey=zBAofs6D4s&pendingTtl=1000&productKey=6Bt59ySj&serviceId=identifier&orgId=o15535059999891&timeout=30
-
+method:  POST
 requestBody:
 {"inputData":{"canshu2":22.2,"canshu1":11}}
 ```

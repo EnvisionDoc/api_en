@@ -18,7 +18,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 | assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key identifier     |
 | deviceKey | Query           | False      | String       | Device Key identifier         |
-| commandId | Query         | False     | String          | Command ID          |
+| commandId | Query         | True     | String          | Command ID          |
 
 ## Response Parameters
 

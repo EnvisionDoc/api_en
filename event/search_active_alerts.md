@@ -47,7 +47,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 | hitRuleId      | String                | Matched rule ID|
 | value          | Integer/Double/Object | Measurement point value. See [ThingModel Structure](/docs/api/en/latest/model/searchmodel.html#id1)definition|
 | occurTime      | Long| UTC time when the alert occurs|
-| localOccur     | String| Local time when the alert occurs|
+| localOccurTime     | String| Local time when the alert occurs|
 | createTime     | Long| UTC time for creation|
 | updateTime     | Long| UTC time for update|
 | severityId     | String| Alert severity ID|

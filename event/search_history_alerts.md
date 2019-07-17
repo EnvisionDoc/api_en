@@ -52,9 +52,9 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | hitRuleId      | String                | Matched rule ID|
 | value          | Integer/Double/Object | Measurement point value|
 | occurTime      | Long| UTC time when the alert occurs|
-| localOccur     | String                | Local time when the alert occurs|
+| localOccurTime     | String                | Local time when the alert occurs|
 | recoverTime     | Long                | Alert recovery time|
-| recoverLocaltime     | String                  | Local time of alert recovery |
+| recoverLocalTime     | String                  | Local time of alert recovery |
 | recoverReason     | String                | Recovery reason|
 | createTime     | Long| UTC creation time|
 | updateTime     | Long| UTC time for update|
@@ -112,7 +112,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search&org
 	"requestId": "dac2a872-b9b7-460c-992d-0a0c14ea36e9",
 	"data": [{
 		"recoverTime": 1560382560000,
-		"recoverLocaltime": "2019-06-13 07:36:00",
+		"recoverLocalTime": "2019-06-13 07:36:00",
 		"recoverReason": "rule-recover",
 		"eventId": "20190612cf89cd96b0be4cafcc342d0dc2ac75a4",
 		"orgId": "yourOrgId",

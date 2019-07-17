@@ -25,7 +25,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | data | Product structure | Product-specific information; see [Product Structure](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
 
 
-### Product structure <productstruc>
+### Product Structure <productstruc>
 
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
@@ -38,7 +38,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | dataFormat         | String                          | Data type; Custom represents the user-defined data type, while Json represents the json data type. |
 | productTags         | Map (Key is of String type and the value is of String type) | Product tags                                             |
 | modelId             | String                          | Model ID which the asset belongs to|
-| dynamicActiveEnable | Boolean                         | Dynamic activation supported or not                                     |
+| dynamicActiveEnabled | Boolean                         | Dynamic activation supported or not                                     |
 | biDirectionalAuth   | Boolean                         | Two-way authentication supported or not                                     |
 | createTime      | Long                            | Creation time                                             |
 | createBy        | String                          | Creator                                               |
@@ -84,7 +84,7 @@ GET:  /connect-service/v2.1/products?action=get&orgId=abc&productKey=def
 
 		},
 		"modelId":"AlterTest0615",
-		"dynamicActiveEnable":false,
+		"dynamicActiveEnabled":false,
 		"biDirectionalAuth":true
 	}
 }

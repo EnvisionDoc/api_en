@@ -43,7 +43,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 | Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
 | productKey       | String                            | Product Key identifier                                                               |
-| deviceName       | StringI18n                        | Device name                                                                   |
+| deviceKey       | StringI18n                        | Device Key identifier                                                                  |
 | deviceSecret     | String                            | Device connection key                                                             |
 | assetId  | String         |Asset ID|
 

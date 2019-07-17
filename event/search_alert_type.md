@@ -37,7 +37,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 | typeDesc   | StringI18n            | Alert type description|
 | orgId          | String                |  Organization ID which the asset belongs to|
 | parentTypeId        | String          | Parent alert type ID. If set as null, it is the parent alert type |
-| tag        | Tag structure          | Tags|
+| tags        | Tag structure          | Tags|
 | updatePerson        | String                | Update personnel name|
 | updateTime    | Long                | Update time (UTC)
 

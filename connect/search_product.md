@@ -71,7 +71,7 @@ POST: /connect-service/v2.1/products?action=search&orgId=abc
 			"dataFormat":"Custom",
 			"productTags":{},
 			"modelId":"AlterTest0615",
-			"dynamicActiveEnable":false,
+			"dynamicActiveEnabled":false,
 			"biDirectionalAuth":true
 		},
 		{
@@ -87,7 +87,7 @@ POST: /connect-service/v2.1/products?action=search&orgId=abc
 			"dataFormat":"Json",
 			"productTags":{},
 			"modelId":"AlterTest0615",
-			"dynamicActiveEnable":false,
+			"dynamicActiveEnabled":false,
 			"biDirectionalAuth":false
 		}
 	],

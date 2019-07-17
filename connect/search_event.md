@@ -29,7 +29,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 | startTime   | False         | String | Start time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched|
 | endTime  | False         | String    | End time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched|
 | expression         | False    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey`, `deviceKey`, `assetId`, `tslEventKey`, `tslEventType`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination  | False  |Pagination request structure | Random pagination. The default is to sort in descending order by occurTime, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
+| pagination  | False  |Pagination request structure | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
 
 
 
@@ -59,7 +59,7 @@ requestBody:  {"pagination":{"pageNo":1,"pageSize":2},"action":"search"}
     "requestId":"aae68461-f211-406f-9959-d04af12f28b1",
     "data":[
         {
-            "id":"20190506587247156ca85be5e3422d30e2642dd1",
+            "eventId":"20190506587247156ca85be5e3422d30e2642dd1",
             "orgId":"yourOrgId",
             "productKey":"yourProductKey",
             "deviceKey":"yourDeviceKey",
@@ -68,7 +68,7 @@ requestBody:  {"pagination":{"pageNo":1,"pageSize":2},"action":"search"}
             "tslEventType":"INFO",
             "output":"{"fioat":116}",
             "timestamp":1557113821000,
-            "localTime":"2019-05-06 11:37:01"
+            "localtime":"2019-05-06 11:37:01"
         }
     ],
     "pagination":{

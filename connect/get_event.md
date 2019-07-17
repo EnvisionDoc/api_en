@@ -47,7 +47,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 ### Request Sample
 
 ```
-url:https://{apigw-address}/connect-service/v2.1/events/get?action=get&id=20190506587247156ca85be5e3422d30e2642dd1&orgId=1c499110e8800000
+url:https://{apigw-address}/connect-service/v2.1/events/get?action=get&eventId=20190506587247156ca85be5e3422d30e2642dd1&orgId=1c499110e8800000
 GET
 ```
 
@@ -59,7 +59,7 @@ GET
     "msg":"OK",
     "requestId":"0c45090a-f7c0-476c-8d47-33947d7a57f6",
     "data":{
-        "id":"20190506587247156ca85be5e3422d30e2642dd1",
+        "eventId":"20190506587247156ca85be5e3422d30e2642dd1",
         "orgId":"yourOrgId",
         "productKey":"yourProductKey",
         "deviceKey":"yourDeviceKey",
@@ -68,7 +68,7 @@ GET
         "tslEventType":"INFO",
         "output":"{"fioat":116}",
         "timestamp":1557113821000,
-        "localTime":"2019-05-06 11:37:01"
+        "localtime":"2019-05-06 11:37:01"
     }
 }
 ```

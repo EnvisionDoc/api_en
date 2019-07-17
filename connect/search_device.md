@@ -52,7 +52,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
                 <td>pagination</td>
                 <td>False</td>
                 <td>pagination request structure</td>
-				<td>Random pagination. The default is to sort in descending order by <code>occurTime</code>, and the user can not specify the sorting field. The default pagination size is 10 pages. <a href="/docs/api/zh_CN/latest/overview.html#pagination-request-structure">Pagination Request Structure</a></td>
+				<td>Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. <a href="/docs/api/zh_CN/latest/overview.html#pagination-request-structure">Pagination Request Structure</a></td>
             </tr>
             <tr>
                 <td>projection</td>
