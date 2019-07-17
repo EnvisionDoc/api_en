@@ -8,13 +8,13 @@ EnOS provides the REST API interfaces that cover the core business processes of 
 
 EnOS provides the following API services:
 
-- [Connection Service](/docs/api/en/latest/connect/overview.html): The EnOS system's business capabilities in device connectivity and device management, including product and device creation and management, are opened.
-- [Model Service](/docs/api/en/latest/model/overview.html): It is supported to search and get the details of the model in an organization.
-- [Asset Service](/docs/api/en/latest/asset/overview.html): Provide services such as creation, management, and update of assets within an organization.
-- [Alert Service](/docs/api/en/latest/event/overview.html): Provide query and management services for asset alerts. 
-- [Asset Tree Service](/docs/api/en/latest/asset_tree/overview.html): Provide services such as creation, management, update and query of assets within an organization.
-- [TSDB Data Service](/docs/api/en/latest/tsdb_service/overview.html): Provides the service to access to stored asset data.
-- [TSDB Policy Service](/docs/api/en/latest/tsdb_policy/overview.html): Provides the service to access to TSDB storage policy configuration information.
+- [Connection Service](/docs/api/en/latest/connect/overview.html): Provide device connectivity and device management on EnOS, including product and device creation and management.
+- [Model Service](/docs/api/en/latest/model/overview.html): Search and get the details of the models in an organization.
+- [Asset Service](/docs/api/en/latest/asset/overview.html): Create, manage, and update the assets in an organization.
+- [Alert Service](/docs/api/en/latest/event/overview.html): Search and manage asset alerts. 
+- [Asset Tree Service](/docs/api/en/latest/asset_tree/overview.html): Create, manage, update and search assets treen an organization.
+- [TSDB Data Service](/docs/api/en/latest/tsdb_service/overview.html): Access to stored asset data.
+- [TSDB Policy Service](/docs/api/en/latest/tsdb_policy/overview.html): Access to TSDB storage policy configuration information.
 - [Common File Service](/docs/api/en/latest/common_file/overview.html): To read the Common File Service API, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** on the left side navigation.
 
 ## API Request Structure 
@@ -34,9 +34,9 @@ Where:
 - `service-name`: Service name, e.g. `asset-service`.
 - `version`: API version, e.g. `v2.0`.
 - `endpoint-URL`: Resources and operations on resources, e.g. `assets/update`.
-- `query-param`: Selection criteria for the target resource, e.g. `orgId=1234`. When there are multiple query parameters, they should be connected by using the `&` symbol.
+- `query-param`: Selection criteria for the target resource, e.g. `orgId=1234`. When there are multiple query parameters, they should be connected by `&`.
 
-For example, getting the asset information in an OU, the API request format is as follows:
+For example, getting the asset information in an organization, the API request format is as follows:
 
 ```
 GET
@@ -47,11 +47,11 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1234&assetId=
 
 Any other fields required by the REST API specifications and HTTP specifications of the Request URI are bound in the request header.
 
-The commonly used request header is `Content-Type`, which represents the data submission method. Generally, its value can be set to `application/json;charset=UTF-8`; if the file uploading or other form submission is performed , the value is set to `Multipart/form-data;charset=UTF-8`.
+The commonly used request header is `Content-Type`, which represents the data submission method. Generally, its value can be set to `application/json;charset=UTF-8`; if the file uploading or other form submission is performed, the value is set to `Multipart/form-data;charset=UTF-8`.
 
 ### Request Body
 
-Supplement the Request URI to provide more complex input parameters. For example, the request body sample below contains the parameters that specify the time zone, description, tags and other attributes to update the asset:
+Supplement the Request URI to provide more complex input parameters. For example, the request body sample below contains the parameters that specify the timezone, description, tags and other attributes to update the asset:
 
 ```
 POST
@@ -84,13 +84,13 @@ EnOS API returns the JSON structure as follows:
 }
 ```
 
-The return parameters are described in details as below:
+The return parameters are described as below:
 
 | Name     | Data Type        | Required or Not | Description|
 | :-------- | --------------- | :------- | ------------------------------------------------------------ |
 | code      | Integer         | true     | API request status code. 0 stands for successful request. For other status codes, refer to the public return codes and the error codes in the API document.  |
 | msg       | String          | true     | Explanation of the status codes. "OK" indicates successful request. If the API request fails, the specific error information will be returned.  |
-| requestId | String          | true     | ID for each request, which is used to uniquely identify an API request.                   |
+| requestId | String          | true     | ID for each request. It is a unique identifier for an API request.                   |
 | data      | Array or Object | false    | The set of API response result. Data types include: basic data types, complex types or arrays.  |
 
 
@@ -100,7 +100,7 @@ The public parameters for each API service are described as follows. For how to 
 
 ### Public Request Parameters (Connection Service, etc.)
 
-The public request parameters for the connection service, model service, asset service, event service, and asset tree service API are:
+The public request parameters for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 #### Pagination Request Structure
 
@@ -159,7 +159,7 @@ When the projection parameter is not provided, the data result set is not croppe
 
 ### Public Return Parameters (Connection Service, etc.)
 
-The public return parameters for the connection service, model service, asset service, event service, and asset tree service API are:
+The public return parameters for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 | Name     | Data Type        | Required or Not | Description                                                         |
 | :--------- | -------------------- | :------- | ---------------------- |
@@ -167,7 +167,7 @@ The public return parameters for the connection service, model service, asset se
 
 ### Public Return Codes (Connection Service, etc.)
 
-The public return codes for the connection service, model service, asset service, event service, and asset tree service API are:
+The public return codes for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 | Code | Description                                                     |
 | --------- | ------------------------------------------------------------ |
@@ -214,7 +214,7 @@ Sample:
 
 ### Public Return Codes (TSDB Data Service)
 
-The public return code for the TSDB data service API are:
+The public return code for the TSDB data service APIs are:
 
 | Code | Msg / submsg                                                 | Description                                                         |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -243,7 +243,7 @@ With regard to EnOS API authentication, the service account SA (service account)
 
 ### Get the Service Account
 
-The service account SA consists of the application's `AccessKey` and `SecretKey`, which need to be generated by registering the application in the EnOS console. The specific steps are given as follows:
+The service account SA consists of the application's `AccessKey` and `SecretKey`, which is generated by registering the application in the EnOS console. The specific steps are as follows:
 
 1. Log into the EnOS console and select **Application Registration** in the left navigation bar.
 2. Click the **Create App** button, enter the details of the new application, and click **OK**.
