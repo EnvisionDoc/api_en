@@ -12,7 +12,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=disable
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide `assetId` or a combination of `productKey` and `deviceKey` to specify the device.
+.. note:: In the following non-required fields, you must provide assetId or a combination of productKey and deviceKey to specify the device.
 
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
