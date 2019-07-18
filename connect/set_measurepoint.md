@@ -16,6 +16,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 ## Request Parameters (URI)
 
+.. note:: In the following non-required fields, you must provide `assetId` or a combination of `productKey` and `deviceKey` to specify the device.
+
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
@@ -66,8 +68,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?measurepointId=measurepoint1&action=setMeasurepoint&deviceKey=zBAofs6D4s&pendingTtl=1000&productKey=6Bt59ySj&orgId=o15535059999891&timeout=30
-
-{"value":1.0}
+method: POST
+requestBody: {"value":1.0}
 ```
 
 ### Return Sample

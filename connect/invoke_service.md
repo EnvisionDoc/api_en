@@ -17,6 +17,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 ## Request Parameters (URI)
 
+.. note:: In the following non-required fields, you must provide `assetId` or a combination of `productKey` and `deviceKey` to specify the device.
+
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
 | orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
@@ -68,7 +70,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 ```
 https://{apigw-address}/connect-service/v2.1/commands?action=invokeService&deviceKey=zBAofs6D4s&pendingTtl=1000&productKey=6Bt59ySj&serviceId=identifier&orgId=o15535059999891&timeout=30
-method:  POST
+method: POST
 requestBody:
 {"inputData":{"canshu2":22.2,"canshu1":11}}
 ```
