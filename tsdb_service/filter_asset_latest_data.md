@@ -83,7 +83,7 @@ Where, `operator=le&valueFilter=55673.9` means that: The following sample will f
 private static class Request extends PoseidonRequest{
 
     public void setQueryParam(String key, Object value){
-        queryParams().put(key, value);
+        queryEncodeParams().put(key, value);
     }
 
     public void setMethod(String method) {
@@ -125,9 +125,9 @@ public void filterAssetsLatestDataTest(){
     request.setMethod("GET");
 
     try {
-        EnOSResponse<JSONObject> response =  Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+        JSONObject response =  Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
                 .url("http://apim-gateway/tsdb-service/v2.0/latest/filter")
-                .getResponse(request, EnOSResponse.class);
+                .getResponse(request, JSONObject.class);
         System.out.println(response);
     } catch (Exception e) {
         e.printStackTrace();

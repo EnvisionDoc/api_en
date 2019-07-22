@@ -24,7 +24,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 |-------------------|----------|-----------|--------------|
 | productDesc       | False     | String       | Product Description                                                         |
 | biDirectionalAuth | True      | Boolean      | Two-way authentication supported or not                                                  |
-| dynamicActivateEnabled           | False      | String      | Dynamic activation supported or not|
+| dynamicActivateEnabled           | False      | Boolean      | Dynamic activation supported or not|
 | productName       | True      | StringI18n | Product name; see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)                                                           |
 
 

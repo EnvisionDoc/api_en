@@ -133,7 +133,7 @@ https://{apigw-address}/tsdb-service/v2.0/ai?orgId=o15504722874071&accessKey=acc
 private static class Request extends PoseidonRequest{
 
     public void setQueryParam(String key, Object value){
-        queryParams().put(key, value);
+        queryEncodeParams().put(key, value);
     }
 
     public void setMethod(String method) {
@@ -177,9 +177,9 @@ public void getAssetsAIRawDataTest(){
     request.setMethod("GET");
 
     try {
-        EnOSResponse<JSONObject> response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+        JSONObject response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
                 .url("http://apim-gateway/tsdb-service/v2.0/ai")
-                .getResponse(request, EnOSResponse.class);
+                .getResponse(request, JSONObject.class);
         System.out.println(response);
     } catch (Exception e) {
         e.printStackTrace();

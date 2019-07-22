@@ -71,7 +71,6 @@ requestBody:  {
         "test":"test for tags"
     },
     "timezone":"+08:00",
-    "source":0,
     "productKey":"yourProductKey",
     "deviceAttributes":{
         "testatt":111111

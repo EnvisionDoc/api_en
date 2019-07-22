@@ -128,7 +128,7 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId=o15504722874071&modelIds
 private static class Request extends PoseidonRequest{
 
       public void setQueryParam(String key, Object value){
-          queryParams().put(key, value);
+          queryEncodeParams().put(key, value);
       }
 
       public void setMethod(String method) {
@@ -166,9 +166,9 @@ private static class Request extends PoseidonRequest{
       request.setMethod("GET");
 
       try {
-          EnOSResponse<JSONObject> response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+          JSONObject response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
                   .url("http://apim-gateway/tsdb-policy/v2.0/policies")
-                  .getResponse(request, EnOSResponse.class);
+                  .getResponse(request, JSONObject.class);
           System.out.println(response);
       } catch (Exception e) {
           e.printStackTrace();
