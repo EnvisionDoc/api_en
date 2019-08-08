@@ -24,7 +24,7 @@ https://{apigw-address}/tsdb-service/v2.0/electric-power/current-day?orgId={}&mo
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/latest/tsdb_service/get_asset_current_day_electric_power.html#id3).
+| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/latest/tsdb_service/get_asset_current_day_electric_power.html#id3).
 
 ### items
 

@@ -34,17 +34,17 @@ POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    DeviceReplaceResult structure        | Device replacement results. See [DeviceReplaceResult Structure](replace_device#devicereplaceResult-structure-devicereplaceresult)|
+| data |    DeviceReplaceResult struct        | Device replacement results. See [DeviceReplaceResult Struct](replace_device#devicereplaceResult-struct-devicereplaceresult)|
 
 
-### DeviceReplaceResult Structure <DeviceReplaceResult>
+### DeviceReplaceResult Struct <devicereplaceresult>
 
 | Name           | Data Type | Description      |
 |---------------|-----------|--------------|
 | assetId    | String        | Asset ID. |
 | productKey   | String         | Product Key identifier      |
 | deviceKey  | String          | Device Key identifier          |
-| deviceSecret  | String          | New device key assigned by the system          |
+| deviceSecret  | String          | The new Device Secret identifier assigned by the system          |
 
 
 ## Error Codes

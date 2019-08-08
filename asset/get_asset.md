@@ -22,10 +22,10 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get
 
 | Name | Data Type | Description |
 |------|------------|-----------|-------------|
-| data    |asset structure | Asset. See [Asset Structure](/docs/api/en/latest/asset/get_asset.html#id3).     |
+| data    |asset struct | Asset. See [Asset Struct](/docs/api/en/latest/asset/get_asset.html#asset-struct-asset)     |
 
 
-### Asset Structure
+### Asset Struct <asset>
 
 | Name | Data Type | Description |
 |-------|---------|---------------------------|

@@ -24,9 +24,9 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 |-------------|-----------------------------------|-----------------------------|
 | treeId| String                            | Asset tree ID                    |
 | tags| Map (Key is of String type, and the value is of String type) | A group of user-customized asset tree tags  |
-| asset| asset structure                   | Root asset of asset tree ; see [asset Structure](/docs/api/en/latest/asset_tree/get_asset_tree.html#asset-assetstruc)              |
+| asset| asset struct | Root asset of asset tree ; see [asset Struct](/docs/api/en/latest/asset_tree/get_asset_tree.html#asset-struct-assetstruc)              |
 
-### Asset Structure <assetstruc>
+### Asset Struct <assetstruc>
 
 | Name | Data Type | Description |
 |-------|-------|---------------------------|

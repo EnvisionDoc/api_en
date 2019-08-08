@@ -21,15 +21,15 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
 | expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `typeId` and `parentTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request structure    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. 10 entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` structure for sorting purpose. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| pagination     | false     | Pagination request struct    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. 10 entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` struct for sorting purpose. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data  | AlertType structure  | Alert type. See [AlertType Structure](/docs/api/en/latest/event/search_alert_type.html#id4) |
+| data  | AlertType struct  | Alert type. See [AlertType Struct](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype) |
 
-### AlertType Structure
+### AlertType Struct <alerttype>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
@@ -37,7 +37,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 | typeDesc   | StringI18n            | Alert type description|
 | orgId          | String                |  Organization ID which the asset belongs to|
 | parentTypeId        | String          | Parent alert type ID. If set as null, it is the parent alert type |
-| tags        | Tag structure          | Tags|
+| tags        | Tag struct          | Tags|
 | updatePerson        | String                | Update personnel name|
 | updateTime    | Long                | Update time (UTC)
 

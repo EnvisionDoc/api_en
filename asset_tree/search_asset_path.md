@@ -23,14 +23,14 @@ paths?action=search
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
-| from | false         | From-to structure       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Structure](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc).                         |
-| to            | false         | From-to structure           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Structure](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-from-to-struc) |
+| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct)  |
+| from | false         | From-to struct       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Struct](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-struct-fromtostruc).                         |
+| to            | false         | From-to struct           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Struct](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-struct-fromtostruc) |
 | projection| false         | String Array         | Used to describe the object projection to be returned in the interface request. Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 | pathProjection| false         | String                | It can be "COMPLETE" or "END_NODE_ONLY". "COMPLETE" represents each asset node on the return path, which is set as "COMPLETE" by default; "END_NODE_ONLY" means only the start and end points of the path are returned  |
 
 
-### From-to Structure <from_to_struc>
+### From-to Struct <fromtostruc>
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|-----------------------|
@@ -45,10 +45,10 @@ paths?action=search
 | Name | Data Type | Description |
 |-----------|------------------|------------------|
 | assets     | Map (Key is of String type, and the Value is of Asset type)| Asset data on the path  |
-| assetPaths | String Array Array             | When the `pathProjection` parameter is "COMPLETE", each of the String Arrays is the ID of each asset from the start node to the end node on the path, and the length is greater than or equal to 2. When the `pathProjection` parameter is "END_NODE_ONLY", each of the String Arrays is the asset IDs of the start node and the end node of the path, and the length is fixed at 2.  |
+| assetPaths | String | When the `pathProjection` parameter is "COMPLETE", each of the String Arrays is the ID of each asset from the start node to the end node on the path, and the length is greater than or equal to 2. When the `pathProjection` parameter is "END_NODE_ONLY", each of the String Arrays is the asset IDs of the start node and the end node of the path, and the length is fixed at 2.  |
 
 
-### Asset Structure
+### Asset Struct
 
 | Name | Data Type | Description |
 |------------------|-------------------|----------------------------------------|
@@ -59,7 +59,7 @@ paths?action=search
 | timezone   | String            | Timezone                                   |
 | modelId    | String            | Model ID which the asset belongs to |
 | modelIdPath | String            | Model ID path                             |
-| tags        | Tag structure         | User-customized tags                         |
+| tags        | Tag struct         | User-customized tags                         |
 
 
 

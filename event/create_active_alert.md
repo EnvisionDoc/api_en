@@ -1,6 +1,6 @@
 # Create Active Alert
 
-An active alert will be created. Except for the mandatory verification, there is no need to verify the legality of other parameters. The parameters used by users such as `contentId` will not be maintained on the EnOS platform.
+Create a new active alert. Except for the mandatory verification, there is no need to verify the legality of other parameters. The parameters used by users such as `contentId` will not be maintained on the EnOS platform.
 
 ## Request Format
 
@@ -18,10 +18,10 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=create
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| activeAlert  | true | ActiveAlert structure  | Active alert. See [ActiveAlert Structure](create_active_alert#activealert-structure-activelert) |
+| activeAlert  | true | ActiveAlert struct  | Active alert. See [ActiveAlert Struct](create_active_alert#activealert-struct-activelert) |
 
 
-### ActiveAlert Structure <activealert>
+### ActiveAlert Struct <activealert>
 
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|

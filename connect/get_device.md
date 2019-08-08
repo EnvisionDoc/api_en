@@ -26,10 +26,10 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Device structure                          | Gateway device information. See [Device Structure](/docs/api/en/latest/connect/get_device.html#id3) |
+| data | Device struct                          | Gateway device information. See [Device Struct](/docs/api/en/latest/connect/get_device.html#device-struct-device) |
 
 
-### Device structure
+### Device Struct <device>
 
 | Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
@@ -43,11 +43,11 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
 | deviceKey        | String                            | Device Key identifier                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
-| deviceSecret     | String                            | Device connection key                                                             |
+| deviceSecret     | String                            | Device Secret identifier                                                             |
 | deviceDesc       | String                            | Device description                                                                   |
 | timezone         | String                            | Timezone where the device is located                                                               |
 | deviceAttributes | Map (Key is of String type and the value is of String type) | Device attributes                                                                 |
-| deviceTags       | Map (Key is of String type and the value is of String type) | Device marks                                                                 |
+| deviceTags       | Map (Key is of String type and the value is of String type) | Device tags                                                                 |
 | createTime       | Long                              | Device creation time                                                             |
 | status           | String                            | Device status (online, offline, inactive or disable)                         |
 | activeTime       | Long                              | Device activation time                                                             |

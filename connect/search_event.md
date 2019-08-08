@@ -29,7 +29,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 | startTime   | False         | String | Start time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched|
 | endTime  | False         | String    | End time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched|
 | expression         | False    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey`, `deviceKey`, `assetId`, `tslEventKey`, `tslEventType`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination  | False  |Pagination request structure | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
+| pagination  | False  |Pagination request struct | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct)  |
 
 
 
@@ -37,7 +37,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Event structure      |List of events from query; see [Event Structure](/docs/api/en/latest/connect/get_event.html#id3) |
+| data |  Event struct      |List of events from query; see [Event Struct](/docs/api/en/latest/connect/get_event.html#event-struct-event) |
 
 
 ## Sample 1

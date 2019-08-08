@@ -21,11 +21,11 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=addSubDevice
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier structure | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier) |
-| subDevices           | True      | DeviceIdentfier structure | List information of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Structure](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier)  |
+| gateway | True      |DeviceIdentfier struct | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier struct](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier-struct-deviceidentifier) |
+| subDevices           | True      | DeviceIdentfier struct | List information of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Struct](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier-struct-deviceidentifier)  |
 
 
-### DeviceIdentifier structure
+### DeviceIdentifier Struct <deviceidentifier>
 
 Note: The `assetId` or `(productKey, deviceKey)` must be provided for the following fields.
 

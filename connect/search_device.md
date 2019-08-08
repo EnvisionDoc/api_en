@@ -51,13 +51,13 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
             <tr>
                 <td>pagination</td>
                 <td>False</td>
-                <td>pagination request structure</td>
-				<td>Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. <a href="/docs/api/zh_CN/latest/overview.html#pagination-request-structure">Pagination Request Structure</a></td>
+                <td>pagination request struct</td>
+				<td>Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. <a href="/docs/api/zh_CN/latest/overview.html#pagination-request-struct">Pagination Request Struct</a></td>
             </tr>
             <tr>
                 <td>projection</td>
                 <td>False</td>
-                <td>Projection structure</td>
+                <td>Projection struct</td>
 				<td>Describe the object projection to be returned in the interface request. For details, see <a href="/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set">How does projection crop the result set?</a></td>
             </tr>
 
@@ -68,10 +68,10 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure](/docs/api/en/latest/connect/search_device.html#id4) |
+| data | Device struct                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Struct](/docs/api/en/latest/connect/search_device.html#device-struct-device) |
 
 
-### Device structure
+### Device Struct  <device>
 
 | Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
@@ -89,7 +89,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 | deviceDesc       | String                            | Device description                                                                   |
 | timezone         | String                            | Timezone where the device is located                                                               |
 | deviceAttributes | Map (Key is of String type and the value is of String type) | Device attributes                                                                 |
-| deviceTags       | Map (Key is of String type and the value is of String type) | Device marks                                                                 |
+| deviceTags       | Map (Key is of String type and the value is of String type) | Device tags                                                                 |
 | createTime       | Long                              | Device creation time                                                             |
 | status           | String                            | Device status (online, offline, inactive or disable)                         |
 | activeTime       | Long                              | Device activation time                                                             |

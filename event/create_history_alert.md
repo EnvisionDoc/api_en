@@ -1,6 +1,6 @@
 # Create History Alert
 
-A history alert will be created. Except for the mandatory verification, there is no need to verify the legality of other parameters. The parameters used by users such as `contentId` would not be maintained on the EnOS platform. The inserted alert with the same `assetId`, `measurepointId` and `occurTime` will be as updated only.
+Create a new history alert. Except for the mandatory verification, there is no need to verify the legality of other parameters. The parameters used by users such as `contentId` would not be maintained on the EnOS platform. The inserted alert with the same `assetId`, `measurepointId` and `occurTime` will be as updated only.
 
 ## Request Format
 
@@ -18,11 +18,11 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=create
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| historyAlert | true | HistoryAlert structure | History alert. See [HistoryAlert Structure](create_history_alert#historyalert-structure-historyalert) |
+| historyAlert | true | HistoryAlert struct | History alert. See [HistoryAlert Struct](create_history_alert#historyalert-struct-historyalert) |
 
 
 
-### HistoryAlert Structure <historyalert>
+### HistoryAlert Struct <historyalert>
 
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|

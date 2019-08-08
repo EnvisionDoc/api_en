@@ -22,7 +22,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=batchUpdate
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
 | eventIds          | true    | String type list    | Alert ID list |
-| tags        | true     | Tags structure    | Tags to be modified |
+| tags        | true     | Tags struct    | Tags to be modified |
 
 
 ## Response Parameters

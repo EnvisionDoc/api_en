@@ -28,16 +28,16 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Map (the Key is assetId and the Value is the AssetTree structure Array)   | List of assets and their asset trees. See [AssetTree structure](/docs/api/en/latest/asset_tree/get_asset_trees.html#id3) |
+| data| Map (the Key is assetId and the Value is the AssetTree struct)   | List of assets and their asset trees. See [AssetTree Struct](/docs/api/en/latest/asset_tree/get_asset_trees.html#assettree-struct-assettree) |
 
 
-### AssetTree Structure
+### AssetTree Struct <assettree>
 
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
 | treeId  |  String | Asset tree ID |
 |tags|Map<String, String>|A group of user-customized tags of asset tree|
-|asset|AssetTree structure|Root asset on the asset tree|
+|asset|AssetTree struct|Root asset on the asset tree|
 
 
 

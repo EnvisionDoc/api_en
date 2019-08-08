@@ -36,10 +36,10 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    DeviceCreateResult structure        | Returned results for device creation. See [DeviceCreateResult Structure](/docs/api/en/latest/connect/create_device.html#id3) |
+| data |    DeviceCreateResult struct        | Returned results for device creation. See [DeviceCreateResult Struct](/docs/api/en/latest/connect/create_device.html#devicecreateresult-struct-devicecreateresult) |
 
 
-### DeviceCreateResult structure
+### DeviceCreateResult Struct <devicecreateresult>
 
 | Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|

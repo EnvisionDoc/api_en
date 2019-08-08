@@ -16,7 +16,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default               |
 | expression | Query            | False    | String    | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "in") and `tags` (supports arithmetic operator "="). The supported logical operators are "and", "or", and "not". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
 | projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
-| pagination | Query            | False    | Pagination request structure       | Random pagination. Sorting field cannot be specified. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| pagination | Query            | False    | Pagination request struct       | Random pagination. Sorting field cannot be specified. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
 
@@ -24,9 +24,9 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    ThingModel structure  |Thing model list. <br>For the definition of thing models. See [ThingModel Structure](/docs/api/en/latest/model/searchmodel.html#id1) |
+| data |    ThingModel struct  |Thing model list. <br>For the definition of thing models. See [ThingModel Struct](/docs/api/en/latest/model/searchmodel.html#thingmodel-struct-thing) |
 
-### ThingModel Structure
+### ThingModel Struct  <thing>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -36,13 +36,13 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name          | StringI18n | Model name|
 | desc          | String| Model description|
 | tags          | Map (Key is of String type, and the value is of String type) | User-customized tags  |
-| attributes    | Map (Key is of String type and the Value is the `ThingAttribute` structure)| Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See [ThingAttribute Structure](/docs/api/en/latest/model/searchmodel.html#id2)|
-| measurement points   | Map (Key is of String type and the Value is the `ThingMeasurepoint` structure)| Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See [ThingMeasurepoint Structure](/docs/api/en/latest/model/searchmodel.html#id3)|
-| services      | Map (Key is of String type and the Value is the `ThingService` structure)    | Map-typed services definition. The key is the service ID, and the value is the service definition. See [ThingService Structure](/docs/api/en/latest/model/searchmodel.html#id5)|
-| events        | Map (Key is of String type and the Value is the `ThingEvent` structure)    | Map-typed events definition. The key is the event ID, and the value is the event definition. See [ThingEvent Structure](/docs/api/en/latest/model/searchmodel.html#id7)|
+| attributes    | Map (Key is of String type and the Value is the `ThingAttribute` struct)| Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See [ThingAttribute Struct](/docs/api/en/latest/model/searchmodel.html#thingattribute-struct-ta)|
+| measurement points   | Map (Key is of String type and the Value is the `ThingMeasurepoint` struct)| Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See [ThingMeasurepoint Struct](/docs/api/en/latest/model/searchmodel.html#thingmeasurepoint-struct-tm)|
+| services      | Map (Key is of String type and the Value is the `ThingService` struct)    | Map-typed services definition. The key is the service ID, and the value is the service definition. See [ThingService Struct](/docs/api/en/latest/model/searchmodel.html#thingservice-struct-ts)|
+| events        | Map (Key is of String type and the Value is the `ThingEvent` struct)    | Map-typed events definition. The key is the event ID, and the value is the event definition. See [ThingEvent Struct](/docs/api/en/latest/model/searchmodel.html#thingevent-struct-te)|
 
 
-### ThingAttribute Structure
+### ThingAttribute Struct  <ta>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -52,11 +52,11 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type) | User-customized tags  |
-| unit       | Unit structure| Unit. See [Unit Structure](/docs/api/en/latest/model/searchmodel.html#id11)|
+| unit       | Unit struct| Unit. See [Unit Struct](/docs/api/en/latest/model/searchmodel.html#unit-struct-unit)|
 
 
 
-### ThingMeasurepoint Structure
+### ThingMeasurepoint Struct  <tm>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -67,9 +67,9 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
 |hasQuality|Boolean|Whether it has the quality indicator|
 |signalType|String|Signal type. E.g.: Generic, AI, PI, DI|
-| unit       | Unit structure| Unit. See [Unit Structure](/docs/api/en/latest/model/searchmodel.html#id11)|
+| unit       | Unit struct| Unit. See [Unit Struct](/docs/api/en/latest/model/searchmodel.html#unit-struct-unit)|
 
-### ThingService Structure
+### ThingService Struct  <ts>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -77,12 +77,12 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-| intputData | ThingDatapoint structure| Input parameters list of the service. See [ThingDatapoint Structure](/docs/api/en/latest/model/searchmodel.html#id9)  |
-| outputData | ThingDatapoint structure| Returned parameters list of the service. See [ThingDatapoint Structure](/docs/api/en/latest/model/searchmodel.html#id9) |
+| intputData | ThingDatapoint struct| Input parameters list of the service. See [ThingDatapoint Struct](/docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td)  |
+| outputData | ThingDatapoint struct| Returned parameters list of the service. See [ThingDatapoint Struct](/docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td) |
 | callType   | String| Calling type. <!--SYNC or ASYNC-->|
 
 
-### ThingEvent Structure
+### ThingEvent Struct  <te>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -90,11 +90,11 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-| outputData | ThingDatapoint structure| Returned parameters list of the event. See [ThingDatapoint Structure](/docs/api/en/latest/model/searchmodel.html#id9) |
+| outputData | ThingDatapoint struct| Returned parameters list of the event. See [ThingDatapoint Struct](/docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td) |
 | eventType   | String| Event type. E.g.: INFO, WARN, ERROR|
 
 
-### ThingDatapoint Structure
+### ThingDatapoint Struct  <td>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
@@ -103,20 +103,20 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | name       | StringI18n| Asset name that supports internationalization|
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-| unit       | Unit structure| Unit. See [Unit Structure](/docs/api/en/latest/model/searchmodel.html#id11)|
+| unit       | Unit struct| Unit. See [Unit Struct](/docs/api/en/latest/model/searchmodel.html#unit-struct-unit)|
 
 
 
 
-### Unit Structure
+### Unit Struct   <unit>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
 | unitId | String| Unit identifier|
-| multiplier   | String| Multiplier of unit. See [Multiplier](/docs/api/en/latest/model/searchmodel.html#id12)|
+| multiplier   | String| Multiplier of unit. See [Multiplier](/docs/api/en/latest/model/searchmodel.html#multiplier-mp)|
 
 
-### Multiplier
+### Multiplier   <mp>
 
 The multiplier of unit can take the following values:
 

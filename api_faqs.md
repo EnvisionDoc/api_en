@@ -129,7 +129,7 @@ Each API can support different fields in the query expression. Please follow the
 
 In the request parameters and return results, the internationalized name structure is used to represent internationalized names.
 
-### Internationalized name structure
+### Internationalized name struct
 
 | Name | Data Type | Description |
 |------------|--------------|------|
@@ -191,7 +191,7 @@ When the request format is UTC, the EnOS service will query as per UTC without t
 
 ## How to use tag
 
-The EnOS service supports to use tags to manage objects, and can search for objects based on tags. The tags use the Map structure (Key is of String type and the Value is of String type).
+The EnOS service supports to use tags to manage objects, and can search for objects based on tags. The tags use the Map struct (Key is of String type and the Value is of String type).
 
 ## What is model path and how to use it
 

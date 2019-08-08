@@ -1,6 +1,6 @@
 # Delete Active Alert
 
-A specified alert will be deleted; if the alert does not exist, a failure will be returned with specific information.
+Delete a specified active alert; if the alert does not exist, a failure will be returned with specific information.
 
 ## Request Format
 

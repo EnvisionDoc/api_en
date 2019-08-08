@@ -1,6 +1,6 @@
 # Update Alert Severity
 
-An alert severity will be updated, for which `severityId` is required to be verified.
+Update an alert severity, for which `severityId` is required to be verified.
 
 ## Request Format
 
@@ -19,15 +19,15 @@ POST https://{apigw-address}/event-service/v2.1/alert-severities?action=update
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| severity |  true  |  generateSeverity strucuture  |  Alert severity. See [generateSeverity Structure](update_alert_severity#generateseverity-structure-generateseverity) |
+| severity |  true  |  generateSeverity struct  |  Alert severity. See [generateSeverity Struct](update_alert_severity#generateseverity-struct-generateseverity) |
 
 
-### generateSeverity Structure <generateseverity>
+### generateSeverity Struct <generateseverity>
 
 | Name | Required or Not | Data Type | Description                         |
 |--------------|--------------|--------------|-------------------------------------|
 | severityId   | true         | String       | Alert severity ID                        |
-| severityDesc | true         | StringI18n   | Internationalized description of alert severity, for which the default fields are mandatory. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure) |
+| severityDesc | true         | StringI18n   | Internationalized description of alert severity, for which the default fields are mandatory. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct) |
 | tags         | false        | tags data type | Tags                                |
 
 

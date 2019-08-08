@@ -27,7 +27,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=update
 | Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
 |timezone | True          | String         | Timezone where the device to be updated is located     |
-| deviceName | True          | StringI18n | Name of the device to be updated, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)         |
+| deviceName | True          | StringI18n | Name of the device to be updated, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)         |
 | deviceAttributes | False         | Map       | Attributes of the device to be updated         |
 | deviceTags   | False         | Map (Key is of String type and the value is of String type)    | Tags of the device to be updated |
 | deviceDesc  | False         | String    | Description of the device to be updated     |

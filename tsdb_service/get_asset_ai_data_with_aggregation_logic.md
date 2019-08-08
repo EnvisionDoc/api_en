@@ -32,7 +32,7 @@ https://{apigw-address}/tsdb-service/v2.0/ai-normalized?orgId={}&modelId={}&asse
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/latest/tsdb_service/get_asset_ai_data_with_aggregation_logic.html#id3).
+| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/latest/tsdb_service/get_asset_ai_data_with_aggregation_logic.html#id3).
 
 ### items
 

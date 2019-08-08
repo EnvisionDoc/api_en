@@ -1,6 +1,6 @@
 # Create Alert Type
 
-An alert type will be created.
+Create a new alert type.
 
 ## Request Format
 
@@ -18,16 +18,16 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| type |   true  |  generateType structure   |  Alert type. See [generateType Structure](create_alert_type#generatetype-structure-generatetype)  |
+| type |   true  |  generateType struct   |  Alert type. See [generateType Struct](create_alert_type#generatetype-struct-generatetype)  |
 
 
 
-### generateType Structure  <generatetype>
+### generateType Struct  <generatetype>
 
 | Name | Required or Not | Data Type | Description          |
 |----------|--------------|--------------|-------------------------------------|
 | typeId   |  true        | String       | Alert type ID           |
-| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure) |
+| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct) |
 | tags     | false        | tags data type  | Tags                                |
 
 

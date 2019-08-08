@@ -42,10 +42,10 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Service invocation return structure      | Service invocation results. See [Service Invocation Return Structure](/docs/api/en/latest/connect/invoke_service.html#id4) |
+| data |  Service invocation return struct      | Service invocation results. See [Service Invocation Return Struct](/docs/api/en/latest/connect/invoke_service.html#service-invocation-return-struct-invo) |
 
 
-### Service invocation return structure
+### Service Invocation Return Struct <invo>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|

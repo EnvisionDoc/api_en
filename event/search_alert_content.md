@@ -25,15 +25,15 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&org
 | alertTypeId  | false    | String               | Alert type ID   |
 | subAlertTypeId    | false    | String   | Alert sub-type ID  |                       
 | expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `contentId`, `modelId`, and `alertTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request structure    | Pagination parameter. 10 entries are displayed in each page by default if this parameter is left blank. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| pagination     | false     | Pagination request struct    | Pagination parameter. 10 entries are displayed in each page by default if this parameter is left blank. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertContent structure | Alert content. See [AlertContent Structure](/docs/api/en/latest/event/search_alert_content.html#id4)|
+| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/latest/event/search_alert_content.html#alertcontent-struct-alertcontent)|
 
-### AlertContent Structure
+### AlertContent Struct <alertcontent>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
@@ -41,9 +41,9 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&org
 | contentDesc | StringI18n | Alert content description         |
 | modelId| String           | Model ID                 |
 | orgId          | String| Organization ID which the asset belongs to|
-| alertType  | AlertType structure  | Alert type              |
-| subAlertType| AlertType structure  | Sub-alert type             |
-| tags| Tag structure        | User-customized alert content tags |
+| alertType  | AlertType struct  | Alert type              |
+| subAlertType| AlertType struct  | Sub-alert type             |
+| tags| Tag struct        | User-customized alert content tags |
 | updatePerson| String           | Update personnel name           |
 | updateTime| Long             | Last update time       |
 

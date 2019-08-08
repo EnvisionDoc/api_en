@@ -21,25 +21,25 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| filter| false         |   Filter structure        | Asset query criterion. See [Filter Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#filter-filterstruc) |
-| pagination| false         | Pagination request structure  | Used to describe the pagination requirements in the interface request. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)  |
+| filter| false         |   Filter struct        | Asset query criterion. See [Filter Struct](/docs/api/en/latest/asset_tree/search_asset_node.html#filter-struct-filterstruc) |
+| pagination| false         | Pagination request struct  | Used to describe the pagination requirements in the interface request. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct)  |
 | projection| false         | String Array          | Used to describe the object projection to be returned in the interface request. See [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-### Filter Structure <filterstruc>
+### Filter Struct <filterstruc>
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|--------------|
 | assetIds| False  | String Array  | Asset ID. Provide the list of multiple asset IDs if you want to query multiple assets. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
 | modelIds | False | String Array | Model ID which the asset belongs to. Provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
 | rootModelIds | False | String Array | Root model ID which the asset belongs to. Provide multiple root model IDs list if you want to query multiple root models. |
-| nameLike | False | nameLike structure | Used to describe the query criterion for internationalized names. See [nameLike Structure](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-namelikestruc) |
+| nameLike | False | nameLike struct | Used to describe the query criterion for internationalized names. See [nameLike Struct](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-struct-namelikestruc) |
 | attributes  | False|Map |A group of attribute values. The key is the attribute name, String type. The value is the attribute value, and the type is defined by the specific model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
-| tags | False | Tag structure | A group of user-customized tags |
+| tags | False | Tag struct | A group of user-customized tags |
 | treeId | False | String | ID of the asset tree associated to the asset |
 
 
-### nameLike Structure <namelikestruc>
+### nameLike Struct <namelikestruc>
 
 | Name | Data Type | Description |
 |-----------|---------------------|-----------------------|
@@ -51,7 +51,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 | Name | Data Type | Description |
 |-----------|------------------|------------------|
-| data      | Asset Structure Array |  Asset list    |
+| data      | Asset Struct |  Asset list    |
 
 
 

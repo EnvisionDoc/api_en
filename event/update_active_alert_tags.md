@@ -21,7 +21,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=updateTags
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |------|----------|--------------------|----|------|
 | eventId       | Query            | true     | String     | Alert ID  |
-| tags          | Query            | true     | Tag structure | Tag map you want to modify |
+| tags          | Query            | true     | Tag struct | Tags of the active alert you want to modify |
 | isPatchUpdate | Query            | true     | Boolean    | Whether to update in full; false stands for full update, while true stands for partial update  |
 
 

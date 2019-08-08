@@ -1,6 +1,6 @@
 # Update Alert Type
 
-An alert type will be updated. The field required to be verified include `typeId`.
+Update an alert type. The field required to be verified include `typeId`.
 
 ## Request Format
 
@@ -19,16 +19,16 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=update
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| type |   true  |  generateType structure   |  Alert type. See [generateType Structure](update_alert_type#generatetype-structure-generatetype) |
+| type |   true  |  generateType struct   |  Alert type. See [generateType Struct](update_alert_type#generatetype-struct-generatetype) |
 
 
 
-### generateType Structure <generatetype>
+### generateType Struct <generatetype>
 
 | Name | Required or Not | Data Type | Description                        |
 |----------|--------------|--------------|-------------------------------------|
 | typeId   |  true        | String       | Alert type ID|
-| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name structure](/docs/api/en/latest/api_faqs.html#internationalized-name-structure)|
+| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the struct, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
 | tags     | false        | tags data type  | Tags                                |
 
 

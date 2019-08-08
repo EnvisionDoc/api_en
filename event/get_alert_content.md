@@ -22,9 +22,9 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertContent structure | Alert content. See [AlertContent Structure](/docs/api/en/latest/event/get_alert_content.html#id3)|
+| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/latest/event/get_alert_content.html#alertcontent-struct-alertcontent)|
 
-### AlertContent Structure
+### AlertContent Struct <alertcontent>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
@@ -32,9 +32,9 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1
 | contentDesc | StringI18n | Alert content description         |
 | modelId| String           | Model ID                 |
 | orgId          | String                |  Organization ID which the asset belongs to|
-| alertType  | AlertType structure  | Alert type. See [AlertType Structure](/docs/api/en/latest/event/search_alert_type.html#id4)               |
-|subAlertType  | AlertType structure  | Sub-alert type. See [AlertType Structure](/docs/api/en/latest/event/search_alert_type.html#id4)               |
-| tags| Tag structure        | User-customized alert content tags |
+| alertType  | AlertType struct  | Alert type. See [AlertType Struct](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype)               |
+|subAlertType  | AlertType struct  | Sub-alert type. See [AlertType Struct](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype)               |
+| tags| Tag struct        | User-customized alert content tags |
 | updatePerson| String           | Update personnel name           |
 | updateTime| Long             | Last update time       |
 

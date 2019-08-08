@@ -1,6 +1,6 @@
 # Delete Alert Type
 
-An alert type will be deleted. It is required to verify whether the alert type to be deleted is used by any other rules; if yes, no deletion is allowed. 
+Delete an alert type. It is required to verify whether the alert type to be deleted is used by any other rules; if yes, no deletion is allowed. 
 
 ## Request Format
 

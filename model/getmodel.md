@@ -24,7 +24,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=get
 
 | Name | Data Type | Description |
 |-----------|-----------|----------|
-|data|Object|Thing model. See [ThingModel Structure](/docs/api/en/latest/model/searchmodel.html#id1)|
+|data|Object|Thing model. See [ThingModel Struct](/docs/api/en/latest/model/searchmodel.html#thingmodel-struct-thing)|
 
 
 

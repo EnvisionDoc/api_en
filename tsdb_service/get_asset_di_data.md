@@ -50,7 +50,7 @@ https://{apigw-address}/tsdb-service/v2.0/di?orgId={}&modelId={}&assetIds={}&mea
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/latest/tsdb_service/get_asset_di_data.html#id3).
+| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/latest/tsdb_service/get_asset_di_data.html#id3).
 
 ### items
 

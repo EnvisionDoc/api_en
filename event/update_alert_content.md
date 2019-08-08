@@ -1,6 +1,6 @@
 # Update Alert Content
 
-An alert content will be updated. The fields required to be verified include `modelId` and `alertTypeId`.
+Update an alert content. The fields required to be verified include `modelId` and `alertTypeId`.
 
 ## Request Format
 
@@ -19,11 +19,11 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=update
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| alertContent          | true    | generateContent structure    | Alert content. See [generateContent Structure](update_alert_content#generatecontent-structure-generatecontent)|
+| alertContent          | true    | generateContent struct    | Alert content. See [generateContent Struct](update_alert_content#generatecontent-struct-generatecontent)|
 
 
 
-### generateContent Structure <generatecontent>
+### generateContent Struct <generatecontent>
 
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|

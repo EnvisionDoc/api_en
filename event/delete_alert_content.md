@@ -1,6 +1,6 @@
 # Delete Alert Content
 
-An alert content will be deleted. It is required to verify whether the alert content to be deleted is used by any other rules; if yes, no deletion is allowed.
+Delete an alert content. It is required to verify whether the alert content to be deleted is used by any other rules; if yes, no deletion is allowed.
 
 ## Request Format
 

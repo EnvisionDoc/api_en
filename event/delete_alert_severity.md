@@ -1,6 +1,6 @@
 # Delete Alert Severity
 
-An alert severity will be deleted. It is required to verify whether the alert severity to be deleted is used by any other rules; if yes, no deletion is allowed.
+Delete an alert severity. It is required to verify whether the alert severity to be deleted is used by any other rules; if yes, no deletion is allowed.
 
 ## Request Format
 

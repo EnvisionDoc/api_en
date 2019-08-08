@@ -27,7 +27,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=cancel
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    getCommand Structure        | List of cancelled commands. See [getCommand Structure](/docs/api/en/latest/connect/get_command.html#id3) |
+| data |    getCommand Struct        | List of cancelled commands. See [getCommand Struct](/docs/api/en/latest/connect/get_command.html#getcommand-struct-getcommand) |
 
 
 

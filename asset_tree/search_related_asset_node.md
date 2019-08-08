@@ -22,12 +22,12 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchRelated
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| filter| false         |   Filter structure       | Asset query criteria. <br>All criteria are optional. <br>All the specified criteria are related with each other under the "and" relationship, that is, the assets to be queried must satisfy all the specified criteria at the same time. <br>At most one out of the 4 relational query criteria is allowed. See [Filter Structure](/docs/api/en/latest/asset_tree/search_related_asset_node.html#filter-filterstruc)   |
-| pagination| false         |  Pagination request structure | Used to describe paging requirements in an interface request. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure)                               |
-| projection| false         | Projection structure          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
+| filter| false         |   Filter struct       | Asset query criteria. <br>All criteria are optional. <br>All the specified criteria are related with each other under the "and" relationship, that is, the assets to be queried must satisfy all the specified criteria at the same time. <br>At most one out of the 4 relational query criteria is allowed. See [Filter Struct](/docs/api/en/latest/asset_tree/search_related_asset_node.html#filter-struct-filterstruc)   |
+| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct)                               |
+| projection| false         | Projection struct          | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
-### Filter Structure <filterstruc>
+### Filter Struct <filterstruc>
 
 | Name | Required or Not | Data Type | Description |
 |-----------|---------|--------|-----------------------|
@@ -44,7 +44,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchRelated
 
 | Name | Data Type | Description |
 |-----------|------------------|------------------|
-| data      | Asset structure|  asset list    |
+| data      | Asset struct|  asset list    |
 
 
 

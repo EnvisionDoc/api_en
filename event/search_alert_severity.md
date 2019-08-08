@@ -21,22 +21,22 @@ POST https://{apigw-address}/event-service/v2.1/alert-severities?action=search
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
 | expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `severityId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request structure    | Pagination parameter. 10 entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime`. You can specify a field in the `AlertSeverity` structure as the sorting criterion. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| pagination     | false     | Pagination request struct    | Pagination parameter. 10 entries are displayed in each page by default if this parameter is left blank. The entries are sorted in descending order by `updateTime`. You can specify a field in the `AlertSeverity` struct as the sorting criterion. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertSeverity structure | Alert severity. See [AlertSeverity structure](/docs/api/en/latest/event/search_alert_severity.html#id4)|
+| data | AlertSeverity struct | Alert severity. See [AlertSeverity struct](/docs/api/en/latest/event/search_alert_severity.html#alertseverity-struct-alertseverity)|
 
-### AlertSeverity Structure
+### AlertSeverity Struct <alertseverity>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
 | severityId        | String                | Alert severity ID|
 | orgId          | String                |  Organization ID which the asset belongs to|
 | severityDesc   | StringI18n            | Alert severity description |
-| tags        | Tag structure           | Tags|
+| tags        | Tag struct           | Tags|
 | updatePerson        | String                | Update personnel name|
 | updateTime    | Long                | Update time (UTC)
 

@@ -26,9 +26,9 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    getCommand structure        | Information corresponding to the command. See [getCommand Structure](/docs/api/en/latest/connect/get_command.html#id3) |
+| data |    getCommand struct        | Information corresponding to the command. See [getCommand Struct](/docs/api/en/latest/connect/get_command.html#getcommand-struct-getcommand) |
 
-### getCommand Structure
+### getCommand Struct <getCommand>
 
 | Name | Data Type     | Description          |
 |-----------------|---------------------------|----------------|

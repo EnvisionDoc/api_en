@@ -1,8 +1,7 @@
 # Aggregate Active Alerts
 
+Calculate the number of active alerts.
 
-
- Perform statistics on active alerts.
 
 ## Request Format
 

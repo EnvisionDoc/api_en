@@ -26,12 +26,12 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 | startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
 | endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
 | expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=", "in", and "!=", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| scope |  false   | Scope structure | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Structure](search_active_alerts#scope-structure-scope) |
-|  rootAlert  |   false  | RootAlert structure | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Structure](search_active_alerts#rootalert-structure-rootalert)|
-| pagination  | false  |Pagination request structure | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| scope |  false   | Scope struct | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Struct](search_active_alerts#scope-struct-scope) |
+|  rootAlert  |   false  | RootAlert struct | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Struct](search_active_alerts#rootalert-struct-rootalert)|
+| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
-### Scope Structure <scope>
+### Scope Struct <scope>
 
 | Name            | Required or Not | Data Type | Description |
 |------------|--------------|--------------|-----------|
@@ -41,7 +41,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 
 
 
-### RootAlert Structure <rootalert>
+### RootAlert Struct <rootalert>
 
 | Name            | Required or Not | Data Type | Description |
 |-------------|--------------|--------------|------------|
@@ -58,9 +58,9 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | ActiveAlert structure | List of active alerts. For details, see [ActiveAlert Structure](/docs/api/en/latest/event/search_active_alerts#id5)|
+| data | ActiveAlert struct | List of active alerts. For details, see [ActiveAlert Struct](/docs/api/en/latest/event/search_active_alerts#activealert-struct-aa)|
 
-### ActiveAlert Structure
+### ActiveAlert Struct  <aa>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
@@ -71,7 +71,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 | modelIdPath    | String                | Model path|
 | measurepointId | String| Asset measurement point|
 | hitRuleId      | String                | Rule ID of the triggered alert|
-| value          | Integer/Double/Object | Measurement point value. See [ThingModel Structure](/docs/api/en/latest/model/searchmodel.html#id1)definition|
+| value          | Integer/Double/Object | Measurement point value. See [ThingModel Struct](/docs/api/en/latest/model/searchmodel.html#id1)definition|
 | occurTime      | Long| UTC time when the alert occurs|
 | localOccurTime     | String| Local time when the alert occurs|
 | createTime     | Long| UTC time for creation|
@@ -85,7 +85,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 | contentId      | String                | Alert content ID|
 | contentDesc    | StringI18n            | Alert description|
 | eventType      | Integer               | Event type: 0 - system recovery alert; 1 - system-triggered alert; 2 - manual recovery alert; 3 - manually-inserted alarm |
-| tag            | Tag structure            | Alert tags|
+| tag            | Tag struct            | Alert tags|
 | ruleDesc       | StringI18n            | Rule description|
 | assetPaths  |  String Array     | A path list of the alert assets on the asset tree according to the scope of the alert rule.<br>The format is as: ["treeId1:/assetId1/assetId2/assetIdx", "treeId2:/assetId3/assetIdx"]|
 | maskedBy  |  String Array     | If an alert is a derivative alert, return the root alert that caused the alert to be blocked.<br>The format is as: ["treeId1:eventId1", "treeId1:eventId2"]|

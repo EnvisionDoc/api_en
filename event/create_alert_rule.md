@@ -1,6 +1,6 @@
 # Create Alert Rule
 
-A new alert rule will be created. It is required to verify whether the model ID (`modelId`) is available under the organization, whether the measurepoint (`measurepointId`) is valid, and whether the scoped nodes in the alert severity (`severityId`), alert content (`contentId`) and query scope (`scope`) are legal or not. 
+Create a new alert rule. It is required to verify whether the model ID (`modelId`) is available under the organization, whether the measurepoint (`measurepointId`) is valid, and whether the scoped nodes in the alert severity (`severityId`), alert content (`contentId`) and query scope (`scope`) are legal or not. 
 
 ## Request Format
 
@@ -18,10 +18,10 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=create
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| alertRule          | true    | alertRule structure    | Alert rule information. See [alertRule Structure](create_alert_rule#alertrule-structure-alertrule) |
+| alertRule          | true    | alertRule struct    | Alert rule information. See [alertRule Struct](create_alert_rule#alertrule-struct-alertrule) |
 
 
-### alertRule Structure <alertrule>
+### alertRule Struct <alertrule>
 
 | Name | Required or Not | Data Type | Description |
 |----------------|--------------|-----------------------|----------------------------|
@@ -32,11 +32,11 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=create
 | condition      | true         | String                | Expression. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
 | severityId     | true         | String                | Alert severity ID                                                                             |
 | contentId      | true         | String                | Alert content ID                                                                             |
-| tags           | false        | tags structure            | Alert rule tag|
+| tags           | false        | tags struct            | Alert rule tag|
 | isEnabled      | false        | Boolean               | Whether it is allowed to take effect. It takes effect ("true") by default |
-| scope          | true         | AssetNode structure | Specify a node on the asset tree to indicate the scope. If the `treeId` is set as "all", it indicates that this is a special node, standing for the globality of the organization. See [AssetNode Structure](create_alert_rule#assetnode-structure-assetnode) |
+| scope          | true         | AssetNode struct | Specify a node on the asset tree to indicate the scope. If the `treeId` is set as "all", it indicates that this is a special node, standing for the globality of the organization. See [AssetNode Struct](create_alert_rule#assetnode-struct-assetnode) |
 
-### AssetNode Structure <assetnode>
+### AssetNode Struct <assetnode>
 
 | Name | Required or Not | Data Type | Description |
 |----------|--------------|--------------|----------|

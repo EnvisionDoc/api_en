@@ -23,14 +23,14 @@ https://{apigw-address}/connect-service/v2.1/products?action=search
 | Name            | Required or Not | Data Type | Description |
 |-------------------|----------|-----------|--------------|
 | expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey` and `modelId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | String   | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| pagination     | false     | String   | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
 ## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Product structure                           | Product list from query; see [Product Structure](/docs/api/en/latest/connect/get_product.html#product-productstruc)                |
+| data| Product struct                           | Product list from query; see [Product Struct](/docs/api/en/latest/connect/get_product.html#product-struct-productstruc)                |
 
 
 

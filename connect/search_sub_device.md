@@ -21,11 +21,11 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevice
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier structure | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier structure](/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier) |
-| pagination  | False      | Pagination request structure  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+| gateway | True      |DeviceIdentfier struct | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier Struct](/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier-struct-di) |
+| pagination  | False      | Pagination request struct  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
-### DeviceIdentifier structure
+### DeviceIdentifier Struct   <di>
 
 Note: The `assetId` or `(productKey, deviceKey)` must be provided for the following fields.
 
@@ -42,10 +42,10 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | Device structure                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Structure](/docs/api/en/latest/connect/search_sub_device.html#id3)    |
+| data | Device struct                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Struct](/docs/api/en/latest/connect/search_sub_device.html#device-struc-device)    |
 
 
-### Device structure
+### Device Struct  <device>
 
 | Name | Data Type | Description |
 |------------------|--------------------|-------|
@@ -59,11 +59,11 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
 | deviceKey        | String                            | Device Key identifier                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
-| deviceSecret     | String                            | Device connection key                                                             |
+| deviceSecret     | String                            | Device Secret identifier                                                             |
 | deviceDesc       | String                            | Device description                                                                   |
 | timezone         | String                            | Timezone where the device is located                                                               |
 | deviceAttributes | Map (Key is of String type and the value is of String type) | Device attributes                                                                 |
-| deviceTags       | Map (Key is of String type and the value is of String type) | Device marks                                                                 |
+| deviceTags       | Map (Key is of String type and the value is of String type) | Device tags                                                                 |
 | createTime       | Long                              | Device creation time                                                             |
 | status           | String                            | Device status (online, offline, inactive or disable)                         |
 | activeTime       | Long                              | Device activation time                                                             |

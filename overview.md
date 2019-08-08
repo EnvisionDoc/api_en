@@ -1,8 +1,6 @@
 # About EnOS API
 
-
-
-EnOS provides the REST API interfaces that cover the core business processes of the system. Based on these interfaces, developers can access resources within the system to develop applications.
+EnOS provides REST APIs that cover the core business processes of the system. Based on these APIs, developers can access resources within the system to develop various applications.
 
 ## API List
 
@@ -12,12 +10,12 @@ EnOS provides the following API services:
 - [Model Service](/docs/api/en/latest/model/overview.html): Search and get the details of the models in an organization.
 - [Asset Service](/docs/api/en/latest/asset/overview.html): Create, manage, and update the assets in an organization.
 - [Alert Service](/docs/api/en/latest/event/overview.html): Search and manage asset alerts. 
-- [Asset Tree Service](/docs/api/en/latest/asset_tree/overview.html): Create, manage, update and search assets treen an organization.
-- [TSDB Data Service](/docs/api/en/latest/tsdb_service/overview.html): Access to stored asset data.
-- [TSDB Policy Service](/docs/api/en/latest/tsdb_policy/overview.html): Access to TSDB storage policy configuration information.
-- [Common File Service](/docs/api/en/latest/common_file/overview.html): To read the Common File Service API, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** on the left side navigation.
+- [Asset Tree Service](/docs/api/en/latest/asset_tree/overview.html): Create, manage, update, and search assets trees in an organization.
+- [TSDB Data Service](/docs/api/en/latest/tsdb_service/overview.html): Access to the stored asset data.
+- [TSDB Policy Service](/docs/api/en/latest/tsdb_policy/overview.html): Access to TSDB storage configuration information.
+- [Common File Service](/docs/api/en/latest/common_file/overview.html): To access the Common File Service API documentation, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** from the left navigation bar.
 
-## API Request Structure 
+## API Request
 
 The EnOS API request consists of the following parts:
 
@@ -30,13 +28,13 @@ The EnOS API request consists of the following parts:
 Where:
 
 - `URI-sheme`: protocol, supporting HTTPS protocol.
-- `apigw-address`: Address of the API service in this EnOS environment. Its paradigm is `apim-{enos-environment}.envisioniot.com`, where `enos-environment` is the name of the EnOS deployment environment.
+- `apigw-address`: Gateway address of the API service in the environment where EnOS is deployed. Its paradigm is `apim-{enos-environment}.{abc}.com`, where `enos-environment` is the name of the EnOS deployment environment.
 - `service-name`: Service name, e.g. `asset-service`.
 - `version`: API version, e.g. `v2.0`.
 - `endpoint-URL`: Resources and operations on resources, e.g. `assets/update`.
-- `query-param`: Selection criteria for the target resource, e.g. `orgId=1234`. When there are multiple query parameters, they should be connected by `&`.
+- `query-param`: Parameters and values for the target resource, e.g. `orgId=1234`. When there are multiple query parameters, they should be connected by `&`.
 
-For example, getting the asset information in an organization, the API request format is as follows:
+For example, to get the asset information in an organization, send the following API request:
 
 ```
 GET
@@ -51,7 +49,7 @@ The commonly used request header is `Content-Type`, which represents the data su
 
 ### Request Body
 
-Supplement the Request URI to provide more complex input parameters. For example, the request body sample below contains the parameters that specify the timezone, description, tags and other attributes to update the asset:
+Request body is used to supplement the Request URI to provide more complex input parameters. For example, the request body below contains the parameters that specify the timezone, description, tags and other attributes to update an asset:
 
 ```
 POST
@@ -70,9 +68,9 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update&orgId=1234&isPat
 }
 ```
 
-## API Response Structure
+## API Response
 
-EnOS API returns the JSON structure as follows:
+The response of EnOS APIs is in JSON format as follows:
 
 ```
 {
@@ -84,35 +82,39 @@ EnOS API returns the JSON structure as follows:
 }
 ```
 
-The return parameters are described as below:
+The returned parameters are described as follows:
 
 | Name     | Data Type        | Required or Not | Description|
 | :-------- | --------------- | :------- | ------------------------------------------------------------ |
-| code      | Integer         | true     | API request status code. 0 stands for successful request. For other status codes, refer to the public return codes and the error codes in the API document.  |
+| code      | Integer         | true     | API request status code. 0 stands for successful request. For other status codes, refer to the public return codes and the error codes in the API documentation. |
 | msg       | String          | true     | Explanation of the status codes. "OK" indicates successful request. If the API request fails, the specific error information will be returned.  |
 | requestId | String          | true     | ID for each request. It is a unique identifier for an API request.                   |
 | data      | Array or Object | false    | The set of API response result. Data types include: basic data types, complex types or arrays.  |
 
 
-## Public Parameter Descriptions
+## Description of Public Parameters
 
 The public parameters for each API service are described as follows. For how to get and use other common parameters, see [API FAQs](/docs/api/en/latest/api_faqs.html) 
 
 ### Public Request Parameters (Connection Service, etc.)
 
-The public request parameters for the connection service, model service, asset service, event service, and asset tree service APIs are:
+The public request parameters for the connection service, model service, asset service, event service, and asset tree service APIs are as follows:
 
-#### Pagination Request Structure
+#### Pagination Request Struct
 
-The Pagination parameter stands for random pagination. The default pagination is 10.
+The Pagination parameter is used for random pagination. The default pagination value is 10.
 
 | Name     | Data Type        | Required or Not | Description                                                         |
 | -------- | ----------------- | -------- | --------------------- |
 | pageNo   | Integer           | true     | Request pages, starting from 1     |
 | pageSize | Integer           | true     | Number of records in each page, which must be greater than 0 |
-| sorters  | Sorter Structure Array | false    | Pagination sorting method         |
+<<<<<<< HEAD
+| sorters  | Sorter struct | false    | Pagination sorting method         |
+=======
+| sorters  | Sorter Struct Array | false    | Pagination sorting method         |
+>>>>>>> a09231029203aee9554a0cf4756ba57bb46c403b
 
-**Sorter structure**
+**Sorter struct**
 
 | Name     | Data Type        | Required or Not | Description                                                         |
 | ----- | -------- | -------- | --------------------------------------------- |
@@ -136,7 +138,7 @@ The Pagination parameter stands for random pagination. The default pagination is
 
 #### Projection Parameter
 
-The Projection parameter is used to crop the returned data result set, Its data type is String Array. Each of these strings represents a result field that needs to be returned in the returned result. Any fields that are not specified in the projection would not be returned in the result set. When specifying a field, you can use:
+The Projection parameter is used to crop the returned data result set. Its data type is String Array. Each of the string represents a result field that needs to be returned in the returned result. Any fields that are not specified in the projection would not be returned in the result set. When specifying a field, you can use:
 
 |Symbol |Description|
 |------------|--------------|
@@ -157,24 +159,24 @@ When the projection parameter is not provided, the data result set is not croppe
 }
 ```
 
-### Public Return Parameters (Connection Service, etc.)
+### Public Response Parameters (Connection Service, etc.)
 
-The public return parameters for the connection service, model service, asset service, event service, and asset tree service APIs are:
+The public response parameters for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 | Name     | Data Type        | Required or Not | Description                                                         |
 | :--------- | -------------------- | :------- | ---------------------- |
-| pagination | Pagination response structure | false    | Pagination information for the current return results |
+| pagination | Pagination response struct | false    | Pagination information for the current returned results |
 
-### Public Return Codes (Connection Service, etc.)
+### Public Response Codes (Connection Service, etc.)
 
-The public return codes for the connection service, model service, asset service, event service, and asset tree service APIs are:
+The public response codes for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 | Code | Description                                                     |
 | --------- | ------------------------------------------------------------ |
-| **99400** | The request parameter is illegal. Check the request parameter.                                |
-| **99403** | Missing permissions. Make sure you have the permission to access the interface and request resources.              |
-| **99404** | The specified object does not exist. For example, when get, update, or delete a device, the specified deviceKey of the device does not exist.  |
-| **99500** | Server internal error. Contact EnOS.                                  |
+| **99400** | The request parameter is invalid. Check the request parameters.                     |
+| **99403** | Missing permissions. Make sure you have the permission to access the API and requested resources.            |
+| **99404** | The specified object does not exist. For example, when getting, updating, or deleting a device, the specified deviceKey of the device does not exist. |
+| **99500** | Server internal error. Contact EnOS support.                          |
 
 Sample:
 
@@ -187,7 +189,7 @@ Sample:
     "data": null
 }
 
-99400 error sample: parameter error
+99400 error sample: Invalid parameter
 {
     "code": 99400,
     "msg": "Invalid Argument orgId:  orgId does not exist",
@@ -203,7 +205,7 @@ Sample:
     "data": null
 }
 
-99500 error sample: internal error of server
+99500 error sample: internal server error
 {
     "code": 99500,
     "msg": " Internal Server Error",
@@ -212,63 +214,63 @@ Sample:
 }
 ```
 
-### Public Return Codes (TSDB Data Service)
+### Public Response Codes (TSDB Data Service)
 
-The public return code for the TSDB data service APIs are:
+The public response codes for the TSDB data service APIs are:
 
-| Code | Msg / submsg                                                 | Description                                                         |
+| Code | Message                                                      | Description                                                  |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 400  | You do not have permission for the   following assets        |  The current application does not have permissions to the following devices                                    |
-| 400  | Exception:  Invalid param accessKey                           | Error occurs with the parameter `accessKey`                                             |
-| 400  | xxx is required                                              | The parameter xxx cannot be null                                              |
-| 400  | All asset authentication failed                              | The current application does not have permissions for all devices that are queried.                             |
-| 400  | Invalid Argument                                             | Invalid or missing parameters                                                |
-| 400  | [modelId] permission denied                                  | [modelId] is invalid or has no access permission                                    |
-| 430  |                                                              | The request exceeds the maximum limit of network traffic within the service                                     |
-| 701  |                                                              | Service error                                                     |
-| 702  | Params startTime or endTime is   invalid, and date format of them should be consistent | Time format error. The local time format is YYYY-MM-DD HH:MM:SS; Timezone information is required for UTC time format, e.g. 2019-06-01T00:00:00+08:00|
-| 702  | xxx cannot be null or negative  | The parameter xxx cannot be null or negative         |
-| 702  | xxx is empty                                                 | The parameter xxx cannot be null or negative                                           |
-| 702  | only one xxx is allowed                                      | At most one parameter xxx is allowed                                               |
-| 702  | assetIds size * measurement points size * pageSize is too large to query, result size may exceed RPC limit | The result set of a single query is too large. The calculation result by using the formula "Number of Devices\*Number of Measurepoints\*pageSize" can not be greater than 640000                                          |
-| 702  | param xxx is invalid                                         | The parameter xxx is invalid                                                  |
-| 702  | endTime should not be later than   startTime                 | The query end time should be later than the start time                                   |
-| 702  | is not a valid integer                                       | The parameter is not a valid integer                                   |
-| 702  | assetIds or measurement point does not   match the model          | Device or measurement point does not match with the model                                       |
-| 702  | Please config/check storage group for   org[] and model[]    |  The storage policy is not configured or the `modelId` is incorrect                                  |
+| 400  | You do not have permission for the following assets          | The current application does not have permissions to the following assets. |
+| 400  | Exception:  Invalid param accessKey                          | Invalid parameter `accessKey`.                               |
+| 400  | xxx is required                                              | The value of parameter xxx cannot be null.                   |
+| 400  | All asset authentication failed                              | The current application does not have permissions for all devices that are queried. |
+| 400  | Invalid Argument                                             | Invalid or missing parameters.                               |
+| 400  | [modelId] permission denied                                  | [modelId] is invalid or has no access permission.            |
+| 430  |                                                              | The request exceeds the maximum limit of network traffic within the service. |
+| 701  |                                                              | Service error.                                               |
+| 702  | Params startTime or endTime is   invalid, and date format of them should be consistent | Time format error. The local time format is YYYY-MM-DD HH:MM:SS; Timezone information is required for UTC time format, e.g. 2019-06-01T00:00:00+08:00. |
+| 702  | xxx cannot be null or negative                               | The value of parameter xxx cannot be null or negative.       |
+| 702  | xxx is empty                                                 | The value of parameter xxx cannot be null or negative.       |
+| 702  | only one xxx is allowed                                      | At most one parameter xxx is allowed.                        |
+| 702  | assetIds size * measurement points size * pageSize is too large to query, result size may exceed RPC limit | The result set of a single query is too large. The calculation result by using the formula "Number of Devices\*Number of Measuring points\*pageSize" cannot be greater than 640,000. |
+| 702  | param xxx is invalid                                         | The parameter xxx is invalid.                                |
+| 702  | endTime should not be later than   startTime                 | The query end time should be later than the start time.      |
+| 702  | is not a valid integer                                       | The parameter is not a valid integer.                        |
+| 702  | assetIds or measurement point does not   match the model     | Device or measuring point does not match with the model.     |
+| 702  | Please config/check storage group for   org[] and model[]    | The storage policy is not configured or the `modelId` is incorrect. |
 
 ## API Authentication
 
-With regard to EnOS API authentication, the service account SA (service account) is taken as the identity of an application or a developer. In the REST API request, the SA is sent to the EnOS service, which then authenticates the user and performs the required authorized access. 
+With regard to EnOS API authentication, the SA (service account) is taken as the identity of an application or a developer. In the REST API request, the SA is sent to the EnOS service, which then authenticates the user and performs the required authorized access. 
 
-### Get the Service Account
+### Getting the Service Account
 
-The service account SA consists of the application's `AccessKey` and `SecretKey`, which is generated by registering the application in the EnOS console. The specific steps are as follows:
+The service account SA consists of the application's `AccessKey` and `SecretKey`, which is generated by registering an application on the EnOS Console. The specific steps are as follows:
 
-1. Log into the EnOS console and select **Application Registration** in the left navigation bar.
-2. Click the **Create App** button, enter the details of the new application, and click **OK**.
-3. After the application registration is completed, click the application name in the **Apps of This OU** tab to open the **App Details** and view the application's `AccessKey` and `SecretKey`.
+1. Log into the EnOS Console and select **Application Registration** in the left navigation bar.
+2. Click the **Create App** button, enter the details of the new application, and click **Confirm**.
+3. After the application registration is completed, click the application name in the **Apps of This OU** tab to open the **App Detail** page and view the application's `AccessKey` and `SecretKey`.
 
 ### Authorizing Service Accounts
 
-Only after a service account is authorized can applications be allowed to access the authorized resources on EnOS. For detailed steps on how to authorize the service accounts, see [Managing Service Accounts](/docs/iam/en/latest/howto/service_account/managing_service_account.html).
+Only after a service account is authorized can applications be allowed to access the authorized resources on EnOS. For detailed steps on how to authorize a service account, see [Managing Service Accounts](/docs/iam/en/latest/howto/service_account/managing_service_account.html).
 
 ### API Operation Permissions
 
-Before authorizing a service account, you need to create a corresponding permission policy. The resources that need to be accessed by each API interface and the corresponding operation permissions are given as follows:
+Before authorizing a service account, you need to create a corresponding permission policy. The resources that need to be accessed by each API and the corresponding operation permissions are given as follows:
 
-| Interface Name | Required Authorization | Required Operation Permissions |
+| API Name | Required Authorization | Required Operation Permission |
 | ------------------------------ | --------------------- | ------------ |
-| Get Electric Power             | Asset                 | read         |
-| Get Current Day Electric Power | Asset                 | read         |
-| Filter Latest Data             | Asset                 | read         |
-| Get Latest Data                | Asset                 | read         |
-| Get Generic Data               | Asset                 | read         |
-| Get DI Data                    | Asset                 | read         |
-| Get AI Normalized Data         | Asset                 | read         |
-| Get AI Data                    | Asset                 | read         |
-| Get Raw Data                   | Asset                 | read         |
-| Get TSDB Storage Policy        | Asset                 | read         |
+| Get Electric Power             | Asset                 | Read        |
+| Get Current Day Electric Power | Asset                 | Read     |
+| Filter Latest Data             | Asset                 | Read     |
+| Get Latest Data                | Asset                 | Read     |
+| Get Generic Data               | Asset                 | Read     |
+| Get DI Data                    | Asset                 | Read     |
+| Get AI Normalized Data         | Asset                 | Read     |
+| Get AI Data                    | Asset                 | Read     |
+| Get Raw Data                   | Asset                 | Read     |
+| Get TSDB Storage Policy        | Asset                 | Read     |
 | UpdateAsset                    | Asset                 | Write        |
 | AssociateAssetNode             | Asset Tree Management | Full-Access  |
 | DeleteAssetNode                | Asset Tree Management | Full-Access  |
@@ -287,4 +289,4 @@ Before authorizing a service account, you need to create a corresponding permiss
 | Add Sub-device                 | Device Management     | Full-Access  |
 | Remove Sub-device              | Device Management     | Full-Access  |
 
-For detailed steps to create a permission policy, see [Creating and Managing Policies](/docs/iam/en/latest/howto/managing_policies.html)。
+For detailed steps to create a permission policy, see [Creating and Managing Policy](/docs/iam/en/latest/howto/managing_policies.html)。

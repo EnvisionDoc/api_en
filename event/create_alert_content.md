@@ -1,6 +1,6 @@
 # Create Alert Content
 
-An alert content will be created. The fields required to be verified include the model ID (`modelId`) and the alert type ID (`alertTypeId`).
+Create a new alert content. The fields required to be verified include the model ID (`modelId`) and the alert type ID (`alertTypeId`).
 
 ## Request Format
 
@@ -18,9 +18,9 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| alertContent          | true    | generateContent structure    | Alert content. See [generateContent Structure](create_alert_content#generatecontent-structure-generatecontent)|
+| alertContent          | true    | generateContent struct    | Alert content. See [generateContent Struct](create_alert_content#generatecontent-struct-generatecontent)|
 
-### generateContent Structure <generatecontent>
+### generateContent Struct <generatecontent>
 
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|

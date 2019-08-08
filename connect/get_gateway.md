@@ -22,10 +22,10 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=getGateway
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| subDevice           | True      | DeviceIdentfier structure | Information used to identify sub-devices. See [DeviceIdentfier structure](/docs/api/en/latest/connect/get_gateway.html#deviceidentifier) |
+| subDevice           | True      | DeviceIdentfier struct | Information used to identify sub-devices. See [DeviceIdentfier Struct](/docs/api/en/latest/connect/get_gateway.html#deviceidentifier-struct-deviceidentifier) |
 
 
-### DeviceIdentifier structure
+### DeviceIdentifier Struct  <deviceidentifier>
 
 Note: The `assetId` or `(productKey, deviceKey)` must be provided for the following fields.
 
@@ -40,10 +40,10 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | Device structure                          | Gateway device information. See [Device Structure](/docs/api/en/latest/connect/get_gateway.html#device-devicetstruc)               |
+| data | Device struct                          | Gateway device information. See [Device Struct](/docs/api/en/latest/connect/get_gateway.html#device-struct-devicetstruc)               |
 
 
-### Device structure <devicetstruc>
+### Device Struct <devicetstruc>
 
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
@@ -57,11 +57,11 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
 | deviceKey        | String                            | Device Key identifier                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
-| deviceSecret     | String                            | Device connection key                                                             |
+| deviceSecret     | String                            | Device Secret identifier                                                             |
 | deviceDesc       | String                            | Device description                                                                   |
 | timezone         | String                            | Timezone where the device is located                                                               |
 | deviceAttributes | Map (Key is of String type and the value is of String type) | Device attributes                                                                 |
-| deviceTags       | Map (Key is of String type and the value is of String type) | Device marks                                                                 |
+| deviceTags       | Map (Key is of String type and the value is of String type) | Device tags                                                                 |
 | createTime       | Long                              | Device creation time                                                             |
 | status           | String                            | Device status (online, offline, inactive or disable)                         |
 | activeTime       | Long                              | Device activation time                                                             |

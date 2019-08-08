@@ -41,10 +41,10 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Measurement point setting return structure      | Measurement point setting results. See [Measurepoint Setting Return Structure](/docs/api/en/latest/connect/set_measurepoint.html#id4) |
+| data |  Measurement point setting return struct      | Measurement point setting results. See [Measurement Point Setting Return Struct](/docs/api/en/latest/connect/set_measurepoint.html#measurement-point-setting-return-struct-mp) |
 
 
-### Measurement point setting return structure
+### Measurement Point Setting Return Struct  <mp>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|

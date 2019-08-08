@@ -1,8 +1,6 @@
 ﻿# Get Started EnOS API
 
-
-
-This tutorial helps you with an example to complete your first EnOS API invocation task.
+This tutorial helps you complete your first EnOS API request with examples.
 
 ## Prerequisites
 
@@ -18,27 +16,28 @@ The service account has the permissions to access to related resources in the sy
 
 **Prepare the development environment**
 
-Install the EnOS SDK and prepare the basic environment for API invocation. Refer to the following details:
+Install the EnOS SDK and prepare the basic environment for API request. Refer to the following details:
 
 ### Invoking SDK with Java
-To invoke the SDK using Java, install the Java core SDK (Poseidon). Poseidon supports Java 7 or later.
+To invoke the SDK using Java, install the Java core SDK (Poseidon). Poseidon supports Java 7 and newer versions.
 
 #### Installation Method
 
 **Java core SDK (Poseidon)**
-Visit [Maven Repository](https://mvnrepository.com/artifact/com.envisioniot/apim-poseidon/0.1.7). Download Poseidon Jar installation package and import it to your application. If the application uses the `pom` project, add the following dependencies to the `pom.xml` file:
+
+Open the [Maven Repository](https://mvnrepository.com/artifact/com.envisioniot/apim-poseidon/0.1.8) of the SDK, download the installation package, and import it to your development environment. If your application uses the `pom` project, add the following dependencies to the `pom.xml` file:
 
 ```xml
 <dependency>
   <groupId>com.envisioniot</groupId>
   <artifactId>apim-poseidon</artifactId>
-  <version>0.1.7</version>
+  <version>0.1.8</version>
 </dependency>
 ```
 
-**Device And Asset API Pojo SDK**
+**Device and Asset API Pojo SDK**
 
-Visit [Maven Repository](https://search.maven.org/artifact/com.envisioniot/enos-dm-api-pojo/0.2.0/jar). Download the Jar installation package and import it to your application. If the application uses the `pom` project, add the following dependencies to the `pom.xml` file:
+Open the [Maven Repository](https://search.maven.org/artifact/com.envisioniot/enos-dm-api-pojo/0.2.0/jar) of the SDK, download the installation package, and import it to your development environment. If your application uses the `pom` project, add the following dependencies to the `pom.xml` file:
 
 ```xml
 <dependency>
@@ -48,11 +47,11 @@ Visit [Maven Repository](https://search.maven.org/artifact/com.envisioniot/enos-
 </dependency>
 ```
 
-#### How to Use
+#### Request Method
 
-**Synchronous request**
+**Synchronous Request**
 
-1. Disable the API log. Return the result only after calling the API. The sample codes are as follows:
+1. With the API logging feature disabled, returns the result only after calling the API. The sample code is as follows:
 
    ```
    Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey))
@@ -61,7 +60,7 @@ Visit [Maven Repository](https://search.maven.org/artifact/com.envisioniot/enos-
         .sync();
    ```
 
-2. Enable the API log. Return call parameters with timestamp and results after calling API. The sample codes are as follows:
+2. With the API logging feature enabled, returns both the request parameters with time stamp and response after calling the API. The sample code is as follows:
 
    ```
    Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
@@ -70,7 +69,7 @@ Visit [Maven Repository](https://search.maven.org/artifact/com.envisioniot/enos-
         .sync();
    ```
 
-3. Post request. The sample codes are as follows:
+3. For POST method, the sample code is as follows:
 
    ```
    Poseidon.config(PConfig.init().accessKey(accessKey).secretKey(secretKey).debug())
@@ -88,9 +87,9 @@ Visit [Maven Repository](https://search.maven.org/artifact/com.envisioniot/enos-
 
 
 
-**Asynchronous request**
+**Asynchronous Request**
 
-The sample codes are as follows:
+The sample code is as follows:
 
 ```java
 Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey))
@@ -108,29 +107,29 @@ Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey))
             });
 ```
 
-**Request and Response supported**
+**Support for Request and Response**
 
-Request provides the built-in support for the Header, Query, RequestBody and Path parameters. For how to use Request and Response, see [Sample 3 - Using Request and Response](gettingstarted.html#id4).
+Request provides the built-in support for the Header, Query, RequestBody, and Path parameters. For how to use Request and Response, see [Sample 3 - Using Request and Response](gettingstarted.html#id4).
 
-**Exception handling**
+**Exception Handling**
 
-Capture the PoseidonException to view specific API exception issues. For API service error, refer to the API description documents.
+Capture the PoseidonException to view specific API exception issues. For API service error, refer to the API documentation.
 
-Common error messages and descriptions returned from PoseidonException are as follows：：
+Common error messages and description returned from PoseidonException are as follows：：
 
 | Code | Description            | Message                           | Cause             |
 | ------ | --------------------- | ---------------------------------- | -------------------- |
-| 401    | Unauthorized          | Invalid authentication credentials | Failed to authenticate the identification |
-| 400    | Bad Request           | Cannot process request body        | Failed to get request body|
-| 403    | Forbidden             | Your IP address is not allowed     | The IP address is not allowed to access     |
-| 413    | Payload Too Large     | Request size limit exceeded        | The request size exceeded the limit     |
-| 429    | Too Many Requests     | API rate limit exceeded            | The number of requests exceeded the API request limit|
-| 500    | Internal Server Error | An unexpected error occurred       | Failed to search cache           |
-| 503    | Service unavailable   | Service unavailable                | The service is not allowed to access         |
+| 401    | Unauthorized          | Invalid authentication credentials | Failed to authenticate the identification. |
+| 400    | Bad Request           | Cannot process request body        | Failed to get request body. |
+| 403    | Forbidden             | Your IP address is not allowed     | The IP address is not allowed to access.    |
+| 413    | Payload Too Large     | Request size limit exceeded        | The request size exceeded the limit.    |
+| 429    | Too Many Requests     | API rate limit exceeded            | The number of requests exceeded the API request limit. |
+| 500    | Internal Server Error | An unexpected error occurred       | Failed to search cache.          |
+| 503    | Service unavailable   | Service unavailable                | The service is not allowed to access.        |
 
 
-### Invoke SDK with Python
-To invoke the SDK using Python, install the Python core SDK (Athena) V0.1.1 or later. Athena supports Python 3.6 and later.
+### Invoking SDK with Python
+To invoke the SDK using Python, install the Python core SDK (Athena) V0.1.4 or later. Athena supports Python 3.6 and new versions.
 
 #### Installation Method
 
@@ -140,7 +139,7 @@ Install it by the following pip command:
 pip install aphrodite
 ```
 
-#### How to Use
+#### Request Method
 
 **Query** 
 
@@ -189,12 +188,12 @@ print(req)
 
 ## Invoking EnOS API
 
-After the development environment is ready, refer to the parameter descriptions and invocation examples in the API interface documentation to invoke the API.
+After the development environment is ready, refer to the parameter descriptions and invocation examples in the API documentation to invoke the API.
 
-### Sample 1 - GET
+### Sample 1 - GET Method
 
 
-The following sample shows how to get the asset details using Java core SDK to invoke *Get Asset* API (disable API log):
+The following sample shows how to get the asset details using Java core SDK to invoke the *Get Asset* API (with API logging feature disabled):
 
 ```java
 import com.envision.apim.poseidon.config.PConfig;
@@ -241,9 +240,9 @@ The sample of returned data is as follows:
 }
 ```
 
-### Sample 2 - POST
+### Sample 2 - POST Method
 
-The following sample shows how to update the name, description, attributes, timezone, and tags of the asset using Java core SDK to invoke *Update Asset* API (enable API log):
+The following sample shows how to update the name, description, attributes, timezone, and tags of an asset using Java core SDK to invoke the *Update Asset* API (with API logging feature enabled):
 
 ```
 import com.envision.apim.poseidon.config.PConfig;
@@ -279,7 +278,7 @@ The sample of returned data is as follows:
 
 ### Sample 3 - Using Request and Response
 
-The following sample shows how to update the description, attributes, and timezone of the asset using Java core SDK and Device And Asset API Pojo SDK to invoke *Update Asset* API (esable API log):
+The following sample shows how to update the description, attributes, and timezone of an asset using the Java core SDK and the Device and Asset API Pojo SDK to invoke the *Update Asset* API (with API logging feature enabled):
 
 ```
 import com.envision.apim.poseidon.config.PConfig;
