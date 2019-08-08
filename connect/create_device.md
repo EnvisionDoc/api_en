@@ -27,6 +27,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 | deviceAttributes | False         | Map       | Device attributes         |
 | deviceKey   | False         | String    | Device Key identifier         |
 | deviceDesc  | False         | String    | Device description     |
+| deviceTags  | False         | Map    | Device tags     |
 
 
 

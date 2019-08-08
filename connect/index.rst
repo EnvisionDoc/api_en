@@ -21,6 +21,7 @@ Connection Service
    delete_device
    create_device
    update_device
+   replace_device
    get_command
    cancel_command
    invoke_service

@@ -1,8 +1,6 @@
 # Search Thing Model
 
-
-
-Search thing models by organizationid.
+Search thing models by orgId.
 
 ## Request Format
 
@@ -16,7 +14,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 |:-----------|:-----------------|:---------|:----------|:-----------------------------------------------------------------------------------------|
 | orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)|
 | scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default               |
-| expression | Query            | False    | String    | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "=") and `tags` (supports arithmetic operator "in"). The supported logical operator is "and", "or", and "not". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| expression | Query            | False    | String    | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "in") and `tags` (supports arithmetic operator "="). The supported logical operators are "and", "or", and "not". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
 | projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 | pagination | Query            | False    | Pagination request structure       | Random pagination. Sorting field cannot be specified. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
 
@@ -81,7 +79,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
 | intputData | ThingDatapoint structure| Input parameters list of the service. See [ThingDatapoint Structure](/docs/api/en/latest/model/searchmodel.html#id9)  |
 | outputData | ThingDatapoint structure| Returned parameters list of the service. See [ThingDatapoint Structure](/docs/api/en/latest/model/searchmodel.html#id9) |
-| callType   | String| Calling type. <!--SYNC or ASYNC-->|       
+| callType   | String| Calling type. <!--SYNC or ASYNC-->|
 
 
 ### ThingEvent Structure
@@ -93,7 +91,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
 | desc       | String| Model description|
 | tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
 | outputData | ThingDatapoint structure| Returned parameters list of the event. See [ThingDatapoint Structure](/docs/api/en/latest/model/searchmodel.html#id9) |
-| eventType   | String| Event type. E.g.: INFO, WARN, ERROR|      
+| eventType   | String| Event type. E.g.: INFO, WARN, ERROR|
 
 
 ### ThingDatapoint Structure

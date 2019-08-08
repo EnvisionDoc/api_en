@@ -23,7 +23,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=updateTags
 |------|----------|--------------------|----|------|
 | eventId       | Query            | true     | String     | Alert ID  |
 | tags          | Query            | true     | Tag structure | Tag map you want to modify |
-| isPatchUpdate | Query            | true     | Boolean    | Whether to update in full; false stands for full modification, while true stands for partial modification.  |
+| isPatchUpdate | Query            | true     | Boolean    | Whether to update in full; false stands for full update, while true stands for partial update  |
 
 
 ## Response Parameters

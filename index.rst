@@ -6,6 +6,7 @@ EnOS API
    :caption: Overview
 
    overview
+   releasenote/index
 
 .. toctree::
    :maxdepth: 1

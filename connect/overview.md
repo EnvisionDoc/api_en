@@ -22,6 +22,7 @@ Provide management operations for products, devices, and commands.
 |[Delete Device](delete_device)|Delete devices|
 |[Create Device](create_device)|Create devices|
 |[Update Device](update_device)|Update devices|
+| [Replace Device](replace_device) | Replace the Device Key of a device without changing its asset ID (`assetId`) |
 |[Get Command](get_command)|Get a single command information|
 |[Cancel Command](cancel_command)|Cancel the interface to cached commands|
 |[Invoke Service](invoke_service)|Release a service invocation interface to the device|

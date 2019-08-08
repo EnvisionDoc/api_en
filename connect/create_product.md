@@ -27,6 +27,8 @@ https://{apigw-address}/connect-service/v2.1/products?action=create
 | dataFormat        | True      | String      | Data Type. Enumeration; Custom represents the user-defined data type, while Json represents the json data type. |
 | productName       | True      | StringI18n | Product Name                                                           |
 | productType       | True      | String      | Product Type. Enumeration; Device stands for common product types, while Gateway stands for gateway types. |
+|dynamicActivateEnabled|False|Boolean|Whether to activate the product dynamically |
+|productTags|False|Map|Product tags|
 
 
 

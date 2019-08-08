@@ -30,7 +30,29 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | recoverStartTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | Start time of alert recovery. If left blank, the data within the last week will be searched.  |
 | recoverEndTime        | false     | String. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)       | End time of alert recovery. If left blank, the data within the last week will be searched.
 | expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| scope |  false   | Scope structure | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Structure](search_history_alerts#scope-structure-scope) |
+|  rootAlert  |   false  | RootAlert structure | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Structure](search_history_alerts#rootalert-structure-rootalert)|
 | pagination  | false  |Pagination request structure | Random pagination. The default is to sort in descending order by `occurTime`, and the user can not specify the sorting field. The default pagination size is 10 pages. See [Pagination Request Structure](/docs/api/en/latest/overview.html#pagination-request-structure) |
+
+
+### Scope Structure <scope>
+
+| Name            | Required or Not | Data Type | Description |
+|------------|--------------|--------------|-----------|
+| treeId            | true         | String       |  ID of the asset tree |
+| fromAssetId       | false        | String       | Asset ID. Optional.<br>When it is not specified, return the alerts of all nodes in the asset tree specified by `treeId`;<br>When it is specified, returns all alerts under the asset node (and in the node )|
+| includeDerivative | false        | Boolean      | Whether to return the derivative alerts, the default is false, as no derivative alert is returned|
+
+
+
+### RootAlert Structure <rootalert>
+
+| Name            | Required or Not | Data Type | Description |
+|-------------|--------------|--------------|------------|
+| treeId      | false        | String       | ID of the asset tree   |
+| rootAlertId | true         | String       | Root alert ID |
+
+
 
 
 ## Response Parameters
@@ -47,9 +69,9 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | orgId          | String                |  Organization ID which the asset belongs to|
 | assetId        | String                | Asset ID|
 | modelId        | String                | Model ID which the asset belongs to|
-| modelIdPath    | String                | Model ID path|
+| modelIdPath    | String                | Model path|
 | measurepointId | String                | Asset measurement point|
-| hitRuleId      | String                | Matched rule ID|
+| hitRuleId      | String                | Rule ID of the triggered alert |
 | value          | Integer/Double/Object | Measurement point value|
 | occurTime      | Long| UTC time when the alert occurs|
 | localOccurTime     | String                | Local time when the alert occurs|
@@ -69,6 +91,8 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 | eventType      | Integer               | Event type: 0 - system recovery alert; 1 - system-triggered alert; 2 - manual recovery alert; 3 - manually-inserted alarm |
 | tag            | Tag structure            | Alert tags|
 | ruleDesc       | StringI18n            | Rule description|
+| assetPaths  |  String Array     | A path list of the alert assets on the asset tree according to the scope of the alert rule.<br>The format is as: ["treeId1:/assetId1/assetId2/assetIdx", "treeId2:/assetId3/assetIdx"]|
+| maskedBy  |  String Array     | If an alert is a derivative alert, return the root alert that caused the alert to be blocked.<br>The format is as: ["treeId1:eventId1", "treeId1:eventId2"]|
 
 
 
