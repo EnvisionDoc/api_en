@@ -108,12 +108,7 @@ The Pagination parameter is used for random pagination. The default pagination v
 | -------- | ----------------- | -------- | --------------------- |
 | pageNo   | Integer           | true     | Request pages, starting from 1     |
 | pageSize | Integer           | true     | Number of records in each page, which must be greater than 0 |
-<<<<<<< HEAD
-| sorters  | Sorter struct | false    | Pagination sorting method         |
-=======
-| sorters  | Sorter Struct Array | false    | Pagination sorting method         |
->>>>>>> a09231029203aee9554a0cf4756ba57bb46c403b
-
+| sorters | Sorter struct | false | Pagination sorting method |
 **Sorter struct**
 
 | Name     | Data Type        | Required or Not | Description                                                         |

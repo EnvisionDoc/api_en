@@ -49,22 +49,22 @@
 
 | API     | Description           |
 |:--------------|:---------------------|
-|[Batch Update Active Alert Tags](../event/batch_update_active_alert_tags.html)| Batch update the tag for the specified alerts |
-|[Create Alert Rule](../event/create_alert_rule.html)   |  A new alert rule will be created.             |
-|[Update Alert Rule](../event/update_alert_rule.html)        |   An alert rule will be updated      |
+|[Batch Update Active Alert Tags](../event/batch_update_active_alert_tags.html)| Batch update the tags for the specified alerts |
+|[Create Alert Rule](../event/create_alert_rule.html)   |  Create a new alert rule|
+|[Update Alert Rule](../event/update_alert_rule.html)        |   Update an alert rule     |
 |[Delete Alert Rule](../event/delete_alert_rule.html)    |  Delete all the rules under the organization as per the alert rule IDs      |
-|   [Create Alert Content](../event/create_alert_content.html)     |   An alert content will be deleted      |
-|  [Update Alert Content](../event/update_alert_content.html)      |    An alert content will be updated          |
-|     [Delete Alert Content](../event/delete_alert_content.html)   |    An alert content will be deleted         |
-|    [Create Alert Severity](../event/create_alert_severity.html)    | An alert severity will be created          |
-|  [Update Alert Severity](../event/update_alert_severity.html)      |  An alert severity will be updated        |
-|     [Delete Alert Severity](../event/delete_alert_severity.html)   |   An alert severity will be deleted     |
-|  [Create Alert Type](create_alert_type.html)      | An alert type will be created     |
-|  [Update Alert Type](../event/update_alert_type.html)      |   An alert type will be updated           |
-|  [Delete Alert Type](../event/delete_alert_type.html)      |  An alert type will be deleted            |
-|  [Create Active Alert](../event/create_active_alert.html)      | An active alert will be created       |
-|   [Delete Active Alert](../event/delete_active_alert.html)     |A specified alert will be deleted           |
-|   [Create History Alert](../event/create_history_alert.html) |  A history alert will be created |
+|   [Create Alert Content](../event/create_alert_content.html)     |   Create a new alert content   |
+|  [Update Alert Content](../event/update_alert_content.html)      |    Update an alert content         |
+|     [Delete Alert Content](../event/delete_alert_content.html)   |    Delete an alert content        |
+|    [Create Alert Severity](../event/create_alert_severity.html)    | Create a new alert severity  |
+|  [Update Alert Severity](../event/update_alert_severity.html)      |  Update an alert severity       |
+|     [Delete Alert Severity](../event/delete_alert_severity.html)   |   Delete an alert severity     |
+|  [Create Alert Type](create_alert_type.html)      | Create a new alert type |
+|  [Update Alert Type](../event/update_alert_type.html)      |   Update an alert type      |
+|  [Delete Alert Type](../event/delete_alert_type.html)      |  Delete an alert type |
+|  [Create Active Alert](../event/create_active_alert.html)      | Create a new active alert |
+|   [Delete Active Alert](../event/delete_active_alert.html)     |Delete a specified active alert      |
+|   [Create History Alert](../event/create_history_alert.html) |  Create a new history alert  |
 
 
 ### Changed APIs
