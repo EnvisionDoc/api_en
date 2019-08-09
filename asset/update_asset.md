@@ -32,9 +32,9 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
 | name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)
 | description | false     | String | Asset description|
 |attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
-|timezone  |  false    |String  |Timezone. For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
+|timezone  |  false    |String  |Timezone. For details, see [Timezone representation](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#timezone-representation) |
 |modelId|false (if `isPatchUpdate` is false, the `modelId` is mandatory)|String|Model ID|
-|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
+|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
 
 
 ## Error Codes

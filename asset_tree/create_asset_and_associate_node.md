@@ -32,10 +32,10 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 |-------|-------|-------------|--------------|
 | modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
 | name |true| StringI18n |Asset name that supports internationalization. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)
-|timezone  |true|  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time<br>For details, see [Timezone representation](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#timezone-representation) |
+|timezone  |true|  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time<br>For details, see [Timezone representation](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#timezone-representation) |
 |description |false|String|Asset description |
 |attributes  |false  |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
-|tags |false|Tag struct|User-customized tags. For details, see [How to use tag](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#how-to-use-tag)|
+|tags |false|Tag struct|User-customized tags. For details, see [How to use tag](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#how-to-use-tag)|
 
 
 

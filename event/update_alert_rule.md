@@ -27,7 +27,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update
 |Name| Required or Not (Specially in case that isPatchUpdate=false) | Data type | Description |
 |------|-----------------|-----------|-------------|
 | ruleId         | true| String| Alert rule ID, which is specified by the user as the unique identifier to locate the alert rule to be updated. |
-| ruleDesc       | true| StringI18n| Internationalized alert description, for which only supports full update. For the structure, see [Internationalized name struct](http://www.envisioniot.com/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
+| ruleDesc       | true| StringI18n| Internationalized alert description, for which only supports full update. For the structure, see [Internationalized name struct](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
 | modelId| true| String| Model applicable for the alert rule. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
 | measurepointId | true| String                | Asset measurement point. [How to get pointId](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid)|
 | condition      | true| String| Expression. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
