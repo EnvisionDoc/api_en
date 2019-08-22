@@ -58,29 +58,21 @@
 
 ### Changed APIs
 
-
-<table>
-            <tr align="left">
-                <th>API</th>
-				<th>Description</th>
-            </tr>
-            <tr>
-                <td><a href="../event/search_active_alerts.html">Search Active Alerts</a></td>
-				<td>2 optional parameters: <code>scope</code> and <code>rootAlert</code> are supported in request body.
-				<ul>
-				<li><code>scope</code>: Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. This parameter cannot be applied with <code>rootAlert</code>. Data type is "Scope Structure".</li>
-            	<li><code>rootAlert</code>: Query the derivative alerts which are blocked by the specified root alert. This parameter cannot be applied with <code>scope</code>. Data type is "RootAlert Structure".</li>
-				</ul>
-            </td>
-            </tr>
-            <tr>
-                <td><a href="../event/search_history_alerts.html">Search History Alerts</a></td>
-				<td>2 optional parameters: <code>scope</code> and <code>rootAlert</code> are supported in request body.
-				<ul>
-				<li><code>scope</code>: Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. This parameter cannot be applied with <code>rootAlert</code>. Data type is "Scope Structure".</li>
-            	<li><code>rootAlert</code>: Query the derivative alerts which are blocked by the specified root alert. This parameter cannot be applied with <code>scope</code>. Data type is "RootAlert Structure".</li>
-				</ul>
-            </td>
-            </tr>
-            
-</table>
+.. list-table::
+   
+   * - API
+     - Description
+   * - `Search Active Alerts <../event/search_active_alerts>`__
+     - 2 optional parameters: ``scope`` and ``rootAlert`` are supported in request body.
+       
+       + ``scope``: Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. This parameter cannot be applied with ``rootAlert``. Data type is "Scope Structure".
+       + ``rootAlert``: Query the derivative alerts which are blocked by the specified root alert. This parameter cannot be applied with ``scope``. Data type is "RootAlert Structure".
+    
+   * - `Search History Alerts <../event/search_history_alerts>`__
+     - 2 optional parameters: ``scope`` and ``rootAlert`` are supported in request body.
+       
+       + ``scope``: Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. This parameter cannot be applied with ``rootAlert``. Data type is "Scope Structure".
+       + ``rootAlert``: Query the derivative alerts which are blocked by the specified root alert. This parameter cannot be applied with ``scope``. Data type is "RootAlert Structure".
+       
+       
+<!--end-->
