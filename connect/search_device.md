@@ -19,49 +19,39 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 ## Request Parameters (Body)
 
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
 
+   * - Name
+     - Required or Not
+	 - Data Type
+	 - Description
+   * - expression
+     - False
+	 - String
+	 - Query expression. The fields that are supported for query include:``productKey``, ``deviceKey``, ``assetId``, ``productType``, ``deviceName``, and ``status``.
 
-<table>
-            <tr align="left">
-                <th>Name</th>
-                <th>Required or Not</th>
-                <th>Data Tyoe</th>
-				<th>Description</th>
-            </tr>
-            <tr>
-                <td>expression</td>
-                <td>False</td>
-                <td>String</td>
-				<td>Query expression. The fields that are supported for query include:<code>productKey</code>, <code>deviceKey</code>, <code>assetId</code>, <code>productType</code>, <code>deviceName</code>, and <code>status</code>
-				<ul>
-				<li><code>productKey</code>, <code>deviceKey</code>, and <code>assetId</code>: support arithmetic operators "=" and "in";</li>
-            	<li><code>productType</code>: supports arithmetic operator "=", valid values are: "Device" and "Gateway";</li>
-            	<li><code>deviceName</code>: supports fuzzy inquiry of specified language：
-					<ul>
-						<li><code>deviceName like ‘xxx’</code>: fuzzy inquiry of default name, Chinese name, and English name;</li>
-						<li><code>deviceName.default like ‘xxx’</code>: fuzzy inquiry of default name;</li>
-						<li><code>deviceName.zh_CN like ‘xxx’</code>: fuzzy inquiry of Chinese name, if no Chinese name, fuzzy inquiry of default name;</li>
-						<li><code>deviceName.en_US like ‘xxx’</code>: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name</li>
-					</ul>
-				</li>
-				<li><code>status</code>: upports arithmetic operator "=", valid values are: "inactive", "online", "offline", and "disable"</li>
-				</ul>
-<a href="/docs/api/en/latest/api_faqs.html#how-to-use-expression">How to use expression</a></td>
-            </tr>
-            <tr>
-                <td>pagination</td>
-                <td>False</td>
-                <td>pagination request struct</td>
-				<td>Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. <a href="/docs/api/zh_CN/latest/overview.html#pagination-request-struct">Pagination Request Struct</a></td>
-            </tr>
-            <tr>
-                <td>projection</td>
-                <td>False</td>
-                <td>Projection struct</td>
-				<td>Describe the object projection to be returned in the interface request. For details, see <a href="/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set">How does projection crop the result set?</a></td>
-            </tr>
+       + ``productKey``, ``deviceKey``, and ``assetId``: support arithmetic operators "=" and "in";
+       + ``productType``: supports arithmetic operator "=", valid values are: "Device" and "Gateway";
+       + ``deviceName``: supports fuzzy inquiry of specified language：
 
-</table>
+			* ``deviceName like ‘xxx’``: fuzzy inquiry of default name, Chinese name, and English name;
+			* ``deviceName.default like ‘xxx’``: fuzzy inquiry of default name;
+			* ``deviceName.zh_CN like ‘xxx’``: fuzzy inquiry of Chinese name, if no Chinese name, fuzzy inquiry of default name;
+			* ``deviceName.en_US like ‘xxx’``: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name
+				
+	   + ``status``: upports arithmetic operator "=", valid values are: "inactive", "online", "offline", and "disable"
+
+	   `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
+   * - pagination
+     - False
+	 - pagination request struct
+	 - Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. `Pagination Request Struct </docs/api/zh_CN/latest/overview.html#pagination-request-struct>`__
+   * - projection
+     - False
+	 - Projection struct
+	 - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set>`__
 
 
 ## Response Parameters
