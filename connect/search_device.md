@@ -20,6 +20,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 ## Request Parameters (Body)
 
 .. list-table::
+   :widths: 20 20 20 40
 
    * - Name
      - Required or Not
