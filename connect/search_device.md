@@ -20,8 +20,6 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 ## Request Parameters (Body)
 
 .. list-table::
-   :widths: auto
-   :header-rows: 1
 
    * - Name
      - Required or Not
@@ -42,7 +40,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
          * ``deviceName.en_US like ‘xxx’``: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name
 
        + ``status``: upports arithmetic operator "=", valid values are: "inactive", "online", "offline", and "disable"
-
+       
        `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
        
    * - pagination
