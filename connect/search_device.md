@@ -1,7 +1,5 @@
 # Search Device
 
-
-
 Query the device information.
 
 ## Request Format
