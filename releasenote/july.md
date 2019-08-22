@@ -17,8 +17,8 @@
      - Description
    * - `Create Product <../connect/create_product>`__
      - 2 new optional parameters: ``dynamicActivateEnabled`` and ``productTags`` are supported in request body.
-       + ``dynamicActivateEnabled`` : indicate whether to activate the product dynamically
-       + ``productTags`` : indicate the product tags
+      + ``dynamicActivateEnabled`` : indicate whether to activate the product dynamically
+      + ``productTags`` : indicate the product tags
    * - `Update Product <../connect/update_product>`__
      - A new optional parameter <code>productTags</code> is supported in request body, which indicates the product tags
 
