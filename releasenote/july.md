@@ -11,29 +11,16 @@
 
 ### Changed APIs
 
-
-<table>
-            <tr align="left">
-                <th>API</th>
-				<th>Description</th>
-            </tr>
-            <tr>
-                <td><a href="../connect/create_product.html">Create Product</a></td>
-				<td>2 new optional parameters: <code>dynamicActivateEnabled</code> and <code>productTags</code> are supported in request body.
-				<ul>
-				<li><code>dynamicActivateEnabled</code>: indicate whether to activate the product dynamically</li>
-            	<li><code>productTags</code>: indicate the product tags</li>
-				</ul>
-            </td>
-            </tr>
-            <tr>
-                <td><a href="../connect/update_product.html">Update Product</a></td>
-				<td>A new optional parameter <code>productTags</code> is supported in request body, which indicates the product tags</td>
-            </tr>
-            
-</table>
-
-
+.. list-table::
+   
+   * - API
+     - Description
+   * - `Create Product <../connect/create_product>`__
+     - 2 new optional parameters: ``dynamicActivateEnabled`` and ``productTags`` are supported in request body.
+       + ``dynamicActivateEnabled`` : indicate whether to activate the product dynamically
+       + ``productTags`` : indicate the product tags
+   * - `Update Product <../connect/update_product>`__
+     - A new optional parameter <code>productTags</code> is supported in request body, which indicates the product tags
 
 ### Resolved Issues
 
