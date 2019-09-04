@@ -14,34 +14,34 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| isPatchUpdate       | Query            | false    | Boolean    | Whether to perform partial update. Set as true by default               |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| isPatchUpdate       | Query            | false    | Boolean    | Whether to perform partial update. <br>When it is true, only the fields specified in the parameter are updated; <br>when it is false, all the fields will be updated, i.e. the fields without specified value will be left blank. Set as true by default. |
                                                                   
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
+| Name | Required or Not | Data Type | Description |
 |------|------------------|----------|-----------|-------------|
-| asset     | true  |`AssetUpdate` struct          | Used for asset update. For details about the structure, see [AssetUpdate Struct](/docs/api/en/latest/asset/update_asset.html#assetupdate-struct-assetupdate). <br>When `isPatchUpdate` is true, only the fields specified in the `asset` parameter are updated; when `isPatchUpdate` is false, the field value of `asset` will be completely covered, i.e. the fields with an unspecified value will be left blank.
+| asset     | true  |`AssetUpdate` struct          | Used for asset update. <br>When `isPatchUpdate` is true, only the fields specified are updated; <br>when `isPatchUpdate` is false, all fields will be updated, and the fields without specified value will be left blank.<br>For details about the structure, see [AssetUpdate Struct](/docs/api/en/latest/asset/update_asset.html#assetupdate-struct-assetupdate).  |
 
 
 ### AssetUpdate Struct <assetupdate>
 
 | Name            | Required or Not | Data Type | Description |
 |-------|--------|--------|---------------------------|
-| assetId |   true   | String | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
-| name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)
+| assetId |   true   | String | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
+| name | false| StringI18n |Name of each language for this asset. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)
 | description | false     | String | Asset description|
-|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
-|timezone  |  false    |String  |Timezone. For details, see [Timezone representation](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#timezone-representation) |
+|attributes  | false<br> (If `isPatchUpdate` is false, the `attributes` is mandatory) |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see [attributes representation>>](/docs/api/en/latest/api_faqs.html#attributes-representation) |
+|timezone  |  false    |String  |Timezone. For details, see [Timezone representation>>](/docs/api/en/latest/api_faqs.html#timezone-representation) |
 |modelId|false (if `isPatchUpdate` is false, the `modelId` is mandatory)|String|Model ID|
-|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag](http://docs.eniot.io/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
+|tags|false|Map<br> (Key is of String type and the value is of String type)|User-customized tags. For details, see [How to use tag>>](/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
 
 
 ## Error Codes
 
-| Code | Description    |
-|-----------------|--------------|
-| 11958  | Update failed due to asset attribute verification failure     |
+| Code  | Description                                               |
+|:------|:----------------------------------------------------------|
+| 11958 | Update failed due to asset attribute verification failure |
 
 
 

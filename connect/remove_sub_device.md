@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=removeSubDevice
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
@@ -31,9 +31,9 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String        | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
-| productKey | String         | Product Key identifier     |
-| deviceKey | String         | Device Key identifier          |
+| assetId  | String        | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
+| productKey | String         | Product Key     |
+| deviceKey | String         | Device Key          |
 
 
 

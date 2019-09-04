@@ -1,5 +1,7 @@
 # Search Device
 
+
+
 Query the device information.
 
 ## Request Format
@@ -12,13 +14,15 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
 
+
 .. list-table::
-   :widths: 20 20 20 40
+   :widths: auto
+   :header-rows: 1
 
    * - Name
      - Required or Not
@@ -31,7 +35,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
        + ``productKey``, ``deviceKey``, and ``assetId``: support arithmetic operators "=" and "in";
        + ``productType``: supports arithmetic operator "=", valid values are: "Device" and "Gateway";
-       + ``deviceName``: supports fuzzy inquiry of specified language：
+       + ``deviceName``: supports fuzzy inquiry of specified language:
 
          * ``deviceName like ‘xxx’``: fuzzy inquiry of default name, Chinese name, and English name;
          * ``deviceName.default like ‘xxx’``: fuzzy inquiry of default name;
@@ -39,9 +43,9 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
          * ``deviceName.en_US like ‘xxx’``: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name
 
        + ``status``: upports arithmetic operator "=", valid values are: "inactive", "online", "offline", and "disable"
-       
+
        `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
-       
+
    * - pagination
      - False
      - pagination request struct
@@ -51,11 +55,12 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
      - Projection struct
      - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set>`__
 
+
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| data | Device struct                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Struct](/docs/api/en/latest/connect/search_device.html#device-struct-device) |
+| Name | Data Type     | Description                                                                                                                                                             |
+|:-----|:--------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| data | Device struct | Information of a group of sub-devices of the specified page under the gateway. See [Device Struct](/docs/api/en/latest/connect/search_device.html#device-struct-device) |
 
 
 ### Device Struct  <device>
@@ -66,11 +71,11 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 | assetId  | String         |Asset ID|
 | modelId             | String                          | Model ID which the asset belongs to|
 | modelIdPath      | String                            | Model ID path                                                               |
-| productKey       | String                            | Product Key identifier                                                               |
+| productKey       | String                            | Product Key                                                               |
 | productName      | StringI18n                        | Product name                                                                |
 | productType      | String                            | Product type                                                                  |
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
-| deviceKey        | String                            | Device Key identifier                                                                   |
+| deviceKey        | String                            | Device Key                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
 | deviceSecret     | String                            | Device connection key                                                             |
 | deviceDesc       | String                            | Device description                                                                   |
@@ -271,4 +276,3 @@ responseBody:  {
 	}
 }
 ```
-

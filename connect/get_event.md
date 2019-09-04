@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | eventId        | Query| True         | String    |Event ID |
 
 
@@ -32,8 +32,8 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 |-------------|-------------------|-----------------------------|
 | orgId         | String    | Organization ID which the asset belongs to. |
 | eventId         | String    |Event ID |
-| productKey   | String         | Product Key identifier             |
-| deviceKey    | String         | Device Key identifier              |
+| productKey   | String         | Product Key             |
+| deviceKey    | String         | Device Key              |
 | assetId     | String         | Asset ID                  |
 | tslEventKey  | String         | Event key in TSL model      |
 | tslEventType | String         | Event tupe defined in TSL model |

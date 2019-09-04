@@ -12,14 +12,16 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide assetId or a combination of productKey and deviceKey to specify the device.
+.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key identifier     |
-| deviceKey | Query           | False      | String       | Device Key identifier         |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query          | False       | String       | Product Key     |
+| deviceKey | Query           | False      | String       | Device Key         |
     
 
 ## Response Parameters
@@ -37,11 +39,11 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 | assetId  | String         |Asset ID|
 | modelId             | String                          | Model ID which the asset belongs to|
 | modelIdPath      | String                            | Model ID path                                                               |
-| productKey       | String                            | Product Key identifier                                                               |
+| productKey       | String                            | Product Key                                                               |
 | productName      | StringI18n                        | Product name                                                                |
 | productType      | String                            | Product type                                                                  |
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
-| deviceKey        | String                            | Device Key identifier                                                                   |
+| deviceKey        | String                            | Device Key                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
 | deviceSecret     | String                            | Device Secret identifier                                                             |
 | deviceDesc       | String                            | Device description                                                                   |
@@ -53,6 +55,10 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 | activeTime       | Long                              | Device activation time                                                             |
 | lastOnlineTime   | Long                              | Last online time of device                                                       |
 | lastOnlineTime   | Long                              | Last offline time of device                                                       |
+| measurepointLastUpdate  | Long                              | Last time when a measurement point was updated                                                       |
+| eventLastUpdate  | Long                              | Last time when an event was updated                                                       |
+| attributeLastUpdate  | Long                              | Last time when an attribute was updated                                                       |
+| featureLastUpdate  | Long                              | Last time when a measurement point, an event, or an attribute was updated. |
 
 
 ## Sample 1
@@ -103,7 +109,11 @@ responseBody:  {
 		"status": "offline",
 		"activeTime": 1557909526473,
 		"lastOnlineTime": 1560743931658,
-		"lastOfflineTime": 1560744111658
+		"lastOfflineTime": 1560744111658,
+		"lastMeasurepointUpdateTime":1565875705704,
+		"lastEventUpdateTime":1565875705856,
+		"lastAttributeUpdateTime":1547793776699,
+		"lastComprehensiveUpdateTime":1565875705856
 	}
 }
 ```

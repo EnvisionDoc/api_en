@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevice
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=searchSubDevice
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
 | gateway | True      |DeviceIdentfier struct | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier Struct](/docs/api/en/latest/connect/search_sub_device.html#deviceidentifier-struct-di) |
-| pagination  | False      | Pagination request struct  | Paging parameter; if not specified, 10 entries are displayed per page by default. Currently, sorting is not supported (sorting fields ignored). See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| pagination  | False      | Pagination request struct  | Paging parameter. When not specified, 10 entries are displayed per page by default. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
 ### DeviceIdentifier Struct   <di>
@@ -31,9 +31,9 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String        | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | String         | Product Key identifier     |
-| deviceKey | String         | Device Key identifier         |
+| assetId  | String        | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | String         | Product Key     |
+| deviceKey | String         | Device Key         |
 
 
 
@@ -53,13 +53,13 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 | assetId  | String         |Asset ID|
 | modelId             | String                          | Model ID which the asset belongs to|
 | modelIdPath      | String                            | Model ID path                                                               |
-| productKey       | String                            | Product Key identifier                                                               |
+| productKey       | String                            | Product Key                                                               |
 | productName      | StringI18n                        | Product name                                                                |
 | productType      | String                            | Product type                                                                  |
 | dataFormat       | String                            | Data format. Custom means that any user-customized data format is supported, while Json means that only the EnOS device protocol formats are supported |
-| deviceKey        | String                            | Device Key identifier                                                                   |
+| deviceKey        | String                            | Device Key                                                                   |
 | deviceName       | StringI18n                        | Device name                                                                   |
-| deviceSecret     | String                            | Device Secret identifier                                                             |
+| deviceSecret     | String                            | Device Secret |
 | deviceDesc       | String                            | Device description                                                                   |
 | timezone         | String                            | Timezone where the device is located                                                               |
 | deviceAttributes | Map (Key is of String type and the value is of String type) | Device attributes                                                                 |

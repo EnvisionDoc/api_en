@@ -4,7 +4,7 @@
 
 A model is the abstraction and digitization of an entity object in the physical world. You can search and get models through model services.
 
-For details about models, see [Physical Models](https://www.envisioniot.com/docs/device-connection/en/latest/howto/model/model_overview.html).
+For details about models, see [Physical Models](/docs/device-connection/en/latest/howto/model/model_overview.html).
 
 | Operation Name     | Description                |
 |--------------|---------------------|

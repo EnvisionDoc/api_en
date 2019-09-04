@@ -12,8 +12,8 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=update
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)              |
-|isPatchUpdate|Query|true|Boolean|Whether to update in full; false stands for full update, while true stands for partial update |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)              |
+|isPatchUpdate|Query|true|Boolean|Whether to perform partial update. <br>When it is true, only the fields specified in the parameter are updated; <br>when it is false, all the fields will be updated, i.e. the fields without specified value will be left blank. Set as true by default. |
 
 
 ## Request Parameters (Body)
@@ -29,9 +29,10 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=update
 |------|-----------------|-----------|-------------|
 |contentId|true|String|Alert content ID|
 |contentDesc|true|String|Alert content description|
-| modelId          | true    | String    | ID of the model applicable for the alert content. [How to get modelId](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)  |
+| modelId          | true    | String    | ID of the model applicable for the alert content. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)  |
 | typeId   |  true        | String       | Associated alert type ID           |
 |tags|false|tags data type|Tags, only support full update|
+| source |false| String |Customized data source that indicates the data source to which the alert content applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
 
 ## Response Parameters
 

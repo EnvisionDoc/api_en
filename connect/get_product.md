@@ -14,8 +14,8 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| productKey        | Query            | true    | String    | Product Key identifier|
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| productKey        | Query            | true    | String    | Product Key|
 
 
 ## Response Parameters
@@ -30,8 +30,8 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 | Name | Data Type | Description |
 |-------|-------|---------------------------|
 | orgId |  String | Organization ID which the asset belongs to |
-| productKey          | String| Product Key identifier                                            |
-| productName         | StringI18n |  Product name. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)  |
+| productKey          | String| Product Key                                            |
+| productName         | StringI18n |  Product name. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)  |
 | productSecret       | String                          | Product private key                                             |
 | productDesc         | String                          | Product Description                                             |
 | productType         | Sting                           | Product type; Device stands for common product types, while Gateway stands for gateway types.   |

@@ -12,13 +12,13 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)           |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)           |
 
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| type |   true  |  generateType struct   |  Alert type. See [generateType Struct](create_alert_type#generatetype-struct-generatetype)  |
+| type |   true  |  generateType struct   |  Alert type. See [generateType Struct](create_alert_type#generatetype-struct-generatetype).  |
 
 
 
@@ -26,9 +26,10 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 
 | Name | Required or Not | Data Type | Description          |
 |----------|--------------|--------------|-------------------------------------|
-| typeId   |  true        | String       | Alert type ID           |
-| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct) |
-| tags     | false        | tags data type  | Tags                                |
+| typeId   |  true        | String       | Alert type ID.           |
+| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct). |
+| tags     | false        | tags data type  | Tags alert type. |
+| source |false| String |Customized data source that indicates the data source to which the alert type applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
 
 
 
@@ -37,7 +38,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data  |  null |  Null |
+| data  |  String |  typeId  |
 
 
 
@@ -46,7 +47,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/alert-types?action=create&orgId=1c499110e8800000
+POST https://{apigw-address}/event-service/v2.1/alert-types?action=create&orgId=yourOrgId
 {
 	"type": {
 		"typeId": "planetTemperature",
@@ -71,7 +72,6 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create&orgId=
 {
 	"code": 0,
 	"msg": "OK",
-	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea",
-	"data": ""
+	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea"
 }
 ```

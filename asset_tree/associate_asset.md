@@ -12,14 +12,19 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=associateAsse
 
 ## Request Parameters (URI)
 
+.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
 | parentAssetId | Query            | true    | String    | Parent asset ID of the asset to be associated.  |
-| assetId  | Query            | false    | String    | Asset ID to be associated; when there is an `assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
-| productKey  | Query            | false    | String    | Product Key identifier of the device to be associated.  |
-| deviceKey  | Query            | false    | String    | Device Key identifier of the device to be associated.  |
+| assetId  | Query            | false    | String    | Asset ID to be associated; when there is an `assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
+| productKey  | Query            | false    | String    | Product Key of the device to be associated.  |
+| deviceKey  | Query            | false    | String    | Device Key of the device to be associated.  |
 
 
 

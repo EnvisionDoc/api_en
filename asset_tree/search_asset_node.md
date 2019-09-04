@@ -2,7 +2,7 @@
 
 
 
-Query the assets that meet the conditions under the organization.
+Query the assets that meet the conditions.
 
 ## Request Format
 
@@ -14,37 +14,45 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
 
-| Name | Required or Not | Data Type | Description |
-|-----------------|---------------|-------------------|-----|
-| filter| false         |   Filter struct        | Asset query criterion. See [Filter Struct](/docs/api/en/latest/asset_tree/search_asset_node.html#filter-struct-filterstruc) |
-| pagination| false         | Pagination request struct  | Used to describe the pagination requirements in the interface request. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct)  |
-| projection| false         | String Array          | Used to describe the object projection to be returned in the interface request. See [How does projection crop the result set](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
-### Filter Struct <filterstruc>
+   * - Name
+     - Required or Not
+     - Data Type
+     - Description
+   * - expression
+     - False
+     - String
+     - Query expression. The fields that are supported for query include: ``assetId``, ``modelId``, ``rootModelIds``, ``name``, ``attributes``, ``tags``, ``treeId``, ``productKey`` and ``deviceKey``.
 
-| Name | Required or Not | Data Type | Description |
-|-----------|---------------|----|--------------|
-| assetIds| False  | String Array  | Asset ID. Provide the list of multiple asset IDs if you want to query multiple assets. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
-| modelIds | False | String Array | Model ID which the asset belongs to. Provide the list of multiple model IDs if you want to query multiple models. [How to get modelId](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| rootModelIds | False | String Array | Root model ID which the asset belongs to. Provide multiple root model IDs list if you want to query multiple root models. |
-| nameLike | False | nameLike struct | Used to describe the query criterion for internationalized names. See [nameLike Struct](/docs/api/en/latest/asset_tree/search_asset_node.html#namelike-struct-namelikestruc) |
-| attributes  | False|Map |A group of attribute values. The key is the attribute name, String type. The value is the attribute value, and the type is defined by the specific model. For details, see [attributes representation](/docs/api/en/latest/api_faqs.html#attributes-representation) |
-| tags | False | Tag struct | A group of user-customized tags |
-| treeId | False | String | ID of the asset tree associated to the asset |
+       + ``assetId``, ``modelId``, and ``rootModelIds``: support arithmetic operators "=" and "in";
+       + ``productType`` and ``deviceKey``: supports arithmetic operator "=" and fuzzy inquiry (like);
+       + ``name``: supports fuzzy inquiry of specified language:
 
+         * ``name like ‘xxx’``: fuzzy inquiry of default name, Chinese name, and English name;
+         * ``name.default like ‘xxx’``: fuzzy inquiry of default name;
+         * ``name.zh_CN like ‘xxx’``: fuzzy inquiry of Chinese name, if no Chinese name, fuzzy inquiry of default name;
+         * ``name.en_US like ‘xxx’``: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name
 
-### nameLike Struct <namelikestruc>
+       `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
 
-| Name | Data Type | Description |
-|-----------|---------------------|-----------------------|
-| value        | String     | Name or name fragment to be queried|
-| locale         | String     | Specified locale, such as "zh_CN"|
+   * - pagination
+     - False
+     - pagination request struct
+     - Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. `Pagination Request Struct </docs/api/zh_CN/latest/overview.html#pagination-request-struct>`__
+   * - projection
+     - False
+     - Projection struct
+     - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set>`__
+
 
 
 ## Response Parameters

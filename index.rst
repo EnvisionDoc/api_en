@@ -6,6 +6,7 @@ EnOS API
    :caption: Overview
 
    overview
+   authen_overview
    releasenote/index
 
 .. toctree::

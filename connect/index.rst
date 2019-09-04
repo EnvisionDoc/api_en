@@ -5,27 +5,28 @@ Connection Service
    :maxdepth:  1
 
    overview
-   get_product
-   search_product
-   create_product
-   update_product
-   delete_product
    add_sub_device
-   remove_sub_device
-   get_gateway
-   search_sub_device
+   cancel_command
+   create_device
+   create_product
+   delete_device
+   delete_product
    disable_device
    enable_device
-   get_device
-   search_device
-   delete_device
-   create_device
-   update_device
-   replace_device
    get_command
-   cancel_command
-   invoke_service
-   set_measurepoint
+   get_device
    get_event
+   get_gateway
+   get_product
+   invoke_service
+   remove_sub_device
+   replace_device
+   search_command
+   search_device
    search_event
+   search_product
+   search_sub_device
+   set_measurepoint
+   update_device
+   update_product
 

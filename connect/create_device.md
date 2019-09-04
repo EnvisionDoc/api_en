@@ -14,18 +14,18 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
-|productKey    | True          | String       | Product Key identifier     |
+|productKey    | True          | String       | Product Key     |
 |timezone | True          | String         | Timezone where the device is located     |
 | deviceName | True          | StringI18n | Device name         |
 | deviceAttributes | False         | Map       | Device attributes         |
-| deviceKey   | False         | String    | Device Key identifier         |
+| deviceKey   | False         | String    | Device Key         |
 | deviceDesc  | False         | String    | Device description     |
 | deviceTags  | False         | Map    | Device tags     |
 
@@ -43,8 +43,8 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Data Type | Description |
 |------------------|-----------------------|----------------------------|
-| productKey       | String                            | Product Key identifier                                                               |
-| deviceKey       | StringI18n                        | Device Key identifier                                                                  |
+| productKey       | String                            | Product Key                                                               |
+| deviceKey       | StringI18n                        | Device Key                                                                  |
 | deviceSecret     | String                            | Device connection key                                                             |
 | assetId  | String         |Asset ID|
 

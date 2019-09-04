@@ -14,14 +14,14 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `typeId` and `parentTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request struct    | Pagination parameter. Ten entries are displayed in each page by default if this parameter is left blank. 10 entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` struct for sorting purpose. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `typeId` and `parentTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | Pagination request struct    | Pagination parameter. When not specified, 10 entries are displayed in each page. The entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` struct for sorting purpose. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 ## Response Parameters
 
@@ -38,6 +38,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 | orgId          | String                |  Organization ID which the asset belongs to|
 | parentTypeId        | String          | Parent alert type ID. If set as null, it is the parent alert type |
 | tags        | Tag struct          | Tags|
+| source |false| String |Customized data source that indicates the data source to which the alert type applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
 | updatePerson        | String                | Update personnel name|
 | updateTime    | Long                | Update time (UTC)
 

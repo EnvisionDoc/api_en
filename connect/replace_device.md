@@ -11,14 +11,17 @@ POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 ## Request Parameters (URI)
 
 
-.. note:: In the following non-required fields, you must provide assetId or a combination of productKey and deviceKey to specify the device.
+.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](../api_faqs#how-to-get-organization-id-orgid-orgid)              |
-| assetId  | Query          | False      | String        | Asset ID. [How to get assetId](../api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query         | False      | String         | Product Key identifier      |
-| deviceKey | Query         | False     | String          | Device Key identifier          |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](../api_faqs#how-to-get-organization-id-orgid-orgid)              |
+| assetId  | Query          | False      | String        | Asset ID. [How to get assetId>>](../api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query         | False      | String         | Product Key      |
+| deviceKey | Query         | False     | String          | Device Key          |
 
 
 
@@ -26,7 +29,7 @@ POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 
 | Name | Required or Not | Data Type | Description |
 |------|---------------|---------------|--------|
-| newDeviceKey | True | String | Device Key identifier of the new device. Supports English letters, numbers and special characters (-_.:). The length is limited within 4-64 characters. |
+| newDeviceKey | True | String | Device Key of the new device. Supports English letters, numbers and special characters (-_.:). The length is limited within 4-64 characters. |
 
 
 
@@ -42,8 +45,8 @@ POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 | Name           | Data Type | Description      |
 |---------------|-----------|--------------|
 | assetId    | String        | Asset ID. |
-| productKey   | String         | Product Key identifier      |
-| deviceKey  | String          | Device Key identifier          |
+| productKey   | String         | Product Key      |
+| deviceKey  | String          | Device Key          |
 | deviceSecret  | String          | The new Device Secret identifier assigned by the system          |
 
 

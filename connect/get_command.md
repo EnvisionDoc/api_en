@@ -12,30 +12,32 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide assetId or a combination of productKey and deviceKey to specify the device.
+.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key identifier     |
-| deviceKey | Query           | False      | String       | Device Key identifier         |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query          | False       | String       | Product Key     |
+| deviceKey | Query           | False      | String       | Device Key         |
 | commandId | Query         | True     | String          | Command ID          |
 
 ## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    getCommand struct        | Information corresponding to the command. See [getCommand Struct](/docs/api/en/latest/connect/get_command.html#getcommand-struct-getcommand) |
+| data |    Command struct        | Information corresponding to the command. See [Command Struct](/docs/api/en/latest/connect/get_command.html#command-struct-command) |
 
-### getCommand Struct <getCommand>
+### Command Struct <Command>
 
 | Name | Data Type     | Description          |
 |-----------------|---------------------------|----------------|
 | commandId  | String| Command ID|
 | orgId          | String    | Organization ID which the asset belongs to  |
-| productKey | String          | Product Key identifier     |
-| deviceKey | String         | Device Key identifier         |
+| productKey | String          | Product Key     |
+| deviceKey | String         | Device Key         |
 | assetId  | String         |Asset ID|
 | createTime      | Long                            | Creation time                                             |
 | createLocaltime | String| Local creation time|
@@ -56,7 +58,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 ### Request Sample
 
 ```
-https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=WRJ2c1yMa5&productKey=doxkidR0&commandId= 2242591201245044736&orgId=o15541858646501
+https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=yourDeviceKey&productKey=yourProductKey&commandId= 2242591201245044736&orgId=yourOrgId
 ```
 
 ### Return Sample

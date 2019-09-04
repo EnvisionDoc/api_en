@@ -13,16 +13,16 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate
 
 | Name | Required or Not | Data Type | Description |
 |---------------|--------|----------|-----------|
-| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |----------------|----------|--------------------|----|
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=", "in", and "!=", and the logical operator is "and" and "or". [How to use expression](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | groupByField   | true     | String             | Grouping fields: `contentId`, `assetId`, `modelId`, `measurepointId`, `severityId`, `typeId`, `subTypeId` |
-| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
-| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
+| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
+| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
 
 
 

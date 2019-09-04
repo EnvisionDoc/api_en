@@ -12,14 +12,17 @@ https://{apigw-address}/connect-service/v2.1/devices?action=update
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide assetId or a combination of productKey and deviceKey to specify the device.
+.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query          | False      | String        | Asset ID. [How to get assetId](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query         | False      | String         | Product Key identifier     |
-| deviceKey | Query         | False     | String          | Device Key identifier         |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query          | False      | String        | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query         | False      | String         | Product Key     |
+| deviceKey | Query         | False     | String          | Device Key         |
 
 
 ## Request Parameters (Body)
@@ -27,7 +30,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=update
 | Name | Required or Not | Data Type | Description |
 |----------------|---------------|--------------------------|---|
 |timezone | True          | String         | Timezone where the device to be updated is located     |
-| deviceName | True          | StringI18n | Name of the device to be updated, see [Internationalized name struct](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)         |
+| deviceName | True          | StringI18n | Name of the device to be updated, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)         |
 | deviceAttributes | False         | Map       | Attributes of the device to be updated         |
 | deviceTags   | False         | Map (Key is of String type and the value is of String type)    | Tags of the device to be updated |
 | deviceDesc  | False         | String    | Description of the device to be updated     |
