@@ -14,9 +14,9 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |-------|-------------|-----|------|----------|
-| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
-| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default|
-| modelId | Query            | True     | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid) |
+| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default.|
+| modelId | Query            | True     | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-model-id-modelid-modelid)|
 
 
 
@@ -24,13 +24,13 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=get
 
 | Name | Data Type | Description |
 |-----------|-----------|----------|
-|data|Object|Thing model. See [ThingModel Struct](/docs/api/en/latest/model/searchmodel.html#thingmodel-struct-thing)|
+|data|Object|Thing model. See [ThingModel Struct>>](/docs/api/en/2.0.9/model/searchmodel.html#thingmodel-struct-thing)|
 
 
 
 ## Error Codes
 
-See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overview.html#public-return-codes-connection-service-etc)
+See [Public Return Codes (Connection Service, etc.)](/docs/api/en/2.0.9/overview.html#public-return-codes-connection-service-etc)
 
 
 

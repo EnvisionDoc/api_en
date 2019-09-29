@@ -29,7 +29,7 @@ POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 
 | Name | Required or Not | Data Type | Description |
 |------|---------------|---------------|--------|
-| newDeviceKey | True | String | Device Key of the new device. Supports English letters, numbers and special characters (-_.:). The length is limited within 4-64 characters. |
+| newDeviceKey | True | String | Device Key of the new device. Supports English letters, numbers, hyphens (-), underline (_), dot (.), and colon (:). The length is limited within 4-64 characters. |
 
 
 
@@ -44,7 +44,7 @@ POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 
 | Name           | Data Type | Description      |
 |---------------|-----------|--------------|
-| assetId    | String        | Asset ID. |
+| assetId    | String        | Asset ID |
 | productKey   | String         | Product Key      |
 | deviceKey  | String          | Device Key          |
 | deviceSecret  | String          | The new Device Secret identifier assigned by the system          |

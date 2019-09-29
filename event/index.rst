@@ -20,7 +20,9 @@ Alert Service
    delete_alert_severity
    delete_alert_type
    get_alert_content
+   search_active_alerts
    search_alert_content
+   search_alert_rule
    search_alert_severity
    search_alert_type
    search_history_alerts
@@ -30,6 +32,6 @@ Alert Service
    update_alert_severity
    update_alert_type
    update_history_alert_tags
-   search_active_alerts
-   search_alert_rule
+   
+   
 

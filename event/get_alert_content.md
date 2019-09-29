@@ -14,7 +14,7 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | contentId         | Query            | true     | String    | Alert content ID.                 |
                                                                  
 
@@ -22,7 +22,7 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/latest/event/get_alert_content.html#alertcontent-struct-alertcontent)|
+| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/2.0.9/event/get_alert_content.html#alertcontent-struct-alertcontent).|
 
 ### AlertContent Struct <alertcontent>
 
@@ -32,8 +32,8 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1
 | contentDesc | StringI18n | Alert content description         |
 | modelId| String           | Model ID                 |
 | orgId          | String                |  Organization ID which the asset belongs to|
-| alertType  | AlertType struct  | Alert type. See [AlertType Struct](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype)               |
-|subAlertType  | AlertType struct  | Sub-alert type. See [AlertType Struct](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype)               |
+| alertType  | AlertType struct  | Alert type. See [AlertType Struct>>](/docs/api/en/2.0.9/event/search_alert_type.html#alerttype-struct-alerttype)               |
+|subAlertType  | AlertType struct  | Sub-alert type. See [AlertType Struct>>](/docs/api/en/2.0.9/event/search_alert_type.html#alerttype-struct-alerttype)               |
 | tags| Tag struct        | User-customized alert content tags |
 | updatePerson| String           | Update personnel name           |
 | updateTime| Long             | Last update time       |

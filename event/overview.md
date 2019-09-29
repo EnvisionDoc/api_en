@@ -2,7 +2,7 @@
 
 
 
-Through the alert service, you can define the alert content, type, severity level, and trigger conditions for the assets in the organization, and receive asset alert reporting and processing to achieve real-time status monitoring and fault analysis of assets. For details on alert management, see [Asset Alert](/docs/device-connection/en/latest/howto/alert/alert_overview.html).
+Through the alert service, you can define the alert content, type, severity level, and trigger conditions for the assets in the organization, and receive asset alert reporting and processing to achieve real-time status monitoring and fault analysis of assets. For details on alert management, see [Asset Alert](/docs/device-connection/en/2.0.9/howto/alert/alert_overview.html).
 
 | Operation Name     | Description                |
 |--------------|---------------------|
@@ -26,7 +26,7 @@ Through the alert service, you can define the alert content, type, severity leve
 |[Search Alert Rule](search_alert_rule)|Query alert rule under a specific organization |
 |[Search Alert Severity](search_alert_severity)|Query alert level by page|
 |[Search Alert Type](search_alert_type)|Query alert type by page|
-|[Search History Alerts](search_history_alerts)|Query history alarts|
+|[Search History Alerts](search_history_alerts)|Query historical alerts in the latest 3 months|
 |[Update Active Alert Tags](update_active_alert_tags)|Update active alert tags|
 |  [Update Alert Content](../event/update_alert_content.html)      |    Update an alert content         |
 |[Update Alert Rule](../event/update_alert_rule.html)        |   Update an alert rule     |

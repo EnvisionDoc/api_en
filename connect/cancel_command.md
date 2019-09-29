@@ -18,8 +18,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=cancel
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key     |
 | deviceKey | Query           | False      | String       | Device Key         |
 | commandId | Query         | False     | String          | Command ID          |
@@ -29,7 +29,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=cancel
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    getCommand Struct        | List of cancelled commands. See [getCommand Struct](/docs/api/en/latest/connect/get_command.html#getcommand-struct-getcommand) |
+| data |    getCommand Struct        | List of cancelled commands. See [Command Struct>>](/docs/api/en/2.0.9/connect/get_command.html#command-struct-command) |
 
 
 

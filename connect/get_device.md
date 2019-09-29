@@ -18,8 +18,8 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key     |
 | deviceKey | Query           | False      | String       | Device Key         |
     
@@ -28,7 +28,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Device struct                          | Gateway device information. See [Device Struct](/docs/api/en/latest/connect/get_device.html#device-struct-device) |
+| data | Device struct                          | Gateway device information. See [Device Struct](/docs/api/en/2.0.9/connect/get_device.html#device-struct-device) |
 
 
 ### Device Struct <device>
@@ -110,10 +110,10 @@ responseBody:  {
 		"activeTime": 1557909526473,
 		"lastOnlineTime": 1560743931658,
 		"lastOfflineTime": 1560744111658,
-		"lastMeasurepointUpdateTime":1565875705704,
-		"lastEventUpdateTime":1565875705856,
-		"lastAttributeUpdateTime":1547793776699,
-		"lastComprehensiveUpdateTime":1565875705856
+		"measurepointLastUpdate":1565875705704,
+		"eventLastUpdate":1565875705856,
+		"attributeLastUpdate":1547793776699,
+		"featureLastUpdate":1565875705856
 	}
 }
 ```

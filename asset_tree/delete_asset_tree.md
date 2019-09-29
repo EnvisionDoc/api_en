@@ -13,8 +13,8 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=delete
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree to be deleted. [How to get asset tree ID>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be deleted. [How to get asset tree ID>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
 
 
 
@@ -32,7 +32,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=delete
 ### Request Sample
 
 ```
-https://apigw-address/asset-tree-service/v2.1 
+POST https://apigw-address/asset-tree-service/v2.1 
 /asset-trees?action=delete&orgId=yourOrgId&treeId=H4yVDl2U
 ```
 

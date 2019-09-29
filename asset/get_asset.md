@@ -12,37 +12,76 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId       | Query            | true    | String    | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+.. list-table::
+
+   * - Name
+     - Location (Path/Query)
+     - Required or Not
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - true
+     - String
+     - Organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+   * - assetId
+     - Query
+     - true
+     - String
+     - Asset ID. `How to get assetId>> </docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__
 
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|------|------------|-----------|-------------|
-| data    |asset struct | Asset. See [Asset Struct](/docs/api/en/latest/asset/get_asset.html#asset-struct-asset)     |
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - asset struct
+     - Asset. See `Asset Struct </docs/api/en/2.0.9/asset/get_asset.html#asset-struct-asset>`__
 
 
 ### Asset Struct <asset>
 
-| Name | Data Type | Description |
-|-------|---------|---------------------------|
-| assetId |  String | Asset ID|
-| orgId      | String    | Organization ID which the asset belongs to|
-| name | StringI18n |Name of each language for this asset|
-| description   | String | Asset description|
-|attributes   |Map  |Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model|
-|timezone  |  String  |Timezone|
-|modelId|String|Model ID|
-|modelIdPath|String|Model inheritance path. <br>E.g.: /Turbine/Double_Feed_Turbine|
-|tags|Map<br>(Key is of String type, and the value is of String type)|User-customized tags|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - assetId
+     - String
+     - Asset ID
+   * - orgId
+     - String
+     - Organization ID which the asset belongs to
+   * - name
+     - StringI18n
+     - Name of each language for this asset
+   * - description
+     - String
+     - Asset description
+   * - attributes
+     - Map
+     - Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model
+   * - timezone
+     - String
+     - Timezone
+   * - modelId
+     - String
+     - Model ID
+   * - modelIdPath
+     - String
+     - Model inheritance path. <br>E.g.: /Turbine/Double_Feed_Turbine
+   * - tags
+     - Map<br>(Key is of String type, and the value is of String type)
+     - User-customized tags
 
 
 ## Error Codes
 
-See [Public Return Code](/docs/api/en/latest/overview.html#id8).
+See [Public Return Code](/docs/api/en/2.0.9/overview.html#id8).
 
 
 

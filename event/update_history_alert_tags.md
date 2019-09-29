@@ -14,7 +14,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=updateTags
 
 | Name | Required or Not | Data Type | Description |
 |---------------|--------|----------|-----------|
-| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)

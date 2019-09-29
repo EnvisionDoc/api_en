@@ -12,26 +12,26 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)           |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)           |
 
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| activeAlert  | true | ActiveAlert struct  | Active alert. See [ActiveAlert Struct](create_active_alert#activealert-struct-activelert) |
+| activeAlert  | true | ActiveAlert struct  | Active alert. See [ActiveAlert Struct](create_active_alert#activealert-struct-activelert). |
 
 
 ### ActiveAlert Struct <activealert>
 
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| assetId        | true     | String    | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)    |
-| modelId          | true    | String    | ID of the model applicable for the alert. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)  |
+| assetId        | true     | String    | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid)    |
+| modelId          | true    | String    | ID of the model applicable for the alert. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid)  |
 | modelIdPath    | false        | String       | Model path|
-| measurepointId | true         | String       | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
+| measurepointId | true         | String       | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
 | value          | true         | Object       | Measurement point value|
-| occurTime      | true         | Long         | Occurrence time in UTC format. For time formats, see [ISO8601 Standard Time Formats Used by UTC](/docs/api/zh_CN/latest/api_faqs.html#utciso8601)              |
-| localOccurTime | false        | String       | Occurrence time in local format. For time formats, see [Data and Time Formats Used by Localtime](/docs/api/zh_CN/latest/api_faqs.html#localtime)|
+| occurTime      | true         | Long         | Occurrence time in UTC format. For time formats, see [ISO8601 Standard Time Formats Used by UTC>>](/docs/api/zh_CN/2.0.9/api_faqs.html#utciso8601)              |
+| localOccurTime | false        | String       | Occurrence time in local format. For time formats, see [Data and Time Formats Used by Localtime>>](/docs/api/zh_CN/2.0.9/api_faqs.html#localtime)|
 | severityId     | false        | String       | Alert severity ID                 |
 | severityDesc   | false        | StringI18n   | Alert severity description                 |
 | typeId         | false        | String       | Alert type ID                 |
