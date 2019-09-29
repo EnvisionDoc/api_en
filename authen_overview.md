@@ -12,7 +12,7 @@ The service account SA consists of the application's `AccessKey` and `SecretKey`
 
 ## Authorizing Service Accounts
 
-Only after a service account is authorized can applications be allowed to access the authorized resources on EnOS. For detailed steps on how to authorize a service account, see [Managing Service Accounts](/docs/iam/en/latest/howto/service_account/managing_service_account.html).
+Only after a service account is authorized can applications be allowed to access the authorized resources on EnOS. For detailed steps on how to authorize a service account, see [Managing Service Accounts](/docs/iam/en/2.0.9/howto/service_account/managing_service_account.html).
 
 ## API Operation Permissions
 
@@ -48,4 +48,4 @@ Before authorizing a service account, you need to create a corresponding permiss
 | Add Sub-device                 | Device Management     | Full-Access  |
 | Remove Sub-device              | Device Management     | Full-Access  |
 
-For detailed steps to create a permission policy, see [Creating and Managing Policy](/docs/iam/en/latest/howto/managing_policies.html).
+For detailed steps to create a permission policy, see [Creating and Managing Policy](/docs/iam/en/2.0.9/howto/managing_policies.html).

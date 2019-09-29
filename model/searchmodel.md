@@ -8,112 +8,260 @@ Search thing models by orgId.
 https://{apigw-address}/model-service/v2.1/thing-models?action=search
 ```
 
-## Request Parameters (Body)
+## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|:-----------|:-----------------|:---------|:----------|:-----------------------------------------------------------------------------------------|
-| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)|
-| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default               |
-| expression | Query            | False    | String    | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId` (supports arithmetic operator "in") and `tags` (supports arithmetic operator "="). The supported logical operators are "and", "or", and "not". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
-| projection | Query            | False    | String Array     | Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
-| pagination | Query            | False    | Pagination request struct       | Random pagination. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
+.. list-table::
+
+   * - Name
+     - Location (Path/Query)
+     - Required or Not
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - True
+     - String
+     - Organization ID which the asset belongs to. `How to get orgId </docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+   * - scope
+     - Query
+     - False
+     - Integer
+     - Query scope.  0- Only search from the organization specified by the ``orgId``; 1 - Search from the organization specified by the ``orgId`` and the organizations where the public models are located. It is set as 1 by default.
+   * - expression
+     - Query
+     - False
+     - String
+     - Query expression, which supports for sql-like query. The fields that are supported for query include: ``modelId`` (supports arithmetic operator "in") and ``tags`` (supports arithmetic operator "="). The supported logical operators are "and", "or", and "not". `How to use expression </docs/api/en/2.0.9/api_faqs.html#how-to-use-expression>`__
+   * - projection
+     - Query
+     - False
+     - String Array
+     - Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see `How does projection crop the result set </docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set>`__
+   * - pagination
+     - Query
+     - False
+     - Pagination request struct
+     - Random pagination. See `Pagination Request Struct </docs/api/en/2.0.9/overview.html#pagination-request-struct>`__
 
 
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| data |    ThingModel struct  |Thing model list. <br>For the definition of thing models. See [ThingModel Struct](/docs/api/en/latest/model/searchmodel.html#thingmodel-struct-thing) |
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - ThingModel struct
+     - Thing model list. <br>For the definition of thing models. See `ThingModel Struct </docs/api/en/2.0.9/model/searchmodel.html#thingmodel-struct-thing>`__ .
+
 
 ### ThingModel Struct  <thing>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| modelId        | String                | Model ID which the asset belongs to|
-| modelIdPath   | String| Model inheritance path|
-| orgId         | String| Organization ID which the asset belongs to|
-| name          | StringI18n | Model name|
-| desc          | String| Model description|
-| tags          | Map (Key is of String type, and the value is of String type) | User-customized tags  |
-| attributes    | Map (Key is of String type and the Value is the `ThingAttribute` struct)| Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See [ThingAttribute Struct](/docs/api/en/latest/model/searchmodel.html#thingattribute-struct-ta)|
-| measurement points   | Map (Key is of String type and the Value is the `ThingMeasurepoint` struct)| Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See [ThingMeasurepoint Struct](/docs/api/en/latest/model/searchmodel.html#thingmeasurepoint-struct-tm)|
-| services      | Map (Key is of String type and the Value is the `ThingService` struct)    | Map-typed services definition. The key is the service ID, and the value is the service definition. See [ThingService Struct](/docs/api/en/latest/model/searchmodel.html#thingservice-struct-ts)|
-| events        | Map (Key is of String type and the Value is the `ThingEvent` struct)    | Map-typed events definition. The key is the event ID, and the value is the event definition. See [ThingEvent Struct](/docs/api/en/latest/model/searchmodel.html#thingevent-struct-te)|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - modelId
+     - String
+     - Model ID which the asset belongs to
+   * - modelIdPath
+     - String
+     - Model inheritance path
+   * - orgId
+     - String
+     - Organization ID which the asset belongs to
+   * - name
+     - StringI18n
+     - Model name
+   * - desc
+     - String
+     - Model description
+   * - tags
+     - Map (Key is of String type, and the value is of String type)
+     - User-customized tags
+   * - attributes
+     - Map (Key is of String type and the Value is the ``ThingAttribute`` struct)
+     - Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See `ThingAttribute Struct </docs/api/en/2.0.9/model/searchmodel.html#thingattribute-struct-ta>`__ .
+   * - measurement points
+     - Map (Key is of String type and the Value is the ``ThingMeasurepoint`` struct)
+     - Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See `ThingMeasurepoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingmeasurepoint-struct-tm>`__ .
+   * - services
+     - Map (Key is of String type and the Value is the ``ThingService`` struct)
+     - Map-typed services definition. The key is the service ID, and the value is the service definition. See `ThingService Struct </docs/api/en/2.0.9/model/searchmodel.html#thingservice-struct-ts>`__ .
+   * - events
+     - Map (Key is of String type and the Value is the ``ThingEvent`` struct)
+     - Map-typed events definition. The key is the event ID, and the value is the event definition. See `ThingEvent Struct </docs/api/en/2.0.9/model/searchmodel.html#thingevent-struct-te>`__ .
+
 
 
 ### ThingAttribute Struct  <ta>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| identifier | String| Attribute ID|
-| dataType   | String| Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE|
-| isRequired | Boolean| Required or not. If true, the value of this attribute must be set when the asset is instantiated; otherwise the asset will return a validation failure error when it is created.
-| name       | StringI18n| Asset name that supports internationalization|
-| desc       | String| Model description|
-| tags       | Map (Key is of String type, and the value is of String type) | User-customized tags  |
-| unit       | Unit struct| Unit. See [Unit Struct](/docs/api/en/latest/model/searchmodel.html#unit-struct-unit)|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - identifier
+     - String
+     - Attribute ID
+   * - dataType
+     - String
+     - Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE
+   * - isRequired
+     - Boolean
+     - Required or not. If true, the value of this attribute must be set when the asset is instantiated; otherwise the asset will return a validation failure error when it is created.
+   * - name
+     - StringI18n
+     - Asset name that supports internationalization
+   * - desc
+     - String
+     - Model description
+   * - tags
+     - Map (Key is of String type, and the value is of String type)
+     - User-customized tags
+   * - unit
+     - Unit struct
+     - Unit. See `Unit Struct </docs/api/en/2.0.9/model/searchmodel.html#unit-struct-unit>`__ .
 
 
 
 ### ThingMeasurepoint Struct  <tm>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| identifier | String| ID of the measurement point|
-| dataType   | String| Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE|
-| name       | StringI18n| Asset name that supports internationalization|
-| desc       | String| Model description|
-| tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-|hasQuality|Boolean|Whether it has the quality indicator|
-|signalType|String|Signal type. E.g.: Generic, AI, PI, DI|
-| unit       | Unit struct| Unit. See [Unit Struct](/docs/api/en/latest/model/searchmodel.html#unit-struct-unit)|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - identifier
+     - String
+     - ID of the measurement point
+   * - dataType
+     - String
+     - Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE
+   * - name
+     - StringI18n
+     - Asset name that supports internationalization
+   * - desc
+     - String
+     - Model description
+   * - tags
+     - Map (Key is of String type, and the value is of String type)
+     - User-customized tags
+   * - hasQuality
+     - Boolean
+     - Whether it has the quality indicator
+   * - signalType
+     - String
+     - Signal type. E.g.: Generic, AI, PI, DI
+   * - unit
+     - Unit struct
+     - Unit. See `Unit Struct </docs/api/en/2.0.9/model/searchmodel.html#unit-struct-unit>`__ .
+
 
 ### ThingService Struct  <ts>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| identifier | String| Service ID|
-| name       | StringI18n| Asset name that supports internationalization|
-| desc       | String| Model description|
-| tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-| intputData | ThingDatapoint struct| Input parameters list of the service. See [ThingDatapoint Struct](/docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td)  |
-| outputData | ThingDatapoint struct| Returned parameters list of the service. See [ThingDatapoint Struct](/docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td) |
-| callType   | String| Calling type. <!--SYNC or ASYNC-->|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - identifier
+     - String
+     - Service ID
+   * - name
+     - StringI18n
+     - Asset name that supports internationalization
+   * - desc
+     - String
+     - Model description
+   * - tags
+     - Map (Key is of String type, and the value is of String type)
+     - User-customized tags
+   * - intputData
+     - ThingDatapoint struct
+     - Input parameters list of the service. See `ThingDatapoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingdatapoint-struct-td>`__ .
+   * - outputData
+     - ThingDatapoint struct
+     - Returned parameters list of the service. See `ThingDatapoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingdatapoint-struct-td>`__ .
+   * - callType
+     - String
+     - Calling type.
+
 
 
 ### ThingEvent Struct  <te>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| identifier | String| Event ID|
-| name       | StringI18n| Asset name that supports internationalization|
-| desc       | String| Model description|
-| tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-| outputData | ThingDatapoint struct| Returned parameters list of the event. See [ThingDatapoint Struct](/docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td) |
-| eventType   | String| Event type. E.g.: INFO, WARN, ERROR|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - identifier
+     - String
+     - Event ID
+   * - name
+     - StringI18n
+     - Asset name that supports internationalization
+   * - desc
+     - String
+     - Model description
+   * - tags
+     - Map (Key is of String type, and the value is of String type)
+     - User-customized tags
+   * - outputData
+     - ThingDatapoint struct
+     - Returned parameters list of the event. See `ThingDatapoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingdatapoint-struct-td>`__
+   * - eventType
+     - String
+     - Event type. E.g.: INFO, WARN, ERROR
+
 
 
 ### ThingDatapoint Struct  <td>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| identifier | String| Point ID|
-| dataType   | String| Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE|
-| name       | StringI18n| Asset name that supports internationalization|
-| desc       | String| Model description|
-| tags       | Map (Key is of String type, and the value is of String type)| User-customized tags|
-| unit       | Unit struct| Unit. See [Unit Struct](/docs/api/en/latest/model/searchmodel.html#unit-struct-unit)|
+.. list-table::
 
+   * - Name
+     - Data Type
+     - Description
+   * - identifier
+     - String
+     - Point ID
+   * - dataType
+     - String
+     - Data type. E.g.: ARRAY, BOOL, DATE, ENUM, INT, FLOAT, DOUBLE, STRUCT, STRING, TIMESTAMP, FILE
+   * - name
+     - StringI18n
+     - Asset name that supports internationalization
+   * - desc
+     - String
+     - Model description
+   * - tags
+     - Map (Key is of String type, and the value is of String type)
+     - User-customized tags
+   * - unit
+     - Unit struct
+     - Unit. See `Unit Struct </docs/api/en/2.0.9/model/searchmodel.html#unit-struct-unit>`__ .
 
 
 
 ### Unit Struct   <unit>
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| unitId | String| Unit identifier|
-| multiplier   | String| Multiplier of unit. See [Multiplier](/docs/api/en/latest/model/searchmodel.html#multiplier-mp)|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - unitId
+     - String
+     - Unit identifier
+   * - multiplier
+     - String
+     - Multiplier of unit. See `Multiplier </docs/api/en/2.0.9/model/searchmodel.html#multiplier-mp>`__ .
+
 
 
 ### Multiplier   <mp>
@@ -146,7 +294,7 @@ YOCTO ,//y     10^-24
 
 ## Error Codes
 
-See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overview.html#public-return-codes-connection-service-etc)
+See [Public Return Codes (Connection Service, etc.)](/docs/api/en/2.0.9/overview.html#public-return-codes-connection-service-etc)
 
 
 ## Sample
@@ -155,7 +303,7 @@ See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overvie
 
 ```json
 POST https://{apigw-address}/model-service/v2.1/thing-models?action=search
- 
+
 {
   "expression": "modelId in ( \"planet\", \"FmodelP2\"  )",
   "pagination": {

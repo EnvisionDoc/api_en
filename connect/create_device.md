@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
@@ -36,7 +36,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=create
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    DeviceCreateResult struct        | Returned results for device creation. See [DeviceCreateResult Struct](/docs/api/en/latest/connect/create_device.html#devicecreateresult-struct-devicecreateresult) |
+| data |    DeviceCreateResult struct        | Returned results for device creation. See [DeviceCreateResult Struct](/docs/api/en/2.0.9/connect/create_device.html#devicecreateresult-struct-devicecreateresult). |
 
 
 ### DeviceCreateResult Struct <devicecreateresult>

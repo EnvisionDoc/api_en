@@ -14,15 +14,15 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=addSubDevice
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| gateway | True      |DeviceIdentfier struct | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier struct](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier-struct-deviceidentifier) |
-| subDevices           | True      | DeviceIdentfier struct | List information of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Struct](/docs/api/en/latest/connect/add_sub_device.html#deviceidentifier-struct-deviceidentifier)  |
+| gateway | True      |DeviceIdentfier struct | Information of the gateway that needs to be added sub-device. See [DeviceIdentfier struct](/docs/api/en/2.0.9/connect/add_sub_device.html#deviceidentifier-struct-deviceidentifier). |
+| subDevices           | True      | DeviceIdentfier struct | List information of the sub-devices to be added into the specified getaway. See [DeviceIdentfier Struct](/docs/api/en/2.0.9/connect/add_sub_device.html#deviceidentifier-struct-deviceidentifier).  |
 
 
 ### DeviceIdentifier Struct <deviceidentifier>
@@ -31,7 +31,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String        | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| assetId  | String        | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | String         | Product Key      |
 | deviceKey | String         | Device Key       |
 

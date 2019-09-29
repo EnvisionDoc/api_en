@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | productKey        | Query            | true    | String    | Product Key|
 
 
@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | Product struct | Product-specific information; see [Product Struct](/docs/api/en/latest/connect/get_product.html#product-struct-productstruc)                |
+| data | Product struct | Product-specific information, see [Product Struct](/docs/api/en/2.0.9/connect/get_product.html#product-struct-productstruc).                |
 
 
 ### Product Struct <productstruc>
@@ -31,7 +31,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 |-------|-------|---------------------------|
 | orgId |  String | Organization ID which the asset belongs to |
 | productKey          | String| Product Key                                            |
-| productName         | StringI18n |  Product name. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)  |
+| productName         | StringI18n |  Product name. For the structure, see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct)  |
 | productSecret       | String                          | Product private key                                             |
 | productDesc         | String                          | Product Description                                             |
 | productType         | Sting                           | Product type; Device stands for common product types, while Gateway stands for gateway types.   |
@@ -47,9 +47,9 @@ https://{apigw-address}/connect-service/v2.1/products?action=get
 
 ## Error Codes
 
-| Code| Data Type | Description |
-|------------|----------------|-------------------|
-| 11611 |                | `productKey` does not exist
+| Code | Description |
+|--------|-------------------|
+| 11611 |   `productKey` does not exist   |
 
 
 

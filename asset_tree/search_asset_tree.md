@@ -14,15 +14,15 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 ## Request Parameters (Body)
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| filter| false         | Filter struct          | The criterion that the asset tree needs to meet. The search for tags is supported. "filter": {  "tags": { "foo": "bar", "hello": "world" }  }  By default, all the asset trees are returned. See [Filter Struct](/docs/api/en/latest/asset_tree/search_asset_tree.html#filter-struct-filterstruc)   |
-| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
-| projection| false         | String Array          | For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
+| filter| false         | Filter struct          | The criterion that the asset tree needs to meet. The search for tags is supported. "filter": {  "tags": { "foo": "bar", "hello": "world" }  }  By default, all the asset trees are returned. See [Filter Struct](/docs/api/en/2.0.9/asset_tree/search_asset_tree.html#filter-struct-filterstruc)   |
+| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. [Pagination Request Struct](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
+| projection| false         | String Array          | For details, see [How does projection crop the result set>>](/docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
 ### Filter Struct <filterstruc>
@@ -47,7 +47,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search
 ### Request Sample
 
 ```
-https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search&orgId=o15541858646501
+POST https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=search&orgId=o15541858646501
 {
 "filter": {
   "tags": {}

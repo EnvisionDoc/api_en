@@ -7,15 +7,14 @@ Query the eligible path on the asset tree. A path is a complete path from a supe
 ## Request Format
 
 ```
-https://{apigw-address}/asset-tree-service/v2.1/asset-
-paths?action=search
+https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search
 ```
 
 ## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | treeId          | Query            | true     | String    | Asset tree ID |
 
 
@@ -23,11 +22,11 @@ paths?action=search
 
 | Name | Required or Not | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct)  |
-| from | false         | From-to struct       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Struct](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-struct-fromtostruc).                         |
-| to            | false         | From-to struct           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Struct](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-struct-fromtostruc) |
-| projection| false         | String Array         | Used to describe the object projection to be returned in the interface request. Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
-| pathProjection| false         | String                | It can be "COMPLETE" or "END_NODE_ONLY". "COMPLETE" represents each asset node on the return path, which is set as "COMPLETE" by default; "END_NODE_ONLY" means only the start and end points of the path are returned  |
+| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct)  |
+| from | false         | From-to struct       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Struct](/docs/api/en/2.0.9/asset_tree/search_asset_path.html#from-to-struct-fromtostruc)                         |
+| to            | false         | From-to struct           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Struct](/docs/api/en/2.0.9/asset_tree/search_asset_path.html#from-to-struct-fromtostruc) |
+| projection| false         | String Array         | Used to describe the object projection to be returned in the interface request. Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set>>](/docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set)|
+| pathProjection| false         | String                | It can be "COMPLETE" or "END_NODE_ONLY". "COMPLETE" represents each asset node on the return path, which is set as "COMPLETE" by default; "END_NODE_ONLY" means only the start and end points of the path are returned.  |
 
 
 ### From-to Struct <fromtostruc>
@@ -35,8 +34,8 @@ paths?action=search
 | Name | Required or Not | Data Type | Description |
 |-----------|---------------|----|-----------------------|
 | rootModelIds| false   | String Array         | Root model ID. Provide multiple root model IDs if you want to query multiple root models  |
-| modelIds   | false   | String Array         | Model ID which the asset belongs to. Provide multiple model IDs if you want to query multiple models. [How to get modelID>>](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| assetIds        | false     | Array        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| modelIds   | false   | String Array         | Model ID which the asset belongs to. Provide multiple model IDs if you want to query multiple models. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| assetIds        | false     | Array        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 
 
 

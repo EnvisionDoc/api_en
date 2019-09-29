@@ -14,8 +14,8 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
 
 
 ## Response Parameters
@@ -24,7 +24,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 |-------------|-----------------------------------|-----------------------------|
 | treeId| String                            | Asset tree ID                    |
 | tags| Map (Key is of String type, and the value is of String type) | A group of user-customized asset tree tags  |
-| asset| asset struct | Root asset of asset tree ; see [asset Struct](/docs/api/en/latest/asset_tree/get_asset_tree.html#asset-struct-assetstruc)              |
+| asset| asset struct | Root asset of asset tree. See [asset Struct](/docs/api/en/2.0.9/asset_tree/get_asset_tree.html#asset-struct-assetstruc)              |
 
 ### Asset Struct <assetstruc>
 
@@ -32,7 +32,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 |-------|-------|---------------------------|
 | assetId |  String | Asset ID|
 |modelId|String|Model ID which the asset belongs to|
-|modelIdPath|String|Model ID path. |
+|modelIdPath|String|Model ID path |
 | name | StringI18n |Asset name that supports internationalization|
 |timezone  |  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time|
 | description | String | Asset description|

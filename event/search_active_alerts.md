@@ -14,21 +14,21 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
-| assetId       | false     | String    | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepointsId     | false     | String    | Measurement point ID. [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
-| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
-| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| scope |  false   | Scope struct | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Struct](search_active_alerts#scope-struct-scope) |
-|  rootAlert  |   false  | RootAlert struct | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Struct](search_active_alerts#rootalert-struct-rootalert)|
-| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid)|
+| assetId       | false     | String    | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| measurepointsId     | false     | String    | Measurement point ID. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
+| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/2.0.9/api_faqs.html#time-parameters-used-in-api)    |
+| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/2.0.9/api_faqs.html#time-parameters-used-in-api) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression)|
+| scope |  false   | Scope struct | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Struct](search_active_alerts#scope-struct-scope). |
+|  rootAlert  |   false  | RootAlert struct | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Struct](search_active_alerts#rootalert-struct-rootalert).|
+| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
 
 
 ### Scope Struct <scope>
@@ -36,8 +36,8 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 | Name            | Required or Not | Data Type | Description |
 |------------|--------------|--------------|-----------|
 | treeId            | true         | String       |  ID of the asset tree |
-| fromAssetId       | false        | String       | Asset ID. Optional.<br>When it is not specified, return the alerts of all nodes in the asset tree specified by `treeId`;<br>When it is specified, returns all alerts under the asset node (and in the node )|
-| includeDerivative | false        | Boolean      | Whether to return the derivative alerts, the default is false, as no derivative alert is returned|
+| fromAssetId       | false        | String       | Asset ID. Optional.<br>When it is not specified, return the alerts of all nodes in the asset tree specified by `treeId`;<br>When it is specified, returns all alerts under the asset node (and in the node).|
+| includeDerivative | false        | Boolean      | Whether to return the derivative alerts, the default is false, as no derivative alert is returned.|
 
 
 
@@ -58,7 +58,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | ActiveAlert struct | List of active alerts. For details, see [ActiveAlert Struct](/docs/api/en/latest/event/search_active_alerts#activealert-struct-aa)|
+| data | ActiveAlert struct | List of active alerts. For details, see [ActiveAlert Struct](/docs/api/en/2.0.9/event/search_active_alerts#activealert-struct-aa).|
 
 ### ActiveAlert Struct  <aa>
 
@@ -71,7 +71,7 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 | modelIdPath    | String                | Model path|
 | measurepointId | String| Asset measurement point|
 | hitRuleId      | String                | Rule ID of the triggered alert|
-| value          | Integer/Double/Object | Measurement point value. See [ThingModel Struct](/docs/api/en/latest/model/searchmodel.html#id1)definition|
+| value          | Integer/Double/Object | Measurement point value. If ``triggeringDelayTimer`` is specified in the alert rule, this value is that when ``triggeringDelayTimer`` starts counting. See [ThingModel Struct>>](/docs/api/en/2.0.9/model/searchmodel.html#id1)definition|
 | occurTime      | Long| UTC time when the alert occurs|
 | localOccurTime     | String| Local time when the alert occurs|
 | createTime     | Long| UTC time for creation|

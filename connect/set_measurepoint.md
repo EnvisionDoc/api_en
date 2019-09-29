@@ -23,13 +23,13 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key     |
 | deviceKey | Query           | False      | String       | Device Key         |
-| measurepointId      | Query| True | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
+| measurepointId      | Query| True | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
 | pendingTtl     | Query| False| Integer    | Cache storage time. Its unit is second and its range is [0 - 172800 (i.e. 48 hours)], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.  |
-| timeout        | Query| False         | Integer    | Timeout period of service execution in seconds. Its range is [1-60], which is set as 30 seconds by default|
+| timeout        | Query| False         | Integer    | Timeout period of service execution in seconds. Its range is [1-60], which is set as 30 seconds by default.|
 
 ## Request Parameters (Body)
 
@@ -44,7 +44,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Measurement point setting return struct      | Measurement point setting results. See [Measurement Point Setting Return Struct](/docs/api/en/latest/connect/set_measurepoint.html#measurement-point-setting-return-struct-mp) |
+| data |  Measurement point setting return struct      | Measurement point setting results. See [Measurement Point Setting Return Struct](/docs/api/en/2.0.9/connect/set_measurepoint.html#measurement-point-setting-return-struct-mp). |
 
 
 ### Measurement Point Setting Return Struct  <mp>
@@ -57,11 +57,11 @@ https://{apigw-address}/connect-service/v2.1/commands?action=setMeasurepoint
 
 | Code | Description    |
 |-------|------------------------------------------------------------------|
-| 11904 | Command is not sent, and instant command timed out                         |
-| 11915 | Command is sent, but response timed out                  |
-| 11902 | The number of cached commands reaches the upper limit                                   |
+| 11904 | Command is not sent, and instant command timed out.                         |
+| 11915 | Command is sent, but response timed out.                  |
+| 11902 | The number of cached commands reaches the upper limit.                                   |
 | 11900 | The device is offline and the instant command cannot be sent.                                     |
-| 11810 | The command can not be encoded into the product-customized format when the product supports custom data formats |
+| 11810 | The command can not be encoded into the product-customized format when the product supports custom data formats. |
 | 11888 | The device is not activated and the instant command cannot be sent.                        |
 
 

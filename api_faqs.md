@@ -32,11 +32,18 @@ In the left navigation bar of the EnOS Console, click **IAM > Organization Profi
 
 The `projection` parameter is used to crop the `data` result set, and its data type is `String Array`. Each of these strings represents a result field that needs to be returned in the returned result. Any fields that are not specified in the `projection` would not be returned in the result set. When specifying a field, you can use:
 
-|Symbol |Description|
-|------------|--------------|
-|`[*]`|	Stand for each object in an array|
-|`*`  |		Stand for any field value|
-|`.`	|	Stand for sub-field|
+.. list-table::
+
+   * - Symbol
+     - Description
+   * - ``[*]``
+     - Stand for each object in an array
+   * - ``*``
+     - Stand for any field value
+   * - ``.``
+     - Stand for sub-field
+
+
 
 Taking the following result set for example:
 
@@ -112,15 +119,33 @@ The returned result set after cropping is given as follows:
 The API interface supports to specify the query criteria in the way of SQL-like conditional statements. This type of statements is called a query expression.
 The query expression supports the following syntax:
 
-|Query Criterion|Expression Sample | Description|
-|------------|--------------|------|
-|Determine whether a field is equal to a value |`modelId = 'planet'` |The value of the `modelId` field is "planet". |
-|Determine whether the value of a field is one of a set of values |`modelId in ('planet', 'orbit')`| The value of the `modelId` field is "planet" or "orbit". |
-|Determine whether a field is not equal to a value |`state != 3`|The value of the `state` field is not equal to "3".        |
-|Determine whether an internationalized name field is fuzzy matching with a value|`name like 'inverter' `|The value of the `name` field is fuzzy matching with "inverter". Both "PV Inverter" and "Inverter 2A" are considered to be fuzzy match of "inverter". |
-| |`name.en_US like 'capacity'` |The value of the name field is fuzzy matching with "capacity" under en_US locale. |
-|If the `and` keyword is used to link multiple query expressions, it indicates that multiple criteria need to be met at the same time |`modelId = 'planet' and state = 2`|The value of the `modelId` field is "planet" and the value of the `state` field is "2".  |
-|If the `or` keyword is used to link multiple query expressions, it indicates that at least one of multiple criteria need to be met |`modelId = 'planet' or state = 2`|The value of the `modelId` field is "planet" or the value of the `state` field is "2". |
+.. list-table::
+
+   * - Query Criterion
+     - Expression Sample
+     - Description
+   * - Determine whether a field is equal to a value
+     - ``modelId = 'planet'``
+     - The value of the ``modelId`` field is "planet".
+   * - Determine whether the value of a field is one of a set of values
+     - ``modelId in ('planet', 'orbit')``
+     - The value of the ``modelId`` field is "planet" or "orbit".
+   * - Determine whether a field is not equal to a value
+     - ``state != 3``
+     - The value of the ``state`` field is not equal to "3".
+   * - Determine whether an internationalized name field is fuzzy matching with a value
+     - ``name like 'inverter'``
+     - The value of the ``name`` field is fuzzy matching with "inverter". Both "PV Inverter" and "Inverter 2A" are considered to be fuzzy match of "inverter".
+   * - \
+     - ``name.en_US like 'capacity'``
+     - The value of the name field is fuzzy matching with "capacity" under en_US locale.
+   * - If the ``and`` keyword is used to link multiple query expressions, it indicates that multiple criteria need to be met at the same time
+     - ``modelId = 'planet' and state = 2``
+     - The value of the ``modelId`` field is "planet" and the value of the ``state`` field is "2".
+   * - If the ``or`` keyword is used to link multiple query expressions, it indicates that at least one of multiple criteria need to be met.
+     - ``modelId = 'planet' or state = 2``
+     - The value of the ``modelId`` field is "planet" or the value of the ``state`` field is "2".
+
 
 Each API can support different fields in the query expression. Please follow the instructions of each API request parameter.
 
@@ -131,10 +156,19 @@ In the request parameters and return results, the internationalized name structu
 
 ### Internationalized name struct
 
-| Name | Data Type | Description |
-|------------|--------------|------|
-|defaultValue|String |Default name|
-|i18nValue |Map(Key is of String type and the Value is of String type)| Name under each Locale. The key is locale, and the value is the name under each locale. |
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Description
+   * - defaultValue
+     - String
+     - Default name
+   * - i18nValue
+     - Map(Key is of String type and the Value is of String type)
+     - Name under each Locale. The key is locale, and the value is the name under each locale.
+
+
 
 `defaultValue` refers to the name that should be used when the `locale` used is not specified in `i18nValue`. The `locale` format follows the **Unicode locale identifier**, such as "en_US". For more information, see [https://www.unicode.org/reports/tr35/tr35-55/tr35.html#BCP_47_Language_Tag_Conversion](https://www.unicode.org/reports/tr35/tr35-55/tr35.html#BCP_47_Language_Tag_Conversion).
 
@@ -168,10 +202,18 @@ In the API request parameters, the time is specified in a string format, where l
 
 ### Date and time format adopted by localtime
 
-|Data Type|Example Value|Description|
-|----------|----------|---------------|
-|String<br>YYYY-MM-DD HH:mm:ss|2019-04-17 10:30:00|   |
-|String<br>YYYY-MM-DD HH:mm:ss.SSS|2019-04-17 10:30:00.000|Only when it is supported by API|
+.. list-table::
+
+   * - Data Type
+     - Example Value
+     - Description
+   * - String<br>YYYY-MM-DD HH:mm:ss
+     - 2019-04-17 10:30:00
+     - \
+   * - String<br>YYYY-MM-DD HH:mm:ss.SSS
+     - 2019-04-17 10:30:00.000
+     - Only when it is supported by API
+
 
 The EnOS service will convert the time information according to the time zone information configured on the asset being queried. For example, if the asset timezone is UTC+0800, then 2019-04-17 10:30:00 = 2019-04-17T10:30:00+0800 = UNIX timestamp 1555468200.
 
@@ -182,9 +224,13 @@ The platform requires additional performance overhead for timezone conversion. E
 
 ### ISO8601 standard time format adopted by UTC time
 
-|Data Type|Example Value|
-|----------|----------|
-|String<br>YYYY-MM-DD'T'HH:MM:ss'Z'|2019-04-17T02:30:00Z|
+.. list-table::
+
+   * - Data Type
+     - Example Value
+   * - String<br>YYYY-MM-DD'T'HH:MM:ss'Z'
+     - 2019-04-17T02:30:00Z
+
 
 When the request format is UTC, the EnOS service will query as per UTC without time zone, i.e. 2019-04-17T02:30:00Z= UNIX timestamp 1555468200000.
 
@@ -219,13 +265,26 @@ In the request parameters of the API, three parameters are generally provided fo
 - Specify `assetId`
 - Specify both `productKey` and `deviceKey`
 
-| Name     | Data Type        | Required or Not | Description                                                         |
-|---------|--------|--------|-----------|
-|assetId|String|false|Asset ID|
-|productKey|String|false|Product key|
-|deviceKey|String|false|Device key|
+.. list-table::
+
+   * - Name
+     - Data Type
+     - Required or Not
+     - Description
+   * - assetId
+     - String
+     - false
+     - Asset ID
+   * - productKey
+     - String
+     - false
+     - Product key
+   * - deviceKey
+     - String
+     - false
+     - Device key
 
 
 ## How to get the ID of an asset tree
 
-Each asset tree has a Tree ID. Users can view the ID of each asset tree in the **Asset Tree** page under **Device and Asset** in the console. Users can also get all asset trees under the OU through the Search Asset Tree interface. For details about asset trees, see [Asset Trees](/docs/device-connection/en/latest/howto/asset_tree/assettree_overview.html)。
+Each asset tree has a Tree ID. Users can view the ID of each asset tree in the **Asset Tree** page under **Device and Asset** in the console. Users can also get all asset trees under the OU through the Search Asset Tree interface. For details about asset trees, see [Asset Trees](/docs/device-connection/en/2.0.9/howto/asset_tree/assettree_overview.html)。

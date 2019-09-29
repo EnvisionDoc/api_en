@@ -7,27 +7,27 @@ Filter and query the latest data of a single measurement point for multiple devi
 ## Request Format
 
 ```
-https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId={}modelId={}assetIds={}measurepoint={}timeWindow={}operator={}valueFilter={}accessKey={}
+https://{apigw-address}/tsdb-service/v2.0/2.0.9/filter?orgId={}modelId={}assetIds={}measurepoint={}timeWindow={}operator={}valueFilter={}accessKey={}
 ```
 
 ## Request Parameters (URI)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                                                                                                                                                                                                                            |
-| modelId       | Query            | true    | String    |Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)                                                                                                                                                                                                                            |
-| assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)                                                                                                                                                                                |
-| measurepoint | Query            | true     | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
-| timeWindow     | Query            | false     | Integer  | Returns the data schedule setting. Its unit is minute and its minimum value is 0; no filtering is applied if it is not in the request |
-| operator       | Query            | false     | String    | Operator. It supports: eq: equal to; nq: not equal; gt: greater than; lt: less than; ge: greater than or equal; le: less than or equal; between: interval of 2 values; in: one of multiple values.                                                                                                                                      |
-| valueFilter      | Query            | false    | String   |Range value. It must be used along with the operator. The operators "eq", "nq", "gt", "ge", "lt", and "le" correspond to a single value; "between" corresponds to 2 values; "in" corresponds to multiple values. Multiple values must be separated by commas, and the data types must be consistent with those of the measurement points. For example: "operator=betwteen&valueFilter=a, b" refers to filtering out the values between a and b|
-| accessKey     | Query            | true     | String    |Service account of the application. The application authenticates with `accessKey` to obtain the data that it is authorized to access. [How to get accessKey>>](/docs/api/en/latest/api_faqs.html#how-to-get-access-key-accesskey-accesskey)|                                                                     
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid) |
+| modelId       | Query            | true    | String    |Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid) |
+| assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| measurepoint | Query            | true     | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
+| timeWindow     | Query            | false     | Integer  | Returns the data schedule setting. Its unit is minute and its minimum value is 0; no filtering is applied if it is not in the request. |
+| operator       | Query            | false     | String    | Operator. It supports: eq: equal to; nq: not equal; gt: greater than; lt: less than; ge: greater than or equal; le: less than or equal; between: interval of 2 values; in: one of multiple values.|
+| valueFilter      | Query            | false    | String   |Range value. It must be used along with the operator. The operators "eq", "nq", "gt", "ge", "lt", and "le" correspond to a single value; "between" corresponds to 2 values; "in" corresponds to multiple values. Multiple values must be separated by commas, and the data types must be consistent with those of the measurement points. For example: "operator=betwteen&valueFilter=a, b" refers to filtering out the values between a and b.|
+| accessKey     | Query            | true     | String    |Service account of the application. The application authenticates with `accessKey` to obtain the data that it is authorized to access. [How to get accessKey>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-access-key-accesskey-accesskey)|                                                                     
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/latest/tsdb_service/filter_asset_latest_data.html#id2).
+| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/2.0.9/tsdb_service/filter_asset_latest_data.html#id2). |
 
 ### items
 
@@ -44,7 +44,7 @@ Sample:
 |---------------|-----------|--------------------------------------|
 | assetId       | Object    | Asset ID.                                              |
 | pointId | Object    |This parameter is a variable, indicating the identifier and data for the measurement point.                                     |
-| timestamp     | Object    | Data timestamp (UNIX time, accurate to second).                                     |
+| timestamp     | Object    | Data timestamp (UNIX time, accurate to second)                                     |
 
 ## Error Codes
 For description of error codes, see [Common Error Codes](overview#errorcode).
@@ -53,7 +53,7 @@ For description of error codes, see [Common Error Codes](overview#errorcode).
 
 ### Request Sample
 ```
-https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId=o15528761854851&assetIds=FGqRJKPM&modelId=model_xxx&measurepoint=pointId&timeWindow=&operator=le&valueFilter=55673.9&accessKey=accessKey
+https://{apigw-address}/tsdb-service/v2.0/2.0.9/filter?orgId=o15528761854851&assetIds=FGqRJKPM&modelId=model_xxx&measurepoint=pointId&timeWindow=&operator=le&valueFilter=55673.9&accessKey=accessKey
 ```
 Where, `operator=le&valueFilter=55673.9` means that: The following sample will filter out the `pointId` value of the model `model_xxx`, which is less than or equal to 55673.9.
 
@@ -126,7 +126,7 @@ public void filterAssetsLatestDataTest(){
 
     try {
         JSONObject response =  Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
-                .url("http://apim-gateway/tsdb-service/v2.0/latest/filter")
+                .url("http://apim-gateway/tsdb-service/v2.0/2.0.9/filter")
                 .getResponse(request, JSONObject.class);
         System.out.println(response);
     } catch (Exception e) {

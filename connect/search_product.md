@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | productKey        | Query            | true    | String    | Product Key|
 
 
@@ -22,15 +22,15 @@ https://{apigw-address}/connect-service/v2.1/products?action=search
 
 | Name            | Required or Not | Data Type | Description |
 |-------------------|----------|-----------|--------------|
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey` and `modelId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | String   | Paging parameter. When not specified, 10 entries are displayed per page by default. See [Pagination Request Struct](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey` and `modelId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | String   | Paging parameter. When not specified, 10 entries are displayed per page by default. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
 
 
 ## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Product struct                           | Product list from query; see [Product Struct](/docs/api/en/latest/connect/get_product.html#product-struct-productstruc)                |
+| data| Product struct                           | Product list from query, see [Product Struct>>](/docs/api/en/2.0.9/connect/get_product.html#product-struct-productstruc)                |
 
 
 
