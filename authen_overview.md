@@ -48,4 +48,4 @@ Before authorizing a service account, you need to create a corresponding permiss
 | Add Sub-device                 | Device Management     | Full-Access  |
 | Remove Sub-device              | Device Management     | Full-Access  |
 
-For detailed steps to create a permission policy, see [Creating and Managing Policy](/docs/iam/en/latest/howto/managing_policies.html).
+For detailed steps to create a permission policy, see [Creating and Managing Policy](/docs/enos/en/latest/iam/howto/managing_policies.html).
