@@ -12,7 +12,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 
 | Name | Required or Not | Data Type | Description |
 |---------------|--------|----------|-----------|
-| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)
@@ -20,17 +20,17 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid)|
-| assetId        | false     | String    | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepointsId     | false     | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
-| startOccurTime        | false     | String   | Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/2.0.9/api_faqs.html#time-parameters-used-in-api) |
-| endOccurTime        | false     | String       |  End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/2.0.9/api_faqs.html#time-parameters-used-in-api) |
-| recoverStartTime        | false     | String  | Start time of alert recovery. If left blank, the data within the last week will be searched. See [Time parameters used in API>>](/docs/api/en/2.0.9/api_faqs.html#time-parameters-used-in-api) |
-| recoverEndTime        | false     | String    | End time of alert recovery. If left blank, the data within the last week will be searched. See [Time parameters used in API>>](/docs/api/en/2.0.9/api_faqs.html#time-parameters-used-in-api)  |
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression)|
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
+| assetId        | false     | String    | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| measurepointsId     | false     | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
+| startOccurTime        | false     | String   | Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
+| endOccurTime        | false     | String       |  End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
+| recoverStartTime        | false     | String  | Start time of alert recovery. If left blank, the data within the last week will be searched. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
+| recoverEndTime        | false     | String    | End time of alert recovery. If left blank, the data within the last week will be searched. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)  |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
 | scope |  false   | Scope struct | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Struct](search_history_alerts#scope-struct-scope). |
 |  rootAlert  |   false  | RootAlert struct | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Struct](search_history_alerts#rootalert-struct-rootalert).|
-| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
+| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
 ### Scope Struct <scope>
@@ -57,7 +57,7 @@ POST https://{apigw-address}/event-service/v2.1/history-alerts?action=search
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | HistoryAlert struct| History alert information array, including recovery time, event ID, and reason for recovery. See [HistoryAlert Struct](/docs/api/en/2.0.9/event/search_history_alerts.html#historyalert-struct-ha).|
+| data | HistoryAlert struct| History alert information array, including recovery time, event ID, and reason for recovery. See [HistoryAlert Struct](/docs/api/en/latest/event/search_history_alerts.html#historyalert-struct-ha).|
 
 ### HistoryAlert Struct  <ha>
 

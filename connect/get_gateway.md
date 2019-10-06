@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=getGateway
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 
@@ -22,7 +22,7 @@ https://{apigw-address}/connect-service/v2.1/device-topos?action=getGateway
 
 | Name | Required or Not | Data Type | Description |
 |--------------------|----------|-----------|--------------|
-| subDevice           | True      | DeviceIdentfier struct | Information used to identify sub-devices. See [DeviceIdentfier Struct](/docs/api/en/2.0.9/connect/get_gateway.html#deviceidentifier-struct-deviceidentifier). |
+| subDevice           | True      | DeviceIdentfier struct | Information used to identify sub-devices. See [DeviceIdentfier Struct](/docs/api/en/latest/connect/get_gateway.html#deviceidentifier-struct-deviceidentifier). |
 
 
 ### DeviceIdentifier Struct  <deviceidentifier>
@@ -31,7 +31,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |----------------|----------------|------------------|
-| assetId  | String        | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| assetId  | String        | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | String         | Product Key     |
 | deviceKey | String         | Device Key         |
 
@@ -40,7 +40,7 @@ Note: The `assetId` or `(productKey, deviceKey)` must be provided for the follow
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data | Device struct                          | Gateway device information. See [Device Struct](/docs/api/en/2.0.9/connect/get_gateway.html#device-struct-devicetstruc).               |
+| data | Device struct                          | Gateway device information. See [Device Struct](/docs/api/en/latest/connect/get_gateway.html#device-struct-devicetstruc).               |
 
 
 ### Device Struct <devicetstruc>

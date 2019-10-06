@@ -14,21 +14,21 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=getAssetTree
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 ## Request Parameters (Body)
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| assetIds         | Query            | true     | String Array   | A group of asset ID, where at most 100 Ids are supported. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid)   |
-| projection         | Query            | false    | String Array   |Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set>>](/docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set)|
+| assetIds         | Query            | true     | String Array   | A group of asset ID, where at most 100 Ids are supported. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)   |
+| projection         | Query            | false    | String Array   |Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
 
 
 ## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| data| Map (the Key is assetId and the Value is the AssetTree struct)   | List of assets and their asset trees. See [AssetTree Struct](/docs/api/en/2.0.9/asset_tree/get_asset_trees.html#assettree-struct-assettree) |
+| data| Map (the Key is assetId and the Value is the AssetTree struct)   | List of assets and their asset trees. See [AssetTree Struct](/docs/api/en/latest/asset_tree/get_asset_trees.html#assettree-struct-assettree) |
 
 
 ### AssetTree Struct <assettree>

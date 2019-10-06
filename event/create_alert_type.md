@@ -12,7 +12,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)           |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)           |
 
 
 ## Request Parameters (Body)
@@ -27,7 +27,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 | Name | Required or Not | Data Type | Description          |
 |----------|--------------|--------------|-------------------------------------|
 | typeId   |  true        | String       | Alert type ID.           |
-| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct). |
+| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct). |
 | tags     | false        | tags data type  | Tags alert type. |
 | source |false| String |Customized data source that indicates the data source to which the alert type applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
 

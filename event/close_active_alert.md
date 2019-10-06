@@ -13,15 +13,15 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=close
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)           |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)           |
 
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
 | eventId  | true | String  | Alert ID |
-| recoverTime      | true         | Long         | Recovery time in UTC format. For time formats, see [ISO8601 Standard Time Formats Used by UTC>>](/docs/api/zh_CN/2.0.9/api_faqs.html#utciso8601)|
-| localRecoverTime | false        | String       | Recovery time in local format. For time formats, see [Data and Time Formats Used by Localtime>>](/docs/api/zh_CN/2.0.9/api_faqs.html#localtime)|
+| recoverTime      | true         | Long         | Recovery time in UTC format. For time formats, see [ISO8601 Standard Time Formats Used by UTC>>](/docs/api/zh_CN/latest/api_faqs.html#utciso8601)|
+| localRecoverTime | false        | String       | Recovery time in local format. For time formats, see [Data and Time Formats Used by Localtime>>](/docs/api/zh_CN/latest/api_faqs.html#localtime)|
 | recoverReason    | false        | String       | Recovery reason|
 
 

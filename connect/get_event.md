@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | eventId        | Query| True         | String    |Event ID |
 
 
@@ -23,7 +23,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Event struct | Event-specific information, see [Event Struct](/docs/api/en/2.0.9/connect/get_event.html#event-struct-event). |
+| data | Event struct | Event-specific information, see [Event Struct](/docs/api/en/latest/connect/get_event.html#event-struct-event). |
 
 
 ### Event Struct <event>

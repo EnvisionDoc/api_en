@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
@@ -23,13 +23,13 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 |------------------|---------------|----------|---|
 | productKey  | False         | String| Product Key|
 | deviceKey   | False         | String| Device Key|
-| assetId  | False  | String | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
+| assetId  | False  | String | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)|
 | tslEventKey | False         | String| Event key|
 | tslEventType | False         | String| Event type|
 | startTime   | False         | String | Start time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched.|
 | endTime  | False         | String    | End time (with regard to the occurring time of event). The format yyyy-MM-dd HH:mm:ss means local time, yyyy-MM-ddTHH:mm:ssZ means UTC time. If left blank, the data within the last week will be searched.|
-| expression         | False    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey`, `deviceKey`, `assetId`, `tslEventKey`, `tslEventType`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression)|
-| pagination  | False  |Pagination request struct | Paging parameter. When not specified, 10 entries are displayed per page by default. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct)  |
+| expression         | False    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `productKey`, `deviceKey`, `assetId`, `tslEventKey`, `tslEventType`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination  | False  |Pagination request struct | Paging parameter. When not specified, 10 entries are displayed per page by default. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct)  |
 
 
 
@@ -37,7 +37,7 @@ https://{apigw-address}/connect-service/v2.1/events?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Event struct      |List of events from query, see [Event Struct>>](/docs/api/en/2.0.9/connect/get_event.html#event-struct-event) |
+| data |  Event struct      |List of events from query, see [Event Struct>>](/docs/api/en/latest/connect/get_event.html#event-struct-event) |
 
 
 ## Sample 1

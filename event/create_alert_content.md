@@ -12,7 +12,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid).          |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid).          |
 
 
 ## Request Parameters (Body)
@@ -25,8 +25,8 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
 |contentId|true|String|Alert content ID.|
-|contentDesc|true|StringI18n| Internationalized description of alert content, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct)|
-| modelId          | true    | String    | ID of the model applicable for the alert content. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid) |
+|contentDesc|true|StringI18n| Internationalized description of alert content, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
+| modelId          | true    | String    | ID of the model applicable for the alert content. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid) |
 | alertTypeId   |  true        | String       | Associated alert type ID           |
 |tags|false|tags data type|Tags of alert content. |
 | source |false| String |Customized data source that indicates the data source to which the alert content applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|

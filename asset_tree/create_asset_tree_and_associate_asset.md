@@ -25,12 +25,12 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=associate
      - Query
      - true
      - String
-     - Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)
+     - Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)
    * - assetId
      - Query
      - false
      - String
-     - ID of the asset to be associated: <br>If the ``assetId`` is specified, the asset uniquely identified by the ``assetId`` will be associated. `How to get Asset ID </docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__ <br>If the ``assetId`` is not specified, the asset uniquely identified by the combination of ``productKey`` and ``deviceKey`` will be associated.
+     - ID of the asset to be associated: <br>If the ``assetId`` is specified, the asset uniquely identified by the ``assetId`` will be associated. `How to get Asset ID </docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__ <br>If the ``assetId`` is not specified, the asset uniquely identified by the combination of ``productKey`` and ``deviceKey`` will be associated.
    * - productKey
      - Query
      - false

@@ -17,8 +17,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)        |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)        |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String   | Product Key     |
 | deviceKey | Query           | False      | String       | Device Key         |
 
@@ -27,9 +27,9 @@ https://{apigw-address}/connect-service/v2.1/commands?action=search
 
 | Name |  Required or Not | Data Type | Description |
 |----------------|----------|--------------------|----|
-| expression     | false    | String| Query expression, which supports for sql-like query. The fields that are supported for query include: `state`, `commandName`, and `createTime`.<br>`state`: support arithmetic operators "=".<br>`commandName`: support fuzzy inquiry, `locale` is mandatory, such as "commandName.zh_CN" or "commandName.en_US".<br>`createTime`: supports ">", "=", and "<" to specify a time range. [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression) |
-| pagination    | false     | Pagination request struct | Pagination parameter. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 100 pages. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
-| projection  | false    | Projection struct | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set>>](/docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set)  |
+| expression     | false    | String| Query expression, which supports for sql-like query. The fields that are supported for query include: `state`, `commandName`, and `createTime`.<br>`state`: support arithmetic operators "=".<br>`commandName`: support fuzzy inquiry, `locale` is mandatory, such as "commandName.zh_CN" or "commandName.en_US".<br>`createTime`: supports ">", "=", and "<" to specify a time range. [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
+| pagination    | false     | Pagination request struct | Pagination parameter. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 100 pages. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| projection  | false    | Projection struct | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)  |
 
 
 

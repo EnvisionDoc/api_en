@@ -14,7 +14,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
@@ -42,16 +42,16 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=searchAsset
          * ``name.zh_CN like ‘xxx’``: fuzzy inquiry of Chinese name, if no Chinese name, fuzzy inquiry of default name
          * ``name.en_US like ‘xxx’``: fuzzy inquiry of English name, if no English name, fuzzy inquiry of default name
 
-       `How to use expression </docs/api/en/2.0.9/api_faqs.html#how-to-use-expression>`__
+       `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
 
    * - pagination
      - False
      - pagination request struct
-     - Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. `Pagination Request Struct </docs/api/zh_CN/2.0.9/overview.html#pagination-request-struct>`__
+     - Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. `Pagination Request Struct </docs/api/zh_CN/latest/overview.html#pagination-request-struct>`__
    * - projection
      - False
      - Projection struct
-     - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set>`__
+     - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set>`__
 
 
 

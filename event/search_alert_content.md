@@ -15,23 +15,23 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=search&org
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid)|
+| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
 | alertTypeId  | false    | String               | Alert type ID   |
 | subAlertTypeId    | false    | String   | Alert sub-type ID  |                       
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `contentId`, `modelId`, and `alertTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request struct    | Pagination parameter. When not specified, 10 entries are displayed in each page. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
+| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `contentId`, `modelId`, and `alertTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
+| pagination     | false     | Pagination request struct    | Pagination parameter. When not specified, 10 entries are displayed in each page. By default, the entries are sorted by `updateTime` in descending order, and it is allowed for the user to specify the following field sorting criterion: `contentId`, `modelId`, `updatePerson`, `updateTime`. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/2.0.9/event/search_alert_content.html#alertcontent-struct-alertcontent).|
+| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/latest/event/search_alert_content.html#alertcontent-struct-alertcontent).|
 
 ### AlertContent Struct <alertcontent>
 

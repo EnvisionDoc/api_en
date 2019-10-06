@@ -18,8 +18,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key     |
 | deviceKey | Query           | False      | String       | Device Key         |
 | commandId | Query         | True     | String          | Command ID          |
@@ -28,7 +28,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    Command struct        | Information corresponding to the command. See [Command Struct](/docs/api/en/2.0.9/connect/get_command.html#command-struct-command). |
+| data |    Command struct        | Information corresponding to the command. See [Command Struct](/docs/api/en/latest/connect/get_command.html#command-struct-command). |
 
 ### Command Struct <Command>
 

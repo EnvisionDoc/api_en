@@ -14,9 +14,9 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepo
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)|
-| modelIds       | Query            | true    | String    |Model ID which the asset belongs to. Multi-model query is supported, and multiple modelIds are separated by commas. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid)|
-| measurepoints | Query            | false     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)|
+| modelIds       | Query            | true    | String    |Model ID which the asset belongs to. Multi-model query is supported, and multiple modelIds are separated by commas. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
+| measurepoints | Query            | false     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)                                                                                                                                                                           |
                                               
 
 
@@ -24,7 +24,7 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepo
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | `List<Object>` | List of asset data. The data returned for a single point of a single device, sorting by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/2.0.9/tsdb_policy/get_points_tsdb_meta_data.html#id3). |
+| data | `List<Object>` | List of asset data. The data returned for a single point of a single device, sorting by time in ascending order. Parameters are stored in the Object structure. See [items](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id3). |
 
 
 ### items
@@ -33,7 +33,7 @@ https://{apigw-address}/tsdb-policy/v2.0/policies?orgId={}&modelIds={}&measurepo
 | Name | Data Type | Description |
 |---------------|-----------|--------------------------------------|
 | modelId     | String    | Model ID|
-| tsdb_metadata   |  `List<Object>`    | Set of model measurement point storage policies. For details, see [Policy](/docs/api/en/2.0.9/tsdb_policy/get_points_tsdb_meta_data.html#id4).  |
+| tsdb_metadata   |  `List<Object>`    | Set of model measurement point storage policies. For details, see [Policy](/docs/api/en/latest/tsdb_policy/get_points_tsdb_meta_data.html#id4).  |
 
 ### policy
 

@@ -12,7 +12,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=delete
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)              |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)              |
 |alertTypeId    | Query  | true  |  String  |  Alert type ID  |
 | source |false| String |Customized data source that indicates the data source to which the alert type applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
 

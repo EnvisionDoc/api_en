@@ -21,7 +21,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - Query
      - True
      - String
-     - Organization ID which the asset belongs to. `How to get orgId </docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+     - Organization ID which the asset belongs to. `How to get orgId </docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid>`__
    * - scope
      - Query
      - False
@@ -31,17 +31,17 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - Query
      - False
      - String
-     - Query expression, which supports for sql-like query. The fields that are supported for query include: ``modelId`` (supports arithmetic operator "in") and ``tags`` (supports arithmetic operator "="). The supported logical operators are "and", "or", and "not". `How to use expression </docs/api/en/2.0.9/api_faqs.html#how-to-use-expression>`__
+     - Query expression, which supports for sql-like query. The fields that are supported for query include: ``modelId`` (supports arithmetic operator "in") and ``tags`` (supports arithmetic operator "="). The supported logical operators are "and", "or", and "not". `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
    * - projection
      - Query
      - False
      - String Array
-     - Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see `How does projection crop the result set </docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set>`__
+     - Only eligible fields are returned for eligible searches, and all fields are returned by default if it is not configured. For details, see `How does projection crop the result set </docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set>`__
    * - pagination
      - Query
      - False
      - Pagination request struct
-     - Random pagination. See `Pagination Request Struct </docs/api/en/2.0.9/overview.html#pagination-request-struct>`__
+     - Random pagination. See `Pagination Request Struct </docs/api/en/latest/overview.html#pagination-request-struct>`__
 
 
 
@@ -54,7 +54,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - Description
    * - data
      - ThingModel struct
-     - Thing model list. <br>For the definition of thing models. See `ThingModel Struct </docs/api/en/2.0.9/model/searchmodel.html#thingmodel-struct-thing>`__ .
+     - Thing model list. <br>For the definition of thing models. See `ThingModel Struct </docs/api/en/latest/model/searchmodel.html#thingmodel-struct-thing>`__ .
 
 
 ### ThingModel Struct  <thing>
@@ -84,16 +84,16 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - User-customized tags
    * - attributes
      - Map (Key is of String type and the Value is the ``ThingAttribute`` struct)
-     - Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See `ThingAttribute Struct </docs/api/en/2.0.9/model/searchmodel.html#thingattribute-struct-ta>`__ .
+     - Map-typed static attributes definition. The key is the static attribute ID and the value is the attribute definition. See `ThingAttribute Struct </docs/api/en/latest/model/searchmodel.html#thingattribute-struct-ta>`__ .
    * - measurement points
      - Map (Key is of String type and the Value is the ``ThingMeasurepoint`` struct)
-     - Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See `ThingMeasurepoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingmeasurepoint-struct-tm>`__ .
+     - Map-typed static attributes definition. The key is the measurement point ID and the value is the measurement point definition. See `ThingMeasurepoint Struct </docs/api/en/latest/model/searchmodel.html#thingmeasurepoint-struct-tm>`__ .
    * - services
      - Map (Key is of String type and the Value is the ``ThingService`` struct)
-     - Map-typed services definition. The key is the service ID, and the value is the service definition. See `ThingService Struct </docs/api/en/2.0.9/model/searchmodel.html#thingservice-struct-ts>`__ .
+     - Map-typed services definition. The key is the service ID, and the value is the service definition. See `ThingService Struct </docs/api/en/latest/model/searchmodel.html#thingservice-struct-ts>`__ .
    * - events
      - Map (Key is of String type and the Value is the ``ThingEvent`` struct)
-     - Map-typed events definition. The key is the event ID, and the value is the event definition. See `ThingEvent Struct </docs/api/en/2.0.9/model/searchmodel.html#thingevent-struct-te>`__ .
+     - Map-typed events definition. The key is the event ID, and the value is the event definition. See `ThingEvent Struct </docs/api/en/latest/model/searchmodel.html#thingevent-struct-te>`__ .
 
 
 
@@ -124,7 +124,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - User-customized tags
    * - unit
      - Unit struct
-     - Unit. See `Unit Struct </docs/api/en/2.0.9/model/searchmodel.html#unit-struct-unit>`__ .
+     - Unit. See `Unit Struct </docs/api/en/latest/model/searchmodel.html#unit-struct-unit>`__ .
 
 
 
@@ -158,7 +158,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - Signal type. E.g.: Generic, AI, PI, DI
    * - unit
      - Unit struct
-     - Unit. See `Unit Struct </docs/api/en/2.0.9/model/searchmodel.html#unit-struct-unit>`__ .
+     - Unit. See `Unit Struct </docs/api/en/latest/model/searchmodel.html#unit-struct-unit>`__ .
 
 
 ### ThingService Struct  <ts>
@@ -182,10 +182,10 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - User-customized tags
    * - intputData
      - ThingDatapoint struct
-     - Input parameters list of the service. See `ThingDatapoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingdatapoint-struct-td>`__ .
+     - Input parameters list of the service. See `ThingDatapoint Struct </docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td>`__ .
    * - outputData
      - ThingDatapoint struct
-     - Returned parameters list of the service. See `ThingDatapoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingdatapoint-struct-td>`__ .
+     - Returned parameters list of the service. See `ThingDatapoint Struct </docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td>`__ .
    * - callType
      - String
      - Calling type.
@@ -213,7 +213,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - User-customized tags
    * - outputData
      - ThingDatapoint struct
-     - Returned parameters list of the event. See `ThingDatapoint Struct </docs/api/en/2.0.9/model/searchmodel.html#thingdatapoint-struct-td>`__
+     - Returned parameters list of the event. See `ThingDatapoint Struct </docs/api/en/latest/model/searchmodel.html#thingdatapoint-struct-td>`__
    * - eventType
      - String
      - Event type. E.g.: INFO, WARN, ERROR
@@ -244,7 +244,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - User-customized tags
    * - unit
      - Unit struct
-     - Unit. See `Unit Struct </docs/api/en/2.0.9/model/searchmodel.html#unit-struct-unit>`__ .
+     - Unit. See `Unit Struct </docs/api/en/latest/model/searchmodel.html#unit-struct-unit>`__ .
 
 
 
@@ -260,7 +260,7 @@ https://{apigw-address}/model-service/v2.1/thing-models?action=search
      - Unit identifier
    * - multiplier
      - String
-     - Multiplier of unit. See `Multiplier </docs/api/en/2.0.9/model/searchmodel.html#multiplier-mp>`__ .
+     - Multiplier of unit. See `Multiplier </docs/api/en/latest/model/searchmodel.html#multiplier-mp>`__ .
 
 
 
@@ -294,7 +294,7 @@ YOCTO ,//y     10^-24
 
 ## Error Codes
 
-See [Public Return Codes (Connection Service, etc.)](/docs/api/en/2.0.9/overview.html#public-return-codes-connection-service-etc)
+See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overview.html#public-return-codes-connection-service-etc)
 
 
 ## Sample

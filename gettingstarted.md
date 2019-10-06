@@ -12,7 +12,7 @@ Get the service account that can be used for identity authorization when invokin
 
 **Get resource permissions**
 
-The service account has the permissions to access to related resources in the system. For details, see [Managing Service Accounts](/docs/iam/en/2.0.9/howto/service_account/managing_service_account.html).
+The service account has the permissions to access to related resources in the system. For details, see [Managing Service Accounts](/docs/iam/en/latest/howto/service_account/managing_service_account.html).
 
 **Prepare the development environment**
 

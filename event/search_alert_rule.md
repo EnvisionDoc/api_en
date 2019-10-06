@@ -13,16 +13,16 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)         |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)         |
 
 
 ## Request Parameters (Body)
 | Name            | Required or Not | Data Type | Description |
 |------|-----------------|-----------|-------------|
 | modelId        | false         | String                | Model applicable for the alert rule|
-| measurepointId | false         | String                | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
-| expression      | false         | String | Query expression, which supports for sql-like query. The fields that are supported for query include: `ruleId`, `modelId`, `measurepointId`. The supported arithmetic operators are “=” and “in”, and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression) |
-| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct>>](/docs/api/en/2.0.9/overview.html#pagination-request-struct) |
+| measurepointId | false         | String                | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
+| expression      | false         | String | Query expression, which supports for sql-like query. The fields that are supported for query include: `ruleId`, `modelId`, `measurepointId`. The supported arithmetic operators are “=” and “in”, and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
+| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
 
 
 
@@ -41,7 +41,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=search
 | ruleId         | String                | Alert rule ID, which is to be defined by the user|
 | ruleDesc        | StringI18n            | Alert description|
 | modelId           | String                | Model applicable for the alert rule|
-| measurepointId   | String                | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
+| measurepointId   | String                | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
 | condition         | String                | Query expression-like statement. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. |
 | isEnabled      | Boolean               | Whether it is allowed to take effect |
 | severityId         | String                | Alert severity ID|

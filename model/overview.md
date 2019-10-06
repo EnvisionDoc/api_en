@@ -4,7 +4,7 @@
 
 A model is the abstraction and digitization of an entity object in the physical world. You can search and get models through model services.
 
-For details about models, see [Physical Models](/docs/device-connection/en/2.0.9/howto/model/model_overview.html>).
+For details about models, see [Physical Models](/docs/device-connection/en/latest/howto/model/model_overview.html>).
 
 
 .. list-table::

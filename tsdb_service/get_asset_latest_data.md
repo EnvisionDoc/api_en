@@ -14,18 +14,18 @@ https://{apigw-address}/tsdb-service/v2.0/latest?orgId={}&assetIds={}&measurepoi
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid) |
-| assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepoints | Query            | true     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
+| assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| measurepoints | Query            | true     | String    | Asset measurement point. It is supported to query multiple measurement points, and all the measurement points are separated by commas; the upper limit for query is 3000 (Number of devices *Number of measurement points). [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
 | timeWindow | Query            | false     | Integer    | Returns the data schedule setting. Its unit is minute and its minimum value is 0; no constrain is applied if it is not in the request.|
-| accessKey     | Query            | true     | String    |Service account of the application. The application authenticates with `accessKey` to obtain the data that it is authorized to access. [How to get accessKey>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-access-key-accesskey-accesskey)|                                                                     
+| accessKey     | Query            | true     | String    |Service account of the application. The application authenticates with `accessKey` to obtain the data that it is authorized to access. [How to get accessKey>>](/docs/api/en/latest/api_faqs.html#how-to-get-access-key-accesskey-accesskey)|                                                                     
 
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/2.0.9/tsdb_service/get_asset_latest_data.html#id3). |
+| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/latest/tsdb_service/get_asset_latest_data.html#id3). |
 
 ### items
 

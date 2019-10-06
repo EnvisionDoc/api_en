@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 | productKey         | Query            | true     | String    | Product Key|
 
 
@@ -25,7 +25,7 @@ https://{apigw-address}/connect-service/v2.1/products?action=update
 | productDesc       | False     | String       | Product Description                                                         |
 | biDirectionalAuth | True      | Boolean      | Two-way authentication supported or not                                                  |
 | dynamicActivateEnabled           | False      | String      | Dynamic activation supported or not|
-| productName       | True      | StringI18n | Product name; see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct)                                                           |
+| productName       | True      | StringI18n | Product name; see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)                                                           |
 |productTags|False|Map| Product tags |
 
 

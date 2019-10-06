@@ -19,7 +19,7 @@ POST https://{apigw-address}/iam/v1/api/open/organization/get
 
 | Name | Required or Not | Data Type | Description          |
 |------------------|---------------|----------|---|
-| id  | True | String | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid) |
+| id  | True | String | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
 
 
 ## Response Parameters

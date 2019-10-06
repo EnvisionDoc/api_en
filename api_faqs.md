@@ -287,4 +287,4 @@ In the request parameters of the API, three parameters are generally provided fo
 
 ## How to get the ID of an asset tree
 
-Each asset tree has a Tree ID. Users can view the ID of each asset tree in the **Asset Tree** page under **Device and Asset** in the console. Users can also get all asset trees under the OU through the Search Asset Tree interface. For details about asset trees, see [Asset Trees](/docs/device-connection/en/2.0.9/howto/asset_tree/assettree_overview.html)。
+Each asset tree has a Tree ID. Users can view the ID of each asset tree in the **Asset Tree** page under **Device and Asset** in the console. Users can also get all asset trees under the OU through the Search Asset Tree interface. For details about asset trees, see [Asset Trees](/docs/device-connection/en/latest/howto/asset_tree/assettree_overview.html)。

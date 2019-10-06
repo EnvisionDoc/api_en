@@ -14,7 +14,7 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 
 ## Request Parameters (Body)
@@ -44,23 +44,23 @@ https://{apigw-address}/connect-service/v2.1/devices?action=search
 
        + ``status``: upports arithmetic operator "=", valid values are: "inactive", "online", "offline", and "disable"
 
-       `How to use expression </docs/api/en/2.0.9/api_faqs.html#how-to-use-expression>`__
+       `How to use expression </docs/api/en/latest/api_faqs.html#how-to-use-expression>`__
 
    * - pagination
      - False
      - pagination request struct
-     - Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. `Pagination Request Struct </docs/api/zh_CN/2.0.9/overview.html#pagination-request-struct>`__
+     - Random pagination. User can not specify the sorting field. If not provided, the default pagination size is 10 pages. `Pagination Request Struct </docs/api/zh_CN/latest/overview.html#pagination-request-struct>`__
    * - projection
      - False
      - Projection struct
-     - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/2.0.9/api_faqs.html#how-does-projection-crop-the-result-set>`__
+     - Describe the object projection to be returned in the interface request. For details, see `How does projection crop the result set? </docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set>`__
 
 
 ## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Device struct                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Struct](/docs/api/en/2.0.9/connect/search_device.html#device-struct-device). |
+| data | Device struct                     | Information of a group of sub-devices of the specified page under the gateway. See [Device Struct](/docs/api/en/latest/connect/search_device.html#device-struct-device). |
 
 
 ### Device Struct  <device>

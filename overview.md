@@ -6,15 +6,15 @@ EnOS provides REST APIs that cover the core business processes of the system. Ba
 
 EnOS provides the following API services:
 
-- [Connection Service](/docs/api/en/2.0.9/connect/overview.html): Provide device connectivity and device management on EnOS, including product and device creation and management.
-- [Model Service](/docs/api/en/2.0.9/model/overview.html): Search and get the details of the models in an organization.
-- [Asset Service](/docs/api/en/2.0.9/asset/overview.html): Create, manage, and update the assets in an organization.
-- [Alert Service](/docs/api/en/2.0.9/event/overview.html): Search and manage asset alerts.
-- [Asset Tree Service](/docs/api/en/2.0.9/asset_tree/overview.html): Create, manage, update, and search assets trees in an organization.
-- [TSDB Data Service](/docs/api/en/2.0.9/tsdb_service/overview.html): Access to the stored asset data.
-- [TSDB Policy Service](/docs/api/en/2.0.9/tsdb_policy/overview.html): Access to TSDB storage configuration information.
-- [IAM Service Overview](/docs/api/en/2.0.9/iam/overview.html): Manage user account lifecycle, authenticate user identities, and control the access rights to the resources in EnOS.
-- [Common File Service](/docs/api/en/2.0.9/common_file/overview.html): To access the Common File Service API documentation, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** from the left navigation bar.
+- [Connection Service](/docs/api/en/latest/connect/overview.html): Provide device connectivity and device management on EnOS, including product and device creation and management.
+- [Model Service](/docs/api/en/latest/model/overview.html): Search and get the details of the models in an organization.
+- [Asset Service](/docs/api/en/latest/asset/overview.html): Create, manage, and update the assets in an organization.
+- [Alert Service](/docs/api/en/latest/event/overview.html): Search and manage asset alerts.
+- [Asset Tree Service](/docs/api/en/latest/asset_tree/overview.html): Create, manage, update, and search assets trees in an organization.
+- [TSDB Data Service](/docs/api/en/latest/tsdb_service/overview.html): Access to the stored asset data.
+- [TSDB Policy Service](/docs/api/en/latest/tsdb_policy/overview.html): Access to TSDB storage configuration information.
+- [IAM Service Overview](/docs/api/en/latest/iam/overview.html): Manage user account lifecycle, authenticate user identities, and control the access rights to the resources in EnOS.
+- [Common File Service](/docs/api/en/latest/common_file/overview.html): To access the Common File Service API documentation, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** from the left navigation bar.
 
 ## API Request
 
@@ -111,7 +111,7 @@ The returned parameters are described as follows:
 
 ## Description of Public Parameters
 
-The public parameters for each API service are described as follows. For how to get and use other common parameters, see [API FAQs](/docs/api/en/2.0.9/api_faqs.html)
+The public parameters for each API service are described as follows. For how to get and use other common parameters, see [API FAQs](/docs/api/en/latest/api_faqs.html)
 
 ### Public Request Parameters (Connection Service, etc.)
 

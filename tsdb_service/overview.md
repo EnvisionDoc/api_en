@@ -9,7 +9,7 @@ TSDB-based asset data service. The asset refers to the object after the model is
 - Common data
 - Power consumption data
 
-For more information about TSDB storage, see [Managing Time Series Data](/docs/data-asset/en/2.0.9/howto/storage/index.html).
+For more information about TSDB storage, see [Managing Time Series Data](/docs/data-asset/en/latest/howto/storage/index.html).
 
 For the above data types, the TSDB service provides the following interfaces for developers to invoke for data and application development.
 

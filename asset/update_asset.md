@@ -23,7 +23,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
      - Query
      - true
      - String
-     - Organization ID which the asset belongs to. `How to get orgId </docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+     - Organization ID which the asset belongs to. `How to get orgId </docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid>`__
    * - isPatchUpdate
      - Query
      - false
@@ -42,7 +42,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
    * - asset
      - true
      - ``AssetUpdate`` struct
-     - Used for asset update. <br>When ``isPatchUpdate`` is true, only the fields specified are updated; <br>when ``isPatchUpdate`` is false, all fields will be updated, and the fields without specified value will be left blank.<br>For details about the structure, see `AssetUpdate Struct </docs/api/en/2.0.9/asset/update_asset.html#assetupdate-struct-assetupdate>`__ .
+     - Used for asset update. <br>When ``isPatchUpdate`` is true, only the fields specified are updated; <br>when ``isPatchUpdate`` is false, all fields will be updated, and the fields without specified value will be left blank.<br>For details about the structure, see `AssetUpdate Struct </docs/api/en/latest/asset/update_asset.html#assetupdate-struct-assetupdate>`__ .
 
 
 ### AssetUpdate Struct <assetupdate>
@@ -56,11 +56,11 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
    * - assetId
      - true
      - String
-     - Asset ID. `How to get assetId </docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__
+     - Asset ID. `How to get assetId </docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__
    * - name
      - false
      - StringI18n
-     - Name of each language for this asset. For the structure, see `Internationalized name struct </docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct>`__
+     - Name of each language for this asset. For the structure, see `Internationalized name struct </docs/api/en/latest/api_faqs.html#internationalized-name-struct>`__
    * - description
      - false
      - String
@@ -68,11 +68,11 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
    * - attributes
      - false<br> (If ``isPatchUpdate`` is false, the ``attributes`` is mandatory)
      - Map
-     - Attributes of the model which the asset belongs to. <br>``Key`` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see `attributes representation </docs/api/en/2.0.9/api_faqs.html#attributes-representation>`__
+     - Attributes of the model which the asset belongs to. <br>``Key`` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model. For details, see `attributes representation </docs/api/en/latest/api_faqs.html#attributes-representation>`__
    * - timezone
      - false
      - String
-     - Timezone. For details, see `Timezone representation </docs/api/en/2.0.9/api_faqs.html#timezone-representation>`__
+     - Timezone. For details, see `Timezone representation </docs/api/en/latest/api_faqs.html#timezone-representation>`__
    * - modelId
      - false (if ``isPatchUpdate`` is false, the ``modelId`` is mandatory)
      - String
@@ -80,7 +80,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update
    * - tags
      - false
      - Map<br> (Key is of String type and the value is of String type)
-     - User-customized tags. For details, see `How to use tag </docs/api/en/2.0.9/api_faqs.html#how-to-use-tag>`__
+     - User-customized tags. For details, see `How to use tag </docs/api/en/latest/api_faqs.html#how-to-use-tag>`__
 
 
 

@@ -23,8 +23,8 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 | productKey | Query          | False       | String       | Product Key     |
 | deviceKey | Query           | False      | String       | Device Key         |
 | serviceId      | Query| True | String    | ID of the invoked service |
@@ -44,7 +44,7 @@ https://{apigw-address}/connect-service/v2.1/commands?action=invokeService
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |  Service invocation return struct      | Service invocation results. See [Service Invocation Return Struct](/docs/api/en/2.0.9/connect/invoke_service.html#service-invocation-return-struct-invo). |
+| data |  Service invocation return struct      | Service invocation results. See [Service Invocation Return Struct](/docs/api/en/latest/connect/invoke_service.html#service-invocation-return-struct-invo). |
 
 
 ### Service Invocation Return Struct <invo>

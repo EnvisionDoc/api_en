@@ -19,7 +19,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=create
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)         |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)         |
 
 
 ## Request Parameters (Body)
@@ -29,8 +29,8 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=create
 | ruleId         | true         | String                | Alert rule ID, which is to be defined by the user.|
 | ruleDesc       | true         | StringI18n            | Alert description|
 | modelId        | true         | String                | Model applicable for the alert rule|
-| measurepointId | true         | String                | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
-| condition      | true         | String                | Query expression-like statement. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression) |
+| measurepointId | true         | String                | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid) |
+| condition      | true         | String                | Query expression-like statement. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
 | severityId     | true         | String                | Alert severity ID|
 | contentId      | true         | String                | Alert content ID|
 | tags           | false        | tags struct            | Alert rule tag|
@@ -46,7 +46,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=create
 | Name | Required or Not | Data Type | Description |
 |----------|--------------|--------------|----------|
 | treeId   | true         | String       | Asset tree ID. If it is set as "all", it indicates that this is a special node, standing for the globality of the organization.  |
-| assetId  | true         | String       | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
+| assetId  | true         | String       | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
 
 
 

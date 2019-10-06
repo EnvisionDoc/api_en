@@ -12,7 +12,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)               |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)               |
 |isPatchUpdate|Query|true|Boolean|Whether to perform partial update. <br>When it is true, only the fields specified in the parameter are updated; <br>when it is false, all the fields will be updated, i.e. the fields without specified value will be left blank. Set as true by default. |
 
 
@@ -27,10 +27,10 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update
 |Name| Required or Not (Specially in case that isPatchUpdate=false) | Data type | Description |
 |------|-----------------|-----------|-------------|
 | ruleId         | true| String| Alert rule ID, which is specified by the user as the unique identifier to locate the alert rule to be updated. |
-| ruleDesc       | true| StringI18n| Internationalized alert description, for which only supports full update. For the structure, see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct)|
-| modelId| true| String| Model applicable for the alert rule. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs#how-to-get-model-id-modelid-modelid)|
-| measurepointId | true| String                | Asset measurement point. [How to get pointId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid)|
-| condition      | true| String| Query expression-like statement. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. [How to use expression>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-expression) |
+| ruleDesc       | true| StringI18n| Internationalized alert description, for which only supports full update. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
+| modelId| true| String| Model applicable for the alert rule. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
+| measurepointId | true| String                | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid)|
+| condition      | true| String| Query expression-like statement. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
 | severityId     | true| String| Alert severity ID|
 | contentId      | true| String| Alert content ID|
 | tags           | false| tags struct| Rule tags, for which only full update is supported|
@@ -44,7 +44,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update
 | Name | Required or Not | Data Type | Description |
 |----------|--------------|--------------|----------|
 | treeId   | true         | String       | Asset tree ID. If it is set as "all", it indicates that this is a special node, standing for the globality of the organization.  |
-| assetId  | true         | String       | Asset ID. [How to get assetId>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
+| assetId  | true         | String       | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
 
 
 ## Response Parameters

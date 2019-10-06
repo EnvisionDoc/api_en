@@ -14,8 +14,8 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree [How to get the ID of an asset tree>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId        | Query            | true    | String    | ID of the asset tree [How to get the ID of an asset tree>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
 | parentAssetId | Query            | true    | String    | Asset ID of the parent node of the asset to be associated  |
 
 
@@ -23,19 +23,19 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 
 | Name | Required or Not | Data Type | Description |
 |------------|---------------|----------------|--------------------------------|
-| asset| true          | Asset struct    | Asset details to be provided when creating an asset. See [Asset Struct](/docs/api/en/2.0.9/asset_tree/create_asset_and_associate_node.html#asset-struct-assetstruc)   |
+| asset| true          | Asset struct    | Asset details to be provided when creating an asset. See [Asset Struct](/docs/api/en/latest/asset_tree/create_asset_and_associate_node.html#asset-struct-assetstruc)   |
 
 
 ### Asset Struct <assetstruc>
 
 | Name | Required or Not | Data Type | Description |
 |-------|-------|-------------|--------------|
-| modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/2.0.9/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| name |true| StringI18n |Asset name that supports internationalization. For the structure, see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct)  |
-|timezone  |true|  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time<br>For details, see [Timezone representation>>](/docs/api/en/2.0.9/api_faqs.html#timezone-representation) |
+| modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| name |true| StringI18n |Asset name that supports internationalization. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)  |
+|timezone  |true|  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time<br>For details, see [Timezone representation>>](/docs/api/en/latest/api_faqs.html#timezone-representation) |
 |description |false|String|Asset description |
-|attributes  |false  |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to. For details, see [attributes representation>>](/docs/api/en/2.0.9/api_faqs.html#attributes-representation) |
-|tags |false|Tag struct|User-customized tags. For details, see [How to use tag>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-tag)|
+|attributes  |false  |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to. For details, see [attributes representation>>](/docs/api/en/latest/api_faqs.html#attributes-representation) |
+|tags |false|Tag struct|User-customized tags. For details, see [How to use tag>>](/docs/api/en/latest/api_faqs.html#how-to-use-tag)|
 
 
 

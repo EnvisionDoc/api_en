@@ -12,7 +12,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=update
 
 | Name | Location (Path/Query) | Required or Not | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.0.9/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
 
 ## Request Parameters (Body)
 
@@ -26,8 +26,8 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=update
 | Name | Required or Not | Data Type | Description |
 |-----------|-----------------|-------------------|-----------------------|
 | treeId   | true         | String       | Asset tree ID |
-| name     | true         | StringI18n   | Asset tree name that supports internationalization. For the structure, see [Internationalized name struct>>](/docs/api/en/2.0.9/api_faqs.html#internationalized-name-struct) |
-|tags |false|Tag struct|User-customized tags. For details, see [How to use tag>>](/docs/api/en/2.0.9/api_faqs.html#how-to-use-tag) |
+| name     | true         | StringI18n   | Asset tree name that supports internationalization. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct) |
+|tags |false|Tag struct|User-customized tags. For details, see [How to use tag>>](/docs/api/en/latest/api_faqs.html#how-to-use-tag) |
 
 
 
