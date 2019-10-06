@@ -26,5 +26,6 @@ EnOS API
    asset_tree/index
    tsdb_service/index
    tsdb_policy/index
+   iam/index
    common_file/overview
    api_faqs
