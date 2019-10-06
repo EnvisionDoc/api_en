@@ -38,7 +38,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=create
 |isRoot|false|Boolean|Whether it is a root alert, which is "false" by default.|
 | scope          | true         | AssetNode struct | Specify a node on the asset tree to indicate the scope of the alert rule. See [AssetNode Struct](create_alert_rule#assetnode-struct-assetnode). |
 | source |false| String |Customized data source that indicates the data source to which the alert rule applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
-| triggeringDelayTimer | false | Integer | Time to delay the alert triggering. The unit is seconds and the range is [60 - 10800]. The alert will be triggered when an anomaly that matches the alert rule occurs, and this anomaly does not return to normal within the set time. When it is 0, trigger the alert immediately. See [Tutorial: Setting Alert Triggering Delay Timer](docs.eniot.io/docs/device-connection/en/latest/howto/alert/setting_alert_triggering_delay_timer.html). |
+| triggeringDelayTimer | false | Integer | Time to delay the alert triggering. The unit is seconds and the range is [60 - 10800]. The alert will be triggered when an anomaly that matches the alert rule occurs, and this anomaly does not return to normal within the set time. When it is 0, trigger the alert immediately. See [Tutorial: Setting Alert Triggering Delay Timer](docs.eniot.io/docs/device-connection/en/2.0.9/howto/alert/setting_alert_triggering_delay_timer.html). |
 
 
 ### AssetNode Struct <assetnode>

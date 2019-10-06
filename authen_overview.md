@@ -12,7 +12,7 @@ The service account SA consists of the application's `AccessKey` and `SecretKey`
 
 ## Authorizing Service Accounts
 
-Only after a service account is authorized can applications be allowed to access the authorized resources on EnOS. For detailed steps on how to authorize a service account, see [Managing Service Accounts](/docs/iam/en/2.0.9/howto/service_account/managing_service_account.html).
+Only after a service account is authorized can applications be allowed to access the authorized resources on EnOS. For detailed steps on how to authorize a service account, see [Managing Service Accounts](/docs/enos/en/2.0.9/iam/howto/service_account/managing_service_account.html).
 
 ## API Operation Permissions
 
