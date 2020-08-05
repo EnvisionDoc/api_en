@@ -1,20 +1,27 @@
 # About EnOS API
 
+<br />
+
 EnOS provides REST APIs that cover the core business processes of the system. Based on these APIs, developers can access resources within the system to develop various applications.
 
 ## API List
 
 EnOS provides the following API services:
 
-- [Connection Service](/docs/api/en/latest/connect/overview.html): Provide device connectivity and device management on EnOS, including product and device creation and management.
-- [Model Service](/docs/api/en/latest/model/overview.html): Search and get the details of the models in an organization.
-- [Asset Service](/docs/api/en/latest/asset/overview.html): Create, manage, and update the assets in an organization.
-- [Alert Service](/docs/api/en/latest/event/overview.html): Search and manage asset alerts.
-- [Asset Tree Service](/docs/api/en/latest/asset_tree/overview.html): Create, manage, update, and search assets trees in an organization.
-- [TSDB Data Service](/docs/api/en/latest/tsdb_service/overview.html): Access to the stored asset data.
-- [TSDB Policy Service](/docs/api/en/latest/tsdb_policy/overview.html): Access to TSDB storage configuration information.
-- [IAM Service Overview](/docs/api/en/latest/iam/overview.html): Manage user account lifecycle, authenticate user identities, and control the access rights to the resources in EnOS.
-- [Common File Service](/docs/api/en/latest/common_file/overview.html): To access the Common File Service API documentation, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** from the left navigation bar.
+- [Connection Service](/docs/api/en/2.1.0/connect/overview.html): Provide device connectivity and device management on EnOS, including product and device creation and management.
+- [Model Service](/docs/api/en/2.1.0/model/overview.html): Search and get the details of the models in an organization.
+- [Asset Service](/docs/api/en/2.1.0/asset/overview.html): Create, manage, and update the assets in an organization.
+- [Alert Service](/docs/api/en/2.1.0/event/overview.html): Search and manage asset alerts.
+- [Asset Tree Service](/docs/api/en/2.1.0/asset_tree/overview.html): Create, manage, update, and search assets trees in an organization.
+- [TSDB Data Service](/docs/api/en/2.1.0/tsdb_service/overview.html): Access to the stored asset data.
+- [TSDB Policy Service](/docs/api/en/2.1.0/tsdb_policy/overview.html): Access to TSDB storage configuration information.
+- [IAM Service Service](/docs/api/en/2.1.0/iam/overview.html): Manage user account lifecycles, authenticate user identities, and control the access rights to the resources in EnOS.
+- [Application Portal Service](/docs/api/en/2.1.0/app_portal/overview.html): Get information about users, assets, and applications to configure permissions on the EnOS Application Portal.
+- [Prediction Model Service](/docs/api/en/2.1.0/ml_service/overview.html): Get the prediction results of the deployed machine learning algorithm model.
+- [Batch Processing Service](/docs/api/en/2.1.0/dataflow_service/index.html): Provide data integration, data development, data operation, and maintenance services that are required for big data analysis.
+- [Data Federation Service](/docs/api/en/2.1.0/data_federation/overview.html): Provide data reading and data writing services for multi-source heterogeneous data storage systems.
+- [Stream Processing Service](/docs/api/en/2.1.0/streaming/overview.html): Provide query and management of stream processing jobs.
+
 
 ## API Request
 
@@ -26,14 +33,14 @@ The EnOS API request consists of the following parts:
 {URI-scheme}://{apigw-address}/{service-name}/{version}/{endpoint-URL}?{query-param=value}
 ```
 
-Where:
+- `URI-sheme`: The protocol, supporting HTTPS protocol.
+- `apigw-address`: The gateway address of the API service in the environment where EnOS is deployed. Its paradigm is `apim-{domain-name}`, where `domain-name` is the name of the EnOS deployment environment.
+- `service-name`: The service name, e.g. `asset-service`.
+- `version`: The API version, e.g. `v2.0`.
+- `endpoint-URL`: The resources and operations on resources, e.g. `assets/update`.
+- `query-param`: The parameters and values for the target resource, e.g. `orgId=1234`. When there are multiple query parameters, they should be connected by `&`.
 
-- `URI-sheme`: protocol, supporting HTTPS protocol.
-- `apigw-address`: Gateway address of the API service in the environment where EnOS is deployed. Its paradigm is `apim-{domain-name}`, where `domain-name` is the name of the EnOS deployment environment.
-- `service-name`: Service name, e.g. `asset-service`.
-- `version`: API version, e.g. `v2.0`.
-- `endpoint-URL`: Resources and operations on resources, e.g. `assets/update`.
-- `query-param`: Parameters and values for the target resource, e.g. `orgId=1234`. When there are multiple query parameters, they should be connected by `&`.
+<br />
 
 For example, to get the asset information in an organization, send the following API request:
 
@@ -46,11 +53,13 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1234&assetId=
 
 Any other fields required by the REST API specifications and HTTP specifications of the Request URI are bound in the request header.
 
-The commonly used request header is `Content-Type`, which represents the data submission method. Generally, its value can be set to `application/json;charset=UTF-8`; if the file uploading or other form submission is performed, the value is set to `Multipart/form-data;charset=UTF-8`.
+<br />
+
+The commonly used request header is `Content-Type`, which represents the data submission method. Generally, its value can be set to `application/json;charset=UTF-8`; if file uploading or other form submission is performed, the value is set to `Multipart/form-data;charset=UTF-8`.
 
 ### Request Body
 
-Request body is used to supplement the Request URI to provide more complex input parameters. For example, the request body below contains the parameters that specify the timezone, description, tags and other attributes to update an asset:
+The request body supplements the Request URI, enabling users to provide input parameters that are more complex. For example, the request body below contains parameters that specify the timezone, description, tags, and other attributes to update an asset:
 
 ```
 POST
@@ -71,7 +80,7 @@ https://{apigw-address}/asset-service/v2.1/assets?action=update&orgId=1234&isPat
 
 ## API Response
 
-The response of EnOS APIs is in JSON format as follows:
+An example of the EnOS API response in JSON format with its parameters explained is shown below:
 
 ```
 {
@@ -83,81 +92,80 @@ The response of EnOS APIs is in JSON format as follows:
 }
 ```
 
-The returned parameters are described as follows:
-
 .. list-table::
+   :widths: 20 30 50
+   :header-rows: 1
 
    * - Name
-     - Required or Not
      - Data Type
      - Description
    * - code
      - Integer
-     - true
-     - API request status code. 0 stands for successful request. For other status codes, refer to the public return codes and the error codes in the API documentation.
+     - The API request status code. "0" means that the request is successful. For other status codes, refer to the public return codes and the error codes in the API documentation.
    * - msg
      - String
-     - true
-     - Explanation of the status codes. "OK" indicates successful request. If the API request fails, the specific error information will be returned.
+     - The explanation of the status codes. "OK" indicates a successful request. If the API request fails, the specific error information will be returned.
    * - requestId
      - String
-     - true
-     - ID for each request. It is a unique identifier for an API request.
+     - The ID for each request. It is a unique identifier for an API request.
    * - data
      - Array or Object
-     - false
-     - The set of API response result. Data types include: basic data types, complex types or arrays.
+     - The set of API response results. Data types include: basic data types, complex types, or arrays.
 
 
 ## Description of Public Parameters
 
-The public parameters for each API service are described as follows. For how to get and use other common parameters, see [API FAQs](/docs/api/en/latest/api_faqs.html)
+The public parameters for each API service are described below. For how to get and use other common parameters, see [API FAQs](/docs/api/en/2.1.0/api_faqs.html)
 
-### Public Request Parameters (Connection Service, etc.)
 
-The public request parameters for the connection service, model service, asset service, event service, and asset tree service APIs are as follows:
-
-#### Pagination Request Struct
+### Pagination Request Struct
 
 The Pagination parameter is used for random pagination. The default pagination value is 10.
 
 .. list-table::
+   :widths: 20 20 20 40
+   :header-rows: 1
 
    * - Name
-     - Required or Not
+     - Mandatory/Optional
      - Data Type
      - Description
    * - pageNo
+     - Mandatory
      - Integer
-     - true
-     - Request pages, starting from 1
+     - The request pages, starting from 1. (It starts from 0 for Application Portal service.)
    * - pageSize
+     - Mandatory
      - Integer
-     - true
-     - Number of records in each page, which must be greater than 0
+     - The number of records in each page, which must be greater than 0.
    * - sorters
+     - Optional
      - Sorter struct
-     - false
-     - Pagination sorting method
+     - The pagination sorting method. (Not supported in Application Portal service.)
 
+<br />
 
 **Sorter struct**
 
 .. list-table::
+   :widths: 20 20 20 40
+   :header-rows: 1
 
    * - Name
-     - Required or Not
+     - Mandatory/Optional
      - Data Type
      - Description
    * - field
+     - Mandatory
      - String
-     - true
-     - Pagination field name
+     - The pagination field name.
    * - order
+     - Optional
      - String
-     - false
-     - ASC means ascending order, DESC means descending order, which is set as ASC by default
+     - + ASC (default) = ascending order
+       + DESC = descending order
 
+<br />
 
 **Pagination parameter sample**
 
@@ -174,11 +182,17 @@ The Pagination parameter is used for random pagination. The default pagination v
 }
 ```
 
+### Public Request Parameters (Connection Service, etc.)
+
+The public request parameters for the connection service, model service, asset service, event service, and asset tree service APIs are as follows:
+
 #### Projection Parameter
 
-The Projection parameter is used to crop the returned data result set. Its data type is String Array. Each of the string represents a result field that needs to be returned in the returned result. Any fields that are not specified in the projection would not be returned in the result set. When specifying a field, you can use:
+The ``projection`` parameter is used to crop the returned data result set. Its data type is String Array. Each of the string represents a result field that needs to be returned in the returned result. Any fields that are not specified in the projection would not be returned in the result set. When specifying a field, you can use:
 
 .. list-table::
+   :widths: 40 60
+   :header-rows: 1
 
    * - Symbol
      - Description
@@ -187,9 +201,9 @@ The Projection parameter is used to crop the returned data result set. Its data 
    * - ``*``
      - Stands for any field value
    * - ``.``
-     - Stands for sub-field
+     - Stands for a sub-field
 
-
+<br />
 
 When the projection parameter is not provided, the data result set is not cropped.
 
@@ -208,22 +222,28 @@ When the projection parameter is not provided, the data result set is not croppe
 The public response parameters for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 .. list-table::
+   :widths: 30 30 40
+   :header-rows: 1
 
    * - Name
-     - Required or Not
      - Data Type
      - Description
    * - pagination
      - Pagination response struct
-     - false
-     - Pagination information for the current returned results
+     - The pagination information for the current returned results.
 
 
 ### Public Response Codes (Connection Service, etc.)
 
+.. note:: Only the common response codes are listed here. Refer to the specific API documentation for the specific response codes of each interface.
+
+<br />
+
 The public response codes for the connection service, model service, asset service, event service, and asset tree service APIs are:
 
 .. list-table::
+   :widths: 30 70
+   :header-rows: 1
 
    * - Code
      - Description
@@ -232,10 +252,11 @@ The public response codes for the connection service, model service, asset servi
    * - **99403**
      - Missing permissions. Make sure you have the permission to access the API and requested resources.
    * - **99404**
-     - The specified object does not exist. For example, when getting, updating, or deleting a device, the specified deviceKey of the device does not exist.
+     - The specified object does not exist. For example, when getting, updating, or deleting a device, the specified ``deviceKey`` of the device does not exist.
    * - **99500**
-     - Server internal error. Contact EnOS support.
+     - Internal server error. Contact EnOS support.
 
+<br />
 
 Sample:
 
@@ -259,7 +280,7 @@ Sample:
 99403 error sample: missing permissions
 {
     "code": 99403,
-    "msg": “Denied resource:  orgId o15589291276361",
+    "msg": “Denied resource:  orgId o1558xxxxxxxxxx",
     "requestId": "4d4bfd4d-b5c5-4b9c-b452-833516153b49",
     "data": null
 }
@@ -275,67 +296,31 @@ Sample:
 
 ### Public Response Codes (TSDB Data Service)
 
+.. note:: Only the common response codes are listed here. Refer to the specific API documentation for the specific response codes of each interface.
+
+<br />
+
 The public response codes for the TSDB data service APIs are:
 
 .. list-table::
+   :widths: 20 40 40
+   :header-rows: 1
 
    * - Code
      - Message
      - Description
-   * - 400
-     - You do not have permission for the following assets
-     - The current application does not have permissions to the following assets.
-   * - 400
-     - Exception:  Invalid param accessKey
-     - Invalid parameter ``accessKey``.
-   * - 400
-     - xxx is required
-     - The value of parameter xxx cannot be null.
-   * - 400
-     - All asset authentication failed
-     - The current application does not have permissions for all devices that are queried.
-   * - 400
-     - Invalid Argument
-     - Invalid or missing parameters.
-   * - 400
-     - [modelId] permission denied
-     - [modelId] is invalid or has no access permission.
-   * - 430
-     - \
-     - The request exceeds the maximum limit of network traffic within the service.
-   * - 701
-     - \
-     - Service error.
-   * - 702
-     - Params startTime or endTime is   invalid, and date format of them should be consistent
-     - Time format error. The local time format is YYYY-MM-DD HH:MM:SS; Timezone information is required for UTC time format, e.g. 2019-06-01T00:00:00+08:00.
-   * - 702
-     - xxx cannot be null or negative
-     - The value of parameter xxx cannot be null or negative.
-   * - 702
-     - xxx is empty
-     - The value of parameter xxx cannot be null or negative.
-   * - 702
-     - only one xxx is allowed
-     - At most one parameter xxx is allowed.
-   * - 702
-     - assetIds size *measurement points size* pageSize is too large to query, result size may exceed RPC limit
-     - The result set of a single query is too large. The calculation result by using the formula "Number of Devices *Number of Measuring points* pageSize" cannot be greater than 640,000.
-   * - 702
-     - param xxx is invalid
-     - The parameter xxx is invalid.
-   * - 702
-     - endTime should not be later than   startTime
-     - The query end time should be later than the start time.
-   * - 702
-     - is not a valid integer
-     - The parameter is not a valid integer.
-   * - 702
-     - assetIds or measurement point does not   match the model
-     - Device or measuring point does not match with the model.
-   * - 702
-     - Please config/check storage group for   org[] and model[]
-     - The storage policy is not configured or the ``modelId`` is incorrect.
+   * - 0
+     - OK
+     - API request is successful.
+   * - 80400
+     - Invalid param error
+     - Invalid One or more parameters are invalid. For details, see the error message.
+   * - 80401
+     - Assset unauthorized
+     - The SA does not have access permission to assets. Check the authorization to the application SA.
+   * - 80500
+     - Internal server error
+     - Internal server error.
 
 
 <!--end-->

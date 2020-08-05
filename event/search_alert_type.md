@@ -1,8 +1,7 @@
 # Search Alert Type
 
+Search for alert types based on the search criteria.
 
-
-Query alert types by page.
 
 ## Request Format
 
@@ -12,44 +11,45 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
                                                                  
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
+| Name            | Mandatory/Optional | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `typeId` and `parentTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| pagination     | false     | Pagination request struct    | Pagination parameter. When not specified, 10 entries are displayed in each page. The entries are sorted in descending order by `updateTime` by default. User can use a field in the `AlertType` struct for sorting purpose. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| expression         | Optional    | String   | The query expression, which supports sql-like query. The fields that are supported for query include: `typeId` and `parentTypeId`. The supported arithmetic operators are "=" and "in", and the logical operator is "and". [How to use expression>>](/docs/api/en/2.1.0/api_faqs.html#how-to-use-expression)|
+| pagination     | Optional     | Pagination Request Struct    | Lists the paging requirements in a request. If not specified, 10 entries are displayed per page, sorted in descending order by `updateTime` by default. Alternatively, you can specify `typeId` or `parentTypeId` as the sorting criterion. For more details, see [Pagination Request Struct>>](/docs/api/en/2.1.0/overview.html#pagination-request-struct) |
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data  | AlertType struct  | Alert type. See [AlertType Struct](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype). |
+| data  | Array of AlertType Struct  | A list of the alert types. For details of an alertType struct, see [AlertType Struct](/docs/api/en/2.1.0/event/search_alert_type.html#alerttype-struct-alerttype). |
 
 ### AlertType Struct <alerttype>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
-| typeId        | String                | Alert type ID|
-| typeDesc   | StringI18n            | Alert type description|
-| orgId          | String                |  Organization ID which the asset belongs to|
-| parentTypeId        | String          | Parent alert type ID. If set as null, it is the parent alert type. |
-| tags        | Tag struct          | Tags|
-| source |false| String |Customized data source that indicates the data source to which the alert type applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
-| updatePerson        | String                | Update personnel name|
-| updateTime    | Long                | Update time (UTC)
+| typeId        | String                | The alert severity ID.|
+| typeDesc   | StringI18n            | The alert type description. |
+| orgId          | String                |  The rganization ID which the asset belongs to.|
+| parentTypeId        | String          | The alert type ID of the parent alert. |
+| tags        | Map          | User-defined tags. (The Key and Value are of String type.)|
+| updatePerson        | String                | The name of the person who last updated the alert severity.|
+| updateTime    | Long                | The time when the alert was last updated in UTC format.
 
 
 
-## Input/Output Samples
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search&orgId=1c499110e8800000
+url: https://{apigw-address}/event-service/v2.1/alert-types?action=search&orgId=yourOrgId
+method: POST 
+requestBody:
 {
 	"pagination": {
 		"pageNo": 1,
@@ -58,7 +58,8 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 			"field": "typeId",
 			"order": "DESC"
 		}]
-	}
+	},
+  "action": "search"
 }
 ```
 
@@ -83,6 +84,7 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 		"orgId": "yourOrgId",
 		"typeDesc": {
 			"i18nValue": {
+        "defaultValue": null,
 				"en_US": "dateType desc",
 				"zh_CN": ""
 			}
@@ -98,24 +100,24 @@ POST https://{apigw-address}/event-service/v2.1/alert-types/search?action=search
 ## Java SDK Sample
 
 ```java
-public void testSearchAlertType() {  
-        SearchAlertTypeRequest request = new SearchAlertTypeRequest();  
-        request.setOrgId(orgId);  
-        Pagination pagination = new Pagination();  
-        pagination.setPageNo(1);  
-        pagination.setPageSize(1);  
-        List<Sorter> sorterList = new ArrayList<>();  
-        sorterList.add(new Sorter("typeId", Sorter.Order.DESC));  
-        pagination.setSorters(sorterList);  
-	        request.setPagination(pagination);  
-	        try {  
-	            SearchAlertTypeResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
-	                    .url("https://{apigw-address}")  
-	                    .getResponse(request, SearchAlertTypeResponse.class);  
-	            Gson gson = new Gson();  
-	            System.out.println(gson.toJson(response));  
-	        } catch (Exception e) {  
-	            e.printStackTrace();  
-	        }  
+public void testSearchAlertType() {
+    SearchAlertTypeRequest request = new SearchAlertTypeRequest();
+    request.setOrgId(orgId);
+    Pagination pagination = new Pagination();
+    pagination.setPageNo(1);
+    pagination.setPageSize(1);
+    List < Sorter > sorterList = new ArrayList < > ();
+    sorterList.add(new Sorter("typeId", Sorter.Order.DESC));
+    pagination.setSorters(sorterList);
+    request.setPagination(pagination);
+    try {
+        SearchAlertTypeResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+            .url("https://{apigw-address}")
+            .getResponse(request, SearchAlertTypeResponse.class);
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(response));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 ```

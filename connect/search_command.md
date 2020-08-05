@@ -1,35 +1,49 @@
 # Search Command
 
-Query the details of the commands. List all commands of one device and do result filter based on search criteria.
+Search for commands of a device and filter the results based on the search criteria.
+
+## Operation Permissions
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset
+     - Control
 
 ## Request Format
 
-```
-https://{apigw-address}/connect-service/v2.1/commands?action=search
+```json
+POST https://{apigw-address}/connect-service/v2.1/commands?action=search
 ```
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to specify the device:
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include ``assetId`` in the request
+   - Include ``productKey`` + ``deviceKey`` in the request
 
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+
+
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)        |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String   | Product Key     |
-| deviceKey | Query           | False      | String       | Device Key         |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)        |
+| assetId  | Query            | Optional (See **Note** above)  | String         | The asset ID. [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query          | Optional (See **Note** above)      | String   | The product key. To be used with ``deviceKey``.    |
+| deviceKey | Query           | Optional (See **Note** above)     | String       | The device key. To be used with ``productKey``.          |
 
 
 ## Request Parameters (Body)
 
-| Name |  Required or Not | Data Type | Description |
+| Name |  Mandatory/Optional | Data Type | Description |
 |----------------|----------|--------------------|----|
-| expression     | false    | String| Query expression, which supports for sql-like query. The fields that are supported for query include: `state`, `commandName`, and `createTime`.<br>`state`: support arithmetic operators "=".<br>`commandName`: support fuzzy inquiry, `locale` is mandatory, such as "commandName.zh_CN" or "commandName.en_US".<br>`createTime`: supports ">", "=", and "<" to specify a time range. [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
-| pagination    | false     | Pagination request struct | Pagination parameter. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 100 pages. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
-| projection  | false    | Projection struct | Used to describe the object projection to be returned in the interface request. For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)  |
+| expression     | Optional    | String| The query expression, which supports sql-like query. The fields that are supported for query include: ``state``, ``commandName``, and ``createTime``. ``state``: supports arithmetic operator "=". ``commandName``: supports fuzzy inquiry, where ``locale`` is mandatory, such as "commandName.zh_CN" or "commandName.en_US". ``createTime``: supports ">", "=", and "<" to specify the time range. [How to use expression>>](/docs/api/en/2.1.0/api_faqs.html#how-to-use-expression) |
+| pagination    | Optional     | Pagination Request Struct | Lists the paging requirements in a request. When not specified, the results are sorted in descending order by ``createTime`` by default with a pagination size of 100 pages. `sorters` is not supported to sort the response. For more details, see [Pagination Request Struct>>](/docs/api/en/2.1.0/overview.html#pagination-request-struct) |
+| projection  | Optional    | Projection Struct | Enables you to crop the data result set returned in the request if needed. Only the specified fields will be returned in the data result set if this parameter is used. Otherwise all fields are returned. For more details, see [How does projection crop the result set>>](/docs/api/en/2.1.0/api_faqs.html#how-does-projection-crop-the-result-set)  |
 
 
 
@@ -37,20 +51,26 @@ https://{apigw-address}/connect-service/v2.1/commands?action=search
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    getCommand struct       | Information corresponding to the search criteria. See [Command Struct>>](get_command.html#command-struct-command) |
+| data |   Array of Command Structs       | The list of commands. For details, see [Command Struct>>](get_command.html#command-struct-command) |
 
 
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
-```
-POST
-https://apigw-address/connect-service/v2.1/commands?action=search&deviceKey=zm_mqtt&productKey=bXuuAiku&orgId=yourOrgId
+```json
+url: https://{apigw-address}/connect-service/v2.1/commands?action=search&deviceKey=yourDeviceKey&productKey=yourProductKey&orgId=yourOrgId
+method: POST
+requestBody:
 {
-    "expression": "state = 2",
-    "pagination": {"pageNo":1,"pageSize":5}
+    "expression": {
+      "state = 2"
+    },
+    "pagination": {
+      "pageNo":1,
+      "pageSize":5
+    }
 }
 ```
 
@@ -195,9 +215,10 @@ https://apigw-address/connect-service/v2.1/commands?action=search&deviceKey=zm_m
 
 ### Request Sample
 
-```
-POST
-https://apigw-address/connect-service/v2.1/commands?action=search&deviceKey=zm_mqtt&productKey=bXuuAiku&orgId=yourOrgId
+```json
+url: https://apigw-address/connect-service/v2.1/commands?action=search&deviceKey=zm_mqtt&productKey=bXuuAiku&orgId=yourOrgId
+method: POST
+requestBody:
 {
   "expression": "commandName.zh_CN like \"Int_value\" AND createTime >= \"2019-08-13 09:00:00\"",
   "pagination": {
@@ -344,24 +365,24 @@ https://apigw-address/connect-service/v2.1/commands?action=search&deviceKey=zm_m
 
 ```java
 package com.envisioniot.enos.api.sample.connect_service.command;
- 
+
 import com.envision.apim.poseidon.config.PConfig;
 import com.envision.apim.poseidon.core.Poseidon;
 import com.envisioniot.enos.api.common.constant.request.Pagination;
 import com.envisioniot.enos.connect_service.v2_1.service.SearchCommandRequest;
 import com.envisioniot.enos.connect_service.v2_1.service.SearchCommandResponse;
- 
+
 public class SearchCommand {
- 
+
     public static void main(String[] args) {
-        String accessKey = "...";
-        String secretKey = "...";
-        String serverUrl = "https://...";
- 
+        String accessKey = "AccessKey of your APP";
+        String secretKey = "SecretKey of your APP";
+        String serverUrl = "https://{apigw-address}";
+
         String orgId = "yourOrgId";
         String productKey = "yourProdctKey";
         String deviceKey = "yourDeviceKey";
- 
+
         SearchCommandRequest request = new SearchCommandRequest();
         request.setOrgId(orgId);
         request.setProductKey(productKey);

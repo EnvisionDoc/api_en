@@ -2,51 +2,96 @@
 
 Create a new alert severity.
 
+
 ## Request Format
 
-```
+```json
 POST https://{apigw-address}/event-service/v2.1/alert-severities?action=create
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)             |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
 
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
-|------|-----------------|-----------|-------------|
-| severity |  true  |  generateSeverity strucuture  |  Alert severity. See [generateSeverity Struct](create_alert_severity#generateseverity-struct-generateseverity).   |
+
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - severity
+     - Mandatory
+     - GenerateSeverity Struct
+     - The details of the alert severity. For more information, see `GenerateSeverity Struct>> <create_alert_severity#generateseverity-struct-generateseverity>`_
 
 
 
-### generateSeverity Struct <generateseverity>
+### GenerateSeverity Struct <generateseverity>
 
-| Name | Required or Not | Data Type | Description                           |
-|--------------|--------------|--------------|-------------------------------------|
-| severityId   | true         | String       | Alert severity ID|
-| severityDesc | true         | StringI18n   | Internationalized description of alert severity, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
-| tags         | false        | tags data type | Tags of alert severity |
-| source |false| String |Customized data source that indicates the data source to which the alert severity applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
+
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - severityId
+     - Mandatory
+     - String
+     - The alert severity ID.
+   * - severityDesc
+     - Mandatory
+     - StringI18n
+     - Specify the alert severity's description in its respective locale's language. For more details on the structure and locales supported, see `Internationalized name struct>> </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_
+   * - tags
+     - Optional
+     - Map
+     - The user-defined tags. (The Key and Value are of String type.) For details, see `How to use tags>> </docs/api/en/2.1.0/api_faqs.html#how-to-use-tag>`_
 
 
 
 ## Response Parameters
 
-| Name | Data Type     | Description          |
-|-------|----------------|---------------------------|
-|  data   |  String   |  severityId   |
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - String
+     - The alert severity ID.
 
 
-
-## Sample
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/alert-severities?action=create&orgId=yourOrgId
+url: https://{apigw-address}/event-service/v2.1/alert-severities?action=create&orgId=yourOrgId
+method: POST 
+requestBody: 
 {
 	"severity": {
 		"severityId": "planetTemperature",
@@ -71,6 +116,38 @@ POST https://{apigw-address}/event-service/v2.1/alert-severities?action=create&o
 {
 	"code": 0,
 	"msg": "OK",
-	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea"
+	"requestId": "94e0e6e5-10dd-4fcb-a013-331d5869975a",
+	"data": "planetTemperature"
 }
+```
+
+### Java SDK Sample
+
+```java
+public void testCreateAlertSeverity() {
+        CreateAlertSeverityRequest request = new CreateAlertSeverityRequest();
+        GenerateSeverity generateSeverity = new GenerateSeverity();
+        StringI18n desc = new StringI18n();
+        desc.setDefaultValue("default");
+        Map<String, String> map = new HashMap<>();
+        map.put("zh_CN", "中文");
+        map.put("en_US", "english");
+        desc.setI18nValue(map);
+        generateSeverity.setSeverityDesc(desc);
+        generateSeverity.setSeverityId("yourSeverityId");
+        Map<String, String> tags = new HashMap<>();
+        tags.put("yourTagKey", "yourTagValue");
+        generateSeverity.setTags(tags);
+        request.setSeverity(generateSeverity);
+        request.setOrgId(orgId);
+        try {
+            CreateAlertSeverityResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                    .url(url)
+                    .getResponse(request, CreateAlertSeverityResponse.class);
+            Gson gson = new Gson();
+            System.out.println(gson.toJson(response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 ```

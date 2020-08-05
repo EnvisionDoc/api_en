@@ -1,55 +1,101 @@
 # Disable Device
 
+Disable a device.
 
+## Operation Permissions
 
-Disable devices.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Device Management
+     - Full Access
 
 ## Request Format
 
 ```
-https://{apigw-address}/connect-service/v2.1/devices?action=disable
+POST https://{apigw-address}/connect-service/v2.1/devices?action=disable
 ```
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to specify the device to be disabled:
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include ``assetId`` in the request
+   - Include ``productKey`` + ``deviceKey`` in the request
 
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+
+
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query          | False      | String        | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query         | False      | String         | Product Key     |
-| deviceKey | Query         | False     | String          | Device Key         |
-    
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query          | Optional (See **Note** above)      | String        | The asset ID. [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query         | Optional (See **Note** above)      | String         | The product key. To be used with ``deviceKey``.     |
+| deviceKey | Query         | Optional (See **Note** above)     | String          | The device key. To be used with ``productKey``.         |
+
 
 
 ## Error Codes
 
-| Code| Data Type | Description |
-|-------------|-----------------------------------|-----------------------------|
-| 11794 |                | The device to be disabled has already been disabled                |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Code
+     - Description
+   * - 11794
+     - The device has already been disabled.
 
 
-## Sample 1
+
+## Samples
 
 ### Request Sample
 
-```
-url:https://{apigw-address}/connect-service/v2.1/devices?action=disable&orgId=o15475450989191&assetId=9HhK0YxX
-method:  POST
+```json
+url: https://{apigw-address}/connect-service/v2.1/devices?action=disable&orgId=yourOrgId&assetId=yourAssetId
+method: POST
 ```
 
 ### Return Sample
 
 ```json
-responseBody:  {
+{
 	"code": 0,
 	"msg": "OK",
 	"requestId": "b3f22f9b-d90d-4bf2-9e97-79162a3d1dff",
 	"data": null
 }
 ```
+### Java SDK Sample
 
+```java
+package com.envisioniot.enos.api.sample.connect_service.device;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.connect_service.v2_1.device.DisableDeviceRequest;
+import com.envisioniot.enos.connect_service.v2_1.device.DisableDeviceResponse;
+
+
+public class DisableDevice {
+    public static void main(String[] args) {
+        final String appKey = "yourAppKey";
+        final String appSecret = "yourAppSecret";
+        String serverUrl = "yourServerUrl";
+
+        String orgId = "yourOrgId";
+        String assetId = "yourAssetId";
+        DisableDeviceRequest request = new DisableDeviceRequest();
+        request.setOrgId(orgId);
+        request.setAssetId(assetId);
+        DisableDeviceResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                .url(serverUrl)
+                .getResponse(request, DisableDeviceResponse.class);
+
+    }
+}
+```

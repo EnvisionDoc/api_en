@@ -1,41 +1,50 @@
 # Search Asset Path
 
+Search for paths on the asset tree. A path is a complete path from a superior asset node to a subordinate asset node, which can contain intermediate asset nodes.
 
+## Operation Permissions
 
-Query the eligible path on the asset tree. A path is a complete path from a superior asset node to a subordinate asset node, which can contain intermediate asset nodes.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset Tree Management
+     - Read
 
 ## Request Format
 
-```
-https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search
+```json
+POST https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId          | Query            | true     | String    | Asset tree ID |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| treeId          | Query            | Mandatory     | String    | The asset tree ID. [How to get treeID>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-the-id-of-an-asset-tree) |
 
 
 ## Request Parameters (Body)
 
-| Name | Required or Not | Data Type | Description |
+| Name | Mandatory/Optional | Data Type | Description |
 |-----------------|---------------|-------------------|-----|
-| pagination| false         |  Pagination request struct | Used to describe paging requirements in an interface request. By default, it is in the first page and the pagination size is 100. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct)  |
-| from | false         | From-to struct       | Represents the starting point condition of the asset path. If not provided, it represents the root node of the asset tree. See [From-to Struct](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-struct-fromtostruc)                         |
-| to            | false         | From-to struct           | Represents the ending point condition of the asset path. If not provided, it represents the child/leaf node of the asset tree. See [From-to Struct](/docs/api/en/latest/asset_tree/search_asset_path.html#from-to-struct-fromtostruc) |
-| projection| false         | String Array         | Used to describe the object projection to be returned in the interface request. Only eligible fields are returned for eligible searches, and all fields are returned by default if no search criterion is set. For details, see [How does projection crop the result set>>](/docs/api/en/latest/api_faqs.html#how-does-projection-crop-the-result-set)|
-| pathProjection| false         | String                | It can be "COMPLETE" or "END_NODE_ONLY". "COMPLETE" represents each asset node on the return path, which is set as "COMPLETE" by default; "END_NODE_ONLY" means only the start and end points of the path are returned.  |
+| pagination| Optional         |  Pagination Request Struct | Lists the paging requirements in an interface request. If not specified, only the first page with 100 records will be returned. The maximum records per page is 1000. ``sorters`` is not supported for sorting the response. For more details, see [Pagination Request Struct](/docs/api/en/2.1.0/overview.html#pagination-request-struct)  |
+| from | Optional        | From-to Struct       | The starting point of the asset path. If not provided, it is the root node of the asset tree. For more details, see [From-to Struct](/docs/api/en/2.1.0/asset_tree/search_asset_path.html#from-to-struct-fromtostruc)                         |
+| to            | Optional        | From-to Struct           | The ending point of the asset path. If not provided, it is the child node of the asset tree. For more details, see [From-to Struct](/docs/api/en/2.1.0/asset_tree/search_asset_path.html#from-to-struct-fromtostruc) |
+| projection| Optional         | Projection struct         | Enables you to crop the data result set returned in the interface request if needed. Only the specified fields will be returned in the data result set if this parameter is used. Otherwise all fields are returned. For more details, see [How does projection crop the result set](/docs/api/en/2.1.0/api_faqs.html#how-does-projection-crop-the-result-set)|
+| pathProjection| Optional        | String                | Accepts only 2 two types of values: "COMPLETE" (default) or "END_NODE_ONLY". <ul><li>"COMPLETE" means all the nodes of the returned path.</li><li>"END_NODE_ONLY" means only the start and end nodes of the returned path.</li></ul>  |
 
 
 ### From-to Struct <fromtostruc>
 
-| Name | Required or Not | Data Type | Description |
+| Name | Mandatory/Optional | Data Type | Description |
 |-----------|---------------|----|-----------------------|
-| rootModelIds| false   | String Array         | Root model ID. Provide multiple root model IDs if you want to query multiple root models  |
-| modelIds   | false   | String Array         | Model ID which the asset belongs to. Provide multiple model IDs if you want to query multiple models. [How to get modelID>>](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| assetIds        | false     | Array        | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| rootModelIds| Optional  | String Array         | The model ID of the root node. Provide multiple root model IDs if you want to query multiple root nodes. |
+| modelIds   | Optional  | String Array         | The model ID. Provide multiple root model IDs if you want to query multiple Models. [How to get modelID>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+| assetIds        | Optional     | String Array        | The asset ID. Provide multiple asset IDs if you want to query multiple assets.  [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
 
 
 
@@ -43,22 +52,50 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search
 
 | Name | Data Type | Description |
 |-----------|------------------|------------------|
-| assets     | Map (Key is of String type, and the Value is of Asset type)| Asset data on the path  |
-| assetPaths | String | When the `pathProjection` parameter is "COMPLETE", each of the String Arrays is the ID of each asset from the start node to the end node on the path, and the length is greater than or equal to 2. When the `pathProjection` parameter is "END_NODE_ONLY", each of the String Arrays is the asset IDs of the start node and the end node of the path, and the length is fixed at 2.  |
+| assets     | Map | The asset data on the path. The Key is of String type, and the Value is of ``Asset`` struct type. |
+| assetPaths | String Array| If the `pathProjection` parameter is "COMPLETE", each String in the String Arrays is the ID of the asset from the start to end node on the path, with the length greater than or equals to 2. If the `pathProjection` parameter is "END_NODE_ONLY", each String in the String Arrays is the ID of the asset of the start and end node of the path, with the length fixed at 2.  |
 
 
 ### Asset Struct
 
-| Name | Data Type | Description |
-|------------------|-------------------|----------------------------------------|
-| assetId     | String            | Asset ID               |
-| name        | StringI18n  | Name of each language for this asset |
-| description | String | Asset description|
-| attributes  | Map               | Attributes of the model which the asset belongs to                  |
-| timezone   | String            | Timezone                                   |
-| modelId    | String            | Model ID which the asset belongs to |
-| modelIdPath | String            | Model ID path                             |
-| tags        | Tag struct         | User-customized tags                         |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - assetId
+     - String
+     - The asset ID.
+   * - name
+     - StringI18n
+     - The name of the asset in all its respective locale's language.
+   * - description
+     - String
+     - The asset description.
+   * - attributes
+     - Map
+     - The attributes of the model which the asset belongs to. The Key is the attribute ID, which is of String type. The Value type depends on the attribute defined in the model.
+   * - timezone
+     - String
+     - The timezone where the asset is located.
+   * - modelId
+     - String
+     - The model ID.
+   * - modelIdPath
+     - String
+     - The model ID path.
+   * - tags
+     - Tag struct
+     - User-defined tags. (The Key and Value are of String type.)
+   * - inValid
+     - Boolean
+     - Whether the node is valid or not.
+   * - label
+     - String
+     - The tag of the asset.
+
 
 
 
@@ -66,19 +103,20 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search
 
 ### Request Sample
 
-```
-POST
-https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&action=search&orgId=1c499110e8800000
+```json
+url: https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search&treeId=yourTreeId&orgId=yourOrgId
+method: POST 
+requestBody: 
 {
-"pagination":{
-"pageNo":1,
-"pageSize":10
-},
-"projection":[
-"assets.*.attributes",
-"assetPaths"
-]
-} 
+    "pagination":{
+        "pageNo":1,
+        "pageSize":10
+    },
+    "projection":[
+        "assets.*.attributes",
+        "assetPaths"
+    ]
+}
 ```
 
 ### Return Sample
@@ -98,17 +136,17 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
             },
             "iQFjlwoH": {
                 "attributes": {
-                    
+
                 }
             },
             "sDx0Uk2Z": {
                 "attributes": {
-                    
+
                 }
             },
             "4uR3ZsqP": {
                 "attributes": {
-                    
+
                 }
             }
         },
@@ -137,9 +175,10 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 
 ### Request Sample
 
-```
-POST
-https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&action=search&orgId=1c499110e8800000
+```json
+url: https://{apigw-address}/asset-tree-service/v2.1/asset-paths?action=search&treeId=yourTreeId&orgId=yourOrgId
+method: POST 
+requestBody: 
 {
     "pagination": {
         "pageNo": 1,
@@ -158,7 +197,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
 }
 ```
 
-### Return Sample 
+### Return Sample
 
 ```json
 {
@@ -192,7 +231,7 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
                     "capacity": 5.0
                 },
                 "tags": {
-                    
+
                 }
             },
             "MkblvAJ5": {
@@ -214,16 +253,67 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-paths?treeId=Ek72W8bS&acti
                     "de001": 123
                 },
                 "tags": {
-                    
+
                 }
             }
         }
     },
     "pagination": {
-        "sortedBy": null,
         "pageNo": 1,
         "pageSize": 10,
         "totalSize": 1
+    }
+}
+```
+
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.asset_tree_service;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.api.common.constant.request.Pagination;
+import com.envisioniot.enos.api.common.constant.request.Projection;
+import com.envisioniot.enos.api.common.constant.request.Sorter;
+import com.envisioniot.enos.asset_tree_service.v2_1.SearchAssetPathRequest;
+import com.envisioniot.enos.asset_tree_service.v2_1.SearchAssetPathResponse;
+import com.envisioniot.enos.asset_tree_service.vo.AssetTreePathSearchEndVo;
+import org.junit.Test;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class SearchAssetNodePathTest {
+    private static String ACCESSKEY = "yourAccessKey";
+    private static String SECRETKEY = "yourSecretKey";
+    private static String ORGID = "yourOrgId";
+    private static String SERVERURL  = "yourServerUrl";
+    private static String TREEID  = "yourTreeId";
+    
+    
+    @Test
+    public void testSearchAssetNodePath() {
+        SearchAssetPathRequest request = new SearchAssetPathRequest();
+        request.setOrgId(ORGID);
+        request.setTreeId(TREEID);
+        AssetTreePathSearchEndVo from = new AssetTreePathSearchEndVo();
+        from.setAssetIds(Arrays.asList("assetId1","assetId2","assetId3","assetId4","assetId5","assetId6"));
+        AssetTreePathSearchEndVo to = new AssetTreePathSearchEndVo();
+        to.setRootModelIds(Arrays.asList("modelId1","modelId2","modelId3"));
+        request.setFrom(from);
+        request.setTo(to);
+        Projection projection = new Projection();
+        projection.add("assetPaths");
+        projection.add("assets.*.attributes");
+        request.setProjection(projection);
+        Pagination page = new Pagination();
+        page.setPageNo(1);
+        page.setPageSize(100);
+        page.setSorters(new ArrayList<Sorter>());
+        request.setPagination(page);
+        SearchAssetPathResponse response = Poseidon.config(PConfig.init().appKey(ACCESSKEY).appSecret(SECRETKEY).debug())
+                .url(SERVERURL)
+                .getResponse(request, SearchAssetPathResponse.class);
     }
 }
 ```

@@ -1,98 +1,112 @@
 # Get Asset
 
-
-
 Get asset data by asset ID.
+
+## Operation Permissions
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset
+     - Read
 
 ## Request Format
 
 ```
-https://{apigw-address}/asset-service/v2.1/assets?action=get
+GET https://{apigw-address}/asset-service/v2.1/assets?action=get
 ```
 
 ## Request Parameters (URI)
 
 .. list-table::
+   :widths: auto
+   :header-rows: 1
 
    * - Name
      - Location (Path/Query)
-     - Required or Not
+     - Mandatory/Optional
      - Data Type
      - Description
    * - orgId
      - Query
-     - true
+     - Mandatory
      - String
-     - Organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`__
    * - assetId
      - Query
-     - true
+     - Mandatory
      - String
-     - Asset ID. `How to get assetId>> </docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__
+     - The asset ID. `How to get assetId>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__
 
 
 ## Response Parameters
 
 .. list-table::
+   :widths: auto
+   :header-rows: 1
 
    * - Name
      - Data Type
      - Description
    * - data
-     - asset struct
-     - Asset. See `Asset Struct </docs/api/en/latest/asset/get_asset.html#asset-struct-asset>`__
+     - Asset Struct
+     - The details of the asset. For more information, see `Asset Struct </docs/api/en/2.1.0/asset/get_asset.html#asset-struct-asset>`_ .
 
 
 ### Asset Struct <asset>
 
 .. list-table::
+   :widths: auto
+   :header-rows: 1
 
    * - Name
      - Data Type
      - Description
    * - assetId
      - String
-     - Asset ID
+     - The asset ID.
    * - orgId
      - String
-     - Organization ID which the asset belongs to
+     - The organization ID which the asset belongs to.
    * - name
      - StringI18n
-     - Name of each language for this asset
+     - The asset's name in its respective locale's language. For more details on the structure and locales supported, see  `Internationalized name struct </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_
    * - description
      - String
-     - Asset description
+     - The asset description.
    * - attributes
      - Map
-     - Attributes of the model which the asset belongs to. <br>`Key` is the attribute ID, which is of String type. The value type depends on the attribute definition in the model
+     - Attributes of the model which the asset belongs to. The Key is the attribute ID, which is of String type. The Value type depends on the attribute defined in the model. 
    * - timezone
      - String
-     - Timezone
+     - The timezone where the asset is located.
    * - modelId
      - String
-     - Model ID
+     - The model ID.
    * - modelIdPath
      - String
-     - Model inheritance path. <br>E.g.: /Turbine/Double_Feed_Turbine
+     - The model ID path. E.g.: /Turbine/Double_Feed_Turbine
    * - tags
-     - Map<br>(Key is of String type, and the value is of String type)
-     - User-customized tags
+     - Map
+     - User-defined tags. (The Key and Value are of String type.)
 
 
 ## Error Codes
 
-See [Public Return Code](/docs/api/en/latest/overview.html#id8).
+Refer to [Public Response Codes](/docs/api/en/2.1.0/overview.html#public-response-codes-connection-service-etc).
 
 
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
 ```
-GET
-https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800000&assetId=TZ8AOlJU
-
+url: https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=yourOrgId&assetId=yourAssetId
+method: GET 
 ```
 
 ### Return Sample
@@ -106,20 +120,22 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
     "assetId": "TZ8AOlJU",
     "timezone": "+00:00",
     "name": {
+      "defaultValue":"venus!",
       "i18nValue": {
         "en_US": "English name ",
         "zh_CN": "Chinese name"
-                   }
-      "defaultValue": "venus!"
-            },
+      }
+    },
     "attributes": {
       "system": "Solar System"
-                  },
+    },
     "modelIdPath": "/planet",
     "orgId": "yourOrgId",
     "desc": null,
-    "tags": {}
-           },
+    "tags": {
+      "tag1":"bright"
+    }
+  },
   "requestId": "9a5cfbac-b2f8-4a37-b38d-8bccdd77d073"
 }
 ```
@@ -129,9 +145,9 @@ https://{apigw-address}/asset-service/v2.1/assets?action=get&orgId=1c499110e8800
 
 ```java
 public class GetAsset {
-    private static String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";
-    private static String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";
-    private static String orgId = "1c499110e8800000";
+    private static String accessKey = "yourAppAccessKey";
+    private static String secretKey = "yourAppSecretKey";
+    private static String orgId = "yourOrgId";
     private static String url = "https://{apigw-address}";
 
     public static void main(String[] args) {

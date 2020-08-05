@@ -1,19 +1,24 @@
 TSDB Data Service
-==========
+===================
+
+V2.0
+----------
+
+The TSDB Data Service provides interfaces for developers to query data that is stored in EnOS Time Series Database for application development. For details, see the API documentation:
 
 .. toctree::
-   :maxdepth:  1
+   :maxdepth: 1
+
+   v20.rst
 
 
-   overview
-   filter_asset_latest_data
-   get_asset_ai_data_with_aggregation_logic
-   get_asset_ai_raw_data
-   get_asset_current_day_electric_power
-   get_asset_di_data
-   get_asset_electric_power_data
-   get_asset_generic_data
-   get_asset_latest_data
-   get_asset_raw_data_by_time_range
+V2.1
+----------
+
+Starting from the EnOS 2.1.3 release, the **TSDB Data Service** API version is upgraded to ``v2.1``. For details, see the API documentation:
 
 
+.. toctree::
+   :maxdepth: 1
+
+   v2.1/v21.rst

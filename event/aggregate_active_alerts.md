@@ -2,48 +2,83 @@
 
 Calculate the number of active alerts.
 
-
 ## Request Format
 
-```
+```json
 POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate
 ```
 
 ## Request Parameters (URI)
 
-| Name | Required or Not | Data Type | Description |
-|---------------|--------|----------|-----------|
-| orgId         | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`__
                                                                  
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
-|----------------|----------|--------------------|----|
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| groupByField   | true     | String             | Grouping fields: `contentId`, `assetId`, `modelId`, `measurepointId`, `severityId`, `typeId`, `subTypeId` |
-| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
-| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
+
+.. list-table::
+   :widths: 20 20 20 40
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - expression
+     - Optional
+     - String
+     - The query expression, which supports sql-like query. The fields that are supported for query include: ``modelId``, ``assetId``, ``measurepointId``, ``hitRuleId``, ``severityId``, ``typeId``, ``subTypeId``, ``contentId``, ``eventType``, ``eventId`` and ``tag``. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". ``tag`` also supports arithmetic operator "exists" and "not exists". `How to use expression>> </docs/api/en/2.1.0/api_faqs.html#how-to-use-expression>`_
+   * - groupByField
+     - Mandatory
+     - String
+     - The fields to group the results by. The fields supported are: ``contentId``, ``assetId``, ``modelId``, ``measurepointId``, ``severityId``, ``typeId``, ``subTypeId`` 
+   * - startOccurTime
+     - Optional
+     - String
+     - The start time for triggering the alert. For more details, see `Time parameters used in API>> </docs/api/en/2.1.0/api_faqs.html#time-parameters-used-in-api>`_
+   * - endOccurTime
+     - Optional
+     - String
+     - The end time for triggering the alert. For more details, see `Time parameters used in API>> </docs/api/en/2.1.0/api_faqs.html#time-parameters-used-in-api>`_
 
 
 
 ## Response Parameters
 
-| Name | Data Type     | Description          |
-|-------|----------------|---------------------------|
-| data | Map (Key is of String type, and the value is of Integer type) | The Key is the value of the grouping field, and the value is the number of alerts that the object has generated within the specified time range.|
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - Map
+     - The Key (String type) is the value of the grouping field, and the value (Int type) is the number of alerts that the object has generated within the specified time range.
 
 
-## Input/Output Samples
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate&orgId=1c499110e8800000
-
+url: https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate&orgId=yourOrgId
+method: POST 
+requestBody: 
 {
-	"groupByField": "assetId"
+	"groupByField": "assetId",
+  "action": "aggregate"
 }
-
 ```
 
 ### Return Sample
@@ -71,12 +106,12 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=aggregate&o
 
 ```java
 public void testAggregateActiveAlert(){  
-       String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";  
-       String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";  
+       String accessKey = "yourAccessKey";  
+       String secretKey = "yourSecretKey";  
        AggregateActiveAlertRequest request = new AggregateActiveAlertRequest();  
-       request.setOrgId("1c499110e8800000");  
+       request.setOrgId("yourOrgId");  
        request.setGroupByField("assetId");  
-       request.headerParams().put("apim-accesskey","4ced4f38-1ced-476e0a446215-a602-4307");  
+       request.headerParams().put("apim-accesskey","yourAccessKey");  
 	       try {  
 	           AggregateActiveAlertResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
 	                   .url("https://{apigw-address}")  

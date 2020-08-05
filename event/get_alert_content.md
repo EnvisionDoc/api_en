@@ -1,51 +1,51 @@
 # Get Alert Content
 
+Get an alert content based on ``orgId`` and ``contentId``.
 
-
-Get alert content based on organization ID and content ID.
 
 ## Request Format
 
 ```
-GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&orgId=1c499110e8800000
+GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| contentId         | Query            | true     | String    | Alert content ID.                 |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| contentId         | Query            | Mandatory     | String    | The alert content ID.                 |
                                                                  
 
 ## Response Parameters
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | AlertContent struct | Alert content. See [AlertContent Struct](/docs/api/en/latest/event/get_alert_content.html#alertcontent-struct-alertcontent).|
+| data | AlertContent Struct | The details of the alert content. For more information, see [AlertContent Struct](/docs/api/en/2.1.0/event/get_alert_content.html#alertcontent-struct-alertcontent).|
 
 ### AlertContent Struct <alertcontent>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
-| contentId| String           | Content ID                 |
-| contentDesc | StringI18n | Alert content description         |
-| modelId| String           | Model ID                 |
-| orgId          | String                |  Organization ID which the asset belongs to|
-| alertType  | AlertType struct  | Alert type. See [AlertType Struct>>](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype)               |
-|subAlertType  | AlertType struct  | Sub-alert type. See [AlertType Struct>>](/docs/api/en/latest/event/search_alert_type.html#alerttype-struct-alerttype)               |
-| tags| Tag struct        | User-customized alert content tags |
-| updatePerson| String           | Update personnel name           |
-| updateTime| Long             | Last update time       |
+| contentId| String           | The alert content ID.                 |
+| contentDesc | StringI18n | The alert content description.         |
+| modelId| String           | The model ID.                 |
+| orgId          | String                |  The organization ID which the asset belongs to.|
+| alertType  | AlertType Struct  | The details of the alert type. For more information, see [AlertType Struct>>](/docs/api/en/2.1.0/event/search_alert_type.html#alerttype-struct-alerttype).               |
+|subAlertType  | AlertType Struct  | The details of the alert sub-type. For more information, see [AlertType Struct](/docs/api/en/2.1.0/event/search_alert_type.html#alerttype-struct-alerttype).   |
+| tags| Map        | The user-defined tags. (The Key and Value are of String type.) |
+| updatePerson| String           | The name of the person who last updated the alert severity.           |
+| updateTime| Long             | The time when the alert was last updated in UTC format.       |
 
 
 
-## Input/Output Samples
+## Samples
 
 ### Request Sample
 
 ```json
-GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&contentId=doubleContentuid&orgId=1c499110e8800000
+url: https://{apigw-address}/event-service/v2.1/alert-contents?action=get&contentId=yourContentId&orgId=yourOrgId
+method: GET 
 ```
 
 ### Return Sample
@@ -92,29 +92,34 @@ GET https://{apigw-address}/event-service/v2.1/alert-contents?action=get&content
 		},
 		"tags": {	
 		}
-	}
+	},
+	"action": "get"
 }
 ```
 
 ## Java SDK Sample
 
 ```java
-public void testGetAlertContent() {  
-        final String contentId = "doubleContentuid";  
-        GetAlertContentRequest request = new GetAlertContentRequest();  
-        request.setOrgId(orgId);  
-        request.setContentId(contentId);  
-        try {  
-            GetAlertContentResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
-                    .url("https://{apigw-address}")  
-	                    .getResponse(request, GetAlertContentResponse.class);  
-	            Gson gson = new Gson();  
-	            System.out.println(gson.toJson(response));  
-	            if (response.getCode() == 0) {  
-	                System.out.println(response.getData());  
-	            }  
-	        } catch (Exception e) {  
-	            e.printStackTrace();  
-	        }  
+public void testGetAlertContent() {
+    private static String accessKey = "yourAppAccessKey";
+    private static String secretKey = "yourAppSecretKey";
+    private static String orgId = "yourOrgId";
+    private static String url = "https://{apigw-address}";
+    final String contentId = "yourContentId";
+    GetAlertContentRequest request = new GetAlertContentRequest();
+    request.setOrgId(orgId);
+    request.setContentId(contentId);
+    try {
+        GetAlertContentResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+            .url(url)
+            .getResponse(request, GetAlertContentResponse.class);
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(response));
+        if (response.getCode() == 0) {
+            System.out.println(response.getData());
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 ```

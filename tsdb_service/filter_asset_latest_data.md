@@ -1,63 +1,161 @@
 # Filter Asset Latest Data
 
+Filter and query the latest data of a single measurement point for multiple devices.
 
+## Operation Permissions
 
-Filter and query the latest data of a single measurement point for multiple devices Numeric and String supported as the data types for query.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
-## Request Format
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset
+     - Read
+
+For more information about resources and required permission, see [Policies, Roles and Permissions>>](/docs/enos/en/2.1.0/iam/concept/access_policy.html)
+
+## Using GET Method
+
+### Request Format
 
 ```
-https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId={}modelId={}assetIds={}measurepoint={}timeWindow={}operator={}valueFilter={}accessKey={}
+GET https://{apigw-address}/tsdb-service/v2.0/latest/filter
 ```
 
-## Request Parameters (URI)
+### Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
-| modelId       | Query            | true    | String    |Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid) |
-| assetIds      | Query            | true     | String    | Asset ID, which supports querying multiple assets; multiple asset IDs are separated by commas. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepoint | Query            | true     | String    | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
-| timeWindow     | Query            | false     | Integer  | Returns the data schedule setting. Its unit is minute and its minimum value is 0; no filtering is applied if it is not in the request. |
-| operator       | Query            | false     | String    | Operator. It supports: eq: equal to; nq: not equal; gt: greater than; lt: less than; ge: greater than or equal; le: less than or equal; between: interval of 2 values; in: one of multiple values.|
-| valueFilter      | Query            | false    | String   |Range value. It must be used along with the operator. The operators "eq", "nq", "gt", "ge", "lt", and "le" correspond to a single value; "between" corresponds to 2 values; "in" corresponds to multiple values. Multiple values must be separated by commas, and the data types must be consistent with those of the measurement points. For example: "operator=betwteen&valueFilter=a, b" refers to filtering out the values between a and b.|
-| accessKey     | Query            | true     | String    |Service account of the application. The application authenticates with `accessKey` to obtain the data that it is authorized to access. [How to get accessKey>>](/docs/api/en/latest/api_faqs.html#how-to-get-access-key-accesskey-accesskey)|                                                                     
+.. list-table::
+   :widths: 15 25 15 15 30
+   :header-rows: 1
 
-## Response Parameters
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get organization ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+   * - modelId
+     - Query
+     - Mandatory
+     - String
+     - The model ID. `How to get model ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-model-id-modelid-modelid>`__
+   * - assetIds
+     - Query
+     - Mandatory
+     - String
+     - The asset ID. Supports the query of multiple asset IDs, separated by commas. `How to get asset ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-asset-id-assetid-assetid>`__
+   * - measurepoint
+     - Query
+     - Mandatory
+     - String
+     - The measurement point ID. `How to get measurement point ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-the-measurement-point-id-pointid-pointid>`__
+   * - operator
+     - Query
+     - Mandatory
+     - String
+     - The query operator. It supports:
 
-| Name | Data Type     | Description          |
-|-------|----------------|---------------------------|
-| **items** | `List<Object>` | List of asset data. The data returned for a single point of a single device is sorted by time in ascending order. Parameters are stored in the Object struct. See [items](/docs/api/en/latest/tsdb_service/filter_asset_latest_data.html#id2). |
+       + eq: equals to
+       + nq: not equals to
+       + gt: greater than
+       + lt: less than
+       + ge: greater than or equals to
+       + le: less than or equals to
+       + between: interval of 2 values
+       + in: one of multiple values
+   * - valueFilter
+     - Query
+     - Mandatory
+     - String
+     - The value to filter for. It must be used along with the operator. The operators "eq", "nq", "gt", "ge", "lt", and "le" correspond to a single value; "between" corresponds to 2 values; "in" corresponds to multiple values. Multiple values must be separated by commas, and the data types must be consistent with those of the measurement points. For example: "operator=betwteen&valueFilter=a, b" refers to filtering out the values between a and b.
+   * - timeWindow
+     - Query
+     - Optional
+     - Integer
+     - Specify the time window for filtering the latest data (by minutes). The minimum value is 0. If not specified, no constrain is applied.
+   * - accessKey
+     - Query
+     - Optional
+     - String
+     - The service account for authentication purposes. `How to get the accessKey>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-access-key-accesskey-accesskey>`__
+   * - ifWithLocalTime
+     - Query
+     - Optional
+     - Boolean
+     -      
+       + true = returns data in local time format
+       + false (default) = does not return data in local time format
+   * - localTimeAccuracy
+     - Query
+     - Optional
+     - Boolean
+     -      
+       + true = query returns data with millisecond time stamp
+       + false (default) = query returns data without millisecond time stamp
 
-### items
+### Response Parameters <response>
 
-Sample:
+.. list-table::
+   :widths: 20 30 50
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - List<JSONObject>
+     - The list of asset data. The data returned for a single point of a single device is sorted by the data timestamp in ascending order. For more information, see `items <filter_asset_latest_data#items>`__
+
+
+#### items
+
+##### Sample
+
 ```json
 {
-    "assetId": "FGqRJKPM", 		//asset ID
-    "pointId": 1.5,   			//measurement point identifier and the data
-    "timestamp": 1559570160000	//UNIX data timestamp
+    "assetId": "FGqRJKPM",
+    "pointId": 1.5,
+    "timestamp": 1559570160000
 }
 ```
+##### Parameters
 
-| Name | Data Type | Description |
-|---------------|-----------|--------------------------------------|
-| assetId       | Object    | Asset ID.                                              |
-| pointId | Object    |This parameter is a variable, indicating the identifier and data for the measurement point.                                     |
-| timestamp     | Object    | Data timestamp (UNIX time, accurate to second)                                     |
+.. list-table::
+   :widths: 20 30 50
+   :header-rows: 1
 
-## Error Codes
-For description of error codes, see [Common Error Codes](overview#errorcode).
+   * - Name
+     - Data Type
+     - Description
+   * - assetId
+     - String
+     - The asset ID.
+   * - timestamp
+     - Long
+     - The data timestamp (UNIX time, accurate to the second).
+   * - pointId
+     - Double
+     - This parameter is a variable, representing the identifier and data of the measurement point.
 
-## Sample 1
+### Error Codes
+For description of error codes, see [Common Error Codes](overview#common-error-codes).
 
-### Request Sample
+### Samples (GET Method)
+
+#### Request Sample
 ```
-https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId=o15528761854851&assetIds=FGqRJKPM&modelId=model_xxx&measurepoint=pointId&timeWindow=&operator=le&valueFilter=55673.9&accessKey=accessKey
-```
-Where, `operator=le&valueFilter=55673.9` means that: The following sample will filter out the `pointId` value of the model `model_xxx`, which is less than or equal to 55673.9.
+url: https://{apigw-address}/tsdb-service/v2.0/latest/filter?orgId=yourOrgId&assetIds=FGqRJKPM&modelId=opentsdb_model&measurepoint=pointId&timeWindow=&operator=le&valueFilter=55673.9&accessKey=accessKey
 
-### Return Sample
+method: GET
+```
+In the above example, the request sample will filter out the `pointId` value of the model `opentsdb_model`, which is less than or equals to 55673.9.
+
+#### Return Sample
 
 ```json
 {
@@ -80,57 +178,255 @@ Where, `operator=le&valueFilter=55673.9` means that: The following sample will f
 ## Java SDK Sample
 
 ```java
-private static class Request extends PoseidonRequest{
+import com.alibaba.fastjson.JSONObject;
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envision.apim.poseidon.request.PoseidonRequest;
+import org.junit.Test;
 
-    public void setQueryParam(String key, Object value){
-        queryEncodeParams().put(key, value);
+public class GetMethod {
+
+    private static class Request extends PoseidonRequest {
+
+        public void setQueryParam(String key, Object value){
+            queryEncodeParams().put(key, value);
+        }
+
+        public void setMethod(String method) {
+            this.method = method;
+        }
+
+        private String method;
+
+        @Override
+        public String baseUri() {
+            return "";
+        }
+
+        @Override
+        public String method() {
+            return method;
+        }
     }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
+    @Test
+    public void FilterAssetLatestDataTest(){
 
-    private String method;
+        //1. Click Application Registration in the left navigation of the EnOS Management Console.
+        //2. Click the application that needs to call the API, and click Basic Information. accessKey and secretKey correspond to AccessKey and SecretKey in EnOS.
+        String accessKey = "yourAccessKey";
+        String secretKey = "yourSecretKey";
 
-    @Override
-    public String baseUri() {
-        return "";
-    }
+        //Create a request and pass the required parameters into the map that exists in the query. The key is the parameter name and the value is the parameter value.
+        Request request = new Request();
+        request.setQueryParam("orgId", "yourOrgId");
+        request.setQueryParam("timeWindow", 10);
+        request.setQueryParam("operator", "le");
+        request.setQueryParam("modelId", "opentsdb_model");
+        request.setQueryParam("valueFilter", 666.6);
+        request.setQueryParam("assetIds","4DXYH7nS");
+        request.setQueryParam("measurepoint", "opentsdb_pi_point");
 
-    @Override
-    public String method() {
-        return method;
+        request.setMethod("GET");
+
+        try {
+            JSONObject response =  Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+                    .url("http://apim-gateway/tsdb-service/v2.0/latest/filter")
+                    .getResponse(request, JSONObject.class);
+            System.out.println(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
+```
 
-@Test
-public void filterAssetsLatestDataTest(){
-    
-    //1. Click Application Registration in the left navigation of the EnOS Console.
-    //2. Click the application that needs to call the API, and click Basic Information. accessKey and secretKey correspond to AccessKey and SecretKey in EnOS.
-    String accessKey = "29b8d283-dddd-4c31f0e3a356-0f80-4fdf";
-    String secretKey = "f0e3a856-0fc0-4fdf-b1e5-b34da152879c";
+## Using POST Method
 
-    //New a request and pass the required parameters into the map that exists in the query. The key is the parameter name and the value is the parameter value.
-    Request request = new Request();
-    request.setQueryParam("orgId", "yourOrgId");
-    request.setQueryParam("timeWindow", 10);
-    request.setQueryParam("operator", "le");
-    request.setQueryParam("modelId", "model_xxx");
-    request.setQueryParam("valueFilter", 666.6);
-    request.setQueryParam("assetIds","4DXYH7nS");
-    request.setQueryParam("measurepoint", "opentsdb_pi_point_xxx");
-    request.setQueryParam("accessKey", accessKey);
-    
-    request.setMethod("GET");
+### Request Format
 
-    try {
-        JSONObject response =  Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
-                .url("http://apim-gateway/tsdb-service/v2.0/latest/filter")
-                .getResponse(request, JSONObject.class);
-        System.out.println(response);
-    } catch (Exception e) {
-        e.printStackTrace();
+```
+POST https://{apigw-address}/tsdb-service/v2.0/latest/filter
+```
+
+### Request Parameters (Body)
+
+.. list-table::
+   :widths: 20 20 20 40
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get organization ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+   * - modelId
+     - Mandatory
+     - String
+     - The model ID. `How to get model ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-model-id-modelid-modelid>`__
+   * - assetIds
+     - Mandatory
+     - String
+     - The asset ID. Supports the query of multiple asset IDs, separated by commas. `How to get asset ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-asset-id-assetid-assetid>`__
+   * - measurepoint
+     - Mandatory
+     - String
+     - The measurement point ID. `How to get measurement point ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-the-measurement-point-id-pointid-pointid>`__
+   * - operator
+     - Mandatory
+     - String
+     - The query operator. It supports:   
+
+       + eq: equals to
+       + nq: not equals to
+       + gt: greater than
+       + lt: less than
+       + ge: greater than or equals to
+       + le: less than or equals to
+       + between: interval of 2 values
+       + in: one of multiple values
+   * - valueFilter
+     - Mandatory
+     - String
+     - The value to filter for. It must be used along with the operator. The operators "eq", "nq", "gt", "ge", "lt", and "le" correspond to a single value; "between" corresponds to 2 values; "in" corresponds to multiple values. Multiple values must be separated by commas, and the data types must be consistent with those of the measurement points. For example: "operator=betwteen&valueFilter=a, b" refers to filtering out the values between a and b.
+   * - timeWindow
+     - Optional
+     - Integer
+     - Specify the time window for filtering the latest data (by minutes). The minimum value is 0. If not specified, no constrain is applied.
+   * - accessKey
+     - Optional
+     - String
+     - The service account for authentication purposes. `How to get the accessKey>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-access-key-accesskey-accesskey>`__
+   * - ifWithLocalTime
+     - Optional
+     - Boolean
+     -      
+       + true = returns data in local time format
+       + false (default) = does not return data in local time format
+
+   * - localTimeAccuracy
+     - Optional
+     - Boolean
+     -      
+       + true = query returns data with millisecond time stamp
+       + false (default) = query returns data without millisecond time stamp
+
+### Response Parameters
+
+Refer to the description in [Response Parameters](filter_asset_latest_data#response-parameters-response) of the **Using GET Method** section.
+
+### Error Codes
+For the description of error codes, see [Common Error Codes](overview#common-error-codes).
+
+### Samples (POST Method)
+
+#### Request Sample
+```
+url: https://{apigw-address}/tsdb-service/v2.0/latest/filter
+
+method: POST
+
+Content-Type: multipart/form-data;charset=UTF-8
+
+requestBody:
+{
+  "orgId": "yourOrgId",
+  "modelId": "opentsdb_model",
+  "assetIds": "FGqRJKPM",
+  "pointId": "pointId",
+  "operator": "le",
+  "valueFilter": "55673.9",
+  "accessKey": "accessKey"
+}
+```
+
+Where, `operator=le&valueFilter=55673.9` means that: The following sample will filter out the `pointId` value of the model `opentsdb_model`, which is less than or equal to 55673.9.
+
+#### Return Sample
+
+```json
+{
+  "status": 0,
+  "requestId": null,
+  "msg": "success",
+  "submsg": null,
+  "data": {
+    "items": [
+      {
+        "assetId": "FGqRJKPM",
+        "pointId": 1.5,
+        "timestamp": 1559570160000
+      }
+    ]
+  }
+}
+```
+
+## Java SDK Sample
+
+```java
+import com.alibaba.fastjson.JSONObject;
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envision.apim.poseidon.request.PoseidonRequest;
+import org.junit.Test;
+
+public class PostMethod {
+
+    private static class Request extends PoseidonRequest {
+
+        public void setFormParam(String key, String value){
+            formParams().put(key, value);
+        }
+
+        public void setMethod(String method) {
+            this.method = method;
+        }
+
+        private String method;
+
+        @Override
+        public String baseUri() {
+            return "";
+        }
+
+        @Override
+        public String method() {
+            return method;
+        }
+    }
+
+    @Test
+    public void FilterAssetLatestDataTest(){
+
+        //1. Click Application Registration in the left navigation of the EnOS Management Console.
+        //2. Click the application that needs to call the API, and click Basic Information. accessKey and secretKey correspond to AccessKey and SecretKey in EnOS.
+        String accessKey = "yourAccessKey";
+        String secretKey = "yourSecretKey";
+
+        //Create a request and pass the required parameters into the map that exists in the form. The key is the parameter name and the value is the parameter value.
+        Request request = new Request();
+        request.setFormParam("orgId", "yourOrgId");
+        request.setFormParam("timeWindow", "10");
+        request.setFormParam("operator", "le");
+        request.setFormParam("modelId", "opentsdb_model");
+        request.setFormParam("valueFilter", "666.6");
+        request.setFormParam("assetIds","4DXYH7nS");
+        request.setFormParam("measurepoint", "opentsdb_pi_point");
+
+        request.setMethod("POST");
+
+        try {
+            JSONObject response =  Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+                    .url("http://apim-gateway/tsdb-service/v2.0/latest/filter")
+                    .getResponse(request, JSONObject.class);
+            System.out.println(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 ```

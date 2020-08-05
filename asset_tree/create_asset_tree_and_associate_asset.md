@@ -1,66 +1,127 @@
-# Create Asset Tree and Associate Asset
+# Create Asset Tree and Link an Asset
 
-Create an asset tree and associate an existing asset (device asset or logical asset) as the root node of the asset tree.
+Create an asset tree and link an existing asset as the root node of the asset tree. The asset to be linked can be a device asset or a non-device (logical) asset. 
+
+## Operation Permissions
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset Tree Management
+     - Full Access
 
 ## Request Format
 
-```
-https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=associate
+```json
+POST https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=associate
 ```
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-mandatory fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to identify the asset to be linked.
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include the ``assetId`` in the request 
+   - Include both ``productKey`` and ``deviceKey`` in the request 
+
+
 
 .. list-table::
+   :header-rows: 1
 
    * - Name
      - Location (Path/Query)
-     - Required or Not
+     - Mandatory/Optional
      - Data Type
      - Description
    * - orgId
      - Query
-     - true
+     - Mandatory
      - String
-     - Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
    * - assetId
      - Query
-     - false
+     - Optional (See **Note** above)
      - String
-     - ID of the asset to be associated: <br>If the ``assetId`` is specified, the asset uniquely identified by the ``assetId`` will be associated. `How to get Asset ID </docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid>`__ <br>If the ``assetId`` is not specified, the asset uniquely identified by the combination of ``productKey`` and ``deviceKey`` will be associated.
+     - The asset ID. `How to get assetID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid>`_
    * - productKey
      - Query
-     - false
+     - Optional (See **Note** above)
      - String
-     - Product Key of the device to be associated
+     - The product key. To be used with ``deviceKey`` .
    * - deviceKey
      - Query
-     - false
+     - Optional (See **Note** above)
      - String
-     - Device Key of the device to be associated
+     - The device key. To be used with ``productKey`` .
 
+
+## Request Parameters (Body)
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - tree
+     - Optional
+     - TreeCreateVo Struct
+     - The details of the asset tree to be created. For more details, see `TreeCreateVo Struct </docs/api/en/2.1.0/asset_tree/create_asset_tree.html#treecreatevo-treecreatevostruct>`_
 
 ## Response Parameters
 
 .. list-table::
+   :widths: auto
+   :header-rows: 1
 
    * - Name
      - Data Type
      - Description
    * - data
      - String
-     - Created asset tree ID
+     - The created asset tree ID.
 
 
-## Sample 1
+## Error Codes
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Code
+     - Error Information
+     - Description
+   * - 17772
+     - The quota of tree reaches ceiling
+     - Number of trees already reaches maximum of the OU.
+   * - 99400
+     - Invalid arguments
+     - The request parameter is invalid. Check the request parameters.
+   * - 99500
+     - System error
+     - Internal server error. Contact EnOS support.
+
+
+## Samples
 
 ### Request Sample
 
-```
-POST https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=associate&orgId=yourOrgId&assetId=N5VpI5f9
+```json
+url: https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=associate&orgId=yourOrgId&assetId=yourAssetId
+method: POST 
+requestBody:
+{
+	"tree":{
+		"name":{
+			"defaultValue":"Name"
+		}
+	}
+}
 ```
 
 ### Return Sample
@@ -71,5 +132,44 @@ POST https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=associat
     "msg": "OK",
     "requestId": "01b5477a-374e-49a0-8b68-7dbfe8f0b74f",
     "data": "cRUdS7sJ"
+}
+```
+
+
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.asset_tree_service;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.api.common.constant.request.Pagination;
+import com.envisioniot.enos.api.common.constant.request.Projection;
+import com.envisioniot.enos.asset_tree_service.v2_1.*;
+import com.envisioniot.enos.asset_tree_service.vo.*;
+import org.junit.Test;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AssetTreeTest {
+    private static String AccessKey = "yourAccessKey";
+    private static String SecretKey = "yourSecretKey";
+    private static String OrgId = "yourOrgId";
+    private static String ServerUrl = "yourServerUrl";
+
+    @Test
+    public void testAssociateTree() {
+        AssociateTreeRequest request = new AssociateTreeRequest();
+        TreeCreateVo tree = new TreeCreateVo();
+        I18nVo treeName = new I18nVo();
+        treeName.setDefaultValue("treeDefaultName");
+        tree.setName(treeName);
+        request.setTree(tree);
+        request.setOrgId(OrgId);
+        request.setAssetId("yourAssetId");
+        AssociateTreeResponse response = Poseidon.config(PConfig.init().appKey(AccessKey).appSecret(SecretKey).debug())
+            .url(ServerUrl)
+            .getResponse(request, AssociateTreeResponse.class);
+    }
 }
 ```

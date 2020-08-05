@@ -1,82 +1,148 @@
 # Get Organization
 
-Get the organization information.
+Get the organization's information.
 
 ## Request Format
 
 ```
-POST https://{apigw-address}/iam/v1/api/open/organization/get
+POST https://{apigw-address}/enos-iam-service/v2.0/organization/info
 ```
 
-## Request Parameters (URI)
+## Request Parameters (Header)
 
-| Name | Location  | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| Authorization | Header | True | String | Bearer Token   |
-| Content-Type | Header |True |application/json| The content type of the returned content|
+.. list-table::
+   :widths: 20 20 20 40
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - Authorization
+     - Mandatory
+     - String
+     - Session ID, in the format of bearer token. You can get the session ID after calling the `Log In <login>`__ API.
+   * - Content-Type
+     - Optional
+     - String
+     - The only accepted value is "application/json".
+
 
 ## Request Parameters (Body)
 
-| Name | Required or Not | Data Type | Description          |
-|------------------|---------------|----------|---|
-| id  | True | String | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
+.. list-table::
+   :widths: 20 20 20 40
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - id
+     - Mandatory
+     - String
+     - The organization ID. `How to get organization ID>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`__
 
 
 ## Response Parameters
 
-| Name  | Data Type | Description          |
-|-------------|---------|----------------|
-| organization |   Organization struct |    Organization information. See [Organization Struct](get_org#organization-struct-org). |  
+.. list-table::
+   :widths: 30 30 40
+   :header-rows: 1
 
+   * - Name
+     - Data Type
+     - Description
+   * - organization
+     - Organization Struct
+     - The organization's information. For more information, see `Organization Struct >> <get_org#organization-struct-org>`
 
 ### Organization Struct <org>
 
-| Name | Data Type | Description          |
-|-------------|---------------|---------------|
-| code  |String |Organization identifier, such as business licence number |
-| createTime   | String    | Time of creating this organizatoin    |
-| createdByUserId   | String    | User ID of whom that created the organizatoin  |
-| description  |String |Description of the organizatoin |
-| domain  |String |User name of EnOS  |
-| id  |String | Organization ID |
-| name  | String| Organization name |
-| ownerId   | String    | User ID of the organizatoin owner    |
+.. list-table::
+   :widths: 30 30 40
+   :header-rows: 1
 
-
-
+   * - Name
+     - Data Type
+     - Description
+   * - code
+     - String
+     - The organization identifier, such as the business licence number.
+   * - createTime
+     - String
+     - The time when this organizatoin is created.
+   * - createdByUserId
+     - String
+     - The user ID of the person that created the organizatoin.
+   * - description
+     - String
+     - The description of the organization.
+   * - domain
+     - String
+     - The EnOS user name.
+   * - id
+     - String
+     - The organization ID.
+   * - name
+     - String
+     - The organization name.
+   * - ownerId
+     - String
+     - The user ID of the organization owner.
+   * - extra
+     - List<JSONObejct>
+     - Extra information of the organization.
 
 ## Sample
 
 ### Request Sample
 
-```
-POST https://{apigw-address}/iam/v1/api/open/organization/get
+```json
+url: https://{apigw-address}/enos-iam-service/v2.0/organization/info
+method: POST
+headers:{
+  "Authorization":"yourBearerToken",
+  "Content-Type":"application/json"
+}
 requestBody: {"id":"yourOrgId"}
-header:{
-        "Authorization":"yourBearerToken",
-        "Content-Type":"application/json"
-        }
+
 ```
 
 ### Return Sample
 
 ```json
 {
-  "code": 200,
-  "failed": false,
-  "message": "",
-  "organization": {
-    "code": "",
-    "createTime": "2019-05-14 08:33:18.0",
-    "createdByUserId": "u15440200922941",
-    "description": "",
-    "domain": "db_portal_test01",
-    "id": "yourOrgId",
-    "name": "portal_test01",
-    "ownerId": "u15578227990211"
-  },
-  "status": 0,
-  "successful": true
+	"fail": false,
+	"success": true,
+	"organization": {
+		"createdByUserId": "userId",
+		"resourceId": "resourceId",
+		"code": "",
+		"approvalState": 1,
+		"description": "",
+		"type": 2,
+		"ownerId": "userId",
+		"createTime": "2018-11-20 04:03:06.0",
+		"domain": "",
+		"extra": {
+			"owner": "ownerId",
+			"property": "2",
+			"approvedBy": "system",
+			"scale": "0",
+			"registerType": "0",
+			"approvedAt": "2018-11-20 04:03:06",
+			"version": "2"
+		},
+		"name": "Demo",
+		"id": "orgId",
+		"state": 0,
+		"certificationState": 1
+	},
+	"failed": false,
+	"message": "",
+	"status": 0,
+	"successful": true
 }
 ```
 

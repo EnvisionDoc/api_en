@@ -1,52 +1,109 @@
 # Create Alert Content
 
-Create a new alert content. The fields required to be verified include the model ID (`modelId`) and the alert type ID (`alertTypeId`).
+Create a new alert content. 
+
+## Prerequisite
+
+Ensure the alert type that the alert content would belong to exists. 
 
 ## Request Format
 
-```
+```json
 POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid).          |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
+
 
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
-|------|-----------------|-----------|-------------|
-| alertContent          | true    | generateContent struct    | Alert content. See [generateContent Struct](create_alert_content#generatecontent-struct-generatecontent).|
 
-### generateContent Struct <generatecontent>
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
-| Name            | Required or Not | Data Type | Description |
-|------|-----------------|-----------|-------------|
-|contentId|true|String|Alert content ID.|
-|contentDesc|true|StringI18n| Internationalized description of alert content, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
-| modelId          | true    | String    | ID of the model applicable for the alert content. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid) |
-| alertTypeId   |  true        | String       | Associated alert type ID           |
-|tags|false|tags data type|Tags of alert content. |
-| source |false| String |Customized data source that indicates the data source to which the alert content applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - alertContent
+     - Mandatory
+     - GenerateContent Struct
+     - The details of the alert content. For more information, see `generateContent Struct>> <create_alert_content#generatecontent-struct-generatecontent>`_
+
+
+
+### GenerateContent Struct <generatecontent>
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - contentId
+     - Mandatory
+     - String
+     - The alert content ID.
+   * - contentDesc
+     - Mandatory
+     - StringI18n
+     - Specify the alert content's description in its respective locale's language. For more details on the structure and locales supported, see `Internationalized name struct>> </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_
+   * - modelId
+     - Mandatory
+     - String
+     - The model ID. `How to get modelID>> </docs/api/en/2.1.0/api_faqs#how-to-get-model-id-modelid-modelid>`_
+   * - alertTypeId
+     - Mandatory
+     - String
+     - The alert type ID.
+   * - tags
+     - Optional
+     - Map
+     - User-defined tags. (The Key and Value are of String type.) For details, see `How to use tags>> </docs/api/en/2.1.0/api_faqs.html#how-to-use-tag>`_
 
 
 
 ## Response Parameters
 
-| Name | Data Type     | Description          |
-|-------|----------------|---------------------------|
-|data|String |contentId |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - String
+     - The alert content ID.
 
 
 
-## Sample
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create&orgId=yourOrgId
+url: https://{apigw-address}/event-service/v2.1/alert-contents?action=create&orgId=yourOrgId 
+method: POST 
+requestBody: 
 {
 	"alertContent": {
 		"contentId": "planetTemperature",
@@ -63,7 +120,8 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create&org
 			"year": "2000",
 			"author": "cshan"
 		}
-	}
+	},
+  "action": "create"
 }
 ```
 
@@ -73,6 +131,44 @@ POST https://{apigw-address}/event-service/v2.1/alert-contents?action=create&org
 {
 	"code": 0,
 	"msg": "OK",
-	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea"
+	"requestId": "94e0e6e5-10dd-4fcb-a013-331d5869975a",
+	"data": "planetTemperature"
+}
+```
+
+### Java SDK Sample
+
+```java
+public void testCreateAlertContent() {
+    private static String accessKey = "yourAppAccessKey";
+    private static String secretKey = "yourAppSecretKey";
+    private static String orgId = "yourOrgId";
+    private static String url = "https://{apigw-address}";
+    CreateAlertContentRequest request = new CreateAlertContentRequest();
+    request.setOrgId(orgId);
+    GenerateContent alertContent = new GenerateContent();
+    alertContent.setContentId("yourContentId");
+    alertContent.setAlertTypeId("yourAlertTypeId");
+    StringI18n desc = new StringI18n();
+    desc.setDefaultValue("default");
+    Map < String, String > map = new HashMap < > ();
+    map.put("zh_CN", "中文");
+    map.put("en_US", "english");
+    desc.setI18nValue(map);
+    alertContent.setContentDesc(desc);
+    Map < String, String > tags = new HashMap < > ();
+    tags.put("yourTagKey", "yourTagValue");
+    alertContent.setTags(tags);
+    alertContent.setModelId("yourModelId");
+    request.setAlertContent(alertContent);
+    try {
+        CreateAlertContentResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+            .url(url)
+            .getResponse(request, CreateAlertContentResponse.class);
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(response));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 ```

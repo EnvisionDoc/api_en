@@ -1,98 +1,127 @@
-# Associate Asset
+# Link Asset to Asset Tree
 
+Link an existing asset to an asset tree. The asset to be linked can be a device asset or a non-device (logical) asset. 
 
-Associate a specified existing asset node to the asset tree. The asset to be associated can be a device asset or a logical asset. If the asset node to be associated is a device asset, it can be described by using "Product Key" and "Device Key" of the device asset. If the asset node to be associated is a logical asset, it can be described by the ID of the logical asset.
+## Operation Permissions
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset Tree Management
+     - Full Access
 
 ## Request Format
 
 ```
-https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=associateAsset
+POST https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=associateAsset
 ```
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to link an asset:
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include the ``assetId`` in the request 
+   - Include both ``productKey`` and ``deviceKey`` in the request 
+
 
 .. list-table::
+   :header-rows: 1
 
    * - Name
      - Location (Path/Query)
-     - Required or Not
+     - Mandatory/Optional
      - Data Type
      - Description
    * - orgId
      - Query
-     - true
+     - Mandatory
      - String
-     - Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
    * - treeId
      - Query
-     - true
+     - Mandatory
      - String
-     - ID of the asset tree to be gotten. [How to get the ID of an asset tree>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)
+     - The asset tree ID. `How to get treeID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-the-id-of-an-asset-tree>`_
    * - parentAssetId
      - Query
-     - true
+     - Mandatory
      - String
-     - Parent asset ID of the asset to be associated
+     - The asset ID of the parent node of the asset to be linked.
    * - assetId
      - Query
-     - false
+     - Optional (See **Note** above)
      - String
-     - Asset ID to be associated; when there is an `assetId`, the `assetId` will prevail, and when the `assetId` does not exist, the `productKey` and `deviceKey` will prevail. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)
+     - The asset ID. `How to get assetID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid>`_
    * - productKey
      - Query
-     - false
+     - Optional (See **Note** above)
      - String
-     - Product Key of the device to be associated
+     - The product key. To be used with ``deviceKey``.
    * - deviceKey
      - Query
-     - false
+     - Optional (See **Note** above)
      - String
-     - Device Key of the device to be associated
+     - The device key. To be used with ``productKey``.
 
 
 
 ## Response Parameters
 
 .. list-table::
+   :widths: auto
+   :header-rows: 1
 
    * - Name
      - Data Type
      - Description
    * - data
      - String
-     - Asset Id that associated successfully
+     - The ID of the asset that has been successfully linked.
 
 
 ## Error Codes
 
 .. list-table::
+   :widths: auto
+   :header-rows: 1
 
    * - Code
+     - Error Information
      - Description
-   * - 17751
-     - Tree ID does not exist
+   * - 17404
+     - TreeId is not exist
+     - The tree ID does not exist.
    * - 17752
-     - The parent asset does not exist in this tree
-   * - 17758
-     - The asset already exists on the tree
-   * - 17760
-     - The name of the asset to be created is illegal
+     - Parent assetId is not existed in the tree
+     - The parent asset does not exist in this Tree
+   * - 17558
+     - AssetId is existed in the tree
+     - Asset ID already exists in the tree.
+   * - 17762
+     - The tree is locked
+     - The asset tree cannot be modified/deleted for the time being as someone is currently accessing the asset tree. Please try again later.
    * - 17770
-     - The tree exceeds the maximum number of layers (7 layers)
+     - Exceeding the layer limit(7)
+     - The tree exceeds the maximum number of layers (7 layers).
+   * - 99400
+     - Invalid arguments
+     - The request parameter is invalid. Check the request parameters.
+   * - 99500
+     - System error
+     - Internal server error. Contact EnOS support.
 
 
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
 ```
-POST https://{apigw-address}/asset-tree-service/v2.1/asset-
-nodes?action=associateAsset&orgId=o15589291276361&treeId=KRAceqRA&parentAssetId=LGRCJVDc&productKey=UwXL9jmm&deviceKey=eacdsz9IGJ
+url: https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=associateAsset&orgId=yourOrgId&treeId=yourTreeId&parentAssetId=yourAssetId&productKey=yourProductKey&deviceKey=yourDeviceKey
+method: POST 
 ```
 
 ### Return Sample
@@ -103,5 +132,36 @@ nodes?action=associateAsset&orgId=o15589291276361&treeId=KRAceqRA&parentAssetId=
     "msg": "ok",
     "requestId": "01b5477a-374e-49a0-8b68-7dbfe8f0b74f",
     "data": "cRUdS7sJ"
+}
+```
+
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.asset_tree_service;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.asset_tree_service.v2_1.AssociateAssetNodeRequest;
+import com.envisioniot.enos.asset_tree_service.v2_1.AssociateAssetNodeResponse;
+import org.junit.Test;
+
+public class AssociateAssetNodeTest {
+    private static String AccessKey = "yourAccessKey";
+    private static String SecretKey = "yourSecretKey";
+    private static String OrgId = "yourOrgId";
+    private static String ServerUrl = "yourServerUrl";
+
+    @Test
+    public void testAssociateAssetNode() {
+        AssociateAssetNodeRequest request = new AssociateAssetNodeRequest();
+        request.setOrgId(OrgId);
+        request.setTreeId("yourTreeId");
+        request.setParentAssetId("yourParentAssetId");
+        request.setAssetId("yourAssetId");
+        AssociateAssetNodeResponse response = Poseidon.config(PConfig.init().appKey(AccessKey).appSecret(SecretKey).debug())
+            .url(ServerUrl)
+            .getResponse(request, AssociateAssetNodeResponse.class);
+    }
 }
 ```

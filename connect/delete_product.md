@@ -1,21 +1,33 @@
 # Delete Product
+Delete a product. 
 
+## Operation Permissions
 
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
-Delete products.
+   * - Required Authorization
+     - Required Operation Permission
+   * - Device Management
+     - Full Access
+
+## Prerequisite
+
+Ensure that there are no devices under the product before deleting.
 
 ## Request Format
 
 ```
-https://{apigw-address}/connect-service/v2.1/products?action=delete
+POST https://{apigw-address}/connect-service/v2.1/products?action=delete
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| productKey         | Query            | true     | String    | Product Key|
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| productKey         | Query            | Mandatory     | String    | The product key.|
 
 
 
@@ -24,22 +36,23 @@ https://{apigw-address}/connect-service/v2.1/products?action=delete
 
 | Name | Data Type | Description |
 |-------------|---------------------------|-----------------------------|
-| data | String                           | Key of the deleted product               |
+| data | String                           | The product key of the deleted product.       |
 
 
 ## Error Codes
 
 | Code| Data Type | Description |
 |-------------|-----------------------------------|-----------------------------|
-| 11651|                       |`productKey` does not exist              |
-| 11619|                       |There are devices under the deleted product             |
+| 99404|   Not found           | The `productKey` does not exist.              |
+| 11619|   Existing Device Restrictions       |There are devices under the product to be deleted.   |
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
-```
-POST:  /connect-service/v2.1/products?action=delete&orgId=xxx&productKey=xxx
+```json
+url: https://{apigw-address}/connect-service/v2.1/products?action=delete&orgId=yourOrgId&productKey=yourProductKey
+method: POST
 ```
 
 ### Return Sample
@@ -54,3 +67,29 @@ POST:  /connect-service/v2.1/products?action=delete&orgId=xxx&productKey=xxx
 
 ```
 
+### Java SDK调用示例
+
+```java
+package com.envisioniot.enos.api.sample.connect_service.product;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.connect_service.v2_1.product.DeleteProductRequest;
+import com.envisioniot.enos.connect_service.v2_1.product.DeleteProductResponse;
+
+public class DeleteProduct {
+
+    public static void main(String[] args) {
+        String appKey = "yourAppKey";
+        String appSecret = "yourAppSecret";
+        String serverUrl = "yourSeverUrl";
+        String orgId = "yourOrgId";
+        DeleteProductRequest request = new DeleteProductRequest();
+        request.setOrgId(orgId);
+        request.setProductKey("yourProductKey");
+        DeleteProductResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                .url(serverUrl)
+                .getResponse(request, DeleteProductResponse.class);
+    }
+}
+```

@@ -1,70 +1,147 @@
 # Replace Device
 
-Replace the Device Key of a device without changing its asset ID (`assetId`). The interface will override the original Device Key and Device Secret of the registered device, re-assign a Device Key and generate a new Device Secret, and reset the device to non-activated status. The new device can be connected to EnOS with the replaced Device Key, and the data of old and new devices can be associated through asset IDs.
+Replace the ``deviceKey`` of a device without changing its ``assetId``. The system will override the original ``deviceKey`` and ``deviceSecret`` of the registered device, re-assign a ``deviceKey``, generate a new ``deviceSecret``, and reset the device to non-activated status. The new device can be connected to EnOS<sup>TM</sup> with the replaced ``deviceKey``, and the data of the old and new devices can be linked through the ``assetID``.
+
+## Operation Permissions
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Device Management
+     - Full Access
 
 ## Request Format
 
-```
+```json
 POST https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
 ```
 
 ## Request Parameters (URI)
 
 
-.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to specify the device to be replaced:
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include ``assetId`` in the request
+   - Include ``productKey`` + ``deviceKey`` in the request
 
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](../api_faqs#how-to-get-organization-id-orgid-orgid)              |
-| assetId  | Query          | False      | String        | Asset ID. [How to get assetId>>](../api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query         | False      | String         | Product Key      |
-| deviceKey | Query         | False     | String          | Device Key          |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> <../api_faqs#how-to-get-organization-id-orgid-orgid>`_
+   * - assetId
+     - Query
+     - Optional (See **Note** above)
+     - String
+     - The asset ID. `How to get assetId>> <../api_faqs.html#how-to-get-asset-id-assetid-assetid>`_
+   * - productKey
+     - Query
+     - Optional (See **Note** above)
+     - String
+     - The product key.  To be used with ``deviceKey`` .
+   * - deviceKey
+     - Query
+     - Optional (See **Note** above)
+     - String
+     - The device key. To be used with ``productKey`` .
 
 
 
 ## Request Parameters (Body)
 
-| Name | Required or Not | Data Type | Description |
-|------|---------------|---------------|--------|
-| newDeviceKey | True | String | Device Key of the new device. Supports English letters, numbers, hyphens (-), underline (_), dot (.), and colon (:). The length is limited within 4-64 characters. |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - newDeviceKey
+     - Mandatory
+     - String
+     - The new device key of the device. Supports English letters, at most 3 special characters, numbers, hyphens (-), underline (_), dot (.), and colon (:). The length is limited to within 4-64 characters.
 
 
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-------------|-------------------|-----------------------------|
-| data |    DeviceReplaceResult struct        | Device replacement results. See [DeviceReplaceResult Struct](replace_device#devicereplaceResult-struct-devicereplaceresult)|
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - DeviceReplaceResult Struct
+     - The returned results of the device replacement. For details, see `DeviceReplaceResult Struct>> <replace_device#devicereplaceResult-struct-devicereplaceresult>`_
+
+
 
 
 ### DeviceReplaceResult Struct <devicereplaceresult>
 
-| Name           | Data Type | Description      |
-|---------------|-----------|--------------|
-| assetId    | String        | Asset ID |
-| productKey   | String         | Product Key      |
-| deviceKey  | String          | Device Key          |
-| deviceSecret  | String          | The new Device Secret identifier assigned by the system          |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - assetId
+     - String
+     - The asset ID.
+   * - productKey
+     - String
+     - The product Key.
+   * - deviceKey
+     - String
+     - The device Key.
+   * - deviceSecret 
+     - String
+     - The new device secret assigned by the system.
+
+
 
 
 ## Error Codes
 
-| Code           | Description|
-|----------------|--------------|
-|11704|New and old Device Keys are the same|
-|11702|The new Device Key already exists in the database|
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Code 
+     - Description
+   * - 11704 
+     - The new and old device keys are the same.
+   * - 11702
+     - The new device key already exists in the database.
 
 
 
-## Sample 1
+
+## Samples
 
 ### Request Sample
 
-```
-POST http://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice&orgId=1c499110e8800000&assetId=FsTV44kr
+```json
+url: https://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice
+method: POST
+requestBody:
 {
     "newDeviceKey":"yourNewDeviceKey"
 }
@@ -78,10 +155,10 @@ POST http://{apigw-address}/connect-service/v2.1/devices?action=replaceDevice&or
     "msg":"OK",
     "requestId":"fa377585-8240-4d1e-ad9d-a8d820873142",
     "data":{
-        "assetId":"FsTV44kr",
-        "productKey":"O658R5li",
+        "assetId":"yourAssetId",
+        "productKey":"yourProductKey",
         "deviceKey":"yourNewDeviceKey",
-        "deviceSecret":"QbgsPK6eFyue2BRlCr3r"
+        "deviceSecret":"yourDeviceSecret"
     }
 }
 ```
@@ -93,13 +170,13 @@ public class ReplaceDevice {
  
     public static void main(String[] args) {
  
-        final String appKey = "4ced4f38-1ced-476e0a446215-a602-4307";
-        final String appSecret = "0a446215-a602-4307-9ff2-3feed3e983ce";
+        final String appKey = "yourAppAccessKe";
+        final String appSecret = "yourAppSecretKey";
         final String serverUrl = "http://{apigw-address}";
         final String orgId = "yourOrgId";
-        final String assetId = "FsTV44kr";
+        final String assetId = "yourAssetId";
  
-        String newDeviceKey = "abcdefg123";
+        String newDeviceKey = "yourNewDeviceKey";
  
         ReplaceDeviceRequest request = new ReplaceDeviceRequest();
         request.setOrgId(orgId);

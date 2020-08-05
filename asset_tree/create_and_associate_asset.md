@@ -1,100 +1,231 @@
-# Create and Associate Asset
+# Create and Link Asset
 
+Create an asset and link it to an asset tree.
 
+## Operation Permissions
 
-Create a logical asset and associate it with the asset tree.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset Tree Management
+     - Full Access
 
 ## Request Format
 
 ```
-https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
+POST https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree [How to get the ID of an asset tree>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
-| parentAssetId | Query            | true    | String    | Asset ID of the parent node of the asset to be associated  |
+.. list-table::
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`__
+   * - treeId
+     - Query
+     - Mandatory
+     - String
+     - The asset tree ID. `How to get treeID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-the-id-of-an-asset-tree>`__
+   * - parentAssetId
+     - Query
+     - Mandatory
+     - String
+     - The asset ID of the parent node of the asset to be linked.
+
 
 
 ## Request Parameters (Body)
 
-| Name | Required or Not | Data Type | Description |
-|------------|---------------|----------------|--------------------------------|
-| asset| true          | Asset struct    | Asset details to be provided when creating an asset. See [Asset Struct](/docs/api/en/latest/asset_tree/create_asset_and_associate_node.html#asset-struct-assetstruc)   |
+.. list-table::
+   :header-rows: 1
+
+   * - Name
+     - Mandatory / Optional
+     - Data Type
+     - Description
+   * - asset
+     - Mandatory
+     - ``Asset`` Struct
+     - The asset details to be provided when creating an asset. For more information, see `Asset Struct <create_and_associate_asset#asset-struct-assetstruc>`_
+
 
 
 ### Asset Struct <assetstruc>
 
-| Name | Required or Not | Data Type | Description |
-|-------|-------|-------------|--------------|
-| modelId           | true      | String      | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
-| name |true| StringI18n |Asset name that supports internationalization. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)  |
-|timezone  |true|  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time<br>For details, see [Timezone representation>>](/docs/api/en/latest/api_faqs.html#timezone-representation) |
-|description |false|String|Asset description |
-|attributes  |false  |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to. For details, see [attributes representation>>](/docs/api/en/latest/api_faqs.html#attributes-representation) |
-|tags |false|Tag struct|User-customized tags. For details, see [How to use tag>>](/docs/api/en/latest/api_faqs.html#how-to-use-tag)|
+.. list-table::
+   :widths: 15 15 25 45
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - modelId
+     - Mandatory
+     - String
+     - The model ID which the asset belongs to. `How to get modelID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-model-id-modelid-modelid>`_
+   * - name
+     - Mandatory
+     - StringI18n
+     - Specify the asset's name in its respective locale's language. For more details on the structure and locales supported, see `Internationalized name struct>> </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_
+   * - timezone
+     - Mandatory
+     - String
+     - The timezone where the asset is located. Use the "+08:00" format for time zones that do not support Daylight Saving Time (DST). Use the "Asia/Shanghai" format for time zones that support DST. For details, see `Timezone representation>> </docs/api/en/2.1.0/api_faqs.html#timezone-representation>`_
+   * - description
+     - Optional
+     - String
+     - The asset description.
+   * - attributes
+     - Optional
+     - Map
+     - Attributes of the model which the asset belongs to. The Key is the attribute ID, which is of String type. The Value type depends on the attribute defined in the Model. For details, see `attributes representation>> </docs/api/en/2.1.0/api_faqs.html#attributes-representation>`_
+   * - tags
+     - Optional
+     - Map
+     - User-defined tags. (The Key and Value are of String type.) For details, see `How to use tag>> </docs/api/en/2.1.0/api_faqs.html#how-to-use-tag>`_
+
+
 
 
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-------------|-----------------------------------|-----------------------------|
-| data| String                            | Created asset ID                   |
+| Name | Data Type | Description      |
+|:-----|:----------|:-----------------|
+| data | String    | The ID of the created asset. |
 
 
 ## Error Codes
 
-| Code | Description    |
-|-----------|-----------------------------|
-| 17751 | Tree ID does not exist              |
-| 17752| The parent asset does not exist in this tree          |
-| 17758 | The asset already exists on the tree            |
-| 17760 | The name of the asset to be created is illegal      |
-| 17770| The tree exceeds the maximum number of layers (7 layers) |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Code
+     - Error Information
+     - Description
+   * - 17404
+     - TreeId is not exist
+     - The tree ID does not exist.
+   * - 17752
+     - Parent assetId is not existed in the tree
+     - The parent asset does not exist in this Tree
+   * - 17762
+     - The tree is locked
+     - The asset tree cannot be modified/deleted for the time being as someone is currently accessing the asset tree. Please try again later.
+   * - 17770
+     - Exceeding the layer limit(7)
+     - The tree exceeds the maximum number of layers (7 layers).
+   * - 99400
+     - Invalid arguments
+     - The request parameter is invalid. Check the request parameters.
+   * - 99500
+     - System error
+     - Internal server error. Contact EnOS support.
 
 
 
-## Sample 1
+
+
+
+## Samples
 
 ### Request Sample
 
-```
-POST https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?treeId=lMAXwaLX&action=createAsset&parentAssetId=fy4hxezF&orgId=1c499110e8800000
-{ 
-    "asset": { 
-        "modelId": "STRING-INVERTER-MODEL", 
-        "name": { 
-            "defaultValue": "逆变器 #1", 
-            "i18nValue": { 
-                "en_US": "Inverter #1" 
-            } 
-        }, 
-        "timezone": "+08:00", 
-        "description": "This is a sampled asset.", 
-        "attributes": { 
-            "foo": 100, 
-            "bar": "example" 
-        }, 
-        "tags": { 
-            "foo": "bar", 
-            "hello": "world" 
-        } 
-    } 
+```json
+url: https://{apigw-address}/asset-tree-service/v2.1/asset-nodes?action=createAsset&treeId=yourTreeId&parentAssetId=yourParentAssetId&orgId=yourOrgId
+method: POST 
+requestBody: 
+{
+    "asset": {
+        "modelId": "STRING-INVERTER-MODEL",
+        "name": {
+            "defaultValue": "逆变器 #1",
+            "i18nValue": {
+                "en_US": "Inverter #1"
+            }
+        },
+        "timezone": "+08:00",
+        "description": "This is a sample asset.",
+        "attributes": {
+            "foo": 100,
+            "bar": "example"
+        },
+        "tags": {
+            "foo": "bar",
+            "hello": "world"
+        }
+    }
 }
 ```
 
 ### Return Sample
 
 ```json
-{ 
-    "code": 0, 
-    "msg": "ok", 
-    "requestId": "01b5477a-374e-49a0-8b68-7dbfe8f0b74f", 
-    "data": "cRUdS7sJ" 
-} 
+{
+    "code": 0,
+    "msg": "ok",
+    "requestId": "01b5477a-374e-49a0-8b68-7dbfe8f0b74f",
+    "data": "cRUdS7sJ"
+}
 ```
 
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.asset_tree_service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.envisioniot.enos.asset_tree_service.v2_1.CreateAssetNodeRequest;
+import com.envisioniot.enos.asset_tree_service.v2_1.CreateAssetNodeResponse;
+import org.junit.Test;
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.asset_tree_service.vo.AssetCreateVo;
+import com.envisioniot.enos.asset_tree_service.vo.I18nVo;
+
+public class CreateAssetNodeTest {
+    private static String AccessKey = "yourAccessKey";
+    private static String SecretKey = "yourSecretKey";
+    private static String OrgId = "yourOrgId";
+    private static String ServerUrl = "yourServerUrl";
+
+    @Test
+    public void testCreateAssetNode() {
+
+        CreateAssetNodeRequest request = new CreateAssetNodeRequest();
+        request.setOrgId(OrgId);
+        request.setTreeId("yourTreeId");
+        request.setParentAssetId("yourParentAssetId");
+        AssetCreateVo asset = new AssetCreateVo();
+        Map < String, String > i18nValue = new HashMap();
+        i18nValue.put("zh_CN", "assetName");
+        I18nVo name = new I18nVo();
+        name.setDefaultValue("asseTDefaultName");
+        name.setI18nValue(i18nValue);
+        asset.setName(name);
+        asset.setModelId("yourModelId");
+        asset.setTimezone("+08:00");
+        asset.setDescription("This is a sampled asset");
+        request.setAsset(asset);
+        CreateAssetNodeResponse response = Poseidon.config(PConfig.init().appKey(AccessKey).appSecret(SecretKey).debug())
+            .url(ServerUrl).getResponse(request, CreateAssetNodeResponse.class);
+    }
+}
+```

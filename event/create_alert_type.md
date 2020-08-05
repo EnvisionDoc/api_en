@@ -2,55 +2,108 @@
 
 Create a new alert type.
 
+
 ## Request Format
 
-```
+```json
 POST https://{apigw-address}/event-service/v2.1/alert-types?action=create
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)           |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
 
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
-|------|-----------------|-----------|-------------|
-| type |   true  |  generateType struct   |  Alert type. See [generateType Struct](create_alert_type#generatetype-struct-generatetype).  |
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - type
+     - Mandatory
+     - GenerateType Struct
+     - The details of the alert type. For more information, see `GenerateType Struct>> <create_alert_type#generatetype-struct-generatetype>`_
 
 
 
-### generateType Struct  <generatetype>
+### GenerateType Struct  <generatetype>
 
-| Name | Required or Not | Data Type | Description          |
-|----------|--------------|--------------|-------------------------------------|
-| typeId   |  true        | String       | Alert type ID.           |
-| typeDesc | true         | StringI18n   | Internationalized description of alert type, for which the default fields are mandatory. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct). |
-| tags     | false        | tags data type  | Tags alert type. |
-| source |false| String |Customized data source that indicates the data source to which the alert type applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - typeId
+     - Mandatory
+     - String
+     - The alert type ID.
+   * - typeDesc
+     - Mandatory
+     - StringI18n
+     - Specify the alert type's description in its respective locale's language. For more details on the structure and locales supported, see `Internationalized name struct>> </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_ 
+   * - tags
+     - Optional
+     - Map
+     - User-defined tags. (The Key and Value are of String type.) For details, see `How to use tags>> </docs/api/en/2.1.0/api_faqs.html#how-to-use-tag>`_
+   * - parentTypeId
+     - Optional
+     - String
+     - The alert type ID of the parent alert.
+
 
 
 
 
 ## Response Parameters
 
-| Name | Data Type     | Description          |
-|-------|----------------|---------------------------|
-| data  |  String |  typeId  |
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - String
+     - The alert type ID.
 
 
 
-## Sample
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/alert-types?action=create&orgId=yourOrgId
+url: https://{apigw-address}/event-service/v2.1/alert-types?action=create&orgId=yourOrgId
+method: POST 
+requestBody: 
 {
 	"type": {
 		"typeId": "planetTemperature",
+    "parentTypeId" : "parent",
 		"typeDesc": {
 			"defaultValue": "OverLimit",
 			"i18nValue": {
@@ -70,8 +123,45 @@ POST https://{apigw-address}/event-service/v2.1/alert-types?action=create&orgId=
 
 ```json
 {
-	"code": 0,
-	"msg": "OK",
-	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea"
+  "code": 0,
+  "msg": "OK",
+  "requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea",
+  "data": "planetTemperature"
+}
+```
+
+### Java SDK Sample
+
+```java
+public void testCreateAlertType() {
+    private static String accessKey = "yourAppAccessKey";
+    private static String secretKey = "yourAppSecretKey";
+    private static String orgId = "yourOrgId";
+    private static String url = "https://{apigw-address}";
+    CreateAlertTypeRequest request = new CreateAlertTypeRequest();
+    request.setOrgId(orgId);
+    GenerateType type = new GenerateType();
+    type.setTypeId("yourAlertTypeId");
+    type.setParentTypeId("yourParentTypeId");
+    StringI18n desc = new StringI18n();
+    desc.setDefaultValue("default");
+    Map < String, String > map = new HashMap < > ();
+    map.put("zh_CN", "中文");
+    map.put("en_US", "english");
+    desc.setI18nValue(map);
+    type.setTypeDesc(desc);
+    Map < String, String > tags = new HashMap < > ();
+    tags.put("yourTagKey", "yourTagValue");
+    type.setTags(tags);
+    request.setType(type);
+    try {
+        CreateAlertTypeResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+            .url(url)
+            .getResponse(request, CreateAlertTypeResponse.class);
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(response));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 ```

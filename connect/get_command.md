@@ -1,64 +1,77 @@
 # Get Command
 
+Get the details of a command.
 
+## Operation Permissions
 
-Get a single command information.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset
+     - Control
 
 ## Request Format
 
-```
-https://{apigw-address}/connect-service/v2.1/commands?action=get
+```json
+GET https://{apigw-address}/connect-service/v2.1/commands?action=get
 ```
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to specify the device:
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include ``assetId`` in the request
+   - Include ``productKey`` + ``deviceKey`` in the request
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+
+
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key     |
-| deviceKey | Query           | False      | String       | Device Key         |
-| commandId | Query         | True     | String          | Command ID          |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query            | Optional (See **Note** above)  | String         | The asset ID. [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query          | Optional (See **Note** above)      | String       | The product key. To be used with ``deviceKey``.     |
+| deviceKey | Query           | Optional (See **Note** above)      | String       | The device key. To be used with ``productKey``.         |
+| commandId | Query         | Mandatory     | String          | The command ID          |
 
 ## Response Parameters
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data |    Command struct        | Information corresponding to the command. See [Command Struct](/docs/api/en/latest/connect/get_command.html#command-struct-command). |
+| data |    Command Struct        | The details of the command. See [Command Struct](/docs/api/en/2.1.0/connect/get_command.html#command-struct-command). |
 
 ### Command Struct <Command>
 
 | Name | Data Type     | Description          |
 |-----------------|---------------------------|----------------|
-| commandId  | String| Command ID|
-| orgId          | String    | Organization ID which the asset belongs to  |
-| productKey | String          | Product Key     |
-| deviceKey | String         | Device Key         |
-| assetId  | String         |Asset ID|
-| createTime      | Long                            | Creation time                                             |
-| createLocaltime | String| Local creation time|
-| commandType     | Integer| Command type. 1.  Measurement point setting  2. Service invocation|
-| commandName     | StringI18n| Command name. Refers to the measurement point name in case of measurement point setting. Refers to the service name in case of service invocation. |
-| timeout         | Integer| Command timeout duration. Its unit is second and its range is [1-60], which is 30 by default.|
-| pendingTtl      | Long| Command cache duration. Its unit is second and its range is [ 0 - 48 * 60 * 60 ], which is 0 by default, indicating instant commands.|
-| state           | Integer| Command status, which is represented by an integer from 1-7.  1 -  Created; 2 - Canceled; 3 - Expired; 4 - Released; 5 - Send successfully; 6 - Failed; 7 - Response timed out. |
-| tslIdentifier   | String| Corresponding identifier in the thing model. Refers to the measurement point identifier in case of measurement point setting. Refers to the service identifier in case of service invocation. |
-| inputData       | Map (Key is of String type and the Value is of String, Number, Array or Object type) | Input data. In case of measurement point setting commands, the key is the measurement point identifier and the value is the measurement point value to be set. In case of service invocation commands, it is the service input parameter. The value data type should conform to the definition of thing model. |
-| outputData      | Map (Key is of String type and the Value is of String, Number, Array or Object type) | Output data. No return is provided for this field in case of measurement point setting commands. This field indicates the service output results in case of service invocation commands. The value data type should conform to the definition of thing model. |
+| commandId  | String| The command ID|
+| orgId          | String    | The organization ID which the asset belongs to.  |
+| productKey | String          | The product key.     |
+| deviceKey | String         | The device key.         |
+| assetId  | String         |The asset ID.|
+| createTime      | String                            | The time when the command was invoked.                |
+| createLocaltime | String| The local time when the command was invoked. |
+| commandType     | Integer| The command type. <ul><li>1 = Measurement point setting</li><li>2 = Service invocation</li></ul>  |
+| commandName     | StringI18n| The command name. Refers to the measurement point name for measurement point setting. Refers to the service name for service invocation. |
+| timeout         | Integer| The command timeout duration. Its unit is seconds and its range is [1-60]. The default value is 30.|
+| pendingTtl      | Long| The command cache duration. Its unit is seconds and its range is [ 0 - 48 * 60 * 60 ], which is 0 by default. If the pendingTtl is 0, it indicates that the commands will be executed immediately.|
+| state           | Integer| The command status, which is represented by an integer from 1-7.  <ul><li>1 = Created</li><li>2 = Canceled</li><li>3 = Expired</li><li>4 = Released</li><li>5 = Send successfully</li><li>6 = Failed</li><li>7 - Response timed out</li></ul> |
+| tslIdentifier   | String| The corresponding identifier in the `ThingModel`. Refers to the measurement point identifier for measurement point setting. Refers to the service identifier for service invocation. |
+| inputData       | Map (Key is of String type and the Value is of String, Number, Array or Object type) | The input data. For measurement point setting commands, the key is the measurement point identifier and the value is the measurement point value to be set. For service invocation commands, the key is the service input parameter identifier. The value data type will be as per defined in the `ThingModel`. |
+| outputData      | Map (Key is of String type and the Value is of String, Number, Array or Object type) | The output data. No return value is provided for this field for measurement point setting commands. For service invocation commands, this will return the service output results. The value data type will be as per defined in the `ThingModel`. |
 
 
 
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
-```
-https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=yourDeviceKey&productKey=yourProductKey&commandId= 2242591201245044736&orgId=yourOrgId
+```json
+url: https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=yourDeviceKey&productKey=yourProductKey&commandId= yourCommandId&orgId=yourOrgId
+method: GET
 ```
 
 ### Return Sample
@@ -66,35 +79,67 @@ https://{apigw-address}/connect-service/v2.1/commands?action=get&deviceKey=yourD
 ```json
 {
     "code": 0,
-    "msg": "Success",
-    "submsg": null,
+    "msg": "OK",
     "requestId": "7d863d517eae4f18a2776452eb1305bb",
     "data": {
         "commandId": "2242591201245044736",
         "orgId": "yourOrgId",
         "productKey": "yourProductKey",
         "deviceKey": "yourDeviceKey",
-        "assetId": "KmItYUh4",
-        "createTime": 1556172678510,
-        "createLocalTime": 1556172678510,
+        "assetId": "yourAssetId",
+        "createTime": "15910899018",
+        "createLocalTime": "2020-06-02 17:25:01",
         "commandType": 2,
         "commandName": {
             "defaultValue": "",
             "i18nValue": {
-                "en_US": "test_fu_wu"
+                "en_US": "test_service"
             }
         },
         "timeout": 30,
         "pendingTtl": 1000,
         "state": 2,
-       
-        "tslIdentifier": "test_fu_wu",
+
+        "tslIdentifier": "test_service",
         "inputData": {
-            "can_shu2": 1.3,
-            "can_shu": 13
+            "parameter_1": 1.3,
+            "parameter_2": 13
         },
-        "outputData": {}
+        "outputData": null
     }
 }
 ```
 
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.api.sample.connect_service.command;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.connect_service.v2_1.service.GetCommandRequest;
+import com.envisioniot.enos.connect_service.v2_1.service.GetCommandResponse;
+
+public class GetCommand {
+
+    public static void main(String[] args) {
+        String appKey = "yourAppKey";
+        String appSecret = "yourAppSecret";
+        String serverUrl = "yourServerUrl";
+
+        String orgId = "yourOrgId";
+        String productKey = "yourProductKey";
+        String deviceKey = "yourDeviceKey";
+        String commandId = "yourCommandId";
+
+        GetCommandRequest request = new GetCommandRequest();
+        request.setOrgId(orgId);
+        request.setProductKey(productKey);
+        request.setDeviceKey(deviceKey);
+        request.setCommandId(commandId);
+        GetCommandResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                .url(serverUrl)
+                .getResponse(request, GetCommandResponse.class);
+    }
+}
+```

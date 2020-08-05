@@ -1,12 +1,8 @@
-通用文件服务
-===============
+Common File Service (Deprecated)
+===================================
 
-如需查看通用文件服务的API文档，点击右上角**返回旧版EnOS API文档**，在目录树中选择**Common File Service**。
+To read the Common File Service API, click **Back to Previous Version of EnOS API** on the top-right, and select **Common File Service** on the left side navigation.
 
 
 .. toctree::
    :maxdepth: 1
-
-
-
-

@@ -1,21 +1,30 @@
 # Get Event
 
+Get the details of an event via ``eventId``.
 
+## Operation Permissions
 
-Get the details of the Event via `eventId`.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Asset
+     - Control
 
 ## Request Format
 
 ```
-https://{apigw-address}/connect-service/v2.1/events?action=get
+GET https://{apigw-address}/connect-service/v2.1/events?action=get
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| eventId        | Query| True         | String    |Event ID |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| eventId        | Query| Mandatory         | String    | The event ID |
 
 
 
@@ -23,32 +32,32 @@ https://{apigw-address}/connect-service/v2.1/events?action=get
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| data | Event struct | Event-specific information, see [Event Struct](/docs/api/en/latest/connect/get_event.html#event-struct-event). |
+| data | Event Struct | The details of the event. See [Event Struct](/docs/api/en/2.1.0/connect/get_event.html#event-struct-event). |
 
 
 ### Event Struct <event>
 
 | Name | Data Type | Description |
 |-------------|-------------------|-----------------------------|
-| orgId         | String    | Organization ID which the asset belongs to. |
-| eventId         | String    |Event ID |
-| productKey   | String         | Product Key             |
-| deviceKey    | String         | Device Key              |
-| assetId     | String         | Asset ID                  |
-| tslEventKey  | String         | Event key in TSL model      |
-| tslEventType | String         | Event tupe defined in TSL model |
-| output      | String         | Event output              |
-| timestamp   | Long           | Event timestamp          |
-| localtime   | String         | Local time when event occurs       |
+| orgId         | String    | The organization ID which the asset belongs to. |
+| eventId         | String    |The event ID. |
+| productKey   | String         | The product key.             |
+| deviceKey    | String         | The device key.              |
+| assetId     | String         | The asset ID                 |
+| tslEventKey  | String         | The event key in the TSL model.      |
+| tslEventType | String         | The event type defined in the TSL model. |
+| output      | String         | The event output.              |
+| timestamp   | Long           | The event timestamp.          |
+| localtime   | String         | The local time when the event occurs.       |
 
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
-```
-url:https://{apigw-address}/connect-service/v2.1/events/get?action=get&eventId=20190506587247156ca85be5e3422d30e2642dd1&orgId=1c499110e8800000
-GET
+```JSON
+url: https://{apigw-address}/connect-service/v2.1/events?action=get&eventId=yourEventId&orgId=yourOrgId
+method: GET
 ```
 
 ### Return Sample
@@ -66,10 +75,42 @@ GET
         "assetId":"wNzx7q3S",
         "tslEventKey":"guzang01",
         "tslEventType":"INFO",
-        "output":"{"fioat":116}",
+        "output":"{\"float\":116}",
         "timestamp":1557113821000,
         "localtime":"2019-05-06 11:37:01"
     }
 }
 ```
 
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.api.sample.connect_service.event;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.connect_service.v2_1.event.GetEventRequest;
+import com.envisioniot.enos.connect_service.v2_1.event.GetEventResponse;
+import com.google.gson.Gson;
+
+
+public class GetEvent {
+    public static void main(String[] args) {
+        String appKey = "yourAppKey";
+        String appSecret = "yourAppSecret";
+
+        GetEventRequest request = new GetEventRequest();
+        request.setOrgId("yourOrgId");
+        request.setEventId("yourEventId");
+        try {
+            GetEventResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                .url("yourServerUrl")
+                .getResponse(request, GetEventResponse.class);
+            Gson gson = new Gson();
+            System.out.println(gson.toJson(response));
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+    }
+}
+```

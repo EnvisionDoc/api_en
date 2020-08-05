@@ -1,8 +1,6 @@
 # Search Active Alerts
 
-
-
-Query the active alerts.
+Search for active alerts based on the search criteria.
 
 ## Request Format
 
@@ -12,41 +10,55 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-                                                                 
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
+
+
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
+
+
+| Name            | Mandatory/Optional | Data Type | Description |
 |------|-----------------|-----------|-------------|
-| modelId          | false    | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
-| assetId       | false     | String    | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| measurepointsId     | false     | String    | Measurement point ID. [How to get pointId>>](/docs/api/en/latest/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
-| startOccurTime | false    | String| Start time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api)    |
-| endOccurTime   | false    | String| End time for triggering alert. See [Time parameters used in API>>](/docs/api/en/latest/api_faqs.html#time-parameters-used-in-api) |
-| expression         | false    | String   | Query expression, which supports for sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `hitRuleId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId` and `tag`. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression)|
-| scope |  false   | Scope struct | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. See [Scope Struct](search_active_alerts#scope-struct-scope). |
-|  rootAlert  |   false  | RootAlert struct | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**.See [RootAlert Struct](search_active_alerts#rootalert-struct-rootalert).|
-| pagination  | false  |Pagination request struct | Random pagination. The default is to sort in descending order by `occurTime`. When not specified, the default pagination size is 10 pages. See [Pagination Request Struct>>](/docs/api/en/latest/overview.html#pagination-request-struct) |
+| modelId          | Optional    | String    | The model ID. [How to get modelID>>](/docs/api/en/2.1.0/api_faqs#how-to-get-model-id-modelid-modelid)|
+| assetId       | Optional     | String    | The asset ID. [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| measurepointId     | Optional     | String    | The measurement point ID. [How to get pointId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-the-measuremet-point-pointid-pointid)|
+| startOccurTime | Optional    | String| The start time for triggering the alert. For more details, see [Time parameters used in API>>](/docs/api/en/2.1.0/api_faqs.html#time-parameters-used-in-api)    |
+| endOccurTime   | Optional    | String| The end time for triggering the alert. For more details, see [Time parameters used in API>>](/docs/api/en/2.1.0/api_faqs.html#time-parameters-used-in-api) |
+| expression         | Optional    | String   | The query expression, which supports sql-like query. The fields that are supported for query include: `modelId`, `assetId`, `measurepointId`, `severityId`, `typeId`, `subTypeId`, `contentId`, `eventType`, `eventId`, `tag`, ``deviceStatus`` and ``assetPath``. The supported arithmetic operators are "=" and "in", and the logical operator is "and" and "or". `tag` also supports arithmetic operator "exists" and "not exists". [How to use expression>>](/docs/api/en/2.1.0/api_faqs.html#how-to-use-expression)|
+| scope |  Optional   | Scope Struct | Query the alerts in a specified asset tree or in an asset node on the asset tree, and specify whether to return the blocked derivative alerts. **This parameter cannot be applied with rootAlert**. For more details, see [Scope Struct](search_active_alerts#scope-struct-scope). |
+|  rootAlert  |   Optional  | RootAlert Struct | Query the derivative alerts which are blocked by the specified root alert. **This parameter cannot be applied with scope**. For more details, see [RootAlert Struct](search_active_alerts#rootalert-struct-rootalert).|
+| pagination  | Optional  |Pagination Request Struct | Lists the paging requirements in a request. If not specified, the pagination size is 10, sorted in descending order by `occurTime`. `sorters` is not supported to sort the response. For more details, see [Pagination Request Struct>>](/docs/api/en/2.1.0/overview.html#pagination-request-struct) |
 
 
 ### Scope Struct <scope>
 
-| Name            | Required or Not | Data Type | Description |
+| Name            | Mandatory/Optional | Data Type | Description |
 |------------|--------------|--------------|-----------|
-| treeId            | true         | String       |  ID of the asset tree |
-| fromAssetId       | false        | String       | Asset ID. Optional.<br>When it is not specified, return the alerts of all nodes in the asset tree specified by `treeId`;<br>When it is specified, returns all alerts under the asset node (and in the node).|
-| includeDerivative | false        | Boolean      | Whether to return the derivative alerts, the default is false, as no derivative alert is returned.|
+| treeId            | Mandatory         | String       |  The asset tree ID. |
+| fromAssetId       | Optional        | String       | Return all alerts of and under the asset node of the specified asset ID. If not specified, the alerts of all the nodes in the specified ``treeID`` will be returned.|
+| includeDerivative | Optional        | Boolean      | <ul><li>true = include the derivative alerts in the response</li><li>fales (default) = does not include the derivative alerts</li></ul>|
 
 
 
 ### RootAlert Struct <rootalert>
 
-| Name            | Required or Not | Data Type | Description |
+| Name            | Mandatory/Optional | Data Type | Description |
 |-------------|--------------|--------------|------------|
-| treeId      | false        | String       | ID of the asset tree   |
-| rootAlertId | true         | String       | Root alert ID |
+| treeId      | Optional        | String       | The asset tree ID.   |
+| rootAlertId | Mandatory         | String       | The root alert ID. |
 
 
 
@@ -58,53 +70,56 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search
 
 | Name | Data Type     | Description          |
 |-------|----------------|---------------------------|
-| data | ActiveAlert struct | List of active alerts. For details, see [ActiveAlert Struct](/docs/api/en/latest/event/search_active_alerts#activealert-struct-aa).|
+| data | Array of ActiveAlert Structs | A list of the active alerts returned. For details of an activeAlert struct, see [ActiveAlert Struct](/docs/api/en/2.1.0/event/search_active_alerts#activealert-struct-aa).|
 
-### ActiveAlert Struct  <aa>
+### ActiveAlert Struct <aa>
 
 | Name | Data Type     | Description          |
 |----------------|-----------------------|----------|
-| eventId        | String                | Alert ID                                                                          |
-| orgId          | String                | Organization ID which the asset belongs to. |
-| assetId        | String                | Asset ID. |
-| modelId        | String                | Model ID which the asset belongs to. |
-| modelIdPath    | String                | Model path|
-| measurepointId | String| Asset measurement point|
-| hitRuleId      | String                | Rule ID of the triggered alert|
-| value          | Integer/Double/Object | Measurement point value. If ``triggeringDelayTimer`` is specified in the alert rule, this value is that when ``triggeringDelayTimer`` starts counting. See [ThingModel Struct>>](/docs/api/en/latest/model/searchmodel.html#id1)definition|
-| occurTime      | Long| UTC time when the alert occurs|
-| localOccurTime     | String| Local time when the alert occurs|
-| createTime     | Long| UTC time for creation|
-| updateTime     | Long| UTC time for update|
-| severityId     | String| Alert severity ID|
-| severityDesc   | StringI18n            | Alert severity description|
-| typeId        | String                | Alert type ID|
-| typeDesc       | StringI18n            | Alert type description|
-| subTypeId      | String                | Alert sub-type|
-| subTypeDesc    | StringI18n            | Alert sub-type description|
-| contentId      | String                | Alert content ID|
-| contentDesc    | StringI18n            | Alert description|
-| eventType      | Integer               | Event type: 0 - system recovery alert; 1 - system-triggered alert; 2 - manual recovery alert; 3 - manually-inserted alarm |
-| tag            | Tag struct            | Alert tags|
-| ruleDesc       | StringI18n            | Rule description|
-| assetPaths  |  String Array     | A path list of the alert assets on the asset tree according to the scope of the alert rule.<br>The format is as: ["treeId1:/assetId1/assetId2/assetIdx", "treeId2:/assetId3/assetIdx"]|
-| maskedBy  |  String Array     | If an alert is a derivative alert, return the root alert that caused the alert to be blocked.<br>The format is as: ["treeId1:eventId1", "treeId1:eventId2"]|
+| eventId        | String                | The alert ID.  |
+| orgId          | String                | The organization ID which the asset belongs to. |
+| assetId        | String                | The asset ID. |
+| modelId        | String                | The model ID. |
+| modelIdPath    | String                | The model ID path.|
+| measurepointId | String| The measurement point ID.|
+| hitRuleId      | String                | The rule ID of the triggered alert.|
+| value          | Integer/Double/Object | The measurement point value. If ``triggeringDelayTimer`` is specified in the alert rule, this value will be when the ``triggeringDelayTimer`` starts counting.|
+| occurTime      | Long| The UTC time when the alert occurs.|
+| localOccurTime     | String| The local time when the alert occurs.|
+| createTime     | Long| The UTC time when the active alert was created.|
+| updateTime     | Long| The UTC time when the active alert was last updated.|
+| severityId     | String| The alert severity ID.|
+| severityDesc   | StringI18n            | The alert severity description.|
+| typeId        | String                | The alert type ID.|
+| typeDesc       | StringI18n            | The alert type description.|
+| subTypeId      | String                | The alert sub-type ID.|
+| subTypeDesc    | StringI18n            | The alert sub-type description.|
+| contentId      | String                | The alert content ID.|
+| contentDesc    | StringI18n            | The alert description.|
+| eventType      | Integer               | The event type.<ul><li>0 = system-recovered alert</li><li>1 = system-triggered alert</li><li>2 = API-recovered alert</li><li>3 = API-inserted alert</li></ul> |
+| tag            | Map            | User-defined tags. (The Key and Value are of String type.)|
+| ruleDesc       | StringI18n            | The rule description.|
+| assetPaths  |  String Array     | A path list of the alert assets on the asset tree according to the scope of the alert rule.<br>The format is: ["treeId1:/assetId1/assetId2/assetIdx", "treeId2:/assetId3/assetIdx"]|
+| maskedBy  |  String Array     | If an alert is a derivative alert, return the root alert that caused the alert to be blocked.<br>The format is: ["treeId1:eventId1", "treeId1:eventId2"]|
 
 
 
 
-## Input/Output Samples
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &orgId=1c499110e8800000 
+url: https://{apigw-address}/event-service/v2.1/active-alerts?action=search&orgId=yourOrgId 
+method: POST 
+requestBody: 
 {
 	"expression": "eventId='20190531b83331a8549e1e956f2413552eda1ec9'",
 	"pagination": {
 		"pageNo": 1,
 		"pageSize": 20
-	              }
+	},
+	"action": "search"
 }
 
 ```
@@ -136,6 +151,8 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 		"modelId": "Inverter_Model",
 		"modelIdPath": "/Inverter_Model",
 		"measurepointId": "power",
+		"deviceStatus": null,
+        "hitRuleId": null,
 		"value": "3.5559796405967736",
 		"occurTime": 1559304899404,
 		"localOccurTime": "2019-06-01 02:14:59",
@@ -149,12 +166,19 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 			             }
 		                },
 		"typeId": "errorType",
+		"subTypeId": null,
 		"typeDesc": {
 			"i18nValue": {
 				"en_US": "errorType desc",
 				"zh_CN": ""
 			             }
 		            },
+		"subTypeDesc":{
+				"i18nValue":{
+					"en_US":"",
+					"zh_CN":""
+						}
+				},
 		"contentId": "001",
 		"contentDesc": {
 			"i18nValue": {
@@ -165,7 +189,15 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 		"eventType": 1,
 		"tag": {
 			"Tag999": "999"
-		       }
+		       },
+		"ruleDesc":{
+				"i18nValue":{
+					"en_US":"",
+					"zh_CN":""
+				}
+			},
+		"assetPaths": null,
+		"maskedBy": null
 	        }]
 }
 ```
@@ -173,25 +205,24 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=search &org
 ## Java SDK Sample
 
 ```java
-public void testSearchActiveAlerts(){  
-        String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";  
-        String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";  
-        SearchActiveAlertRequest request = new SearchActiveAlertRequest();  
-        request.setOrgId("1c499110e8800000");  
-        request.setExpression("eventId='20190531b83331a8549e1e956f2413552eda1ec9'");  
-        Pagination pagination = new Pagination();  
-        pagination.setPageSize(20);  
-        pagination.setPageNo(1);  
-	        request.setPagination(pagination);  
-	        request.headerParams().put("apim-accesskey","4ced4f38-1ced-476e0a446215-a602-4307");  
-	        try {  
-	            SearchActiveAlertResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())  
-	                    .url("https://{apigw-address}")  
-	                    .getResponse(request, SearchActiveAlertResponse.class);  
-	            Gson gson = new Gson();  
-	            System.out.println(gson.toJson(response));  
-	        }catch(Exception e){  
-	            System.out.print(e);  
-	        }  
+public void testSearchActiveAlerts() {
+    String accessKey = "yourAppAccessKey";
+    String secretKey = "yourAppSecretKey";
+    SearchActiveAlertRequest request = new SearchActiveAlertRequest();
+    request.setOrgId("yourOrgId");
+    request.setExpression("eventId='yourEventId'");
+    Pagination pagination = new Pagination();
+    pagination.setPageSize(20);
+    pagination.setPageNo(1);
+    request.setPagination(pagination);
+    try {
+        SearchActiveAlertResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+            .url("https://{apigw-address}")
+            .getResponse(request, SearchActiveAlertResponse.class);
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(response));
+    } catch (Exception e) {
+        System.out.print(e);
+    }
 }
 ```

@@ -1,40 +1,50 @@
 # Delete Device
 
+Delete a device.
 
+## Operation Permissions
 
-Delete devices.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Device Management
+     - Full Access
 
 ## Request Format
 
-```
-https://{apigw-address}/connect-service/v2.1/devices?action=delete
+```json
+POST https://{apigw-address}/connect-service/v2.1/devices?action=delete
 ```
 
 ## Request Parameters (URI)
 
-.. note:: In the following non-required fields, you must provide ``assetId`` or a combination of ``productKey`` and ``deviceKey`` to specify the device.
+.. note:: Use one of the following methods to specify the device to be deleted:
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   - Include ``assetId`` in the request
+   - Include ``productKey`` + ``deviceKey`` in the request
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+
+
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| assetId  | Query            | False   | String         | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
-| productKey | Query          | False       | String       | Product Key     |
-| deviceKey | Query           | False      | String       | Device Key         |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)                |
+| assetId  | Query    | Optional (See **Note** above)  | String         | The asset ID. [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid) |
+| productKey | Query    | Optional (See **Note** above)      | String       | The product key. To be used with ``deviceKey``.     |
+| deviceKey | Query   | Optional (See **Note** above)    | String       | The device key. To be used with ``productKey``.         |
 
 
 
 
-## Sample 1
+## Samples
 
 ### Request Sample
 
-```
-url:https://{apigw-address}/connect-service/v2.1/devices?action=delete&orgId=o15475450989191&assetId=mAEsF3sm
-method:  POST
-headers:  {}
-requestBody:  null
+```json
+url: https://{apigw-address}/connect-service/v2.1/devices?action=delete&orgId=yourOrgId&assetId=mAEsF3sm
+method: POST
 ```
 
 ### Return Sample
@@ -48,3 +58,31 @@ responseBody:{
 }
 ```
 
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.api.sample.connect_service.device;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.connect_service.v2_1.device.DeleteDeviceRequest;
+import com.envisioniot.enos.connect_service.v2_1.device.DeleteDeviceResponse;
+
+public class DeleteDevice {
+    public static void main(String[] args) {
+        final String appKey = "yourAppKey";
+        final String appSecret = "yourAppSecret";
+        String serverUrl = "yourServerUrl";
+
+        String orgId = "yourOrgId";
+        String assetId = "yourAssetId";
+        DeleteDeviceRequest request = new DeleteDeviceRequest();
+        request.setOrgId(orgId);
+        request.setAssetId(assetId);
+        DeleteDeviceResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                .url(serverUrl)
+                .getResponse(request,DeleteDeviceResponse.class);
+
+    }
+}
+```

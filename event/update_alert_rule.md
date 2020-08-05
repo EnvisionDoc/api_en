@@ -1,78 +1,63 @@
 # Update Alert Rule
 
-Update a alert rule. Any parameter (if not being null) included request body  can be updated. The fields required to be verified include: model ID (`modelId`), measurepoint (`measurepointId`), alert severity (`severityId`), alert content (`contentId`) and query scope (`scope`).
+Update an alert rule. Any parameter (that is not null) included the request body can be updated. 
 
 ## Request Format
 
-```
+```json
 POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)               |
-|isPatchUpdate|Query|true|Boolean|Whether to perform partial update. <br>When it is true, only the fields specified in the parameter are updated; <br>when it is false, all the fields will be updated, i.e. the fields without specified value will be left blank. Set as true by default. |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)               |
+|isPatchUpdate|Query|Mandatory|Boolean|<ul><li>true (default) = Only the fields specified in the parameters are updated. The values of those fields not specified will be retained.</li><li>false = The fields specified in the parameters are updated. Those fields not specified will have their existing values (if any) deleted.</li></ul> |
 
 
 ## Request Parameters (Body)
-| Name            | Required or Not | Data Type | Description |
+
+.. note:: You must specify either ``measurepointId`` or ``deviceStatus`` as the trigger of the alert.
+
+
+|Name| Mandatory/Optional | Data type | Description |
 |------|-----------------|-----------|-------------|
-|alertRule|true|alertRule struct|Alert rule. See [alertRule Struct](update_alert_rule#alertrule-struct-alertrule).|
-
-
-### alertRule Struct <alertrule>
-
-|Name| Required or Not (Specially in case that isPatchUpdate=false) | Data type | Description |
-|------|-----------------|-----------|-------------|
-| ruleId         | true| String| Alert rule ID, which is specified by the user as the unique identifier to locate the alert rule to be updated. |
-| ruleDesc       | true| StringI18n| Internationalized alert description, for which only supports full update. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)|
-| modelId| true| String| Model applicable for the alert rule. [How to get modelID>>](/docs/api/en/latest/api_faqs#how-to-get-model-id-modelid-modelid)|
-| measurepointId | true| String                | Asset measurement point. [How to get pointId>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-measuremet-point-pointid-pointid)|
-| condition      | true| String| Query expression-like statement. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. [How to use expression>>](/docs/api/en/latest/api_faqs.html#how-to-use-expression) |
-| severityId     | true| String| Alert severity ID|
-| contentId      | true| String| Alert content ID|
-| tags           | false| tags struct| Rule tags, for which only full update is supported|
-| scope          | true         | AssetNode struct | Specify a node on the asset tree to indicate the scope of the alert rule. See [AssetNode struct](update_alert_rule#assetnode-struct-assetnode). |
-| isEnabled      | false| Boolean| Whether it is allowed to take effect. It is set as "true" by default|
-| source |false| String |Customized data source that indicates the data source to which the alert rule applies. "null" for applying to EnOS Cloud; "edge" for applying to EnOS Edge.|
-| triggeringDelayTimer | false | Integer | Time to delay the alert triggering. The unit is seconds and the range is [60 - 10800]. The alert will be triggered when an anomaly that matches the alert rule occurs, and this anomaly does not return to normal within the set time. When it is 0, trigger the alert immediately. See [Tutorial: Setting Alert Triggering Delay Timer](docs.eniot.io/docs/device-connection/en/latest/howto/alert/setting_alert_triggering_delay_timer.html).|
+| ruleId         | Mandatory| String| The alert rule ID. |
+| ruleDesc       | Mandatory| StringI18n| Specify the alert rule's description in its respective locale's language. For more details on the structure and locales supported, see [Internationalized name struct](/docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct)|
+| modelId| Mandatory| String| The model ID. [How to get modelID>>](/docs/api/en/2.1.0/api_faqs#how-to-get-model-id-modelid-modelid)|
+| measurepointId | Optional         | String       | The measurement point ID. You must specify either ``measurepointId`` or ``deviceStatus`` as the trigger of the alert. [How to get pointId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-the-measuremet-point-pointid-pointid) |
+| deviceStatus     | Optional         | String       | The device status, such as "offline". You must specify either ``measurepointId`` or ``deviceStatus`` as the trigger of the alert. See [Setting State-based Alerts](/docs/device-connection/en/2.1.0/howto/alert/setting_state_based_alert). |
+| condition      | Mandatory| String| The query expression. For example, "${temperature} = 19" indicates that the value of the measurement point "temperature" is 19. A slash "/" is used to express the hierarchical relationship, for which only one downward layer is supported now. For example, “${pointA/att1} = 18” indicates the "att1" attribute value of the measurement point "A" is 18. [How to use expression>>](/docs/api/en/2.1.0/api_faqs.html#how-to-use-expression) |
+| severityId     | Mandatory| String| The alert severity ID.|
+| contentId      | Mandatory| String| The alert content ID.|
+| tags           | Optional| Map| The user-defined tags. (The Key and Value are of String type.) For details, see [How to use tags](/docs/api/en/2.1.0/api_faqs.html#how-to-use-tag)|
+| scope          | Mandatory         | Array of Scope Structs | Uses the scope struct to indicate the scope of the asset to which the alert applies to. For details, see [AssetNode struct](search_active_alerts#scope). |
+| isEnabled      | Optional| Boolean| <ul><li>true (default) = enables the alert rule</li><li>false = does not enable the alert rule</li></ul>|
+| triggeringDelayTimer | Optional | Integer | The amount of time to delay triggering the alert. The unit is seconds with a range between [60 - 10800]. The alert will only be triggered when an anomaly that matches the alert rule occurs and does not return to normal within the set time. To trigger the alert immediately, set the time to 0. For more information, see [Tutorial: Setting Alert Triggering Delay Timer](/docs/device-connection/en/2.1.0/howto/alert/setting_alert_triggering_delay_timer.html).|
 
 ### AssetNode Struct <assetnode>
 
 | Name | Required or Not | Data Type | Description |
 |----------|--------------|--------------|----------|
-| treeId   | true         | String       | Asset tree ID. If it is set as "all", it indicates that this is a special node, standing for the globality of the organization.  |
-| assetId  | true         | String       | Asset ID. [How to get assetId>>](/docs/api/en/latest/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
-
-
-## Response Parameters
-
-.. list-table::
-   :widths: auto
-   :header-rows: 1
-
-   * - Name
-     - Data Type
-     - Description
-   * - data
-     - null
-	 - Null
+| treeId   | true         | String       | The asset tree ID. If it is set as "all", it indicates that this is a special node, standing for the globality of the organization.  |
+| assetId  | true         | String       | The asset ID. [How to get assetId>>](/docs/api/en/2.1.0/api_faqs.html#how-to-get-asset-id-assetid-assetid)  |
 
 
 
-## Sample
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update&orgId=1c499110e8800000&isPatchUpdate=false
+url: https://{apigw-address}/event-service/v2.1/alert-rules?action=update&orgId=yourOrgId&isPatchUpdate=false
+method: POST 
+requestBody: 
 {
 	"alertRule": {
 		"ruleId": "user BID",
 		"ruleDesc": {
-            "defaultValue": "Grid is connected from converter",
+      "defaultValue": "Grid is connected from converter",
 			"i18nValue": {
 				"en_US": "Grid is connected from converter",
 				"zh_CN": "电网由变频器连接"
@@ -86,12 +71,12 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update&orgId=
 		"tags": {
 			"key1": "v1"
 		},
-		"orgId": "1c499110e8800000",
 		"scope": [{
 			"treeId": "ptde66nd",
 			"assetId": "FbFy8qyz"
 		}],
-		"isEenabled": true
+		"isEenabled": true,
+		"triggeringDelayTimer": 120
      }
 }
 ```
@@ -103,6 +88,32 @@ POST https://{apigw-address}/event-service/v2.1/alert-rules?action=update&orgId=
 	"code": 0,
 	"msg": "OK",
 	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea",
-	"data": ""
+	"data": null
+}
+```
+
+### Java SDK Sample
+
+```java
+public void testUpdateAlertRule() {
+    private static String accessKey = "yourAppAccessKey";
+    private static String secretKey = "yourAppSecretKey";
+    private static String orgId = "yourOrgId";
+    private static String url = "https://{apigw-address}";
+    UpdateAlertRuleRequest request = new UpdateAlertRuleRequest();
+    request.setOrgId(orgId);
+    request.setRuleId("yourRuleID");
+    Map < String, String > map = new HashMap < > ();
+    map.put("yourTagKey", "yourTagValue");
+    request.setTags(map);
+    request.setIsPatchUpdate(true);
+    try {
+        UpdateAlertRuleResponse response = Poseidon.config(PConfig.init().appKey(accessKey).appSecret(secretKey).debug())
+            .url(url)
+            .getResponse(request, UpdateAlertRuleResponse.class);
+        System.out.println(response);
+    } catch (Exception e) {
+        System.out.print(e);
+    }
 }
 ```

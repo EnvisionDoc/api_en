@@ -1,92 +1,207 @@
 # Get Product
 
+Get the details of a product via its `productKey`.
 
+## Operation Permissions
 
-Get product details via `productKey`.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Device Management
+     - Read
 
 ## Request Format
 
 ```
-https://{apigw-address}/connect-service/v2.1/products?action=get
+GET https://{apigw-address}/connect-service/v2.1/products?action=get
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| productKey        | Query            | true    | String    | Product Key|
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
+   * - productKey
+     - Query
+     - Mandatory
+     - String
+     - The product key.
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-------------|-----------------------------------|-----------------------------|
-| data | Product struct | Product-specific information, see [Product Struct](/docs/api/en/latest/connect/get_product.html#product-struct-productstruc).                |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - Product struct
+     - The details of the product. For more information, see `Product Struct>> </docs/api/en/2.1.0/connect/get_product.html#product-struct-productstruct>`_
 
 
-### Product Struct <productstruc>
 
-| Name | Data Type | Description |
-|-------|-------|---------------------------|
-| orgId |  String | Organization ID which the asset belongs to |
-| productKey          | String| Product Key                                            |
-| productName         | StringI18n |  Product name. For the structure, see [Internationalized name struct>>](/docs/api/en/latest/api_faqs.html#internationalized-name-struct)  |
-| productSecret       | String                          | Product private key                                             |
-| productDesc         | String                          | Product Description                                             |
-| productType         | Sting                           | Product type; Device stands for common product types, while Gateway stands for gateway types.   |
-| dataFormat         | String                          | Data type; Custom represents the user-defined data type, while Json represents the json data type. |
-| productTags         | Map (Key is of String type and the value is of String type) | Product tags                                             |
-| modelId             | String                          | Model ID which the asset belongs to|
-| dynamicActiveEnabled | Boolean                         | Dynamic activation supported or not                                     |
-| biDirectionalAuth   | Boolean                         | Two-way authentication supported or not                                     |
-| createTime      | Long                            | Creation time                                             |
-| createBy        | String                          | Creator                                               |
-| updateTime       | Long                            | Update time                                             |
-| updateBy       | String                          | Updater                                               |
+### Product Struct <productstruct>
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - orgId
+     - String
+     - The organization ID which the asset belongs to.
+   * - productKey
+     - String
+     - The product key.
+   * - productName
+     - StringI18n
+     - The product name.
+   * - productSecret
+     - String
+     - The product private key.
+   * - productDesc
+     - String
+     - The product description.
+   * - productType
+     - String
+     - The product type. ``Device`` stands for common product types, while ``Gateway`` stands for gateway types.
+   * - dataFormat
+     - String
+     - + ``Custom`` represents the user-defined data type.
+       + ``Json`` represents the json data type.
+   * - productTags
+     - Map
+     - The product tags.  (The Key and Value are of String type.)
+   * - modelId
+     - String
+     - The model ID which the asset belongs to.
+   * - dynamicActiveEnabled
+     - Boolean
+     - + `true` = able to activate dynamically
+       + `false` = not able to activate dynamically
+   * - biDirectionalAuth
+     - Boolean
+     - + ``true`` = supports two-way authentication
+       + ``false`` = does not support two-way authentication
+   * - createTime
+     - Long
+     - The time the product is created.
+   * - createBy
+     - String
+     - The name of the person who created the product.
+   * - updateTime
+     - Long
+     - The time when the product was last updated. This will have the same value as ``createTime`` if there are no updates made after the product was created.
+   * - updateBy
+     - String
+     - The name of the person who updated the product.
+
+
 
 ## Error Codes
 
-| Code | Description |
-|--------|-------------------|
-| 11611 |   `productKey` does not exist   |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Code
+     - Data Type
+     - Description
+   * - 11611
+     - Not found
+     - The ``productKey`` does not exist.
 
 
 
 
-## Sample 1
+
+## Samples
 
 ### Request Sample
 
-```
-GET:  /connect-service/v2.1/products?action=get&orgId=abc&productKey=def
+```json
+url: https://{apigw-address}/connect-service/v2.1/products?action=get&orgId=yourOrgId&productKey=yourProductKey
+method: GET
 ```
 
 ### Return Sample
 
 ```json
 {
-	"code":0,
-	"msg":"OK",
-	"requestId":"345e68bc-e98a-45b1-a931-d255a6336847",
-	"data" :{
-		"orgId":"yourOrgId",
-		"productKey":"yourProductKey",
-		"productName":{
-			"defaultValue":"openapi_sdk_8",
-			"i18nValue":{}
-		},
-		"productSecret":"yourProductSecret",
-		"productDesc":"test_sdk_update",
-		"productType":"Device",
-		"dataFormat":"Custom",
-		"productTags":{
-
-		},
-		"modelId":"AlterTest0615",
-		"dynamicActiveEnabled":false,
-		"biDirectionalAuth":true
-	}
+    "code":0,
+    "msg":"OK",
+    "requestId":"864291ce-ca48-457f-a790-a3415c0169ad",
+    "data":{
+        "orgId":"yourOrgId",
+        "productKey":"yourProductKey",
+        "productName":{
+            "defaultValue":"202cp",
+            "i18nValue":{
+                "en_US":"",
+                "zh_CN":""
+            }
+        },
+        "productSecret":"yourProductSecret",
+        "productDesc":"",
+        "productType":"Device",
+        "dataFormat":"Json",
+        "productTags":null,
+        "modelId":"202model",
+        "dynamicActivateEnabled":false,
+        "biDirectionalAuth":false,
+        "createBy":"DM001",
+        "createTime":1582861255508,
+        "updateBy":"DM001",
+        "updateTime":1582861255508,
+        "defaultValidDay":null,
+        "maxValidDay":null
+    }
 }
 ```
 
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.api.sample.connect_service.product;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.connect_service.v2_1.product.GetProductRequest;
+import com.envisioniot.enos.connect_service.v2_1.product.GetProductResponse;
+
+
+public class GetProduct {
+
+    public static void main(String[] args) {
+        String appKey = "yourAppKey";
+        String appSecret = "yourAppSecret";
+        String serverUrl = "yourServerUrl";
+        
+        String orgId = "yourOrgId";
+        GetProductRequest request = new GetProductRequest();
+        request.setOrgId(orgId);
+        request.setProductKey("yourProductKey");
+        GetProductResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+                .url(serverUrl)
+                .getResponse(request, GetProductResponse.class);
+    }
+}
+```

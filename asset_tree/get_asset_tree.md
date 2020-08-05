@@ -1,55 +1,137 @@
 # Get Asset Tree
 
+Get the details of an asset tree using an asset tree ID.
 
+## Access Permissions
 
-Get an asset tree under the specified OU.
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Access
+     - Permission Type
+   * - Asset Tree Management
+     - Read
 
 ## Request Format
 
-```
-https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
+```json
+GET https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)                |
-| treeId        | Query            | true    | String    | ID of the asset tree to be gotten. [How to get the ID of an asset tree>>](/docs/api/en/latest/api_faqs.html#how-to-get-the-id-of-an-asset-tree)        |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to obtain orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
+   * - treeId
+     - Query
+     - Mandatory
+     - String
+     - The asset tree ID. `How to obtain treeID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-the-id-of-an-asset-tree>`_
 
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-------------|-----------------------------------|-----------------------------|
-| treeId| String                            | Asset tree ID                    |
-| tags| Map (Key is of String type, and the value is of String type) | A group of user-customized asset tree tags  |
-| asset| asset struct | Root asset of asset tree. See [asset Struct](/docs/api/en/latest/asset_tree/get_asset_tree.html#asset-struct-assetstruc)              |
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
-### Asset Struct <assetstruc>
-
-| Name | Data Type | Description |
-|-------|-------|---------------------------|
-| assetId |  String | Asset ID|
-|modelId|String|Model ID which the asset belongs to|
-|modelIdPath|String|Model ID path |
-| name | StringI18n |Asset name that supports internationalization|
-|timezone  |  String  |Timezone where the asset is located.<br>Use the "+08:00" format to indicate time zones that do not support daylight saving time.<br>Use the Asia/Shanghai" format to indicate time zones that support daylight saving time|
-| description | String | Asset description|
-| label  | String | Asset type: "0" - device assets; "1" - logical assets|
-| inValid  | Boolean | true stands for invalid nodes while false stands for valid nodes|
-|attributes   |Map  (Key is of String type, and the Value is of object type)  |Attributes of the model which the asset belongs to|
-|tags|Map<br>(Key is of String type, and the value is of String type)|User-customized tags|
-
+   * - Name
+     - Data Type
+     - Description
+   * - treeId
+     - String
+     - The asset tree ID.
+   * - name
+     - StringI18n
+     - The asset tree name. For more details on the structure and locales supported, see `Internationalized name struct>> </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_
+   * - tags
+     - Map
+     - User-defined tags. (The Key and Value are of String type.)
+   * - asset
+     - Asset Struct
+     - The details of an asset. For more information, see `asset Struct </docs/api/en/2.1.0/asset_tree/get_asset_tree.html#asset-struct-assetstruct>`_
 
 
-## Sample 1
+### Asset Struct <assetstruct>
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Name
+     - Data Type
+     - Description
+   * - assetId
+     - String
+     - Asset ID
+   * - modelId
+     - String
+     - Model ID of this asset
+   * - modelIdPath
+     - String
+     - Path of Model ID
+   * - name
+     - StringI18n
+     - The Asset's name in its respective locale's language. For more details on the structure and locales supported, see `Internationalized name struct </docs/api/en/2.1.0/api_faqs.html#internationalized-name-struct>`_
+   * - timezone
+     - String
+     - Timezone where the asset is located.
+   * - description
+     - String
+     - Description of the Asset
+   * - label
+     - String
+     - The type of Asset. "0" = Device Asset and "1" = Logical Asset.
+   * - inValid
+     - Boolean
+     - "True" indicates invalid nodes while "false" indicates valid nodes.
+   * - attributes
+     - Map
+     - Attributes of the Model which the Asset belongs to. Key is the attribute ID, which is of String type. The Value type depends on the attribute defined in the Model. 
+   * - tags
+     - Map 
+     - User-defined tags. (The Key and Value are of String type.)
+
+
+## Error Codes
+
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Code
+     - Error Information
+     - Description
+   * - 17404
+     - TreeId is not exist
+     - The tree ID does not exist.
+   * - 99400
+     - Invalid arguments
+     - The request parameter is invalid. Check the request parameters.
+   * - 99500
+     - System error
+     - Internal server error. Contact EnOS support.
+
+## Samples
 
 ### Request Sample
 
-```
-GET
-https://{apigw-address}/asset-tree-service/v2.1/asset-trees?treeId=BRIt3ee3&action=get&orgId=o15541858646501
+```json
+url: https://{apigw-address}/asset-tree-service/v2.1/asset-trees?action=get&treeId=yourTreeId&orgId=yourOrgId
+method: GET 
 ```
 
 ### Return Sample
@@ -61,6 +143,12 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?treeId=BRIt3ee3&acti
  "requestId": "f3c1ffc7-cc8e-4a50-ad40-0fa7b0c3a7ac",
  "data": {
   "treeId": "BRIt3ee3",
+  "name":{
+			"defaultValue":"ourTreeId",
+			"i18nValue":{
+				"en_US":"ourTreeID"
+			}
+		},
   "tags": {
    "user": "zm",
    "user0": "lily"
@@ -88,3 +176,37 @@ https://{apigw-address}/asset-tree-service/v2.1/asset-trees?treeId=BRIt3ee3&acti
 }
 ```
 
+### Java SDK Sample
+
+```java
+package com.envisioniot.enos.asset_tree_service;
+
+import com.envision.apim.poseidon.config.PConfig;
+import com.envision.apim.poseidon.core.Poseidon;
+import com.envisioniot.enos.api.common.constant.request.Pagination;
+import com.envisioniot.enos.api.common.constant.request.Projection;
+import com.envisioniot.enos.asset_tree_service.v2_1.*;
+import com.envisioniot.enos.asset_tree_service.vo.*;
+import org.junit.Test;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AssetTreeTest {
+    private static String AccessKey = "yourAccessKey";
+    private static String SecretKey = "yourSecretKey";
+    private static String OrgId = "yourOrgId";
+    private static String ServerUrl = "yourServerUrl";
+
+
+    @Test
+    public void testGetTree() throws Exception {;
+        GetAssetTreeRequest request = new GetAssetTreeRequest();
+        request.setOrgId(OrgId);
+        request.setTreeId("yourTreeId");
+        GetAssetTreeResponse response = Poseidon.config(PConfig.init().appKey(AccessKey).appSecret(SecretKey).debug())
+            .url(ServerUrl)
+            .getResponse(request, GetAssetTreeResponse.class);
+        System.out.println(response.getData());
+    }
+}
+```

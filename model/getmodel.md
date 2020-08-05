@@ -1,48 +1,83 @@
 # Get Thing Model
 
+Get the thing model via the ``modelId``.
 
+## Operation Permissions
 
-Get the model based on the model identifier (`modelId`).
+.. list-table::
+   :widths: auto
+   :header-rows: 1
+
+   * - Required Authorization
+     - Required Operation Permission
+   * - Model Management
+     - Read
 
 ## Request Format
 
-```
-https://{apigw-address}/model-service/v2.1/thing-models?action=get
+```json
+GET https://{apigw-address}/model-service/v2.1/thing-models?action=get
 ```
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
-|-------|-------------|-----|------|----------|
-| orgId   | Query            | True     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid) |
-| scope   | Query            | False    | Integer   | Query scope.  0- Only search from the organization specified by the `orgId`; 1 - Search from the organization specified by the `orgId` and the organizations where the public models are located. It is set as 1 by default.|
-| modelId | Query            | True     | String    | Model ID which the asset belongs to. [How to get modelID>>](/docs/api/en/latest/api_faqs.html#how-to-get-model-id-modelid-modelid)|
+.. list-table::
+   :widths: auto
+   :header-rows: 1
 
+   * - Name
+     - Location (Path/Query)
+     - Mandatory/Optional
+     - Data Type
+     - Description
+   * - orgId
+     - Query
+     - Mandatory
+     - String
+     - The organization ID which the asset belongs to. `How to get orgId>> </docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid>`_
+   * - scope
+     - Query
+     - Optional
+     - Integer
+     - 
+         + 0 = Only search from the organization specified by the ``orgId``.
+         + 1 (default) = Search from the organization specified by the ``orgId`` as well as the organizations with public models.
+   * - modelId
+     - Query
+     - Mandatory
+     - String
+     - The model ID which the asset belongs to. `How to get modelID>> </docs/api/en/2.1.0/api_faqs.html#how-to-get-model-id-modelid-modelid>`_
 
 
 ## Response Parameters
 
-| Name | Data Type | Description |
-|-----------|-----------|----------|
-|data|Object|Thing model. See [ThingModel Struct>>](/docs/api/en/latest/model/searchmodel.html#thingmodel-struct-thing)|
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
 
+   * - Name
+     - Data Type
+     - Description
+   * - data
+     - ThingModel Struct
+     - The thing model. For more information on ThingModel struct, see `ThingModel Struct>> </docs/api/en/2.1.0/model/searchmodel.html#thingmodel-struct-thing>`_
 
 
 ## Error Codes
 
-See [Public Return Codes (Connection Service, etc.)](/docs/api/en/latest/overview.html#public-return-codes-connection-service-etc)
+See [Public Response Codes (Connection Service, etc.)](../overview#public-response-codes-connection-service-etc)
 
 
-
-## Sample
+## Samples
 
 ### Request Sample
 
-```
-GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c499110e8800000&modelId=planet
+```json
+url: https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=yourOrgId&modelId=yourModelId
+method: GET
 ```
 
-### Return Sample
+### Response Sample
 
 ```json
 {
@@ -182,9 +217,9 @@ GET https://{apigw-address}/model-service/v2.1/thing-models?action=get&orgId=1c4
 
 ```java
 public class GetThingModel {
-    private static String accessKey = "4ced4f38-1ced-476e0a446215-a602-4307";
-    private static String secretKey = "0a446215-a602-4307-9ff2-3feed3e983ce";
-    private static String orgId = "1c499110e8800000";
+    private static String accessKey = "AccessKey of your APP";
+    private static String secretKey = "SecretKey of your APP";
+    private static String orgId = "yourOrgId";
     private static String url = "https://{apigw-address}";
     public static void main(String[] args) {
         GetThingModelRequest request = new GetThingModelRequest();

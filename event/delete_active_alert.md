@@ -1,6 +1,10 @@
 # Delete Active Alert
 
-Delete a specified active alert; if the alert does not exist, a failure will be returned with specific information.
+Delete an active alert.
+
+## Prerequisite
+
+Ensure that the active alert to be deleted exists. 
 
 ## Request Format
 
@@ -10,28 +14,24 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=delete
 
 ## Request Parameters (URI)
 
-| Name | Location (Path/Query) | Required or Not | Data Type | Description |
+| Name | Location (Path/Query) | Mandatory/Optional | Data Type | Description |
 |---------------|------------------|----------|-----------|--------------|
-| orgId         | Query            | true     | String    | Organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/latest/api_faqs#how-to-get-organization-id-orgid-orgid)    |
-|  eventId  | Query  | true  |  String  |  Alert ID |
+| orgId         | Query            | Mandatory     | String    | The organization ID which the asset belongs to. [How to get orgId>>](/docs/api/en/2.1.0/api_faqs#how-to-get-organization-id-orgid-orgid)    |
+|  eventId  | Query  | Mandatory  |  String  |  The alert ID. |
 
 
 
-## Response Parameters
-
-| Name | Data Type     | Description          |
-|-------|----------------|---------------------------|
-| data |  null |  Null  |
-
-
-
-
-## Sample
+## Samples
 
 ### Request Sample
 
 ```json
-POST https://{apigw-address}/event-service/v2.1/active-alerts?action=delete&orgId=1c499110e8800000&eventId=2019060135b6df70b2de6aa2f2eb1d09e9aa1ae7
+url: https://{apigw-address}/event-service/v2.1/active-alerts?action=delete&orgId=yourOrgId&eventId=yourEventId
+method: POST
+requestBody:
+{
+  "action": "delete"
+}
 ```
 
 ### Return Sample
@@ -41,6 +41,26 @@ POST https://{apigw-address}/event-service/v2.1/active-alerts?action=delete&orgI
 	"code": 0,
 	"msg": "OK",
 	"requestId": "4873095e-621d-4cfd-bc2c-edb520f574ea",
-	"data": ""
+	"data": null
+}
+```
+
+### Java SDK Sample
+
+```java
+public void testDeleteActiveAlert() {
+    String appKey = "4ced4f38-1ced-476e0a446215-a602-4307";
+    String appSecret = "0a446215-a602-4307-9ff2-3feed3e983ce";
+    DeleteActiveAlertRequest request = new DeleteActiveAlertRequest();
+    request.setOrgId("1c499110e8800000");
+    request.setEventId("20190709d32b8269b75dc52229dfa467b60ee9a0");
+    try {
+        DeleteActiveAlertResponse response = Poseidon.config(PConfig.init().appKey(appKey).appSecret(appSecret).debug())
+            .url("http://10.27.20.193:8000")
+            .getResponse(request, DeleteActiveAlertResponse.class);
+        System.out.println(response);
+    } catch (Exception e) {
+        System.out.print(e);
+    }
 }
 ```
