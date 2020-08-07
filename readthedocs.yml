@@ -5,6 +5,7 @@ version: 2
 sphinx:
   builder: html
   configuration: conf.py
+  version: 2.4.0
 
 python:
   version: 2.7
